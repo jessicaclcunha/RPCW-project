@@ -1,0 +1,3010 @@
+@prefix : <http://rpcw.di.uminho.pt/2026/music-ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:A_naifa a :Banda ;
+    :anoFormacao 2004 ;
+    :cidade "Portugal"^^xsd:string ;
+    :nome "A Naifa"^^xsd:string .
+
+:Adriano_correia_de_oliveira a :ArtistaSolo ;
+    :anoNascimento 1942 ;
+    :cidade "Avintes"^^xsd:string,
+        "Vila Nova de Gaia"^^xsd:string ;
+    :nome "Adriano Correia de Oliveira"^^xsd:string ;
+    :pertenceAoGenero :Fado,
+        :Musica_de_intervençao .
+
+:Aenima a :Banda ;
+    :anoFormacao 1997 ;
+    :cidade "Almada"^^xsd:string,
+        "Portugal"^^xsd:string ;
+    :nome "Aenima"^^xsd:string ;
+    :pertenceAoGenero :Ethereal_wave,
+        :Rock_gotico .
+
+:Africa_do_sul a :Local ;
+    :cidade "África do Sul"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Africa_ocidental_portuguesa a :Local ;
+    :cidade "África Ocidental Portuguesa"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Africa_oriental_portuguesa a :Local ;
+    :cidade "África Oriental Portuguesa"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Agir a :ArtistaSolo ;
+    :anoNascimento 1988 ;
+    :cidade "Distrito de Lisboa"^^xsd:string,
+        "Lisboa"^^xsd:string ;
+    :nome "Agir"^^xsd:string ;
+    :pertenceAoGenero :Adult_contemporary,
+        :Dancehall,
+        :Hip_hop,
+        :Musica_pop,
+        :Soul .
+
+:Ala_dos_namorados a :Banda ;
+    :anoFormacao 1993 ;
+    :nome "Ala dos Namorados"^^xsd:string ;
+    :pertenceAoGenero :Pop_rock .
+
+:Alcabideche a :Local ;
+    :cidade "Alcabideche"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Alcobaça__portugal a :Local ;
+    :cidade "Alcobaça (Portugal)"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Aldina_duarte a :ArtistaSolo ;
+    :anoNascimento 1967 ;
+    :cidade "Distrito de Lisboa"^^xsd:string,
+        "Lisboa"^^xsd:string ;
+    :nome "Aldina Duarte"^^xsd:string ;
+    :pertenceAoGenero :Fado .
+
+:Alexander_search a :ArtistaSolo,
+        :Banda ;
+    :anoFormacao 2016 ;
+    :cidade "Distrito de Lisboa"^^xsd:string,
+        "Lisboa"^^xsd:string ;
+    :nome "Alexander Search"^^xsd:string ;
+    :pertenceAoGenero :Indie_pop,
+        :Indie_rock,
+        :Musica_eletronica,
+        :Rock_alternativo .
+
+:Alexandre_rey_colaço a :ArtistaSolo ;
+    :anoNascimento 1854 ;
+    :cidade "Marrocos"^^xsd:string,
+        "Tânger"^^xsd:string ;
+    :nome "Alexandre Rey Colaço"^^xsd:string .
+
+:Alfredo_marceneiro a :ArtistaSolo ;
+    :anoNascimento 1891 ;
+    :nome "Alfredo Marceneiro"^^xsd:string ;
+    :pertenceAoGenero :Fado .
+
+:Algueirao___mem_martins a :Local ;
+    :cidade "Algueirão - Mem Martins"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Almada a :Local ;
+    :cidade "Almada"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Almeirim__portugal a :Local ;
+    :cidade "Almeirim (Portugal)"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Amadora a :Local ;
+    :cidade "Amadora"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Amalia_rodrigues a :ArtistaSolo ;
+    :anoNascimento 1920 ;
+    :cidade "Distrito de Lisboa"^^xsd:string,
+        "Lisboa"^^xsd:string,
+        "Portugal"^^xsd:string ;
+    :nome "Amália Rodrigues"^^xsd:string ;
+    :pertenceAoGenero :Fado .
+
+:Amarante__portugal a :Local ;
+    :cidade "Amarante (Portugal)"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Amares a :Local ;
+    :cidade "Amares"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Amor_electro a :Banda ;
+    :anoFormacao 2010 ;
+    :cidade "Portugal"^^xsd:string ;
+    :nome "Amor Electro"^^xsd:string ;
+    :pertenceAoGenero :Pop_rock .
+
+:Ana_moura a :ArtistaSolo ;
+    :anoNascimento 1979 ;
+    :cidade "Portugal"^^xsd:string,
+        "Santarém (Pará)"^^xsd:string,
+        "Santarém (Portugal)"^^xsd:string ;
+    :nome "Ana Moura"^^xsd:string ;
+    :pertenceAoGenero :Fado .
+
+:Anabela a :ArtistaSolo ;
+    :anoNascimento 1976 ;
+    :cidade "Almada"^^xsd:string,
+        "Portugal no Festival Eurovisão da Canção"^^xsd:string ;
+    :nome "Anabela"^^xsd:string ;
+    :pertenceAoGenero :Fado .
+
+:Anaheim a :Local ;
+    :cidade "Anaheim"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Anarchicks a :Banda ;
+    :anoFormacao 2011 ;
+    :cidade "Distrito de Lisboa"^^xsd:string,
+        "Lisboa"^^xsd:string ;
+    :nome "Anarchicks"^^xsd:string ;
+    :pertenceAoGenero :Musica_pop,
+        :Riot_grrrl,
+        :Rock,
+        :Rock_and_roll .
+
+:Andre_marques a :ArtistaSolo ;
+    :cidade "Portugal"^^xsd:string,
+        "Setúbal"^^xsd:string ;
+    :nome "André Marques"^^xsd:string .
+
+:Angola a :Local ;
+    :cidade "Angola"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Anita_guerreiro a :ArtistaSolo ;
+    :nome "Anita Guerreiro"^^xsd:string ;
+    :pertenceAoGenero :Fado .
+
+:Antonio_chainho a :ArtistaSolo ;
+    :cidade "Portugal"^^xsd:string,
+        "Santiago do Cacém"^^xsd:string ;
+    :nome "António Chainho"^^xsd:string ;
+    :pertenceAoGenero :Fado .
+
+:Antonio_variaçoes a :ArtistaSolo ;
+    :anoNascimento 1944 ;
+    :cidade "Amares"^^xsd:string,
+        "Portugal"^^xsd:string ;
+    :nome "António Variações"^^xsd:string ;
+    :pertenceAoGenero :Musica_pop,
+        :New_wave__musica .
+
+:Antonio_zambujo a :ArtistaSolo ;
+    :anoNascimento 1975 ;
+    :nome "António Zambujo"^^xsd:string ;
+    :pertenceAoGenero :Fado,
+        :Musica_acustica .
+
+:April_ivy a :ArtistaSolo ;
+    :anoNascimento 1999 ;
+    :cidade "Distrito de Lisboa"^^xsd:string,
+        "Lisboa"^^xsd:string,
+        "Portugal"^^xsd:string ;
+    :nome "April Ivy"^^xsd:string ;
+    :pertenceAoGenero :Electropop .
+
+:Aqui_d_el_rock a :Banda ;
+    :anoFormacao 1977 ;
+    :cidade "Distrito de Lisboa"^^xsd:string,
+        "Lisboa"^^xsd:string ;
+    :nome "Aqui d’El-Rock"^^xsd:string .
+
+:Armando_gama a :ArtistaSolo ;
+    :anoNascimento 1954 ;
+    :cidade "Estado Novo (Portugal)"^^xsd:string,
+        "Luanda"^^xsd:string,
+        "África Ocidental Portuguesa"^^xsd:string ;
+    :nome "Armando Gama"^^xsd:string .
+
+:Aurea a :ArtistaSolo ;
+    :anoNascimento 1987 ;
+    :cidade "Santiago do Cacém"^^xsd:string ;
+    :nome "Aurea"^^xsd:string ;
+    :pertenceAoGenero :Blue_eyed_soul,
+        :Blues,
+        :Musica_pop,
+        :Reggae,
+        :Soul .
+
+:Ava_inferi a :Banda ;
+    :anoFormacao 2005 ;
+    :cidade "Almada"^^xsd:string ;
+    :nome "Ava Inferi"^^xsd:string ;
+    :pertenceAoGenero :Doom_metal,
+        :Metal_gotico .
+
+:Aveiro a :Local ;
+    :cidade "Aveiro"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Avintes a :Local ;
+    :cidade "Avintes"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Azeitao a :Local ;
+    :cidade "Azeitão"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Açores a :Local ;
+    :cidade "Açores"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Açores__aguiar_da_beira a :Local ;
+    :cidade "Açores (Aguiar da Beira)"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Balla a :Banda ;
+    :anoFormacao 2000 ;
+    :cidade "Distrito de Lisboa"^^xsd:string,
+        "Lisboa"^^xsd:string ;
+    :nome "Balla"^^xsd:string ;
+    :pertenceAoGenero :Electro,
+        :Musica_pop,
+        :Rock,
+        :Rock_and_roll .
+
+:Barbara_bandeira a :ArtistaSolo ;
+    :anoNascimento 2001 ;
+    :cidade "Azeitão"^^xsd:string,
+        "Portugal no Festival Eurovisão da Canção"^^xsd:string ;
+    :nome "Bárbara Bandeira"^^xsd:string .
+
+:Barbara_tinoco a :ArtistaSolo ;
+    :anoNascimento 1998 ;
+    :cidade "Amarante (Portugal)"^^xsd:string ;
+    :nome "Bárbara Tinoco"^^xsd:string ;
+    :pertenceAoGenero :Indie_pop,
+        :Musica_pop .
+
+:Barcelos a :Local ;
+    :cidade "Barcelos"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Barreiro a :Local ;
+    :cidade "Barreiro"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Beautify_junkyards a :Banda ;
+    :cidade "Distrito de Lisboa"^^xsd:string,
+        "Lisboa"^^xsd:string ;
+    :nome "Beautify Junkyards"^^xsd:string ;
+    :pertenceAoGenero :Fantologia,
+        :Musica_eletronica .
+
+:Beja a :Local ;
+    :cidade "Beja"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Beringel a :Local ;
+    :cidade "Beringel"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Bernardo_sassetti a :ArtistaSolo ;
+    :anoNascimento 1970 ;
+    :cidade "Distrito de Lisboa"^^xsd:string,
+        "Lisboa"^^xsd:string ;
+    :nome "Bernardo Sassetti"^^xsd:string ;
+    :pertenceAoGenero :Jazz .
+
+:Best_youth a :ArtistaSolo,
+        :Banda ;
+    :cidade "Câmara Municipal do Porto"^^xsd:string,
+        "Distrito do Porto"^^xsd:string,
+        "Porto"^^xsd:string ;
+    :nome "Best Youth"^^xsd:string ;
+    :pertenceAoGenero :Indie_rock,
+        :Musica_eletronica .
+
+:Bispo a :ArtistaSolo ;
+    :anoNascimento 1992 ;
+    :cidade "Algueirão - Mem Martins"^^xsd:string ;
+    :nome "Bispo"^^xsd:string ;
+    :pertenceAoGenero :Hip_hop_tuga .
+
+:Bizarra_locomotiva a :Banda ;
+    :anoFormacao 1993 ;
+    :cidade "Distrito de Lisboa"^^xsd:string,
+        "Lisboa"^^xsd:string,
+        "Portugal"^^xsd:string ;
+    :nome "Bizarra Locomotiva"^^xsd:string ;
+    :pertenceAoGenero :Metal_alternativo,
+        :Metal_industrial .
+
+:Blasted_mechanism a :Banda ;
+    :anoFormacao 1995 ;
+    :cidade "Distrito de Lisboa"^^xsd:string,
+        "Lisboa"^^xsd:string,
+        "Portugal"^^xsd:string ;
+    :nome "Blasted Mechanism"^^xsd:string ;
+    :pertenceAoGenero :Musica_do_mundo,
+        :Rock_alternativo .
+
+:Blaya a :ArtistaSolo ;
+    :anoNascimento 1987 ;
+    :cidade "Brasil"^^xsd:string,
+        "Fortaleza"^^xsd:string ;
+    :membroDe :Buraka_som_sistema ;
+    :nome "Blaya"^^xsd:string ;
+    :pertenceAoGenero :Funk_carioca,
+        :Kuduro .
+
+:Blind_zero a :Banda ;
+    :anoFormacao 1994 ;
+    :cidade "Câmara Municipal do Porto"^^xsd:string,
+        "Distrito do Porto"^^xsd:string,
+        "Porto"^^xsd:string,
+        "Portugal"^^xsd:string ;
+    :nome "Blind Zero"^^xsd:string ;
+    :pertenceAoGenero :Grunge,
+        :Rock_alternativo .
+
+:Boss_ac a :ArtistaSolo ;
+    :anoNascimento 1975 ;
+    :cidade "Ilha de São Vicente (Cabo Verde)"^^xsd:string ;
+    :nome "Boss AC"^^xsd:string ;
+    :pertenceAoGenero :Hip_hop,
+        :Hip_hop_tuga .
+
+:Braga a :Local ;
+    :cidade "Braga"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Braga__rio_grande_do_sul a :Local ;
+    :cidade "Braga (Rio Grande do Sul)"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Brandoa a :Local ;
+    :cidade "Brandoa"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Branko a :ArtistaSolo ;
+    :anoNascimento 1980 ;
+    :cidade "Distrito de Lisboa"^^xsd:string,
+        "Lisboa"^^xsd:string ;
+    :membroDe :Buraka_som_sistema ;
+    :nome "Branko"^^xsd:string ;
+    :pertenceAoGenero :Electronic_dance_music .
+
+:Brasil a :Local ;
+    :cidade "Brasil"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Brigada_victor_jara a :ArtistaSolo,
+        :Banda ;
+    :anoFormacao 1975 ;
+    :cidade "Coimbra"^^xsd:string,
+        "Portugal"^^xsd:string ;
+    :nome "Brigada Víctor Jara"^^xsd:string .
+
+:Bruno_bizarro a :ArtistaSolo ;
+    :anoNascimento 1979 ;
+    :nome "Bruno Bizarro"^^xsd:string ;
+    :pertenceAoGenero :Funk,
+        :Musica_cinematografica,
+        :Musica_de_jogos_eletronicos,
+        :Musica_eletronica,
+        :Orquestra,
+        :Sonoplastia,
+        :Synthwave .
+
+:Bunnyranch a :Banda ;
+    :anoFormacao 2002 ;
+    :cidade "Coimbra"^^xsd:string,
+        "Portugal"^^xsd:string ;
+    :nome "Bunnyranch"^^xsd:string ;
+    :pertenceAoGenero :Blues,
+        :Funk,
+        :Indie_rock,
+        :Punk_rock,
+        :Rock,
+        :Rock_and_roll,
+        :Rock_de_garagem,
+        :Soul .
+
+:Calema a :Banda ;
+    :anoFormacao 2011 ;
+    :cidade "Portugal"^^xsd:string,
+        "São Tomé e Príncipe"^^xsd:string ;
+    :nome "Calema"^^xsd:string ;
+    :pertenceAoGenero :Kizomba,
+        :Musica_pop,
+        :R_b_contemporaneo .
+
+:California a :Local ;
+    :cidade "Califórnia"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Camane a :ArtistaSolo ;
+    :anoNascimento 1966 ;
+    :cidade "Oeiras (Portugal)"^^xsd:string ;
+    :nome "Camané"^^xsd:string ;
+    :pertenceAoGenero :Fado .
+
+:Camara_municipal_do_porto a :Local ;
+    :cidade "Câmara Municipal do Porto"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Capicua a :ArtistaSolo ;
+    :cidade "Câmara Municipal do Porto"^^xsd:string,
+        "Distrito do Porto"^^xsd:string,
+        "Porto"^^xsd:string ;
+    :nome "Capicua"^^xsd:string ;
+    :pertenceAoGenero :Hip_hop,
+        :Hip_hop_tuga .
+
+:Capitao_fausto a :Banda ;
+    :anoFormacao 2009 ;
+    :cidade "Distrito de Lisboa"^^xsd:string,
+        "Lisboa"^^xsd:string,
+        "Portugal"^^xsd:string ;
+    :nome "Capitão Fausto"^^xsd:string ;
+    :pertenceAoGenero :Acid_rock,
+        :Indie_pop,
+        :Indie_rock,
+        :Rock_psicodelico .
+
+:Carla_prata a :ArtistaSolo ;
+    :anoNascimento 1999 ;
+    :cidade "Grande Londres"^^xsd:string,
+        "Londres"^^xsd:string,
+        "Londínio"^^xsd:string,
+        "Muro de Londres"^^xsd:string ;
+    :nome "Carla Prata"^^xsd:string ;
+    :pertenceAoGenero :Hip_hop,
+        :Musica_psicadelica,
+        :Trap .
+
+:Carlao a :ArtistaSolo ;
+    :anoNascimento 1975 ;
+    :cidade "Angola"^^xsd:string ;
+    :nome "Carlão"^^xsd:string ;
+    :pertenceAoGenero :Hip_hop_tuga,
+        :Rap_rock .
+
+:Carlos_bica a :ArtistaSolo ;
+    :cidade "Distrito de Lisboa"^^xsd:string,
+        "Lisboa"^^xsd:string,
+        "Portugal"^^xsd:string ;
+    :nome "Carlos Bica"^^xsd:string .
+
+:Carlos_damas a :ArtistaSolo ;
+    :cidade "Coimbra"^^xsd:string,
+        "Portugal"^^xsd:string ;
+    :nome "Carlos Damas"^^xsd:string ;
+    :pertenceAoGenero :Musica_classica .
+
+:Carlos_do_carmo a :ArtistaSolo ;
+    :anoNascimento 1939 ;
+    :cidade "Distrito de Lisboa"^^xsd:string,
+        "Lisboa"^^xsd:string ;
+    :nome "Carlos do Carmo"^^xsd:string ;
+    :pertenceAoGenero :Fado .
+
+:Carlos_mendes a :ArtistaSolo ;
+    :anoNascimento 1947 ;
+    :nome "Carlos Mendes"^^xsd:string .
+
+:Carlos_nobrega a :ArtistaSolo ;
+    :anoNascimento 1979 ;
+    :nome "Carlos Nóbrega"^^xsd:string ;
+    :pertenceAoGenero :Dance_pop .
+
+:Carlos_paredes a :ArtistaSolo ;
+    :anoNascimento 1925 ;
+    :cidade "Coimbra"^^xsd:string,
+        "Portugal"^^xsd:string ;
+    :nome "Carlos Paredes"^^xsd:string ;
+    :pertenceAoGenero :Fado .
+
+:Carlos_zingaro a :ArtistaSolo ;
+    :anoNascimento 1948 ;
+    :cidade "Distrito de Lisboa"^^xsd:string,
+        "Lisboa"^^xsd:string ;
+    :nome "Carlos Zíngaro"^^xsd:string ;
+    :pertenceAoGenero :Musica_eletronica .
+
+:Carmen_souza a :ArtistaSolo ;
+    :anoNascimento 1981 ;
+    :nome "Carmen Souza"^^xsd:string ;
+    :pertenceAoGenero :Jazz .
+
+:Carmen_susana_simoes a :ArtistaSolo ;
+    :anoNascimento 1973 ;
+    :nome "Carmen Susana Simões"^^xsd:string ;
+    :pertenceAoGenero :Dark_wave,
+        :Doom_metal,
+        :Ethereal_wave,
+        :Metal_gotico .
+
+:Carminho a :ArtistaSolo ;
+    :anoNascimento 1984 ;
+    :cidade "Distrito de Lisboa"^^xsd:string,
+        "Lisboa"^^xsd:string ;
+    :nome "Carminho"^^xsd:string ;
+    :pertenceAoGenero :Fado,
+        :Jazz,
+        :Mpb,
+        :Musica_pop .
+
+:Carnaxide a :Local ;
+    :cidade "Carnaxide"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Carolina_deslandes a :ArtistaSolo ;
+    :anoNascimento 1991 ;
+    :cidade "Distrito de Lisboa"^^xsd:string,
+        "Lisboa"^^xsd:string ;
+    :nome "Carolina Deslandes"^^xsd:string ;
+    :pertenceAoGenero :Musica_pop .
+
+:Carregal_do_sal a :Local ;
+    :cidade "Carregal do Sal"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Cartaxo a :Local ;
+    :cidade "Cartaxo"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Cascais a :Local ;
+    :cidade "Cascais"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Cascais__freguesia a :Local ;
+    :cidade "Cascais (freguesia)"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Castelo_branco a :Local ;
+    :cidade "Castelo Branco"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Castelo_branco__freguesia a :Local ;
+    :cidade "Castelo Branco (freguesia)"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Catarina_miranda a :ArtistaSolo ;
+    :cidade "Portugal"^^xsd:string,
+        "Vila Real"^^xsd:string,
+        "Vila Real (freguesia)"^^xsd:string ;
+    :nome "Catarina Miranda"^^xsd:string .
+
+:Caxias__oeiras a :Local ;
+    :cidade "Caxias (Oeiras)"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Celeste_rodrigues a :ArtistaSolo ;
+    :anoNascimento 1923 ;
+    :cidade "Fundão (Espírito Santo)"^^xsd:string,
+        "Fundão (Portugal)"^^xsd:string ;
+    :nome "Celeste Rodrigues"^^xsd:string ;
+    :pertenceAoGenero :Fado .
+
+:Chamusca a :Local ;
+    :cidade "Chamusca"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Chipping_norton a :Local ;
+    :cidade "Chipping Norton"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Christopher_consitt_bochmann a :ArtistaSolo ;
+    :anoNascimento 1950 ;
+    :cidade "Chipping Norton"^^xsd:string ;
+    :nome "Christopher Consitt Bochmann"^^xsd:string ;
+    :pertenceAoGenero :Musica_classica,
+        :Musica_moderna,
+        :Opera .
+
+:Coimbra a :Local ;
+    :cidade "Coimbra"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Comih a :ArtistaSolo ;
+    :anoNascimento 1923 ;
+    :cidade "Fundão (Espírito Santo)"^^xsd:string,
+        "Fundão (Portugal)"^^xsd:string ;
+    :nome "(ComIH)"^^xsd:string ;
+    :pertenceAoGenero :Fado .
+
+:Conan_osiris a :ArtistaSolo ;
+    :anoNascimento 1989 ;
+    :cidade "Distrito de Lisboa"^^xsd:string,
+        "Lisboa"^^xsd:string ;
+    :nome "Conan Osíris"^^xsd:string ;
+    :pertenceAoGenero :Dance_alternativo,
+        :Fado,
+        :Techno,
+        :Worldbeat .
+
+:Corvos a :Banda ;
+    :nome "Corvos"^^xsd:string ;
+    :pertenceAoGenero :Musica_classica,
+        :Musica_pop,
+        :Rock,
+        :Rock_and_roll .
+
+:Covilha a :Local ;
+    :cidade "Covilhã"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Cristina_branco a :ArtistaSolo ;
+    :anoNascimento 1972 ;
+    :cidade "Almeirim (Portugal)"^^xsd:string,
+        "Portugal"^^xsd:string,
+        "Ribatejo"^^xsd:string ;
+    :nome "Cristina Branco"^^xsd:string ;
+    :pertenceAoGenero :Fado .
+
+:Cuca_roseta a :ArtistaSolo ;
+    :anoNascimento 1981 ;
+    :cidade "Distrito de Lisboa"^^xsd:string,
+        "Lisboa"^^xsd:string ;
+    :nome "Cuca Roseta"^^xsd:string ;
+    :pertenceAoGenero :Fado,
+        :Musica_do_mundo .
+
+:D_a_m_a a :Banda ;
+    :anoFormacao 2008 ;
+    :cidade "Portugal"^^xsd:string ;
+    :nome "D.A.M.A"^^xsd:string ;
+    :pertenceAoGenero :Musica_pop .
+
+:Da_vinci a :Banda ;
+    :anoFormacao 1983 ;
+    :cidade "Portugal"^^xsd:string ;
+    :nome "Da Vinci"^^xsd:string .
+
+:Da_weasel a :Banda ;
+    :anoFormacao 1993 ;
+    :cidade "Almada"^^xsd:string ;
+    :nome "Da Weasel"^^xsd:string ;
+    :pertenceAoGenero :Hip_hop,
+        :Rap_rock .
+
+:Darkwaters a :Banda ;
+    :anoFormacao 2012 ;
+    :cidade "Portugal"^^xsd:string,
+        "Viseu"^^xsd:string ;
+    :nome "DarkWaters"^^xsd:string ;
+    :pertenceAoGenero :Hard_rock,
+        :Heavy_metal .
+
+:David_carreira a :ArtistaSolo ;
+    :anoNascimento 1991 ;
+    :cidade "Dourdan"^^xsd:string,
+        "Franca"^^xsd:string,
+        "França"^^xsd:string ;
+    :nome "David Carreira"^^xsd:string ;
+    :pertenceAoGenero :Hip_hop,
+        :Musica_pop .
+
+:David_fonseca a :ArtistaSolo ;
+    :anoNascimento 1973 ;
+    :membroDe :Humanos,
+        :Humanos__banda,
+        :Silence_4 ;
+    :nome "David Fonseca"^^xsd:string ;
+    :pertenceAoGenero :Rock_alternativo .
+
+:Dazkarieh a :ArtistaSolo,
+        :Banda ;
+    :anoFormacao 1999 ;
+    :cidade "Portugal"^^xsd:string ;
+    :nome "Dazkarieh"^^xsd:string ;
+    :pertenceAoGenero :Musica_de_portugal,
+        :Neofolk,
+        :Rock_alternativo .
+
+:Dead_combo a :Banda ;
+    :anoFormacao 2003 ;
+    :cidade "Portugal"^^xsd:string ;
+    :nome "Dead Combo"^^xsd:string ;
+    :pertenceAoGenero :Blues,
+        :Musica_do_mundo,
+        :Musica_instrumental,
+        :Rock,
+        :Rock_and_roll .
+
+:Dealema a :Banda ;
+    :anoFormacao 1996 ;
+    :cidade "Câmara Municipal do Porto"^^xsd:string,
+        "Distrito do Porto"^^xsd:string,
+        "Porto"^^xsd:string,
+        "Vila Nova de Gaia"^^xsd:string ;
+    :nome "Dealema"^^xsd:string ;
+    :pertenceAoGenero :Hip_hop_tuga .
+
+:Delfins a :Banda ;
+    :anoFormacao 1984 ;
+    :cidade "Cascais"^^xsd:string,
+        "Cascais (freguesia)"^^xsd:string,
+        "Portugal"^^xsd:string ;
+    :nome "Delfins"^^xsd:string ;
+    :pertenceAoGenero :Pop_rock .
+
+:Dengaz a :ArtistaSolo ;
+    :anoNascimento 1984 ;
+    :cidade "Cascais"^^xsd:string,
+        "Cascais (freguesia)"^^xsd:string ;
+    :nome "Dengaz"^^xsd:string ;
+    :pertenceAoGenero :Hip_hop_tuga,
+        :Reggae .
+
+:Deolinda a :Banda ;
+    :anoFormacao 2006 ;
+    :cidade "Distrito de Lisboa"^^xsd:string,
+        "Lisboa"^^xsd:string,
+        "Portugal"^^xsd:string ;
+    :nome "Deolinda"^^xsd:string ;
+    :pertenceAoGenero :Fado,
+        :Musica_de_portugal,
+        :Musica_do_mundo .
+
+:Dillaz a :ArtistaSolo ;
+    :anoNascimento 1991 ;
+    :cidade "Alcabideche"^^xsd:string,
+        "Cascais"^^xsd:string,
+        "Cascais (freguesia)"^^xsd:string ;
+    :nome "Dillaz"^^xsd:string ;
+    :pertenceAoGenero :Hip_hop_tuga .
+
+:Dina a :ArtistaSolo ;
+    :anoNascimento 1956 ;
+    :cidade "Carregal do Sal"^^xsd:string ;
+    :nome "Dina"^^xsd:string ;
+    :pertenceAoGenero :Fado,
+        :Funk,
+        :Scat .
+
+:Dino_d_santiago a :ArtistaSolo ;
+    :anoNascimento 1982 ;
+    :cidade "Distrito de Faro"^^xsd:string,
+        "Portugal"^^xsd:string,
+        "Quarteira"^^xsd:string ;
+    :nome "Dino D'Santiago"^^xsd:string .
+
+:Diogo_piçarra a :ArtistaSolo ;
+    :anoNascimento 1990 ;
+    :cidade "Faro"^^xsd:string ;
+    :nome "Diogo Piçarra"^^xsd:string ;
+    :pertenceAoGenero :Electropop,
+        :Pop_rock .
+
+:Distrito_de_aveiro a :Local ;
+    :cidade "Distrito de Aveiro"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Distrito_de_faro a :Local ;
+    :cidade "Distrito de Faro"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Distrito_de_lisboa a :Local ;
+    :cidade "Distrito de Lisboa"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Distrito_de_santarem a :Local ;
+    :cidade "Distrito de Santarém"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Distrito_do_porto a :Local ;
+    :cidade "Distrito do Porto"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Dj_marfox a :ArtistaSolo ;
+    :cidade "Distrito de Lisboa"^^xsd:string,
+        "Lisboa"^^xsd:string,
+        "Portugal"^^xsd:string ;
+    :nome "DJ Marfox"^^xsd:string ;
+    :pertenceAoGenero :Kuduro .
+
+:Dj_vibe a :ArtistaSolo ;
+    :cidade "Distrito de Lisboa"^^xsd:string,
+        "Lisboa"^^xsd:string ;
+    :nome "DJ Vibe"^^xsd:string ;
+    :pertenceAoGenero :House_music .
+
+:Doce a :Banda ;
+    :anoFormacao 1979 ;
+    :cidade "Distrito de Lisboa"^^xsd:string,
+        "Lisboa"^^xsd:string,
+        "Portugal"^^xsd:string ;
+    :nome "Doce"^^xsd:string ;
+    :pertenceAoGenero :Dance_pop,
+        :Musica_pop .
+
+:Dourdan a :Local ;
+    :cidade "Dourdan"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Droban_apherna a :Banda ;
+    :anoFormacao 2008 ;
+    :cidade "Silves (Portugal)"^^xsd:string ;
+    :nome "Droban Apherna"^^xsd:string ;
+    :pertenceAoGenero :Genero_musical,
+        :Musica_experimental .
+
+:Dulce_pontes a :ArtistaSolo ;
+    :anoNascimento 1969 ;
+    :nome "Dulce Pontes"^^xsd:string ;
+    :pertenceAoGenero :Fado,
+        :Musica_classica,
+        :Musica_do_mundo,
+        :Musica_pop .
+
+:Easyway a :Banda ;
+    :anoFormacao 2000 ;
+    :cidade "Carnaxide"^^xsd:string,
+        "Portugal"^^xsd:string ;
+    :nome "Easyway"^^xsd:string ;
+    :pertenceAoGenero :Hardcore_melodico,
+        :Punk_rock,
+        :Skate_punk .
+
+:Elisa_silva a :ArtistaSolo ;
+    :anoNascimento 1999 ;
+    :nome "Elisa Silva"^^xsd:string ;
+    :pertenceAoGenero :Jazz,
+        :Musica_pop .
+
+:Ercilia_costa a :ArtistaSolo ;
+    :anoNascimento 1902 ;
+    :nome "Ercília Costa"^^xsd:string ;
+    :pertenceAoGenero :Fado .
+
+:Erica_buettner a :ArtistaSolo ;
+    :anoNascimento 1984 ;
+    :nome "Erica Buettner"^^xsd:string .
+
+:Erika_de_casier a :ArtistaSolo ;
+    :nome "Erika de Casier"^^xsd:string ;
+    :pertenceAoGenero :Musica_pop,
+        :R_b_contemporaneo .
+
+:Estado_da_india a :Local ;
+    :cidade "Estado da Índia"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Estado_novo__portugal a :Local ;
+    :cidade "Estado Novo (Portugal)"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Estarreja a :Local ;
+    :cidade "Estarreja"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Eugenia_melo_e_castro a :ArtistaSolo ;
+    :anoNascimento 1958 ;
+    :cidade "Covilhã"^^xsd:string ;
+    :nome "Eugénia Melo e Castro"^^xsd:string .
+
+:Expensive_soul a :Banda ;
+    :anoFormacao 1999 ;
+    :cidade "Leça da Palmeira"^^xsd:string ;
+    :nome "Expensive Soul"^^xsd:string ;
+    :pertenceAoGenero :Hip_hop,
+        :R_b_contemporaneo,
+        :Soul .
+
+:Fabio_machado a :ArtistaSolo ;
+    :anoNascimento 1985 ;
+    :cidade "Funchal"^^xsd:string ;
+    :nome "Fabio Machado"^^xsd:string .
+
+:Faro a :Local ;
+    :cidade "Faro"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Fausto_bordalo_dias a :ArtistaSolo ;
+    :anoNascimento 1948 ;
+    :cidade "Oceano Atlântico"^^xsd:string ;
+    :nome "Fausto Bordalo Dias"^^xsd:string .
+
+:Fernando_abrantes a :ArtistaSolo ;
+    :cidade "Distrito de Lisboa"^^xsd:string,
+        "Lisboa"^^xsd:string ;
+    :nome "Fernando Abrantes"^^xsd:string ;
+    :pertenceAoGenero :Musica_pop,
+        :Synth_pop .
+
+:Fernando_daniel a :ArtistaSolo ;
+    :anoNascimento 1996 ;
+    :cidade "Estarreja"^^xsd:string,
+        "Portugal"^^xsd:string ;
+    :nome "Fernando Daniel"^^xsd:string ;
+    :pertenceAoGenero :Soul .
+
+:Fernando_lopes_graça a :ArtistaSolo ;
+    :nome "Fernando Lopes-Graça"^^xsd:string .
+
+:Fernando_machado_soares a :ArtistaSolo ;
+    :anoNascimento 1930 ;
+    :cidade "Açores"^^xsd:string,
+        "Açores (Aguiar da Beira)"^^xsd:string ;
+    :nome "Fernando Machado Soares"^^xsd:string ;
+    :pertenceAoGenero :Fado .
+
+:Fernando_mauricio a :ArtistaSolo ;
+    :anoNascimento 1933 ;
+    :cidade "Portugal"^^xsd:string ;
+    :nome "Fernando Maurício"^^xsd:string ;
+    :pertenceAoGenero :Fado .
+
+:Fernando_ribeiro a :ArtistaSolo ;
+    :anoNascimento 1974 ;
+    :cidade "Distrito de Lisboa"^^xsd:string,
+        "Lisboa"^^xsd:string ;
+    :nome "Fernando Ribeiro"^^xsd:string ;
+    :pertenceAoGenero :Black_metal,
+        :Doom_metal,
+        :Folk_metal,
+        :Metal_gotico .
+
+:Fernando_tordo a :ArtistaSolo ;
+    :anoNascimento 1948 ;
+    :cidade "Distrito de Lisboa"^^xsd:string,
+        "Lisboa"^^xsd:string ;
+    :nome "Fernando Tordo"^^xsd:string .
+
+:Figueira_da_foz a :Local ;
+    :cidade "Figueira da Foz"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Filipa_azevedo a :ArtistaSolo ;
+    :anoNascimento 1991 ;
+    :nome "Filipa Azevedo"^^xsd:string ;
+    :pertenceAoGenero :Hip_hop,
+        :Pop_latino,
+        :Rhythm_and_blues,
+        :Soul .
+
+:Fingertips a :Banda ;
+    :anoFormacao 2002 ;
+    :cidade "Portugal"^^xsd:string ;
+    :nome "Fingertips"^^xsd:string ;
+    :pertenceAoGenero :Soft_rock .
+
+:Flor_de_lis a :Banda ;
+    :anoFormacao 2004 ;
+    :cidade "Distrito de Lisboa"^^xsd:string,
+        "Lisboa"^^xsd:string,
+        "Portugal"^^xsd:string ;
+    :nome "Flor-de-Lis"^^xsd:string ;
+    :pertenceAoGenero :Fado,
+        :Musica_acustica,
+        :Musica_do_mundo .
+
+:Fortaleza a :Local ;
+    :cidade "Fortaleza"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Franca a :Local ;
+    :cidade "Franca"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:França a :Local ;
+    :cidade "França"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Funchal a :Local ;
+    :cidade "Funchal"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Fundao__espirito_santo a :Local ;
+    :cidade "Fundão (Espírito Santo)"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Fundao__portugal a :Local ;
+    :cidade "Fundão (Portugal)"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Gemini a :Banda ;
+    :cidade "Portugal"^^xsd:string ;
+    :nome "Gemini"^^xsd:string .
+
+:General_d a :ArtistaSolo ;
+    :anoNascimento 1971 ;
+    :cidade "Maputo"^^xsd:string ;
+    :nome "General D"^^xsd:string ;
+    :pertenceAoGenero :Hip_hop,
+        :Musica_do_mundo .
+
+:Germano_rocha a :ArtistaSolo ;
+    :nome "Germano Rocha"^^xsd:string ;
+    :pertenceAoGenero :Fado .
+
+:Gisela_joao a :ArtistaSolo ;
+    :anoNascimento 1983 ;
+    :cidade "Barcelos"^^xsd:string ;
+    :nome "Gisela João"^^xsd:string ;
+    :pertenceAoGenero :Fado .
+
+:Gnr a :Banda ;
+    :anoFormacao 1980 ;
+    :cidade "Câmara Municipal do Porto"^^xsd:string,
+        "Distrito do Porto"^^xsd:string,
+        "Porto"^^xsd:string,
+        "Portugal"^^xsd:string ;
+    :nome "GNR"^^xsd:string ;
+    :pertenceAoGenero :New_wave__musica,
+        :Pop_rock,
+        :Pos_punk,
+        :Rock_alternativo .
+
+:Goa a :Local ;
+    :cidade "Goa"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Gomo a :ArtistaSolo ;
+    :nome "Gomo"^^xsd:string .
+
+:Gouveia__portugal a :Local ;
+    :cidade "Gouveia (Portugal)"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Grande_londres a :Local ;
+    :cidade "Grande Londres"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Guimaraes a :Local ;
+    :cidade "Guimarães"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Guimaraes__maranhao a :Local ;
+    :cidade "Guimarães (Maranhão)"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Guine_bissau a :Local ;
+    :cidade "Guiné-Bissau"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Hands_on_approach a :Banda ;
+    :anoFormacao 1996 ;
+    :cidade "Portugal"^^xsd:string,
+        "Setúbal"^^xsd:string ;
+    :nome "Hands on Approach"^^xsd:string ;
+    :pertenceAoGenero :Pop_rock .
+
+:Helder_moutinho a :ArtistaSolo ;
+    :anoNascimento 1969 ;
+    :cidade "Oeiras (Portugal)"^^xsd:string ;
+    :nome "Helder Moutinho"^^xsd:string ;
+    :pertenceAoGenero :Fado .
+
+:Herois_do_mar a :Banda ;
+    :anoFormacao 1981 ;
+    :cidade "Portugal"^^xsd:string ;
+    :nome "Heróis do Mar"^^xsd:string ;
+    :pertenceAoGenero :New_wave__musica,
+        :Pop_rock,
+        :Pos_punk,
+        :Synth_pop .
+
+:Holly a :ArtistaSolo ;
+    :nome "Holly"^^xsd:string ;
+    :pertenceAoGenero :Electronic_dance_music,
+        :Hip_hop .
+
+:Holocausto_canibal a :Banda ;
+    :anoFormacao 1997 ;
+    :cidade "Câmara Municipal do Porto"^^xsd:string,
+        "Distrito do Porto"^^xsd:string,
+        "Porto"^^xsd:string ;
+    :nome "Holocausto Canibal"^^xsd:string ;
+    :pertenceAoGenero :Death_metal,
+        :Goregrind .
+
+:Holy_nothing a :Banda ;
+    :anoFormacao 2013 ;
+    :nome "Holy Nothing"^^xsd:string ;
+    :pertenceAoGenero :Musica_eletronica,
+        :Musica_experimental .
+
+:Homens_da_luta a :Banda ;
+    :anoFormacao 2006 ;
+    :cidade "Distrito de Lisboa"^^xsd:string,
+        "Lisboa"^^xsd:string ;
+    :nome "Homens da Luta"^^xsd:string ;
+    :pertenceAoGenero :Musica_de_intervençao .
+
+:Hyubris a :Banda ;
+    :anoFormacao 2001 ;
+    :cidade "Tramagal"^^xsd:string ;
+    :nome "Hyubris"^^xsd:string ;
+    :pertenceAoGenero :Folk_metal,
+        :Heavy_metal .
+
+:Iamddb a :ArtistaSolo ;
+    :anoNascimento 1996 ;
+    :cidade "Distrito de Lisboa"^^xsd:string,
+        "Lisboa"^^xsd:string ;
+    :nome "IAMDDB"^^xsd:string ;
+    :pertenceAoGenero :Hip_hop_alternativo,
+        :Jazz_fusion,
+        :Neo_soul,
+        :R_b_alternativo,
+        :Reggae,
+        :Trap .
+
+:Icon___the_black_roses a :Banda ;
+    :anoFormacao 1999 ;
+    :nome "Icon & The Black Roses"^^xsd:string ;
+    :pertenceAoGenero :Heavy_metal,
+        :Metal_alternativo,
+        :Metal_gotico,
+        :Rock_gotico .
+
+:If_lucy_fell a :Banda ;
+    :anoFormacao 2004 ;
+    :cidade "Portugal"^^xsd:string ;
+    :nome "If Lucy Fell"^^xsd:string ;
+    :pertenceAoGenero :Mathcore,
+        :Musica_experimental,
+        :Post_hardcore .
+
+:Ilha_de_sao_vicente__cabo_verde a :Local ;
+    :cidade "Ilha de São Vicente (Cabo Verde)"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Ilha_terceira a :Local ;
+    :cidade "Ilha Terceira"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Iolanda a :ArtistaSolo ;
+    :anoNascimento 1994 ;
+    :cidade "Figueira da Foz"^^xsd:string ;
+    :nome "Iolanda"^^xsd:string ;
+    :pertenceAoGenero :Fado,
+        :Musica_pop,
+        :R_b_contemporaneo .
+
+:Isaura a :ArtistaSolo ;
+    :anoNascimento 1989 ;
+    :cidade "Gouveia (Portugal)"^^xsd:string ;
+    :nome "Isaura"^^xsd:string ;
+    :pertenceAoGenero :Hip_hop,
+        :Musica_eletronica,
+        :Musica_pop .
+
+:Ithaka a :ArtistaSolo ;
+    :anoNascimento 1966 ;
+    :cidade "Anaheim"^^xsd:string,
+        "Califórnia"^^xsd:string ;
+    :nome "Ithaka"^^xsd:string ;
+    :pertenceAoGenero :Electronic_dance_music,
+        :Hip_hop_alternativo,
+        :Hip_hop_tuga,
+        :Recitaçao,
+        :Trip_hop .
+
+:Joao_barradas a :ArtistaSolo ;
+    :anoNascimento 1992 ;
+    :nome "João Barradas"^^xsd:string ;
+    :pertenceAoGenero :Jazz,
+        :Musica_classica .
+
+:Joao_de_sousa_carvalho a :ArtistaSolo ;
+    :nome "João de Sousa Carvalho"^^xsd:string .
+
+:Joao_ferreira_rosa a :ArtistaSolo ;
+    :anoNascimento 1937 ;
+    :cidade "Distrito de Lisboa"^^xsd:string,
+        "Lisboa"^^xsd:string ;
+    :nome "João Ferreira-Rosa"^^xsd:string ;
+    :pertenceAoGenero :Fado .
+
+:Joaquim_costa a :ArtistaSolo ;
+    :anoNascimento 1936 ;
+    :cidade "Portugal"^^xsd:string ;
+    :nome "Joaquim Costa"^^xsd:string ;
+    :pertenceAoGenero :Rock,
+        :Rock_and_roll .
+
+:Joel_fausto a :ArtistaSolo ;
+    :anoNascimento 1988 ;
+    :cidade "Portugal"^^xsd:string,
+        "Santo Tirso"^^xsd:string,
+        "Santo Tirso (freguesia)"^^xsd:string ;
+    :nome "Joel Fausto"^^xsd:string ;
+    :pertenceAoGenero :Jazz,
+        :Musica_ambiente,
+        :Musica_experimental .
+
+:Jorge_palma a :ArtistaSolo ;
+    :anoNascimento 1950 ;
+    :cidade "Distrito de Lisboa"^^xsd:string,
+        "Lisboa"^^xsd:string,
+        "Portugal"^^xsd:string ;
+    :nome "Jorge Palma"^^xsd:string ;
+    :pertenceAoGenero :Musica_pop,
+        :Rock,
+        :Rock_and_roll .
+
+:Jose_afonso a :ArtistaSolo ;
+    :anoNascimento 1929 ;
+    :cidade "Aveiro"^^xsd:string,
+        "Portugal"^^xsd:string ;
+    :nome "José Afonso"^^xsd:string ;
+    :pertenceAoGenero :Musica_de_intervençao .
+
+:Jose_cid a :ArtistaSolo ;
+    :anoNascimento 1942 ;
+    :cidade "Chamusca"^^xsd:string,
+        "Portugal"^^xsd:string ;
+    :nome "José Cid"^^xsd:string ;
+    :pertenceAoGenero :Folk_rock,
+        :Pop_rock,
+        :Rock_progressivo .
+
+:Julio_resende a :ArtistaSolo ;
+    :anoNascimento 1982 ;
+    :membroDe :Alexander_search__band ;
+    :nome "Júlio Resende"^^xsd:string ;
+    :pertenceAoGenero :Fado,
+        :Jazz .
+
+:Just_girls a :Banda ;
+    :anoFormacao 2007 ;
+    :nome "Just Girls"^^xsd:string ;
+    :pertenceAoGenero :Musica_pop .
+
+:Karetus a :Banda ;
+    :anoFormacao 2010 ;
+    :nome "Karetus"^^xsd:string ;
+    :pertenceAoGenero :Musica_eletronica .
+
+:Katia_aveiro a :ArtistaSolo ;
+    :anoNascimento 1977 ;
+    :cidade "Funchal"^^xsd:string ;
+    :nome "Kátia Aveiro"^^xsd:string .
+
+:Katia_guerreiro a :ArtistaSolo ;
+    :anoNascimento 1976 ;
+    :cidade "Transvaal"^^xsd:string,
+        "Vanderbijlpark"^^xsd:string,
+        "África do Sul"^^xsd:string ;
+    :nome "Katia Guerreiro"^^xsd:string .
+
+:Kimi_djabate a :ArtistaSolo ;
+    :anoNascimento 1975 ;
+    :cidade "Guiné-Bissau"^^xsd:string ;
+    :nome "Kimi Djabaté"^^xsd:string ;
+    :pertenceAoGenero :Musica_do_mundo .
+
+:Kura a :ArtistaSolo ;
+    :anoNascimento 1990 ;
+    :cidade "Leiria"^^xsd:string,
+        "Região do Centro"^^xsd:string ;
+    :nome "KURA"^^xsd:string ;
+    :pertenceAoGenero :Electro_house .
+
+:Lata a :ArtistaSolo ;
+    :anoNascimento 1975 ;
+    :nome "Lata"^^xsd:string .
+
+:Leiria a :Local ;
+    :cidade "Leiria"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Lena_d_agua a :ArtistaSolo ;
+    :anoNascimento 1956 ;
+    :cidade "Distrito de Lisboa"^^xsd:string,
+        "Lisboa"^^xsd:string ;
+    :nome "Lena d'Água"^^xsd:string ;
+    :pertenceAoGenero :Jazz,
+        :Pop_rock .
+
+:Leça_da_palmeira a :Local ;
+    :cidade "Leça da Palmeira"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Linda_de_suza a :ArtistaSolo ;
+    :anoNascimento 1948 ;
+    :cidade "Beja"^^xsd:string,
+        "Beringel"^^xsd:string,
+        "Estado Novo (Portugal)"^^xsd:string ;
+    :nome "Linda de Suza"^^xsd:string ;
+    :pertenceAoGenero :Fado,
+        :Musica_pop .
+
+:Linda_martini a :Banda ;
+    :anoFormacao 2003 ;
+    :cidade "Distrito de Lisboa"^^xsd:string,
+        "Lisboa"^^xsd:string,
+        "Portugal"^^xsd:string ;
+    :nome "Linda Martini"^^xsd:string ;
+    :pertenceAoGenero :Noise_rock,
+        :Post_hardcore,
+        :Post_rock,
+        :Rock_alternativo .
+
+:Lisboa a :Local ;
+    :cidade "Lisboa"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Lizzy_s_husband a :ArtistaSolo ;
+    :anoNascimento 1991 ;
+    :cidade "Guimarães"^^xsd:string,
+        "Guimarães (Maranhão)"^^xsd:string,
+        "Portugal"^^xsd:string ;
+    :nome "Lizzy's Husband"^^xsd:string ;
+    :pertenceAoGenero :Electro,
+        :Musica_industrial,
+        :Musica_pop,
+        :Rock,
+        :Rock_and_roll .
+
+:Lon3r_johny a :ArtistaSolo ;
+    :anoNascimento 1994 ;
+    :cidade "Distrito de Lisboa"^^xsd:string,
+        "Lisboa"^^xsd:string,
+        "Portugal"^^xsd:string ;
+    :nome "LON3R JOHNY"^^xsd:string ;
+    :pertenceAoGenero :Hip_hop_tuga,
+        :Trap .
+
+:Londinio a :Local ;
+    :cidade "Londínio"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Londres a :Local ;
+    :cidade "Londres"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Loto a :Banda ;
+    :anoFormacao 1998 ;
+    :cidade "Alcobaça (Portugal)"^^xsd:string ;
+    :nome "Loto"^^xsd:string ;
+    :pertenceAoGenero :Musica_eletronica,
+        :Rock,
+        :Rock_and_roll .
+
+:Louis_cato a :ArtistaSolo ;
+    :anoNascimento 1985 ;
+    :cidade "Distrito de Lisboa"^^xsd:string,
+        "Lisboa"^^xsd:string ;
+    :nome "Louis Cato"^^xsd:string ;
+    :pertenceAoGenero :Jazz,
+        :Rhythm_and_blues .
+
+:Loures a :Local ;
+    :cidade "Loures"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Luanda a :Local ;
+    :cidade "Luanda"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Lucia_moniz a :ArtistaSolo ;
+    :anoNascimento 1976 ;
+    :cidade "Distrito de Lisboa"^^xsd:string,
+        "Lisboa"^^xsd:string ;
+    :nome "Lúcia Moniz"^^xsd:string ;
+    :pertenceAoGenero :Musica_pop,
+        :Rock,
+        :Rock_and_roll .
+
+:Luciana_abreu a :ArtistaSolo ;
+    :anoNascimento 1985 ;
+    :cidade "Câmara Municipal do Porto"^^xsd:string,
+        "Distrito do Porto"^^xsd:string,
+        "Massarelos"^^xsd:string,
+        "Porto"^^xsd:string ;
+    :nome "Luciana Abreu"^^xsd:string ;
+    :pertenceAoGenero :Rhythm_and_blues .
+
+:Lucilia_do_carmo a :ArtistaSolo ;
+    :anoNascimento 1919 ;
+    :cidade "Portalegre (Portugal)"^^xsd:string,
+        "Portugal"^^xsd:string ;
+    :nome "Lucília do Carmo"^^xsd:string ;
+    :pertenceAoGenero :Fado .
+
+:Luis_gil_bettencourt a :ArtistaSolo ;
+    :cidade "Açores"^^xsd:string,
+        "Açores (Aguiar da Beira)"^^xsd:string,
+        "Ilha Terceira"^^xsd:string,
+        "Portugal"^^xsd:string ;
+    :nome "Luís Gil Bettencourt"^^xsd:string .
+
+:Luis_jardim a :ArtistaSolo ;
+    :anoNascimento 1950 ;
+    :cidade "Madeira (região autónoma)"^^xsd:string ;
+    :nome "Luís Jardim"^^xsd:string .
+
+:Luisa_sobral a :ArtistaSolo ;
+    :anoNascimento 1987 ;
+    :cidade "Distrito de Lisboa"^^xsd:string,
+        "Lisboa"^^xsd:string ;
+    :nome "Luísa Sobral"^^xsd:string ;
+    :pertenceAoGenero :Musica_pop .
+
+:Lula_pena a :ArtistaSolo ;
+    :anoNascimento 1974 ;
+    :cidade "Distrito de Lisboa"^^xsd:string,
+        "Lisboa"^^xsd:string ;
+    :nome "Lula Pena"^^xsd:string ;
+    :pertenceAoGenero :Fado .
+
+:Lura a :ArtistaSolo ;
+    :anoNascimento 1975 ;
+    :cidade "Distrito de Lisboa"^^xsd:string,
+        "Lisboa"^^xsd:string ;
+    :nome "Lura"^^xsd:string .
+
+:Madeira__regiao_autonoma a :Local ;
+    :cidade "Madeira (região autónoma)"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Mafalda_arnauth a :ArtistaSolo ;
+    :anoNascimento 1974 ;
+    :nome "Mafalda Arnauth"^^xsd:string ;
+    :pertenceAoGenero :Fado .
+
+:Mafalda_veiga a :ArtistaSolo ;
+    :anoNascimento 1965 ;
+    :cidade "Distrito de Lisboa"^^xsd:string,
+        "Lisboa"^^xsd:string ;
+    :nome "Mafalda Veiga"^^xsd:string .
+
+:Manuel_freire a :ArtistaSolo ;
+    :anoNascimento 1942 ;
+    :cidade "Distrito de Aveiro"^^xsd:string,
+        "Vagos"^^xsd:string,
+        "Vagos (freguesia)"^^xsd:string ;
+    :nome "Manuel Freire"^^xsd:string .
+
+:Manuel_mota a :ArtistaSolo ;
+    :anoNascimento 1970 ;
+    :cidade "Distrito de Lisboa"^^xsd:string,
+        "Lisboa"^^xsd:string ;
+    :nome "Manuel Mota"^^xsd:string .
+
+:Mao_morta a :Banda ;
+    :anoFormacao 1984 ;
+    :cidade "Braga"^^xsd:string,
+        "Braga (Rio Grande do Sul)"^^xsd:string ;
+    :nome "Mão Morta"^^xsd:string ;
+    :pertenceAoGenero :Noise_rock,
+        :Pos_punk,
+        :Rock_alternativo .
+
+:Maputo a :Local ;
+    :cidade "Maputo"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Marcio_cunha a :ArtistaSolo ;
+    :nome "Márcio Cunha"^^xsd:string ;
+    :pertenceAoGenero :Musica_experimental .
+
+:Maria_do_carmo a :ArtistaSolo ;
+    :anoNascimento 1884 ;
+    :nome "Maria do Carmo"^^xsd:string ;
+    :pertenceAoGenero :Fado .
+
+:Maria_do_ceo a :ArtistaSolo ;
+    :cidade "Câmara Municipal do Porto"^^xsd:string,
+        "Distrito do Porto"^^xsd:string,
+        "Porto"^^xsd:string ;
+    :nome "María do Ceo"^^xsd:string ;
+    :pertenceAoGenero :Bolero,
+        :Fado .
+
+:Maria_guinot a :ArtistaSolo ;
+    :anoNascimento 1945 ;
+    :cidade "Barreiro"^^xsd:string,
+        "Portugal"^^xsd:string ;
+    :nome "Maria Guinot"^^xsd:string .
+
+:Maria_joao a :ArtistaSolo ;
+    :anoNascimento 1956 ;
+    :cidade "Distrito de Lisboa"^^xsd:string,
+        "Lisboa"^^xsd:string ;
+    :nome "Maria João"^^xsd:string ;
+    :pertenceAoGenero :Electronica,
+        :Jazz,
+        :Musica_de_vanguarda,
+        :Musica_do_mundo .
+
+:Maria_joao_pires a :ArtistaSolo ;
+    :anoNascimento 1944 ;
+    :cidade "Distrito de Lisboa"^^xsd:string,
+        "Lisboa"^^xsd:string,
+        "Portugal"^^xsd:string ;
+    :nome "Maria João Pires"^^xsd:string .
+
+:Maria_jose_valerio a :ArtistaSolo ;
+    :anoNascimento 1933 ;
+    :cidade "Amadora"^^xsd:string,
+        "Portugal"^^xsd:string ;
+    :nome "Maria José Valério"^^xsd:string ;
+    :pertenceAoGenero :Fado,
+        :Musica_popular,
+        :Musica_tradicional .
+
+:Maria_severa_onofriana a :ArtistaSolo ;
+    :anoNascimento 1820 ;
+    :cidade "Distrito de Lisboa"^^xsd:string,
+        "Lisboa"^^xsd:string,
+        "Reino de Portugal"^^xsd:string ;
+    :nome "Maria Severa Onofriana"^^xsd:string ;
+    :pertenceAoGenero :Fado .
+
+:Mariana_bandhold a :ArtistaSolo ;
+    :anoNascimento 1995 ;
+    :cidade "Cascais"^^xsd:string,
+        "Cascais (freguesia)"^^xsd:string,
+        "Portugal"^^xsd:string ;
+    :nome "Mariana Bandhold"^^xsd:string .
+
+:Mario_simoes_dias a :ArtistaSolo ;
+    :anoNascimento 1903 ;
+    :cidade "Coimbra"^^xsd:string ;
+    :nome "Mário Simões Dias"^^xsd:string ;
+    :pertenceAoGenero :Musica_classica .
+
+:Maro a :ArtistaSolo ;
+    :anoNascimento 1994 ;
+    :cidade "Distrito de Lisboa"^^xsd:string,
+        "Lisboa"^^xsd:string ;
+    :nome "Maro"^^xsd:string .
+
+:Marrocos a :Local ;
+    :cidade "Marrocos"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Marta_dias a :ArtistaSolo ;
+    :anoNascimento 1964 ;
+    :cidade "São Tomé (Paraná)"^^xsd:string,
+        "São Tomé (São Tomé e Príncipe)"^^xsd:string ;
+    :nome "Marta Dias"^^xsd:string ;
+    :pertenceAoGenero :Fado,
+        :Hip_hop,
+        :Jazz,
+        :Musica_do_mundo .
+
+:Massarelos a :Local ;
+    :cidade "Massarelos"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Maximiano_de_sousa a :ArtistaSolo ;
+    :anoNascimento 1918 ;
+    :nome "Maximiano de Sousa"^^xsd:string ;
+    :pertenceAoGenero :Fado .
+
+:Mimicat a :ArtistaSolo ;
+    :anoNascimento 1984 ;
+    :cidade "Coimbra"^^xsd:string ;
+    :nome "Mimicat"^^xsd:string ;
+    :pertenceAoGenero :Soul .
+
+:Mishlawi a :ArtistaSolo ;
+    :anoNascimento 1996 ;
+    :nome "Mishlawi"^^xsd:string ;
+    :pertenceAoGenero :Hip_hop .
+
+:Monica_sintra a :ArtistaSolo ;
+    :anoNascimento 1978 ;
+    :nome "Monica Sintra"^^xsd:string ;
+    :pertenceAoGenero :Musica_pimba,
+        :Musica_pop .
+
+:Montijo a :Local ;
+    :cidade "Montijo"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Moonspell a :Banda ;
+    :anoFormacao 1992 ;
+    :cidade "Brandoa"^^xsd:string ;
+    :nome "Moonspell"^^xsd:string ;
+    :pertenceAoGenero :Death_metal_melodico,
+        :Doom_metal,
+        :Metal_gotico .
+
+:Muro_de_londres a :Local ;
+    :cidade "Muro de Londres"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Napa a :Banda ;
+    :anoFormacao 2013 ;
+    :cidade "Madeira (região autónoma)"^^xsd:string ;
+    :nome "Napa"^^xsd:string ;
+    :pertenceAoGenero :Indie_pop,
+        :Indie_rock .
+
+:Nena a :ArtistaSolo ;
+    :cidade "Distrito de Lisboa"^^xsd:string,
+        "Lisboa"^^xsd:string ;
+    :nome "Nena"^^xsd:string ;
+    :pertenceAoGenero :Musica_pop .
+
+:Nenny a :ArtistaSolo ;
+    :anoNascimento 2002 ;
+    :cidade "Portugal"^^xsd:string,
+        "Vialonga"^^xsd:string,
+        "Vila Franca (Viana do Castelo)"^^xsd:string,
+        "Vila Franca de Xira"^^xsd:string ;
+    :membroDe :Wet_bed_gang ;
+    :nome "Nenny"^^xsd:string ;
+    :pertenceAoGenero :Hip_hop_tuga,
+        :Rhythm_and_blues .
+
+:Nininho_vaz_maia a :ArtistaSolo ;
+    :anoNascimento 1988 ;
+    :cidade "Distrito de Lisboa"^^xsd:string,
+        "Lisboa"^^xsd:string ;
+    :nome "Nininho Vaz Maia"^^xsd:string ;
+    :pertenceAoGenero :Novo_flamenco .
+
+:Nonstop a :Banda ;
+    :anoFormacao 2001 ;
+    :cidade "Distrito de Lisboa"^^xsd:string,
+        "Lisboa"^^xsd:string ;
+    :nome "Nonstop"^^xsd:string ;
+    :pertenceAoGenero :Musica_pop,
+        :Teen_pop .
+
+:Normandia__regiao_administrativa a :Local ;
+    :cidade "Normandia (região administrativa)"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Norton a :Banda ;
+    :anoFormacao 2002 ;
+    :cidade "Castelo Branco"^^xsd:string,
+        "Castelo Branco (freguesia)"^^xsd:string ;
+    :nome "Norton"^^xsd:string ;
+    :pertenceAoGenero :Indie_music,
+        :Musica_pop,
+        :Rock_alternativo .
+
+:Nuno_bettencourt a :ArtistaSolo ;
+    :anoNascimento 1966 ;
+    :cidade "Açores"^^xsd:string,
+        "Açores (Aguiar da Beira)"^^xsd:string,
+        "Ilha Terceira"^^xsd:string,
+        "Portugal"^^xsd:string,
+        "Praia da Vitória"^^xsd:string ;
+    :nome "Nuno Bettencourt"^^xsd:string ;
+    :pertenceAoGenero :Funk_metal,
+        :Glam_metal,
+        :Hard_rock,
+        :Heavy_metal,
+        :Rock_alternativo .
+
+:Nuno_resende a :ArtistaSolo ;
+    :anoNascimento 1973 ;
+    :cidade "Câmara Municipal do Porto"^^xsd:string,
+        "Distrito do Porto"^^xsd:string,
+        "Porto"^^xsd:string,
+        "Portugal"^^xsd:string ;
+    :nome "Nuno Resende"^^xsd:string ;
+    :pertenceAoGenero :Musica_pop_francesa .
+
+:Nuno_roque a :ArtistaSolo ;
+    :cidade "Portugal"^^xsd:string ;
+    :nome "Nuno Roque"^^xsd:string .
+
+:Oceano_atlantico a :Local ;
+    :cidade "Oceano Atlântico"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Oeiras__portugal a :Local ;
+    :cidade "Oeiras (Portugal)"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Orelha_negra a :Banda ;
+    :anoFormacao 2009 ;
+    :cidade "Portugal"^^xsd:string ;
+    :nome "Orelha Negra"^^xsd:string ;
+    :pertenceAoGenero :Funk,
+        :Hip_hop,
+        :Soul,
+        :Trip_hop .
+
+:Ornatos_violeta a :Banda ;
+    :anoFormacao 1991 ;
+    :cidade "Câmara Municipal do Porto"^^xsd:string,
+        "Distrito do Porto"^^xsd:string,
+        "Porto"^^xsd:string,
+        "Portugal"^^xsd:string ;
+    :nome "Ornatos Violeta"^^xsd:string ;
+    :pertenceAoGenero :Funk_rock,
+        :Jazz_fusion,
+        :Rock_alternativo,
+        :Ska_punk .
+
+:Os_azeitonas a :Banda ;
+    :anoFormacao 2002 ;
+    :cidade "Câmara Municipal do Porto"^^xsd:string,
+        "Distrito do Porto"^^xsd:string,
+        "Porto"^^xsd:string ;
+    :nome "Os Azeitonas"^^xsd:string ;
+    :pertenceAoGenero :Musica_pop,
+        :Pop_rock,
+        :Power_pop .
+
+:Pampilhosa_da_serra a :Local ;
+    :cidade "Pampilhosa da Serra"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Pangim a :Local ;
+    :cidade "Pangim"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Papercutz a :Banda ;
+    :anoFormacao 2008 ;
+    :cidade "Câmara Municipal do Porto"^^xsd:string,
+        "Distrito do Porto"^^xsd:string,
+        "Porto"^^xsd:string,
+        "Portugal"^^xsd:string ;
+    :nome ":PAPERCUTZ"^^xsd:string ;
+    :pertenceAoGenero :Musica_eletronica .
+
+:Paranormal_attack a :Banda ;
+    :anoFormacao 2001 ;
+    :cidade "Portugal"^^xsd:string ;
+    :nome "Paranormal Attack"^^xsd:string ;
+    :pertenceAoGenero :Musica_eletronica,
+        :Rock_eletronico,
+        :Trance_psicadelico .
+
+:Paulo_brissos a :ArtistaSolo ;
+    :anoNascimento 1970 ;
+    :cidade "Vila Franca (Viana do Castelo)"^^xsd:string,
+        "Vila Franca de Xira"^^xsd:string ;
+    :nome "Paulo Brissos"^^xsd:string ;
+    :pertenceAoGenero :Adult_contemporary,
+        :Blues,
+        :Musica_pop,
+        :Rock,
+        :Rock_and_roll .
+
+:Paulo_de_carvalho a :ArtistaSolo ;
+    :anoNascimento 1947 ;
+    :cidade "Distrito de Lisboa"^^xsd:string,
+        "Lisboa"^^xsd:string ;
+    :nome "Paulo De Carvalho"^^xsd:string ;
+    :pertenceAoGenero :Fado .
+
+:Paulo_gonzo a :ArtistaSolo ;
+    :anoNascimento 1956 ;
+    :cidade "Distrito de Lisboa"^^xsd:string,
+        "Lisboa"^^xsd:string,
+        "Portugal"^^xsd:string ;
+    :nome "Paulo Gonzo"^^xsd:string ;
+    :pertenceAoGenero :Pop_rock,
+        :Soft_rock .
+
+:Paulo_sousa a :ArtistaSolo ;
+    :anoNascimento 1991 ;
+    :cidade "Coimbra"^^xsd:string ;
+    :nome "Paulo Sousa"^^xsd:string .
+
+:Paulo_valentim a :ArtistaSolo ;
+    :cidade "Portugal"^^xsd:string ;
+    :nome "Paulo Valentim"^^xsd:string ;
+    :pertenceAoGenero :Fado .
+
+:Paus a :Banda ;
+    :anoFormacao 2009 ;
+    :cidade "Distrito de Lisboa"^^xsd:string,
+        "Lisboa"^^xsd:string,
+        "Portugal"^^xsd:string ;
+    :nome "PAUS"^^xsd:string ;
+    :pertenceAoGenero :Rock_alternativo .
+
+:Pedro_abrunhosa a :ArtistaSolo ;
+    :anoNascimento 1960 ;
+    :cidade "Câmara Municipal do Porto"^^xsd:string,
+        "Distrito do Porto"^^xsd:string,
+        "Porto"^^xsd:string,
+        "Portugal"^^xsd:string ;
+    :nome "Pedro Abrunhosa"^^xsd:string ;
+    :pertenceAoGenero :Funk,
+        :Jazz,
+        :Musica_pop,
+        :Rock,
+        :Rock_and_roll .
+
+:Pedro_ayres_magalhaes a :ArtistaSolo ;
+    :anoNascimento 1959 ;
+    :cidade "Distrito de Lisboa"^^xsd:string,
+        "Lisboa"^^xsd:string,
+        "Portugal"^^xsd:string ;
+    :nome "Pedro Ayres Magalhães"^^xsd:string ;
+    :pertenceAoGenero :Musica_do_mundo,
+        :New_wave__musica,
+        :Rock,
+        :Rock_and_roll .
+
+:Pedro_camacho a :ArtistaSolo ;
+    :nome "Pedro Camacho"^^xsd:string .
+
+:Pedro_cazanova a :ArtistaSolo ;
+    :anoNascimento 1977 ;
+    :cidade "Distrito de Lisboa"^^xsd:string,
+        "Lisboa"^^xsd:string ;
+    :nome "Pedro Cazanova"^^xsd:string ;
+    :pertenceAoGenero :Electronic_dance_music,
+        :House_music .
+
+:Pedro_inf a :ArtistaSolo ;
+    :nome "Pedro INF"^^xsd:string ;
+    :pertenceAoGenero :Glitch__musica,
+        :Idm,
+        :Musica_ambiente,
+        :Musica_eletronica,
+        :Musica_experimental .
+
+:Petrus_castrus a :Banda ;
+    :anoFormacao 1971 ;
+    :cidade "Portugal"^^xsd:string ;
+    :nome "Petrus Castrus"^^xsd:string ;
+    :pertenceAoGenero :Art_rock,
+        :Rock_progressivo,
+        :Rock_sinfonico .
+
+:Piruka a :ArtistaSolo ;
+    :anoNascimento 1993 ;
+    :cidade "Cascais"^^xsd:string,
+        "Cascais (freguesia)"^^xsd:string,
+        "Distrito de Lisboa"^^xsd:string,
+        "Lisboa"^^xsd:string,
+        "Portugal"^^xsd:string ;
+    :nome "Piruka"^^xsd:string ;
+    :pertenceAoGenero :Hip_hop,
+        :Hip_hop_tuga .
+
+:Pluto a :Banda ;
+    :anoFormacao 2004 ;
+    :cidade "Câmara Municipal do Porto"^^xsd:string,
+        "Distrito do Porto"^^xsd:string,
+        "Porto"^^xsd:string,
+        "Portugal"^^xsd:string ;
+    :nome "Pluto"^^xsd:string ;
+    :pertenceAoGenero :Rock_alternativo .
+
+:Plutonio a :ArtistaSolo ;
+    :anoNascimento 1985 ;
+    :cidade "Portugal"^^xsd:string ;
+    :nome "Plutónio"^^xsd:string ;
+    :pertenceAoGenero :Hip_hop_tuga,
+        :Rhythm_and_blues .
+
+:Polo_norte a :Banda ;
+    :anoFormacao 1992 ;
+    :cidade "Portugal"^^xsd:string,
+        "Sintra"^^xsd:string,
+        "Sintra (Santa Maria e São Miguel, São Martinho e São Pedro de Penaferrim)"^^xsd:string ;
+    :nome "Pólo Norte"^^xsd:string ;
+    :pertenceAoGenero :Pop_rock .
+
+:Portalegre__portugal a :Local ;
+    :cidade "Portalegre (Portugal)"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Porto a :Local ;
+    :cidade "Porto"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Portugal a :Local ;
+    :cidade "Portugal"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Portugal_no_festival_eurovisao_da_cançao a :Local ;
+    :cidade "Portugal no Festival Eurovisão da Canção"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Praia_da_vitoria a :Local ;
+    :cidade "Praia da Vitória"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Primitive_reason a :Banda ;
+    :anoFormacao 1995 ;
+    :cidade "Portugal"^^xsd:string ;
+    :nome "Primitive Reason"^^xsd:string ;
+    :pertenceAoGenero :Metal_alternativo,
+        :Rap_rock,
+        :Rock_alternativo,
+        :Ska_punk .
+
+:Profjam a :ArtistaSolo ;
+    :anoNascimento 1991 ;
+    :cidade "Distrito de Lisboa"^^xsd:string,
+        "Lisboa"^^xsd:string ;
+    :nome "ProfJam"^^xsd:string ;
+    :pertenceAoGenero :Hip_hop_tuga .
+
+:Quarteira a :Local ;
+    :cidade "Quarteira"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Quinta_do_bill a :Banda ;
+    :anoFormacao 1987 ;
+    :cidade "Distrito de Santarém"^^xsd:string,
+        "Tomar"^^xsd:string ;
+    :nome "Quinta do Bill"^^xsd:string ;
+    :pertenceAoGenero :Fado,
+        :Folk_rock,
+        :Musica_celta .
+
+:Qwentin a :Banda ;
+    :anoFormacao 2003 ;
+    :cidade "Cartaxo"^^xsd:string,
+        "Portugal"^^xsd:string ;
+    :nome "Qwentin"^^xsd:string ;
+    :pertenceAoGenero :Rock_alternativo .
+
+:R_a_m_p a :ArtistaSolo,
+        :Banda ;
+    :anoFormacao 1989 ;
+    :cidade "Seixal"^^xsd:string,
+        "Seixal (freguesia do Seixal)"^^xsd:string,
+        "Setúbal"^^xsd:string ;
+    :nome "R.A.M.P."^^xsd:string ;
+    :pertenceAoGenero :Groove_metal,
+        :Thrash_metal .
+
+:Rac a :ArtistaSolo ;
+    :cidade "Portugal"^^xsd:string ;
+    :membroDe :Linkin_park ;
+    :nome "RAC"^^xsd:string ;
+    :pertenceAoGenero :Dance_alternativo,
+        :Indie_rock,
+        :Musica_eletronica .
+
+:Raquel_tavares a :ArtistaSolo ;
+    :anoNascimento 1985 ;
+    :nome "Raquel Tavares"^^xsd:string ;
+    :pertenceAoGenero :Fado .
+
+:Redondo a :Local ;
+    :cidade "Redondo"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Regiao_do_centro a :Local ;
+    :cidade "Região do Centro"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Reino_de_portugal a :Local ;
+    :cidade "Reino de Portugal"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Remo_fernandes a :ArtistaSolo ;
+    :anoNascimento 1953 ;
+    :cidade "Estado da Índia"^^xsd:string,
+        "Goa"^^xsd:string,
+        "Pangim"^^xsd:string ;
+    :nome "Remo Fernandes"^^xsd:string .
+
+:Ribatejo a :Local ;
+    :cidade "Ribatejo"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Richie_campbell a :ArtistaSolo ;
+    :anoNascimento 1986 ;
+    :cidade "Caxias (Oeiras)"^^xsd:string,
+        "Portugal"^^xsd:string ;
+    :nome "Richie Campbell"^^xsd:string ;
+    :pertenceAoGenero :Dancehall,
+        :Reggae .
+
+:Rita_damasio a :ArtistaSolo ;
+    :anoNascimento 1978 ;
+    :cidade "Normandia (região administrativa)"^^xsd:string,
+        "Sainte-Adresse"^^xsd:string ;
+    :membroDe :Madredeus ;
+    :nome "Rita Damásio"^^xsd:string ;
+    :pertenceAoGenero :Musica_do_mundo .
+
+:Rita_guerra a :ArtistaSolo ;
+    :anoNascimento 1967 ;
+    :nome "Rita Guerra"^^xsd:string ;
+    :pertenceAoGenero :Pop_rock,
+        :Rhythm_and_blues .
+
+:Rosinha a :ArtistaSolo ;
+    :cidade "Montijo"^^xsd:string,
+        "Portugal"^^xsd:string ;
+    :nome "Rosinha"^^xsd:string ;
+    :pertenceAoGenero :Musica_pimba .
+
+:Rui_da_silva a :ArtistaSolo ;
+    :anoNascimento 1968 ;
+    :nome "Rui da Silva"^^xsd:string ;
+    :pertenceAoGenero :House_music .
+
+:Rui_veloso a :ArtistaSolo ;
+    :anoNascimento 1957 ;
+    :cidade "Distrito de Lisboa"^^xsd:string,
+        "Lisboa"^^xsd:string,
+        "Portugal"^^xsd:string ;
+    :nome "Rui Veloso"^^xsd:string ;
+    :pertenceAoGenero :Blues_rock,
+        :Pop_rock,
+        :Rock,
+        :Rock_and_roll,
+        :Soft_rock .
+
+:Sainte_adresse a :Local ;
+    :cidade "Sainte-Adresse"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Salvador_sobral a :ArtistaSolo ;
+    :anoNascimento 1989 ;
+    :cidade "Distrito de Lisboa"^^xsd:string,
+        "Lisboa"^^xsd:string ;
+    :membroDe :Alexander_search__band ;
+    :nome "Salvador Sobral"^^xsd:string ;
+    :pertenceAoGenero :Jazz,
+        :Neo_soul,
+        :Soul .
+
+:Sam_the_kid a :ArtistaSolo ;
+    :anoNascimento 1979 ;
+    :nome "Sam The Kid"^^xsd:string ;
+    :pertenceAoGenero :Batalha_de_rap,
+        :Freestyle_rap,
+        :Hip_hop_tuga,
+        :Political_hip_hop .
+
+:Santamaria a :Banda ;
+    :anoFormacao 1998 ;
+    :cidade "Portugal"^^xsd:string ;
+    :nome "Santamaria"^^xsd:string ;
+    :pertenceAoGenero :Eurodance .
+
+:Santarem__para a :Local ;
+    :cidade "Santarém (Pará)"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Santarem__portugal a :Local ;
+    :cidade "Santarém (Portugal)"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Santiago_do_cacem a :Local ;
+    :cidade "Santiago do Cacém"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Santo_tirso a :Local ;
+    :cidade "Santo Tirso"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Santo_tirso__freguesia a :Local ;
+    :cidade "Santo Tirso (freguesia)"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Sao_tome__parana a :Local ;
+    :cidade "São Tomé (Paraná)"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Sao_tome__sao_tome_e_principe a :Local ;
+    :cidade "São Tomé (São Tomé e Príncipe)"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Sao_tome_e_principe a :Local ;
+    :cidade "São Tomé e Príncipe"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Sara_correia a :ArtistaSolo ;
+    :anoNascimento 1993 ;
+    :nome "Sara Correia"^^xsd:string ;
+    :pertenceAoGenero :Fado .
+
+:Sara_serpa a :ArtistaSolo ;
+    :cidade "Distrito de Lisboa"^^xsd:string,
+        "Lisboa"^^xsd:string ;
+    :nome "Sara Serpa"^^xsd:string ;
+    :pertenceAoGenero :Jazz .
+
+:Sara_tavares a :ArtistaSolo ;
+    :anoNascimento 1978 ;
+    :cidade "Distrito de Lisboa"^^xsd:string,
+        "Lisboa"^^xsd:string ;
+    :nome "Sara Tavares"^^xsd:string ;
+    :pertenceAoGenero :Jazz,
+        :Musica_do_mundo,
+        :Musica_pop .
+
+:Scar_for_life a :ArtistaSolo,
+        :Banda ;
+    :anoFormacao 2008 ;
+    :cidade "Distrito de Lisboa"^^xsd:string,
+        "Lisboa"^^xsd:string ;
+    :nome "Scar for Life"^^xsd:string ;
+    :pertenceAoGenero :Hard_rock,
+        :Heavy_metal,
+        :Metal_progressivo,
+        :Power_metal .
+
+:Sean_riley___the_slowriders a :Banda ;
+    :anoFormacao 2006 ;
+    :cidade "Coimbra"^^xsd:string,
+        "Portugal"^^xsd:string ;
+    :nome "Sean Riley & The Slowriders"^^xsd:string ;
+    :pertenceAoGenero :Blues,
+        :Rock,
+        :Rock_and_roll .
+
+:Seixal a :Local ;
+    :cidade "Seixal"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Seixal__freguesia_do_seixal a :Local ;
+    :cidade "Seixal (freguesia do Seixal)"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Setima_legiao a :Banda ;
+    :anoFormacao 1982 ;
+    :cidade "Distrito de Lisboa"^^xsd:string,
+        "Lisboa"^^xsd:string,
+        "Portugal"^^xsd:string ;
+    :nome "Sétima Legião"^^xsd:string ;
+    :pertenceAoGenero :Folk_rock,
+        :Pos_punk,
+        :Rock,
+        :Rock_and_roll,
+        :Synth_pop .
+
+:Setubal a :Local ;
+    :cidade "Setúbal"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Silves__portugal a :Local ;
+    :cidade "Silves (Portugal)"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Simone_de_oliveira a :ArtistaSolo ;
+    :anoNascimento 1938 ;
+    :cidade "Distrito de Lisboa"^^xsd:string,
+        "Lisboa"^^xsd:string ;
+    :nome "Simone de Oliveira"^^xsd:string .
+
+:Sintra a :Local ;
+    :cidade "Sintra"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Sintra__santa_maria_e_sao_miguel__sao_martinho_e_sao_pedro_de_penaferrim a :Local ;
+    :cidade "Sintra (Santa Maria e São Miguel, São Martinho e São Pedro de Penaferrim)"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Sippinpurpp a :ArtistaSolo ;
+    :anoNascimento 1996 ;
+    :nome "SippinPurpp"^^xsd:string ;
+    :pertenceAoGenero :Hip_hop_tuga,
+        :Trap .
+
+:Slow_j a :ArtistaSolo ;
+    :anoNascimento 1992 ;
+    :cidade "Setúbal"^^xsd:string ;
+    :nome "Slow J"^^xsd:string ;
+    :pertenceAoGenero :Hip_hop_tuga .
+
+:Sofia_camara a :ArtistaSolo ;
+    :nome "Sofia Camara"^^xsd:string ;
+    :pertenceAoGenero :Musica_pop .
+
+:Soulbizness a :Banda ;
+    :anoFormacao 2007 ;
+    :cidade "Distrito de Lisboa"^^xsd:string,
+        "Lisboa"^^xsd:string,
+        "Portugal"^^xsd:string ;
+    :nome "Soulbizness"^^xsd:string ;
+    :pertenceAoGenero :Funk,
+        :Musica_pop,
+        :Rhythm_and_blues,
+        :Soul .
+
+:Spartak a :Banda ;
+    :anoFormacao 2006 ;
+    :cidade "Alcobaça (Portugal)"^^xsd:string ;
+    :nome "Spartak!"^^xsd:string ;
+    :pertenceAoGenero :Electro,
+        :Musica_pop,
+        :Rock,
+        :Rock_and_roll .
+
+:Stealing_orchestra a :Banda ;
+    :anoFormacao 1997 ;
+    :cidade "Câmara Municipal do Porto"^^xsd:string,
+        "Distrito do Porto"^^xsd:string,
+        "Porto"^^xsd:string,
+        "Portugal"^^xsd:string ;
+    :nome "Stealing Orchestra"^^xsd:string ;
+    :pertenceAoGenero :Electronica,
+        :Musica_experimental,
+        :Musica_pop,
+        :Rock,
+        :Rock_and_roll .
+
+:Susana_felix a :ArtistaSolo ;
+    :anoNascimento 1975 ;
+    :cidade "Torres Vedras"^^xsd:string ;
+    :nome "Susana Félix"^^xsd:string ;
+    :pertenceAoGenero :Pop_rock .
+
+:Suspiria_franklyn a :ArtistaSolo ;
+    :cidade "Distrito de Lisboa"^^xsd:string,
+        "Lisboa"^^xsd:string,
+        "Portugal"^^xsd:string ;
+    :nome "Suspiria Franklyn"^^xsd:string ;
+    :pertenceAoGenero :New_wave__musica,
+        :Punk_rock .
+
+:Suzy_guerra a :ArtistaSolo ;
+    :anoNascimento 1980 ;
+    :cidade "Figueira da Foz"^^xsd:string,
+        "Portugal"^^xsd:string ;
+    :nome "Suzy Guerra"^^xsd:string ;
+    :pertenceAoGenero :Musica_pop .
+
+:Tanger a :Local ;
+    :cidade "Tânger"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Tara_perdida a :Banda ;
+    :anoFormacao 1995 ;
+    :nome "Tara Perdida"^^xsd:string ;
+    :pertenceAoGenero :Hardcore_punk,
+        :Punk_rock,
+        :Skate_punk .
+
+:Tay a :ArtistaSolo ;
+    :anoNascimento 1999 ;
+    :cidade "Seixal"^^xsd:string,
+        "Seixal (freguesia do Seixal)"^^xsd:string ;
+    :nome "TAY"^^xsd:string ;
+    :pertenceAoGenero :Trap .
+
+:Telectu a :ArtistaSolo,
+        :Banda ;
+    :anoFormacao 1982 ;
+    :cidade "Portugal"^^xsd:string ;
+    :nome "Telectu"^^xsd:string ;
+    :pertenceAoGenero :Electronica,
+        :Free_jazz,
+        :Minimalismo,
+        :Musica_concreta,
+        :Musica_experimental .
+
+:Teresa_salgueiro a :ArtistaSolo ;
+    :nome "Teresa Salgueiro"^^xsd:string .
+
+:Teresinha_landeiro a :ArtistaSolo ;
+    :anoNascimento 1996 ;
+    :cidade "Azeitão"^^xsd:string,
+        "Setúbal"^^xsd:string ;
+    :nome "Teresinha Landeiro"^^xsd:string ;
+    :pertenceAoGenero :Fado .
+
+:The_act_ups a :Banda ;
+    :cidade "Barreiro"^^xsd:string,
+        "Portugal"^^xsd:string ;
+    :nome "The Act-Ups"^^xsd:string ;
+    :pertenceAoGenero :Rock,
+        :Rock_and_roll,
+        :Rock_de_garagem,
+        :Soul .
+
+:The_black_mamba a :Banda ;
+    :anoFormacao 2010 ;
+    :cidade "Portugal"^^xsd:string,
+        "Sintra"^^xsd:string,
+        "Sintra (Santa Maria e São Miguel, São Martinho e São Pedro de Penaferrim)"^^xsd:string ;
+    :nome "The Black Mamba"^^xsd:string .
+
+:The_gift a :Banda ;
+    :anoFormacao 1994 ;
+    :cidade "Alcobaça (Portugal)"^^xsd:string ;
+    :nome "The Gift"^^xsd:string ;
+    :pertenceAoGenero :Musica_eletronica,
+        :Rock_alternativo,
+        :Synth_pop .
+
+:The_gilbert_s_feed_band a :Banda ;
+    :anoFormacao 1988 ;
+    :cidade "Distrito de Lisboa"^^xsd:string,
+        "Lisboa"^^xsd:string,
+        "Portugal"^^xsd:string ;
+    :nome "The Gilbert’s Feed Band"^^xsd:string ;
+    :pertenceAoGenero :Crossover__musica,
+        :Funk_rock,
+        :Retro,
+        :Rock,
+        :Rock_and_roll,
+        :Ska,
+        :Swing_revival .
+
+:The_happy_mess a :Banda ;
+    :anoFormacao 2011 ;
+    :nome "The Happy Mess"^^xsd:string ;
+    :pertenceAoGenero :Indie_pop .
+
+:The_legendary_tigerman a :ArtistaSolo ;
+    :anoNascimento 1970 ;
+    :cidade "África Oriental Portuguesa"^^xsd:string ;
+    :nome "The Legendary Tigerman"^^xsd:string ;
+    :pertenceAoGenero :Blues,
+        :Blues_rock,
+        :Punk_blues .
+
+:The_micro_audio_waves a :Banda ;
+    :anoFormacao 2000 ;
+    :cidade "Portugal"^^xsd:string ;
+    :nome "The Micro Audio Waves"^^xsd:string ;
+    :pertenceAoGenero :Indietronica .
+
+:The_parkinsons a :Banda ;
+    :anoFormacao 2000 ;
+    :cidade "Coimbra"^^xsd:string,
+        "Portugal"^^xsd:string ;
+    :nome "The Parkinsons"^^xsd:string ;
+    :pertenceAoGenero :Punk_rock .
+
+:To_cruz a :ArtistaSolo ;
+    :anoNascimento 1967 ;
+    :nome "Tó Cruz"^^xsd:string .
+
+:Tomar a :Local ;
+    :cidade "Tomar"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Tony_carreira a :ArtistaSolo ;
+    :anoNascimento 1963 ;
+    :cidade "Pampilhosa da Serra"^^xsd:string ;
+    :nome "Tony Carreira"^^xsd:string ;
+    :pertenceAoGenero :Kitsch,
+        :Musica_pimba,
+        :Schlager .
+
+:Torres_vedras a :Local ;
+    :cidade "Torres Vedras"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Tramagal a :Local ;
+    :cidade "Tramagal"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Transvaal a :Local ;
+    :cidade "Transvaal"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Underground_sound_of_lisbon a :Banda ;
+    :anoFormacao 1993 ;
+    :cidade "Distrito de Lisboa"^^xsd:string,
+        "Lisboa"^^xsd:string ;
+    :nome "Underground Sound of Lisbon"^^xsd:string ;
+    :pertenceAoGenero :House_music .
+
+:Urban_tales a :Banda ;
+    :anoFormacao 2005 ;
+    :cidade "Distrito de Lisboa"^^xsd:string,
+        "Lisboa"^^xsd:string ;
+    :nome "Urban Tales"^^xsd:string ;
+    :pertenceAoGenero :Heavy_metal,
+        :Metal_gotico,
+        :Rock_gotico .
+
+:Vagos a :Local ;
+    :cidade "Vagos"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Vagos__freguesia a :Local ;
+    :cidade "Vagos (freguesia)"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Valete a :ArtistaSolo ;
+    :nome "Valete"^^xsd:string ;
+    :pertenceAoGenero :Hip_hop .
+
+:Vanderbijlpark a :Local ;
+    :cidade "Vanderbijlpark"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Vialonga a :Local ;
+    :cidade "Vialonga"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Vila_franca__viana_do_castelo a :Local ;
+    :cidade "Vila Franca (Viana do Castelo)"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Vila_franca_de_xira a :Local ;
+    :cidade "Vila Franca de Xira"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Vila_nova_de_gaia a :Local ;
+    :cidade "Vila Nova de Gaia"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Vila_real a :Local ;
+    :cidade "Vila Real"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Vila_real__freguesia a :Local ;
+    :cidade "Vila Real (freguesia)"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Viseu a :Local ;
+    :cidade "Viseu"^^xsd:string ;
+    :pais "Portugal"^^xsd:string .
+
+:Vitorino a :ArtistaSolo ;
+    :anoNascimento 1942 ;
+    :cidade "Estado Novo (Portugal)"^^xsd:string,
+        "Redondo"^^xsd:string ;
+    :nome "Vitorino"^^xsd:string .
+
+:Wraygunn a :Banda ;
+    :anoFormacao 1999 ;
+    :cidade "Coimbra"^^xsd:string,
+        "Portugal"^^xsd:string ;
+    :nome "Wraygunn"^^xsd:string ;
+    :pertenceAoGenero :Blues_rock,
+        :Indie_rock,
+        :Musica_gospel,
+        :Soul .
+
+:Xinobi a :ArtistaSolo ;
+    :anoNascimento 1978 ;
+    :cidade "Distrito de Lisboa"^^xsd:string,
+        "Lisboa"^^xsd:string,
+        "Portugal"^^xsd:string ;
+    :nome "Xinobi"^^xsd:string ;
+    :pertenceAoGenero :Dance_alternativo,
+        :House_music .
+
+:Xutos___pontapes a :Banda ;
+    :anoFormacao 1978 ;
+    :cidade "Distrito de Lisboa"^^xsd:string,
+        "Lisboa"^^xsd:string ;
+    :nome "Xutos & Pontapés"^^xsd:string ;
+    :pertenceAoGenero :Hard_rock,
+        :New_wave__musica,
+        :Punk_rock,
+        :Rock,
+        :Rock_and_roll .
+
+:Yolanda_soares a :ArtistaSolo ;
+    :nome "Yolanda Soares"^^xsd:string ;
+    :pertenceAoGenero :Crossover__musica,
+        :Crossover_classico,
+        :Fado .
+
+:You_can_t_win__charlie_brown a :Banda ;
+    :anoFormacao 2009 ;
+    :cidade "Distrito de Lisboa"^^xsd:string,
+        "Lisboa"^^xsd:string,
+        "Portugal"^^xsd:string ;
+    :nome "You Can't Win, Charlie Brown"^^xsd:string ;
+    :pertenceAoGenero :Indie_rock,
+        :Rock_alternativo .
+
+:Zem a :Banda ;
+    :anoFormacao 1982 ;
+    :cidade "Loures"^^xsd:string,
+        "Portugal"^^xsd:string ;
+    :nome "ZEM"^^xsd:string ;
+    :pertenceAoGenero :Acid_rock,
+        :Hard_rock,
+        :Pop_rock,
+        :Rock_psicodelico,
+        :Space_rock .
+
+:Art_rock a :Genero ;
+    :nome "Art rock"^^xsd:string .
+
+:Batalha_de_rap a :Genero ;
+    :nome "Batalha de Rap"^^xsd:string .
+
+:Black_metal a :Genero ;
+    :nome "Black metal"^^xsd:string .
+
+:Blue_eyed_soul a :Genero ;
+    :nome "Blue-eyed soul"^^xsd:string .
+
+:Bolero a :Genero ;
+    :nome "Bolero"^^xsd:string .
+
+:Breakbeat a :Genero ;
+    :nome "Breakbeat"^^xsd:string .
+
+:Cla a :Banda ;
+    :anoFormacao 1992 ;
+    :cidade "Portugal"^^xsd:string ;
+    :nome "Clã"^^xsd:string ;
+    :pertenceAoGenero :Pop_rock .
+
+:Cla__banda a :Banda ;
+    :nome "Clã (banda)"^^xsd:string .
+
+:Crossover_classico a :Genero ;
+    :nome "Crossover clássico"^^xsd:string .
+
+:Dark_wave a :Genero ;
+    :nome "Dark wave"^^xsd:string .
+
+:Death_metal a :Genero ;
+    :nome "Death metal"^^xsd:string .
+
+:Death_metal_melodico a :Genero ;
+    :nome "Death metal melódico"^^xsd:string .
+
+:Electro_house a :Genero ;
+    :nome "Electro house"^^xsd:string .
+
+:Eurodance a :Genero ;
+    :nome "Eurodance"^^xsd:string .
+
+:Fantologia a :Genero ;
+    :nome "Fantologia"^^xsd:string .
+
+:Folk_pop a :Genero ;
+    :nome "Folk-pop"^^xsd:string .
+
+:Free_jazz a :Genero ;
+    :nome "Free jazz"^^xsd:string .
+
+:Freestyle_rap a :Genero ;
+    :nome "Freestyle rap"^^xsd:string .
+
+:Funk_carioca a :Genero ;
+    :nome "Funk carioca"^^xsd:string .
+
+:Funk_metal a :Genero ;
+    :nome "Funk metal"^^xsd:string .
+
+:Genero_musical a :Genero ;
+    :nome "Gênero musical"^^xsd:string .
+
+:Glam_metal a :Genero ;
+    :nome "Glam metal"^^xsd:string .
+
+:Glitch__musica a :Genero ;
+    :nome "Glitch (música)"^^xsd:string .
+
+:Goregrind a :Genero ;
+    :nome "Goregrind"^^xsd:string .
+
+:Groove_metal a :Genero ;
+    :nome "Groove metal"^^xsd:string .
+
+:Grunge a :Genero ;
+    :nome "Grunge"^^xsd:string .
+
+:Hardcore_melodico a :Genero ;
+    :nome "Hardcore melódico"^^xsd:string .
+
+:Hardcore_punk a :Genero ;
+    :nome "Hardcore punk"^^xsd:string .
+
+:Humanos a :ArtistaSolo,
+        :Banda ;
+    :anoFormacao 2004 ;
+    :cidade "Portugal"^^xsd:string ;
+    :membroDe :Cla,
+        :Cla__banda ;
+    :nome "Humanos"^^xsd:string ;
+    :pertenceAoGenero :Folk_pop,
+        :Rock_alternativo .
+
+:Humanos__banda a :Banda ;
+    :nome "Humanos (banda)"^^xsd:string .
+
+:Idm a :Genero ;
+    :nome "IDM"^^xsd:string .
+
+:Indie_music a :Genero ;
+    :nome "Indie music"^^xsd:string .
+
+:Indietronica a :Genero ;
+    :nome "Indietronica"^^xsd:string .
+
+:Kitsch a :Genero ;
+    :nome "Kitsch"^^xsd:string .
+
+:Kizomba a :Genero ;
+    :nome "Kizomba"^^xsd:string .
+
+:Linkin_park a :Banda ;
+    :nome "Linkin Park"^^xsd:string .
+
+:Madredeus a :Banda ;
+    :anoFormacao 1985 ;
+    :cidade "Distrito de Lisboa"^^xsd:string,
+        "Lisboa"^^xsd:string,
+        "Portugal"^^xsd:string ;
+    :nome "Madredeus"^^xsd:string ;
+    :pertenceAoGenero :Musica_do_mundo,
+        :New_age__musica .
+
+:Mathcore a :Genero ;
+    :nome "Mathcore"^^xsd:string .
+
+:Metal_industrial a :Genero ;
+    :nome "Metal industrial"^^xsd:string .
+
+:Metal_progressivo a :Genero ;
+    :nome "Metal progressivo"^^xsd:string .
+
+:Minimalismo a :Genero ;
+    :nome "Minimalismo"^^xsd:string .
+
+:Moombahton a :Genero ;
+    :nome "Moombahton"^^xsd:string .
+
+:Mpb a :Genero ;
+    :nome "MPB"^^xsd:string .
+
+:Musica_celta a :Genero ;
+    :nome "Música celta"^^xsd:string .
+
+:Musica_cinematografica a :Genero ;
+    :nome "Música cinematográfica"^^xsd:string .
+
+:Musica_concreta a :Genero ;
+    :nome "Música concreta"^^xsd:string .
+
+:Musica_de_jogos_eletronicos a :Genero ;
+    :nome "Música de jogos eletrônicos"^^xsd:string .
+
+:Musica_de_vanguarda a :Genero ;
+    :nome "Música de vanguarda"^^xsd:string .
+
+:Musica_gospel a :Genero ;
+    :nome "Música gospel"^^xsd:string .
+
+:Musica_industrial a :Genero ;
+    :nome "Música industrial"^^xsd:string .
+
+:Musica_instrumental a :Genero ;
+    :nome "Música instrumental"^^xsd:string .
+
+:Musica_moderna a :Genero ;
+    :nome "Música moderna"^^xsd:string .
+
+:Musica_pop_francesa a :Genero ;
+    :nome "Música pop francesa"^^xsd:string .
+
+:Musica_popular a :Genero ;
+    :nome "Música popular"^^xsd:string .
+
+:Musica_psicadelica a :Genero ;
+    :nome "Música psicadélica"^^xsd:string .
+
+:Musica_tradicional a :Genero ;
+    :nome "Música tradicional"^^xsd:string .
+
+:Neofolk a :Genero ;
+    :nome "Neofolk"^^xsd:string .
+
+:New_age__musica a :Genero ;
+    :nome "New age (música)"^^xsd:string .
+
+:Novo_flamenco a :Genero ;
+    :nome "Novo Flamenco"^^xsd:string .
+
+:Opera a :Genero ;
+    :nome "Ópera"^^xsd:string .
+
+:Orquestra a :Genero ;
+    :nome "Orquestra"^^xsd:string .
+
+:Political_hip_hop a :Genero ;
+    :nome "Political hip hop"^^xsd:string .
+
+:Pop_latino a :Genero ;
+    :nome "Pop latino"^^xsd:string .
+
+:Post_rock a :Genero ;
+    :nome "Post-rock"^^xsd:string .
+
+:Power_metal a :Genero ;
+    :nome "Power metal"^^xsd:string .
+
+:Power_pop a :Genero ;
+    :nome "Power pop"^^xsd:string .
+
+:Punk_blues a :Genero ;
+    :nome "Punk blues"^^xsd:string .
+
+:R_b_alternativo a :Genero ;
+    :nome "R&B alternativo"^^xsd:string .
+
+:Rap a :Genero ;
+    :nome "Rap"^^xsd:string .
+
+:Recitaçao a :Genero ;
+    :nome "Recitação"^^xsd:string .
+
+:Retro a :Genero ;
+    :nome "Retrô"^^xsd:string .
+
+:Riot_grrrl a :Genero ;
+    :nome "Riot grrrl"^^xsd:string .
+
+:Rock_eletronico a :Genero ;
+    :nome "Rock eletrônico"^^xsd:string .
+
+:Rock_sinfonico a :Genero ;
+    :nome "Rock sinfônico"^^xsd:string .
+
+:Scat a :Genero ;
+    :nome "Scat"^^xsd:string .
+
+:Schlager a :Genero ;
+    :nome "Schlager"^^xsd:string .
+
+:Silence_4 a :Banda ;
+    :anoFormacao 1996 ;
+    :cidade "Leiria"^^xsd:string ;
+    :nome "Silence 4"^^xsd:string ;
+    :pertenceAoGenero :Pop_rock,
+        :Rock_alternativo .
+
+:Ska a :Genero ;
+    :nome "Ska"^^xsd:string .
+
+:Sonoplastia a :Genero ;
+    :nome "Sonoplastia"^^xsd:string .
+
+:Space_rock a :Genero ;
+    :nome "Space rock"^^xsd:string .
+
+:Swing_revival a :Genero ;
+    :nome "Swing revival"^^xsd:string .
+
+:Synthwave a :Genero ;
+    :nome "Synthwave"^^xsd:string .
+
+:Techno a :Genero ;
+    :nome "Techno"^^xsd:string .
+
+:Teen_pop a :Genero ;
+    :nome "Teen pop"^^xsd:string .
+
+:Thrash_metal a :Genero ;
+    :nome "Thrash metal"^^xsd:string .
+
+:Trance_psicadelico a :Genero ;
+    :nome "Trance psicadélico"^^xsd:string .
+
+:Wet_bed_gang a :ArtistaSolo,
+        :Banda ;
+    :anoFormacao 2014 ;
+    :nome "Wet Bed Gang"^^xsd:string ;
+    :pertenceAoGenero :Hip_hop_tuga,
+        :Rap .
+
+:Worldbeat a :Genero ;
+    :nome "Worldbeat"^^xsd:string .
+
+:Zouk a :Genero ;
+    :nome "Zouk"^^xsd:string .
+
+:Acid_rock a :Genero ;
+    :nome "Acid rock"^^xsd:string .
+
+:Adult_contemporary a :Genero ;
+    :nome "Adult contemporary"^^xsd:string .
+
+:Alexander_search__band a :Banda ;
+    :nome "Alexander Search (band)"^^xsd:string .
+
+:Buraka_som_sistema a :Banda ;
+    :anoFormacao 2006 ;
+    :cidade "Distrito de Lisboa"^^xsd:string,
+        "Lisboa"^^xsd:string,
+        "Portugal"^^xsd:string ;
+    :nome "Buraka Som Sistema"^^xsd:string ;
+    :pertenceAoGenero :Breakbeat,
+        :Dance_alternativo,
+        :Kuduro,
+        :Moombahton,
+        :Zouk .
+
+:Crossover__musica a :Genero ;
+    :nome "Crossover (música)"^^xsd:string .
+
+:Dance_pop a :Genero ;
+    :nome "Dance-pop"^^xsd:string .
+
+:Dancehall a :Genero ;
+    :nome "Dancehall"^^xsd:string .
+
+:Electropop a :Genero ;
+    :nome "Electropop"^^xsd:string .
+
+:Ethereal_wave a :Genero ;
+    :nome "Ethereal wave"^^xsd:string .
+
+:Folk_metal a :Genero ;
+    :nome "Folk metal"^^xsd:string .
+
+:Funk_rock a :Genero ;
+    :nome "Funk rock"^^xsd:string .
+
+:Hip_hop_alternativo a :Genero ;
+    :nome "Hip hop alternativo"^^xsd:string .
+
+:Jazz_fusion a :Genero ;
+    :nome "Jazz fusion"^^xsd:string .
+
+:Musica_acustica a :Genero ;
+    :nome "Música acústica"^^xsd:string .
+
+:Musica_ambiente a :Genero ;
+    :nome "Música ambiente"^^xsd:string .
+
+:Musica_de_portugal a :Genero ;
+    :nome "Música de Portugal"^^xsd:string .
+
+:Neo_soul a :Genero ;
+    :nome "Neo soul"^^xsd:string .
+
+:Noise_rock a :Genero ;
+    :nome "Noise rock"^^xsd:string .
+
+:Post_hardcore a :Genero ;
+    :nome "Post-hardcore"^^xsd:string .
+
+:Rock_de_garagem a :Genero ;
+    :nome "Rock de garagem"^^xsd:string .
+
+:Rock_progressivo a :Genero ;
+    :nome "Rock progressivo"^^xsd:string .
+
+:Rock_psicodelico a :Genero ;
+    :nome "Rock psicodélico"^^xsd:string .
+
+:Ska_punk a :Genero ;
+    :nome "Ska punk"^^xsd:string .
+
+:Skate_punk a :Genero ;
+    :nome "Skate punk"^^xsd:string .
+
+:Trip_hop a :Genero ;
+    :nome "Trip hop"^^xsd:string .
+
+:Blues_rock a :Genero ;
+    :nome "Blues rock"^^xsd:string .
+
+:Electro a :Genero ;
+    :nome "Electro"^^xsd:string .
+
+:Electronica a :Genero ;
+    :nome "Electronica"^^xsd:string .
+
+:Folk_rock a :Genero ;
+    :nome "Folk rock"^^xsd:string .
+
+:Kuduro a :Genero ;
+    :nome "Kuduro"^^xsd:string .
+
+:Metal_alternativo a :Genero ;
+    :nome "Metal alternativo"^^xsd:string .
+
+:Musica_de_intervençao a :Genero ;
+    :nome "Música de intervenção"^^xsd:string .
+
+:Musica_pimba a :Genero ;
+    :nome "Música pimba"^^xsd:string .
+
+:Rap_rock a :Genero ;
+    :nome "Rap rock"^^xsd:string .
+
+:Rock_gotico a :Genero ;
+    :nome "Rock gótico"^^xsd:string .
+
+:Soft_rock a :Genero ;
+    :nome "Soft rock"^^xsd:string .
+
+:Dance_alternativo a :Genero ;
+    :nome "Dance alternativo"^^xsd:string .
+
+:Doom_metal a :Genero ;
+    :nome "Doom metal"^^xsd:string .
+
+:Electronic_dance_music a :Genero ;
+    :nome "Electronic dance music"^^xsd:string .
+
+:Pos_punk a :Genero ;
+    :nome "Pós-punk"^^xsd:string .
+
+:R_b_contemporaneo a :Genero ;
+    :nome "R&B contemporâneo"^^xsd:string .
+
+:Reggae a :Genero ;
+    :nome "Reggae"^^xsd:string .
+
+:Synth_pop a :Genero ;
+    :nome "Synth-pop"^^xsd:string .
+
+:Hard_rock a :Genero ;
+    :nome "Hard rock"^^xsd:string .
+
+:House_music a :Genero ;
+    :nome "House music"^^xsd:string .
+
+:Indie_pop a :Genero ;
+    :nome "Indie pop"^^xsd:string .
+
+:Trap a :Genero ;
+    :nome "Trap"^^xsd:string .
+
+:Blues a :Genero ;
+    :nome "Blues"^^xsd:string .
+
+:Funk a :Genero ;
+    :nome "Funk"^^xsd:string .
+
+:Heavy_metal a :Genero ;
+    :nome "Heavy metal"^^xsd:string .
+
+:Metal_gotico a :Genero ;
+    :nome "Metal gótico"^^xsd:string .
+
+:Musica_classica a :Genero ;
+    :nome "Música clássica"^^xsd:string .
+
+:New_wave__musica a :Genero ;
+    :nome "New wave (música)"^^xsd:string .
+
+:Punk_rock a :Genero ;
+    :nome "Punk rock"^^xsd:string .
+
+:Rhythm_and_blues a :Genero ;
+    :nome "Rhythm and blues"^^xsd:string .
+
+:Indie_rock a :Genero ;
+    :nome "Indie rock"^^xsd:string .
+
+:Musica_experimental a :Genero ;
+    :nome "Música experimental"^^xsd:string .
+
+:Soul a :Genero ;
+    :nome "Soul"^^xsd:string .
+
+:Musica_do_mundo a :Genero ;
+    :nome "Música do Mundo"^^xsd:string .
+
+:Musica_eletronica a :Genero ;
+    :nome "Música eletrônica"^^xsd:string .
+
+:Jazz a :Genero ;
+    :nome "Jazz"^^xsd:string .
+
+:Hip_hop a :Genero ;
+    :nome "Hip hop"^^xsd:string .
+
+:Hip_hop_tuga a :Genero ;
+    :nome "Hip hop tuga"^^xsd:string .
+
+:Pop_rock a :Genero ;
+    :nome "Pop rock"^^xsd:string .
+
+:Rock_alternativo a :Genero ;
+    :nome "Rock alternativo"^^xsd:string .
+
+:Rock a :Genero ;
+    :nome "Rock"^^xsd:string .
+
+:Rock_and_roll a :Genero ;
+    :nome "Rock and roll"^^xsd:string .
+
+:Musica_pop a :Genero ;
+    :nome "Música pop"^^xsd:string .
+
+:Fado a :Genero ;
+    :nome "Fado"^^xsd:string .
+
