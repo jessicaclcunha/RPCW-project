@@ -1,0 +1,718 @@
+@prefix : <http://rpcw.di.uminho.pt/2026/music-ontology/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://rpcw.di.uminho.pt/2026/music-ontology/> .
+
+<http://rpcw.di.uminho.pt/2026/music-ontology> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://rpcw.di.uminho.pt/2026/music-ontology/compostaPor
+:compostaPor rdf:type owl:ObjectProperty ;
+             rdfs:domain :Musica ;
+             rdfs:range :Artista .
+
+
+###  http://rpcw.di.uminho.pt/2026/music-ontology/contemMusica
+:contemMusica rdf:type owl:ObjectProperty ;
+              owl:inverseOf :pertenceAoAlbum .
+
+
+###  http://rpcw.di.uminho.pt/2026/music-ontology/escritaPor
+:escritaPor rdf:type owl:ObjectProperty ;
+            rdfs:domain :Musica ;
+            rdfs:range :Artista .
+
+
+###  http://rpcw.di.uminho.pt/2026/music-ontology/interpretadaPor
+:interpretadaPor rdf:type owl:ObjectProperty ;
+                 owl:inverseOf :interpretou ;
+                 rdfs:domain :Musica ;
+                 rdfs:range :Artista .
+
+
+###  http://rpcw.di.uminho.pt/2026/music-ontology/interpretou
+:interpretou rdf:type owl:ObjectProperty .
+
+
+###  http://rpcw.di.uminho.pt/2026/music-ontology/lancouAlbum
+:lancouAlbum rdf:type owl:ObjectProperty ;
+             rdfs:domain :Artista ;
+             rdfs:range :Album .
+
+
+###  http://rpcw.di.uminho.pt/2026/music-ontology/membroDe
+:membroDe rdf:type owl:ObjectProperty ;
+          owl:inverseOf :temMembro .
+
+
+###  http://rpcw.di.uminho.pt/2026/music-ontology/pertenceAEditora
+:pertenceAEditora rdf:type owl:ObjectProperty ;
+                  rdfs:domain :Artista ;
+                  rdfs:range :Editora .
+
+
+###  http://rpcw.di.uminho.pt/2026/music-ontology/pertenceAoAlbum
+:pertenceAoAlbum rdf:type owl:ObjectProperty ;
+                 rdfs:domain :Musica ;
+                 rdfs:range :Album .
+
+
+###  http://rpcw.di.uminho.pt/2026/music-ontology/pertenceAoGenero
+:pertenceAoGenero rdf:type owl:ObjectProperty ;
+                  rdfs:domain [ rdf:type owl:Class ;
+                                owl:unionOf ( :Album
+                                              :Artista
+                                              :Musica
+                                            )
+                              ] ;
+                  rdfs:range :Genero .
+
+
+###  http://rpcw.di.uminho.pt/2026/music-ontology/temMembro
+:temMembro rdf:type owl:ObjectProperty ;
+           rdfs:domain :Banda ;
+           rdfs:range :ArtistaSolo .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://rpcw.di.uminho.pt/2026/music-ontology/anoFormacao
+:anoFormacao rdf:type owl:DatatypeProperty ;
+             rdfs:domain :Banda ;
+             rdfs:range xsd:integer .
+
+
+###  http://rpcw.di.uminho.pt/2026/music-ontology/anoLancamento
+:anoLancamento rdf:type owl:DatatypeProperty ;
+               rdfs:range xsd:integer .
+
+
+###  http://rpcw.di.uminho.pt/2026/music-ontology/anoNascimento
+:anoNascimento rdf:type owl:DatatypeProperty ;
+               rdfs:domain :ArtistaSolo ;
+               rdfs:range xsd:integer .
+
+
+###  http://rpcw.di.uminho.pt/2026/music-ontology/nome
+:nome rdf:type owl:DatatypeProperty ;
+      rdfs:domain owl:Thing ;
+      rdfs:range xsd:string .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://rpcw.di.uminho.pt/2026/music-ontology/Album
+:Album rdf:type owl:Class .
+
+
+###  http://rpcw.di.uminho.pt/2026/music-ontology/Artista
+:Artista rdf:type owl:Class .
+
+
+###  http://rpcw.di.uminho.pt/2026/music-ontology/ArtistaSolo
+:ArtistaSolo rdf:type owl:Class ;
+             rdfs:subClassOf :Artista ;
+             owl:disjointWith :Banda .
+
+
+###  http://rpcw.di.uminho.pt/2026/music-ontology/Banda
+:Banda rdf:type owl:Class ;
+       rdfs:subClassOf :Artista .
+
+
+###  http://rpcw.di.uminho.pt/2026/music-ontology/Editora
+:Editora rdf:type owl:Class .
+
+
+###  http://rpcw.di.uminho.pt/2026/music-ontology/Fado
+:Fado rdf:type owl:Class ;
+      rdfs:subClassOf :Genero .
+
+
+###  http://rpcw.di.uminho.pt/2026/music-ontology/Genero
+:Genero rdf:type owl:Class .
+
+
+###  http://rpcw.di.uminho.pt/2026/music-ontology/HipHop
+:HipHop rdf:type owl:Class ;
+        rdfs:subClassOf :Genero .
+
+
+###  http://rpcw.di.uminho.pt/2026/music-ontology/Intervencao
+:Intervencao rdf:type owl:Class ;
+             rdfs:subClassOf :Genero .
+
+
+###  http://rpcw.di.uminho.pt/2026/music-ontology/Kizomba
+:Kizomba rdf:type owl:Class ;
+         rdfs:subClassOf :Genero .
+
+
+###  http://rpcw.di.uminho.pt/2026/music-ontology/Musica
+:Musica rdf:type owl:Class .
+
+
+###  http://rpcw.di.uminho.pt/2026/music-ontology/Pimba
+:Pimba rdf:type owl:Class ;
+       rdfs:subClassOf :Genero .
+
+
+###  http://rpcw.di.uminho.pt/2026/music-ontology/Pop
+:Pop rdf:type owl:Class ;
+     rdfs:subClassOf :Genero .
+
+
+###  http://rpcw.di.uminho.pt/2026/music-ontology/RB
+:RB rdf:type owl:Class ;
+    rdfs:subClassOf :Genero .
+
+
+###  http://rpcw.di.uminho.pt/2026/music-ontology/Rock
+:Rock rdf:type owl:Class ;
+      rdfs:subClassOf :Genero .
+
+#################################################################
+#    INDIVÍDUOS (gerado por populate.py)
+#################################################################
+
+
+#################################################################
+#    Editoras
+#################################################################
+
+:valentim_de_carvalho a :Editora, owl:NamedIndividual ;
+    :nome "Valentim de Carvalho" .
+
+:edisco a :Editora, owl:NamedIndividual ;
+    :nome "Edisco" .
+
+:emi_portugal a :Editora, owl:NamedIndividual ;
+    :nome "EMI Portugal" .
+
+:universal_pt a :Editora, owl:NamedIndividual ;
+    :nome "Universal Music Portugal" .
+
+:sony_pt a :Editora, owl:NamedIndividual ;
+    :nome "Sony Music Portugal" .
+
+:transformadores a :Editora, owl:NamedIndividual ;
+    :nome "Transformadores Discos" .
+
+:edicoes_orfeu a :Editora, owl:NamedIndividual ;
+    :nome "Edições Orfeu" .
+
+:ovacao a :Editora, owl:NamedIndividual ;
+    :nome "Ovação Records" .
+
+
+#################################################################
+#    Artistas Solo
+#################################################################
+
+:amalia_rodrigues a :ArtistaSolo, owl:NamedIndividual ;
+    :nome "Amália Rodrigues" ;
+    :anoNascimento 1920 ;
+    :pertenceAEditora :valentim_de_carvalho ;
+    :pertenceAoGenero :Fado .
+
+:mariza a :ArtistaSolo, owl:NamedIndividual ;
+    :nome "Mariza" ;
+    :anoNascimento 1973 ;
+    :pertenceAEditora :emi_portugal ;
+    :pertenceAoGenero :Fado .
+
+:carlos_do_carmo a :ArtistaSolo, owl:NamedIndividual ;
+    :nome "Carlos do Carmo" ;
+    :anoNascimento 1939 ;
+    :pertenceAEditora :valentim_de_carvalho ;
+    :pertenceAoGenero :Fado .
+
+:camane a :ArtistaSolo, owl:NamedIndividual ;
+    :nome "Camané" ;
+    :anoNascimento 1967 ;
+    :pertenceAEditora :emi_portugal ;
+    :pertenceAoGenero :Fado .
+
+:ana_moura a :ArtistaSolo, owl:NamedIndividual ;
+    :nome "Ana Moura" ;
+    :anoNascimento 1979 ;
+    :pertenceAEditora :universal_pt ;
+    :pertenceAoGenero :Fado .
+
+:jose_afonso a :ArtistaSolo, owl:NamedIndividual ;
+    :nome "José Afonso" ;
+    :anoNascimento 1929 ;
+    :pertenceAEditora :edicoes_orfeu ;
+    :pertenceAoGenero :Intervencao .
+
+:sergio_godinho a :ArtistaSolo, owl:NamedIndividual ;
+    :nome "Sérgio Godinho" ;
+    :anoNascimento 1945 ;
+    :pertenceAEditora :edicoes_orfeu ;
+    :pertenceAoGenero :Intervencao ;
+    :pertenceAoGenero :Pop .
+
+:jose_mario_branco a :ArtistaSolo, owl:NamedIndividual ;
+    :nome "José Mário Branco" ;
+    :anoNascimento 1942 ;
+    :pertenceAEditora :transformadores ;
+    :pertenceAoGenero :Intervencao .
+
+:fausto a :ArtistaSolo, owl:NamedIndividual ;
+    :nome "Fausto Bordalo Dias" ;
+    :anoNascimento 1948 ;
+    :pertenceAEditora :transformadores ;
+    :pertenceAoGenero :Intervencao .
+
+:rui_veloso a :ArtistaSolo, owl:NamedIndividual ;
+    :nome "Rui Veloso" ;
+    :anoNascimento 1957 ;
+    :pertenceAEditora :emi_portugal ;
+    :pertenceAoGenero :Rock .
+
+:david_fonseca a :ArtistaSolo, owl:NamedIndividual ;
+    :nome "David Fonseca" ;
+    :anoNascimento 1973 ;
+    :pertenceAEditora :sony_pt ;
+    :pertenceAoGenero :Pop ;
+    :pertenceAoGenero :Rock .
+
+:quim_barreiros a :ArtistaSolo, owl:NamedIndividual ;
+    :nome "Quim Barreiros" ;
+    :anoNascimento 1947 ;
+    :pertenceAEditora :ovacao ;
+    :pertenceAoGenero :Pimba .
+
+:emanuel a :ArtistaSolo, owl:NamedIndividual ;
+    :nome "Emanuel" ;
+    :anoNascimento 1959 ;
+    :pertenceAEditora :ovacao ;
+    :pertenceAoGenero :Pimba .
+
+:boss_ac a :ArtistaSolo, owl:NamedIndividual ;
+    :nome "Boss AC" ;
+    :anoNascimento 1973 ;
+    :pertenceAEditora :sony_pt ;
+    :pertenceAoGenero :HipHop .
+
+:sam_the_kid a :ArtistaSolo, owl:NamedIndividual ;
+    :nome "Sam The Kid" ;
+    :anoNascimento 1979 ;
+    :pertenceAEditora :edisco ;
+    :pertenceAoGenero :HipHop .
+
+:aurea a :ArtistaSolo, owl:NamedIndividual ;
+    :nome "Aurea" ;
+    :anoNascimento 1987 ;
+    :pertenceAEditora :sony_pt ;
+    :pertenceAoGenero :RB .
+
+:david_carreira a :ArtistaSolo, owl:NamedIndividual ;
+    :nome "David Carreira" ;
+    :anoNascimento 1991 ;
+    :pertenceAEditora :universal_pt ;
+    :pertenceAoGenero :Pop ;
+    :pertenceAoGenero :RB .
+
+:bonga a :ArtistaSolo, owl:NamedIndividual ;
+    :nome "Bonga" ;
+    :anoNascimento 1942 ;
+    :pertenceAEditora :valentim_de_carvalho ;
+    :pertenceAoGenero :Kizomba .
+
+:anselmo_ralph a :ArtistaSolo, owl:NamedIndividual ;
+    :nome "Anselmo Ralph" ;
+    :anoNascimento 1981 ;
+    :pertenceAEditora :sony_pt ;
+    :pertenceAoGenero :Kizomba ;
+    :pertenceAoGenero :RB .
+
+:salvador_sobral a :ArtistaSolo, owl:NamedIndividual ;
+    :nome "Salvador Sobral" ;
+    :anoNascimento 1989 ;
+    :pertenceAEditora :valentim_de_carvalho ;
+    :pertenceAoGenero :Pop .
+
+:luisa_sobral a :ArtistaSolo, owl:NamedIndividual ;
+    :nome "Luísa Sobral" ;
+    :anoNascimento 1987 ;
+    :pertenceAEditora :valentim_de_carvalho ;
+    :pertenceAoGenero :Pop .
+
+:carlos_te a :ArtistaSolo, owl:NamedIndividual ;
+    :nome "Carlos Tê" ;
+    :anoNascimento 1955 ;
+    :pertenceAoGenero :Rock .
+
+:david_mourao_ferreira a :ArtistaSolo, owl:NamedIndividual ;
+    :nome "David Mourão-Ferreira" ;
+    :anoNascimento 1927 ;
+    :pertenceAoGenero :Fado .
+
+:ary_dos_santos a :ArtistaSolo, owl:NamedIndividual ;
+    :nome "José Carlos Ary dos Santos" ;
+    :anoNascimento 1937 ;
+    :pertenceAoGenero :Fado .
+
+:tim a :ArtistaSolo, owl:NamedIndividual ;
+    :nome "Tim" ;
+    :anoNascimento 1963 ;
+    :pertenceAoGenero :Rock .
+
+:kalu a :ArtistaSolo, owl:NamedIndividual ;
+    :nome "Kalu" ;
+    :anoNascimento 1962 ;
+    :pertenceAoGenero :Rock .
+
+:joao_cabeleira a :ArtistaSolo, owl:NamedIndividual ;
+    :nome "João Cabeleira" ;
+    :anoNascimento 1961 ;
+    :pertenceAoGenero :Rock .
+
+:ze_pedro a :ArtistaSolo, owl:NamedIndividual ;
+    :nome "Zé Pedro" ;
+    :anoNascimento 1956 ;
+    :pertenceAoGenero :Rock .
+
+:gui a :ArtistaSolo, owl:NamedIndividual ;
+    :nome "Gui" ;
+    :anoNascimento 1959 ;
+    :pertenceAoGenero :Rock .
+
+:rui_reininho a :ArtistaSolo, owl:NamedIndividual ;
+    :nome "Rui Reininho" ;
+    :anoNascimento 1957 ;
+    :pertenceAoGenero :Rock .
+
+:toli_cesar_machado a :ArtistaSolo, owl:NamedIndividual ;
+    :nome "Toli César Machado" ;
+    :anoNascimento 1957 ;
+    :pertenceAoGenero :Rock .
+
+:pedro_ayres_magalhaes a :ArtistaSolo, owl:NamedIndividual ;
+    :nome "Pedro Ayres Magalhães" ;
+    :anoNascimento 1959 ;
+    :pertenceAoGenero :Pop .
+
+:teresa_salgueiro a :ArtistaSolo, owl:NamedIndividual ;
+    :nome "Teresa Salgueiro" ;
+    :anoNascimento 1969 ;
+    :pertenceAoGenero :Pop .
+
+:rodrigo_leao a :ArtistaSolo, owl:NamedIndividual ;
+    :nome "Rodrigo Leão" ;
+    :anoNascimento 1964 ;
+    :pertenceAoGenero :Pop .
+
+:manuela_azevedo a :ArtistaSolo, owl:NamedIndividual ;
+    :nome "Manuela Azevedo" ;
+    :anoNascimento 1970 ;
+    :pertenceAoGenero :Pop ;
+    :pertenceAoGenero :Rock .
+
+:helder_goncalves a :ArtistaSolo, owl:NamedIndividual ;
+    :nome "Hélder Gonçalves" ;
+    :anoNascimento 1971 ;
+    :pertenceAoGenero :Pop ;
+    :pertenceAoGenero :Rock .
+
+:pacman a :ArtistaSolo, owl:NamedIndividual ;
+    :nome "Pac Man" ;
+    :anoNascimento 1973 ;
+    :pertenceAoGenero :HipHop .
+
+:virgul a :ArtistaSolo, owl:NamedIndividual ;
+    :nome "Virgul" ;
+    :anoNascimento 1977 ;
+    :pertenceAoGenero :HipHop .
+
+:jay_jay a :ArtistaSolo, owl:NamedIndividual ;
+    :nome "Jay Jay" ;
+    :anoNascimento 1976 ;
+    :pertenceAoGenero :HipHop .
+
+
+#################################################################
+#    Bandas
+#################################################################
+
+:xutos_e_pontapes a :Banda, owl:NamedIndividual ;
+    :nome "Xutos & Pontapés" ;
+    :anoFormacao 1978 ;
+    :pertenceAEditora :emi_portugal ;
+    :pertenceAoGenero :Rock ;
+    :temMembro :tim ;
+    :temMembro :kalu ;
+    :temMembro :joao_cabeleira ;
+    :temMembro :ze_pedro ;
+    :temMembro :gui .
+
+:gnr a :Banda, owl:NamedIndividual ;
+    :nome "GNR" ;
+    :anoFormacao 1981 ;
+    :pertenceAEditora :emi_portugal ;
+    :pertenceAoGenero :Rock ;
+    :temMembro :rui_reininho ;
+    :temMembro :toli_cesar_machado .
+
+:madredeus a :Banda, owl:NamedIndividual ;
+    :nome "Madredeus" ;
+    :anoFormacao 1985 ;
+    :pertenceAEditora :emi_portugal ;
+    :pertenceAoGenero :Pop ;
+    :pertenceAoGenero :Fado ;
+    :temMembro :pedro_ayres_magalhaes ;
+    :temMembro :teresa_salgueiro ;
+    :temMembro :rodrigo_leao .
+
+:cla a :Banda, owl:NamedIndividual ;
+    :nome "Clã" ;
+    :anoFormacao 1992 ;
+    :pertenceAEditora :emi_portugal ;
+    :pertenceAoGenero :Pop ;
+    :pertenceAoGenero :Rock ;
+    :temMembro :manuela_azevedo ;
+    :temMembro :helder_goncalves .
+
+:da_weasel a :Banda, owl:NamedIndividual ;
+    :nome "Da Weasel" ;
+    :anoFormacao 1993 ;
+    :pertenceAEditora :emi_portugal ;
+    :pertenceAoGenero :HipHop ;
+    :temMembro :pacman ;
+    :temMembro :jay_jay ;
+    :temMembro :virgul .
+
+:ornatos_violeta a :Banda, owl:NamedIndividual ;
+    :nome "Ornatos Violeta" ;
+    :anoFormacao 1991 ;
+    :pertenceAEditora :transformadores ;
+    :pertenceAoGenero :Rock .
+
+
+#################################################################
+#    Albuns
+#################################################################
+
+:amalia_no_olympia a :Album, owl:NamedIndividual ;
+    :nome "Amália no Olympia" ;
+    :anoLancamento 1957 ;
+    :pertenceAoGenero :Fado .
+:amalia_rodrigues :lancouAlbum :amalia_no_olympia .
+
+:transparente_album a :Album, owl:NamedIndividual ;
+    :nome "Transparente" ;
+    :anoLancamento 2005 ;
+    :pertenceAoGenero :Fado .
+:mariza :lancouAlbum :transparente_album .
+
+:um_homem_na_cidade a :Album, owl:NamedIndividual ;
+    :nome "Um Homem na Cidade" ;
+    :anoLancamento 1977 ;
+    :pertenceAoGenero :Fado .
+:carlos_do_carmo :lancouAlbum :um_homem_na_cidade .
+
+:cantigas_do_maio a :Album, owl:NamedIndividual ;
+    :nome "Cantigas do Maio" ;
+    :anoLancamento 1971 ;
+    :pertenceAoGenero :Intervencao .
+:jose_afonso :lancouAlbum :cantigas_do_maio .
+
+:por_este_rio_acima a :Album, owl:NamedIndividual ;
+    :nome "Por Este Rio Acima" ;
+    :anoLancamento 1982 ;
+    :pertenceAoGenero :Intervencao .
+:fausto :lancouAlbum :por_este_rio_acima .
+
+:ar_de_rock a :Album, owl:NamedIndividual ;
+    :nome "Ar de Rock" ;
+    :anoLancamento 1980 ;
+    :pertenceAoGenero :Rock .
+:rui_veloso :lancouAlbum :ar_de_rock .
+
+:circo_de_feras a :Album, owl:NamedIndividual ;
+    :nome "Circo de Feras" ;
+    :anoLancamento 1987 ;
+    :pertenceAoGenero :Rock .
+:xutos_e_pontapes :lancouAlbum :circo_de_feras .
+
+:album_88 a :Album, owl:NamedIndividual ;
+    :nome "88" ;
+    :anoLancamento 1988 ;
+    :pertenceAoGenero :Rock .
+:xutos_e_pontapes :lancouAlbum :album_88 .
+
+:independanca a :Album, owl:NamedIndividual ;
+    :nome "Independança" ;
+    :anoLancamento 1982 ;
+    :pertenceAoGenero :Rock .
+:gnr :lancouAlbum :independanca .
+
+:os_dias_da_madredeus a :Album, owl:NamedIndividual ;
+    :nome "Os Dias da Madredeus" ;
+    :anoLancamento 1987 ;
+    :pertenceAoGenero :Pop .
+:madredeus :lancouAlbum :os_dias_da_madredeus .
+
+:existir a :Album, owl:NamedIndividual ;
+    :nome "Existir" ;
+    :anoLancamento 1990 ;
+    :pertenceAoGenero :Pop .
+:madredeus :lancouAlbum :existir .
+
+:o_paraiso a :Album, owl:NamedIndividual ;
+    :nome "O Paraíso" ;
+    :anoLancamento 1997 ;
+    :pertenceAoGenero :Pop .
+:madredeus :lancouAlbum :o_paraiso .
+
+:redefinicoes a :Album, owl:NamedIndividual ;
+    :nome "Re-Definições" ;
+    :anoLancamento 2004 ;
+    :pertenceAoGenero :HipHop .
+:da_weasel :lancouAlbum :redefinicoes .
+
+:monstro a :Album, owl:NamedIndividual ;
+    :nome "O Monstro Precisa de Amigos" ;
+    :anoLancamento 1999 ;
+    :pertenceAoGenero :Rock .
+:ornatos_violeta :lancouAlbum :monstro .
+
+:cao a :Album, owl:NamedIndividual ;
+    :nome "Cão!" ;
+    :anoLancamento 1997 ;
+    :pertenceAoGenero :Rock .
+:ornatos_violeta :lancouAlbum :cao .
+
+:boss_ac_album a :Album, owl:NamedIndividual ;
+    :nome "Boss AC" ;
+    :anoLancamento 2003 ;
+    :pertenceAoGenero :HipHop .
+:boss_ac :lancouAlbum :boss_ac_album .
+
+
+#################################################################
+#    Musicas
+#################################################################
+
+:grandola_vila_morena a :Musica, owl:NamedIndividual ;
+    :nome "Grândola, Vila Morena" ;
+    :interpretadaPor :jose_afonso ;
+    :compostaPor :jose_afonso ;
+    :escritaPor :jose_afonso ;
+    :pertenceAoAlbum :cantigas_do_maio ;
+    :pertenceAoGenero :Intervencao .
+
+:barco_negro a :Musica, owl:NamedIndividual ;
+    :nome "Barco Negro" ;
+    :interpretadaPor :amalia_rodrigues ;
+    :escritaPor :david_mourao_ferreira ;
+    :pertenceAoAlbum :amalia_no_olympia ;
+    :pertenceAoGenero :Fado .
+
+:lagrima a :Musica, owl:NamedIndividual ;
+    :nome "Lágrima" ;
+    :interpretadaPor :amalia_rodrigues ;
+    :escritaPor :amalia_rodrigues ;
+    :pertenceAoGenero :Fado .
+
+:transparente_musica a :Musica, owl:NamedIndividual ;
+    :nome "Transparente" ;
+    :interpretadaPor :mariza ;
+    :pertenceAoAlbum :transparente_album ;
+    :pertenceAoGenero :Fado .
+
+:ha_uma_musica_do_povo a :Musica, owl:NamedIndividual ;
+    :nome "Há uma Música do Povo" ;
+    :interpretadaPor :mariza ;
+    :pertenceAoAlbum :transparente_album ;
+    :pertenceAoGenero :Fado .
+
+:lisboa_menina_e_moca a :Musica, owl:NamedIndividual ;
+    :nome "Lisboa Menina e Moça" ;
+    :interpretadaPor :carlos_do_carmo ;
+    :escritaPor :ary_dos_santos ;
+    :pertenceAoAlbum :um_homem_na_cidade ;
+    :pertenceAoGenero :Fado .
+
+:a_cantiga_e_uma_arma a :Musica, owl:NamedIndividual ;
+    :nome "A Cantiga é uma Arma" ;
+    :interpretadaPor :jose_mario_branco ;
+    :compostaPor :jose_mario_branco ;
+    :escritaPor :jose_mario_branco ;
+    :pertenceAoGenero :Intervencao .
+
+:chico_fininho a :Musica, owl:NamedIndividual ;
+    :nome "Chico Fininho" ;
+    :interpretadaPor :rui_veloso ;
+    :compostaPor :rui_veloso ;
+    :escritaPor :carlos_te ;
+    :pertenceAoAlbum :ar_de_rock ;
+    :pertenceAoGenero :Rock .
+
+:porto_sentido a :Musica, owl:NamedIndividual ;
+    :nome "Porto Sentido" ;
+    :interpretadaPor :rui_veloso ;
+    :compostaPor :rui_veloso ;
+    :escritaPor :carlos_te ;
+    :pertenceAoGenero :Rock .
+
+:a_minha_casinha a :Musica, owl:NamedIndividual ;
+    :nome "A Minha Casinha" ;
+    :interpretadaPor :xutos_e_pontapes ;
+    :pertenceAoAlbum :album_88 ;
+    :pertenceAoGenero :Rock .
+
+:circo_de_feras_musica a :Musica, owl:NamedIndividual ;
+    :nome "Circo de Feras" ;
+    :interpretadaPor :xutos_e_pontapes ;
+    :pertenceAoAlbum :circo_de_feras ;
+    :pertenceAoGenero :Rock .
+
+:dunas a :Musica, owl:NamedIndividual ;
+    :nome "Dunas" ;
+    :interpretadaPor :gnr ;
+    :pertenceAoGenero :Rock .
+
+:o_pastor a :Musica, owl:NamedIndividual ;
+    :nome "O Pastor" ;
+    :interpretadaPor :madredeus ;
+    :compostaPor :pedro_ayres_magalhaes ;
+    :pertenceAoAlbum :existir ;
+    :pertenceAoGenero :Pop .
+
+:haja_o_que_houver a :Musica, owl:NamedIndividual ;
+    :nome "Haja o Que Houver" ;
+    :interpretadaPor :madredeus ;
+    :compostaPor :pedro_ayres_magalhaes ;
+    :pertenceAoAlbum :o_paraiso ;
+    :pertenceAoGenero :Pop .
+
+:bellevue a :Musica, owl:NamedIndividual ;
+    :nome "Bellevue" ;
+    :interpretadaPor :ornatos_violeta ;
+    :pertenceAoAlbum :cao ;
+    :pertenceAoGenero :Rock .
+
+:amar_pelos_dois a :Musica, owl:NamedIndividual ;
+    :nome "Amar Pelos Dois" ;
+    :interpretadaPor :salvador_sobral ;
+    :compostaPor :luisa_sobral ;
+    :escritaPor :luisa_sobral ;
+    :pertenceAoGenero :Pop .
+
+:mona_ki_ngi_xica a :Musica, owl:NamedIndividual ;
+    :nome "Mona Ki Ngi Xica" ;
+    :interpretadaPor :bonga ;
+    :pertenceAoGenero :Kizomba .
+

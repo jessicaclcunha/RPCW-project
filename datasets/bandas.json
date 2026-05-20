@@ -1,0 +1,52 @@
+{
+  "bandas": [
+    {
+      "id": "xutos_e_pontapes",
+      "nome": "Xutos & Pontapés",
+      "anoFormacao": 1978,
+      "generos": ["Rock"],
+      "pertenceAEditora": "emi_portugal",
+      "temMembro": ["tim", "kalu", "joao_cabeleira", "ze_pedro", "gui"]
+    },
+    {
+      "id": "gnr",
+      "nome": "GNR",
+      "anoFormacao": 1981,
+      "generos": ["Rock"],
+      "pertenceAEditora": "emi_portugal",
+      "temMembro": ["rui_reininho", "toli_cesar_machado"]
+    },
+    {
+      "id": "madredeus",
+      "nome": "Madredeus",
+      "anoFormacao": 1985,
+      "generos": ["Pop", "Fado"],
+      "pertenceAEditora": "emi_portugal",
+      "temMembro": ["pedro_ayres_magalhaes", "teresa_salgueiro", "rodrigo_leao"]
+    },
+    {
+      "id": "cla",
+      "nome": "Clã",
+      "anoFormacao": 1992,
+      "generos": ["Pop", "Rock"],
+      "pertenceAEditora": "emi_portugal",
+      "temMembro": ["manuela_azevedo", "helder_goncalves"]
+    },
+    {
+      "id": "da_weasel",
+      "nome": "Da Weasel",
+      "anoFormacao": 1993,
+      "generos": ["HipHop"],
+      "pertenceAEditora": "emi_portugal",
+      "temMembro": ["pacman", "jay_jay", "virgul"]
+    },
+    {
+      "id": "ornatos_violeta",
+      "nome": "Ornatos Violeta",
+      "anoFormacao": 1991,
+      "generos": ["Rock"],
+      "pertenceAEditora": "transformadores",
+      "temMembro": []
+    }
+  ]
+}

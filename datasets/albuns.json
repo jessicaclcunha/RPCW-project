@@ -1,0 +1,20 @@
+{
+  "albuns": [
+    { "id": "amalia_no_olympia", "nome": "Amália no Olympia", "anoLancamento": 1957, "lancadoPor": "amalia_rodrigues", "generos": ["Fado"] },
+    { "id": "transparente_album", "nome": "Transparente", "anoLancamento": 2005, "lancadoPor": "mariza", "generos": ["Fado"] },
+    { "id": "um_homem_na_cidade", "nome": "Um Homem na Cidade", "anoLancamento": 1977, "lancadoPor": "carlos_do_carmo", "generos": ["Fado"] },
+    { "id": "cantigas_do_maio", "nome": "Cantigas do Maio", "anoLancamento": 1971, "lancadoPor": "jose_afonso", "generos": ["Intervencao"] },
+    { "id": "por_este_rio_acima", "nome": "Por Este Rio Acima", "anoLancamento": 1982, "lancadoPor": "fausto", "generos": ["Intervencao"] },
+    { "id": "ar_de_rock", "nome": "Ar de Rock", "anoLancamento": 1980, "lancadoPor": "rui_veloso", "generos": ["Rock"] },
+    { "id": "circo_de_feras", "nome": "Circo de Feras", "anoLancamento": 1987, "lancadoPor": "xutos_e_pontapes", "generos": ["Rock"] },
+    { "id": "album_88", "nome": "88", "anoLancamento": 1988, "lancadoPor": "xutos_e_pontapes", "generos": ["Rock"] },
+    { "id": "independanca", "nome": "Independança", "anoLancamento": 1982, "lancadoPor": "gnr", "generos": ["Rock"] },
+    { "id": "os_dias_da_madredeus", "nome": "Os Dias da Madredeus", "anoLancamento": 1987, "lancadoPor": "madredeus", "generos": ["Pop"] },
+    { "id": "existir", "nome": "Existir", "anoLancamento": 1990, "lancadoPor": "madredeus", "generos": ["Pop"] },
+    { "id": "o_paraiso", "nome": "O Paraíso", "anoLancamento": 1997, "lancadoPor": "madredeus", "generos": ["Pop"] },
+    { "id": "redefinicoes", "nome": "Re-Definições", "anoLancamento": 2004, "lancadoPor": "da_weasel", "generos": ["HipHop"] },
+    { "id": "monstro", "nome": "O Monstro Precisa de Amigos", "anoLancamento": 1999, "lancadoPor": "ornatos_violeta", "generos": ["Rock"] },
+    { "id": "cao", "nome": "Cão!", "anoLancamento": 1997, "lancadoPor": "ornatos_violeta", "generos": ["Rock"] },
+    { "id": "boss_ac_album", "nome": "Boss AC", "anoLancamento": 2003, "lancadoPor": "boss_ac", "generos": ["HipHop"] }
+  ]
+}

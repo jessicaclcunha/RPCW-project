@@ -12,28 +12,32 @@
 #    Object Properties
 #################################################################
 
-###  http://rpcw.di.uminho.pt/2026/music-ontology#eFaixaDe
-:eFaixaDe rdf:type owl:ObjectProperty ;
-          owl:inverseOf :temFaixa .
+###  http://rpcw.di.uminho.pt/2026/music-ontology/compostaPor
+:compostaPor rdf:type owl:ObjectProperty ;
+             rdfs:domain :Musica ;
+             rdfs:range :Artista .
 
 
-###  http://rpcw.di.uminho.pt/2026/music-ontology/colaborouCom
-:colaborouCom rdf:type owl:ObjectProperty ,
-                       owl:SymmetricProperty ;
-              rdfs:domain :Artista ;
-              rdfs:range :Artista .
+###  http://rpcw.di.uminho.pt/2026/music-ontology/contemMusica
+:contemMusica rdf:type owl:ObjectProperty ;
+              owl:inverseOf :pertenceAoAlbum .
 
 
-###  http://rpcw.di.uminho.pt/2026/music-ontology/decorreuEm
-:decorreuEm rdf:type owl:ObjectProperty ;
-            rdfs:domain :Concerto ;
-            rdfs:range :Local .
+###  http://rpcw.di.uminho.pt/2026/music-ontology/escritaPor
+:escritaPor rdf:type owl:ObjectProperty ;
+            rdfs:domain :Musica ;
+            rdfs:range :Artista .
 
 
-###  http://rpcw.di.uminho.pt/2026/music-ontology/editadoPor
-:editadoPor rdf:type owl:ObjectProperty ;
-            rdfs:domain :Album ;
-            rdfs:range :Editora .
+###  http://rpcw.di.uminho.pt/2026/music-ontology/interpretadaPor
+:interpretadaPor rdf:type owl:ObjectProperty ;
+                 owl:inverseOf :interpretou ;
+                 rdfs:domain :Musica ;
+                 rdfs:range :Artista .
+
+
+###  http://rpcw.di.uminho.pt/2026/music-ontology/interpretou
+:interpretou rdf:type owl:ObjectProperty .
 
 
 ###  http://rpcw.di.uminho.pt/2026/music-ontology/lancouAlbum
@@ -44,51 +48,36 @@
 
 ###  http://rpcw.di.uminho.pt/2026/music-ontology/membroDe
 :membroDe rdf:type owl:ObjectProperty ;
-          owl:inverseOf :temMembro ;
-          rdfs:domain :ArtistaSolo ;
-          rdfs:range :Banda .
+          owl:inverseOf :temMembro .
 
 
-###  http://rpcw.di.uminho.pt/2026/music-ontology/participouEm
-:participouEm rdf:type owl:ObjectProperty ;
-              rdfs:domain :Artista ;
-              rdfs:range :Concerto .
+###  http://rpcw.di.uminho.pt/2026/music-ontology/pertenceAEditora
+:pertenceAEditora rdf:type owl:ObjectProperty ;
+                  rdfs:domain :Artista ;
+                  rdfs:range :Editora .
+
+
+###  http://rpcw.di.uminho.pt/2026/music-ontology/pertenceAoAlbum
+:pertenceAoAlbum rdf:type owl:ObjectProperty ;
+                 rdfs:domain :Musica ;
+                 rdfs:range :Album .
 
 
 ###  http://rpcw.di.uminho.pt/2026/music-ontology/pertenceAoGenero
 :pertenceAoGenero rdf:type owl:ObjectProperty ;
                   rdfs:domain [ rdf:type owl:Class ;
                                 owl:unionOf ( :Album
-                                              :Música
+                                              :Artista
+                                              :Musica
                                             )
                               ] ;
                   rdfs:range :Genero .
 
 
-###  http://rpcw.di.uminho.pt/2026/music-ontology/recebeuPremio
-:recebeuPremio rdf:type owl:ObjectProperty ;
-               rdfs:domain [ rdf:type owl:Class ;
-                             owl:unionOf ( :Album
-                                           :Artista
-                                         )
-                           ] ;
-               rdfs:range :Premio .
-
-
-###  http://rpcw.di.uminho.pt/2026/music-ontology/temFaixa
-:temFaixa rdf:type owl:ObjectProperty ;
-          rdfs:domain :Album ;
-          rdfs:range :Faixa .
-
-
 ###  http://rpcw.di.uminho.pt/2026/music-ontology/temMembro
-:temMembro rdf:type owl:ObjectProperty .
-
-
-###  http://rpcw.di.uminho.pt/2026/music-ontology/tocaInstrumento
-:tocaInstrumento rdf:type owl:ObjectProperty ;
-                 rdfs:domain :ArtistaSolo ;
-                 rdfs:range :Instrumento .
+:temMembro rdf:type owl:ObjectProperty ;
+           rdfs:domain :Banda ;
+           rdfs:range :ArtistaSolo .
 
 
 #################################################################
@@ -103,7 +92,6 @@
 
 ###  http://rpcw.di.uminho.pt/2026/music-ontology/anoLancamento
 :anoLancamento rdf:type owl:DatatypeProperty ;
-               rdfs:domain :Album ;
                rdfs:range xsd:integer .
 
 
@@ -113,40 +101,9 @@
                rdfs:range xsd:integer .
 
 
-###  http://rpcw.di.uminho.pt/2026/music-ontology/cidade
-:cidade rdf:type owl:DatatypeProperty ;
-        rdfs:domain [ rdf:type owl:Class ;
-                      owl:unionOf ( :ArtistaSolo
-                                    :Local
-                                  )
-                    ] ;
-        rdfs:range xsd:string .
-
-
-###  http://rpcw.di.uminho.pt/2026/music-ontology/descricao
-:descricao rdf:type owl:DatatypeProperty ;
-           rdfs:range xsd:string .
-
-
-###  http://rpcw.di.uminho.pt/2026/music-ontology/duracao
-:duracao rdf:type owl:DatatypeProperty ;
-         rdfs:domain :Faixa ;
-         rdfs:range xsd:string .
-
-
 ###  http://rpcw.di.uminho.pt/2026/music-ontology/nome
 :nome rdf:type owl:DatatypeProperty ;
       rdfs:domain owl:Thing ;
-      rdfs:range xsd:string .
-
-
-###  http://rpcw.di.uminho.pt/2026/music-ontology/pais
-:pais rdf:type owl:DatatypeProperty ;
-      rdfs:domain [ rdf:type owl:Class ;
-                    owl:unionOf ( :ArtistaSolo
-                                  :Local
-                                )
-                  ] ;
       rdfs:range xsd:string .
 
 
@@ -155,16 +112,7 @@
 #################################################################
 
 ###  http://rpcw.di.uminho.pt/2026/music-ontology/Album
-:Album rdf:type owl:Class ;
-       rdfs:subClassOf [ rdf:type owl:Restriction ;
-                         owl:onProperty :temFaixa ;
-                         owl:someValuesFrom :Faixa
-                       ] ,
-                       [ rdf:type owl:Restriction ;
-                         owl:onProperty :anoLancamento ;
-                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                         owl:onDataRange xsd:integer
-                       ] .
+:Album rdf:type owl:Class .
 
 
 ###  http://rpcw.di.uminho.pt/2026/music-ontology/Artista
@@ -173,67 +121,65 @@
 
 ###  http://rpcw.di.uminho.pt/2026/music-ontology/ArtistaSolo
 :ArtistaSolo rdf:type owl:Class ;
-             rdfs:subClassOf :Artista ,
-                             [ rdf:type owl:Restriction ;
-                               owl:onProperty :nome ;
-                               owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                               owl:onDataRange xsd:string
-                             ] .
+             rdfs:subClassOf :Artista ;
+             owl:disjointWith :Banda .
 
 
 ###  http://rpcw.di.uminho.pt/2026/music-ontology/Banda
 :Banda rdf:type owl:Class ;
-       rdfs:subClassOf :Artista ,
-                       [ rdf:type owl:Restriction ;
-                         owl:onProperty :anoFormacao ;
-                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                         owl:onDataRange xsd:integer
-                       ] .
-
-
-###  http://rpcw.di.uminho.pt/2026/music-ontology/Concerto
-:Concerto rdf:type owl:Class ;
-          rdfs:subClassOf [ rdf:type owl:Restriction ;
-                            owl:onProperty :decorreuEm ;
-                            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                            owl:onClass :Local
-                          ] .
+       rdfs:subClassOf :Artista .
 
 
 ###  http://rpcw.di.uminho.pt/2026/music-ontology/Editora
 :Editora rdf:type owl:Class .
 
 
-###  http://rpcw.di.uminho.pt/2026/music-ontology/Faixa
-:Faixa rdf:type owl:Class .
+###  http://rpcw.di.uminho.pt/2026/music-ontology/Fado
+:Fado rdf:type owl:Class ;
+      rdfs:subClassOf :Genero .
 
 
 ###  http://rpcw.di.uminho.pt/2026/music-ontology/Genero
 :Genero rdf:type owl:Class .
 
 
-###  http://rpcw.di.uminho.pt/2026/music-ontology/Instrumento
-:Instrumento rdf:type owl:Class .
+###  http://rpcw.di.uminho.pt/2026/music-ontology/HipHop
+:HipHop rdf:type owl:Class ;
+        rdfs:subClassOf :Genero .
 
 
-###  http://rpcw.di.uminho.pt/2026/music-ontology/Local
-:Local rdf:type owl:Class ;
-       rdfs:subClassOf [ rdf:type owl:Restriction ;
-                         owl:onProperty :cidade ;
-                         owl:someValuesFrom xsd:string
-                       ] ,
-                       [ rdf:type owl:Restriction ;
-                         owl:onProperty :pais ;
-                         owl:someValuesFrom xsd:string
-                       ] .
+###  http://rpcw.di.uminho.pt/2026/music-ontology/Intervencao
+:Intervencao rdf:type owl:Class ;
+             rdfs:subClassOf :Genero .
 
 
-###  http://rpcw.di.uminho.pt/2026/music-ontology/Música
-:Música rdf:type owl:Class .
+###  http://rpcw.di.uminho.pt/2026/music-ontology/Kizomba
+:Kizomba rdf:type owl:Class ;
+         rdfs:subClassOf :Genero .
 
 
-###  http://rpcw.di.uminho.pt/2026/music-ontology/Premio
-:Premio rdf:type owl:Class .
+###  http://rpcw.di.uminho.pt/2026/music-ontology/Musica
+:Musica rdf:type owl:Class .
+
+
+###  http://rpcw.di.uminho.pt/2026/music-ontology/Pimba
+:Pimba rdf:type owl:Class ;
+       rdfs:subClassOf :Genero .
+
+
+###  http://rpcw.di.uminho.pt/2026/music-ontology/Pop
+:Pop rdf:type owl:Class ;
+     rdfs:subClassOf :Genero .
+
+
+###  http://rpcw.di.uminho.pt/2026/music-ontology/RB
+:RB rdf:type owl:Class ;
+    rdfs:subClassOf :Genero .
+
+
+###  http://rpcw.di.uminho.pt/2026/music-ontology/Rock
+:Rock rdf:type owl:Class ;
+      rdfs:subClassOf :Genero .
 
 
 ###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
