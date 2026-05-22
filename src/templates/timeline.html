@@ -3,20 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Linha do Tempo — Música Portuguesa</title>
+  <title>Linha do Tempo — Arquivo</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .tl-filter-bar { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 2rem; justify-content: center; }
+    .tl-group { margin-bottom: 2.5rem; position: relative; padding-left: 2rem; }
+    .tl-group::before { content: ''; position: absolute; left: 7px; top: 0; bottom: 0; width: 2px; background: var(--border); }
+    .tl-year-badge { position: absolute; left: 0; top: 0; width: 16px; height: 16px; border-radius: 50%; background: var(--gold); border: 3px solid var(--bg); box-shadow: 0 0 0 3px var(--border); }
+    .tl-year-title { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--gold-light); font-weight: 900; margin-bottom: 0.8rem; }
+    .tl-events-wrap { display: flex; flex-direction: column; gap: 0.75rem; }
+    .tl-event { background: var(--surface); border: 1px solid var(--border); padding: 1rem 1.2rem; border-radius: var(--radius); display: flex; justify-content: space-between; align-items: center; }
+    .tl-event-type { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; padding: 0.2rem 0.5rem; border-radius: 4px; }
+    .type-nascimento { background: rgba(232,185,90,0.12); color: var(--gold-light); }
+    .type-formacao { background: rgba(155,35,53,0.15); color: #ff5268; }
+    .type-album { background: rgba(42,117,211,0.12); color: #5aa0ff; }
+    .type-premio { background: rgba(34,197,94,0.12); color: #4ade80; }
+  </style>
 </head>
 <body>
+
   <nav class="navbar">
-    <a href="/" class="navbar-brand"><span class="dot">♩</span> Música Portuguesa</a>
+    <a href="/" class="navbar-brand">
+      <i class="fa-solid fa-record-vinyl text-gold"></i> Arquivo da Música Portuguesa
+    </a>
     <div class="navbar-links">
-      <a href="/"             class="nav-link">Artistas</a>
-      <a href="/generos"      class="nav-link">Géneros</a>
-      <a href="/timeline"     class="nav-link active">Linha do Tempo</a>
-      <a href="/colaboracoes" class="nav-link">Colaborações</a>
-      <a href="/premios"      class="nav-link">Prémios</a>
-      <a href="/concertos"    class="nav-link">Concertos</a>
-      <a href="/estatisticas" class="nav-link">Estatísticas</a>
+      <a href="/" class="nav-link"><i class="fa-solid fa-users"></i> Artistas</a>
+      <a href="/generos" class="nav-link"><i class="fa-solid fa-guitar"></i> Géneros</a>
+      <a href="/timeline" class="nav-link active"><i class="fa-solid fa-timeline"></i> Linha do Tempo</a>
+      <a href="/colaboracoes" class="nav-link"><i class="fa-solid fa-circle-nodes"></i> Conexões</a>
     </div>
   </nav>
 
@@ -24,100 +39,60 @@
     <div class="page-hero">
       <h1>Linha do <em>Tempo</em></h1>
       <hr class="hero-rule">
-      <p>História cronológica da música portuguesa — nascimentos, formações de bandas, álbuns e prémios.</p>
+      <p>Marcos cronológicos históricos agregados a partir do conhecimento semântico da ontologia.</p>
     </div>
 
-    <!-- Filtros de tipo -->
-    <div class="filter-bar" style="margin-bottom:2rem">
-      <button class="btn tl-filter active" data-tipo="all">Tudo</button>
-      <button class="btn btn-ghost tl-filter" data-tipo="Nascimento">🎂 Nascimentos</button>
-      <button class="btn btn-ghost tl-filter" data-tipo="Formação">🎸 Bandas</button>
-      <button class="btn btn-ghost tl-filter" data-tipo="Álbum">💿 Álbuns</button>
-      <button class="btn btn-ghost tl-filter" data-tipo="Prémio">🏆 Prémios</button>
-      <input type="number" id="tl-ano-de"  placeholder="Desde ano" style="width:120px;background:var(--surface);border:1px solid var(--border);color:var(--text);padding:.5rem .8rem;border-radius:7px;font-size:.9rem">
-      <input type="number" id="tl-ano-ate" placeholder="Até ano"   style="width:120px;background:var(--surface);border:1px solid var(--border);color:var(--text);padding:.5rem .8rem;border-radius:7px;font-size:.9rem">
+    <div class="tl-filter-bar">
+      <button class="btn btn-primary tl-filter-btn active" data-filter="all">Todos</button>
+      <button class="btn btn-ghost tl-filter-btn" data-filter="Nascimento">Nascimentos</button>
+      <button class="btn btn-ghost tl-filter-btn" data-filter="Formação">Formações</button>
+      <button class="btn btn-ghost tl-filter-btn" data-filter="Álbum">Álbuns</button>
+      <button class="btn btn-ghost tl-filter-btn" data-filter="Prémio">Prémios</button>
     </div>
 
-    <div id="tl-count" class="section-divider">
-      <span id="tl-count-text">{{ eventos|length }} eventos</span>
-    </div>
-
-    <div class="timeline-wrap" id="timeline-container">
-      {% set ns = namespace(ano_atual="") %}
-      {% for e in eventos %}
-        {% if e.ano != ns.ano_atual %}
-          {% if ns.ano_atual != "" %}</div></div>{% endif %}
-          {% set ns.ano_atual = e.ano %}
-          <div class="tl-year-group" data-ano="{{ e.ano }}">
-          <div class="tl-year">{{ e.ano }}</div>
-          <div class="tl-events">
-        {% endif %}
-        <div class="tl-event" data-tipo="{{ e.tipo }}" data-ano="{{ e.ano }}">
-          <span class="tl-icon">
-            {% if e.tipo == "Nascimento" %}🎂
-            {% elif e.tipo == "Formação" %}🎸
-            {% elif e.tipo == "Álbum" %}💿
-            {% elif e.tipo == "Prémio" %}🏆
-            {% else %}📌{% endif %}
-          </span>
-          <span class="tl-tipo tl-{{ e.tipo|lower|replace(' ','') }}">{{ e.tipo }}</span>
-          <span style="flex:1;font-size:.92rem;color:var(--cream)">{{ e.nome }}</span>
+    <div id="tl-container">
+      {% for grupo in eventos_por_ano %}
+      <div class="tl-group" data-ano="{{ grupo.ano }}">
+        <div class="tl-year-badge"></div>
+        <div class="tl-year-title">{{ grupo.ano }}</div>
+        <div class="tl-events-wrap">
+          {% for ev in grupo.lista %}
+          <div class="tl-event" data-tipo="{{ ev.tipo }}">
+            <div>
+              <span class="tl-event-type type-{% if ev.tipo == 'Nascimento' %}nascimento{% elif ev.tipo == 'Formação' %}formacao{% elif ev.tipo == 'Álbum' %}album{% else %}premio{% endif %}">
+                {{ ev.tipo }}
+              </span>
+              <span style="font-weight: 500; color: var(--cream); margin-left: .5rem;">{{ ev.nome }}</span>
+            </div>
+            <a href="{% if ev.tipo == 'Álbum' %}/album/{{ ev.id }}{% else %}/artista/{{ ev.id }}{% endif %}" class="btn btn-ghost" style="font-size: 0.8rem; padding: 0.4rem 0.8rem;">Explorar →</a>
+          </div>
+          {% endfor %}
         </div>
+      </div>
       {% endfor %}
-      {% if ns.ano_atual != "" %}</div></div>{% endif %}
-    </div>
-
-    <div id="tl-empty" style="display:none" class="empty-state">
-      <div class="icon">📅</div>
-      <p>Nenhum evento para este filtro.</p>
     </div>
   </main>
 
   <script>
-    const filtros = document.querySelectorAll('.tl-filter');
+    const filtros = document.querySelectorAll('.tl-filter-btn');
     const eventos = document.querySelectorAll('.tl-event');
-    const grupos  = document.querySelectorAll('.tl-year-group');
-    const countEl = document.getElementById('tl-count-text');
-    const emptyEl = document.getElementById('tl-empty');
-    const anoDeEl = document.getElementById('tl-ano-de');
-    const anoAteEl= document.getElementById('tl-ano-ate');
-
-    let tipoAtivo = 'all';
-
-    function aplicarFiltros() {
-      const anoDe  = anoDeEl.value  ? parseInt(anoDeEl.value)  : 0;
-      const anoAte = anoAteEl.value ? parseInt(anoAteEl.value) : 9999;
-      let visíveis = 0;
-
-      eventos.forEach(ev => {
-        const tipoOk = tipoAtivo === 'all' || ev.dataset.tipo === tipoAtivo;
-        const ano    = parseInt(ev.dataset.ano);
-        const anoOk  = ano >= anoDe && ano <= anoAte;
-        ev.style.display = (tipoOk && anoOk) ? '' : 'none';
-        if (tipoOk && anoOk) visíveis++;
-      });
-
-      grupos.forEach(g => {
-        const temVisivel = Array.from(g.querySelectorAll('.tl-event')).some(e => e.style.display !== 'none');
-        g.style.display = temVisivel ? '' : 'none';
-      });
-
-      countEl.textContent = visíveis + ' evento' + (visíveis !== 1 ? 's' : '');
-      emptyEl.style.display = visíveis === 0 ? 'block' : 'none';
-    }
+    const grupos  = document.querySelectorAll('.tl-group');
 
     filtros.forEach(btn => {
       btn.addEventListener('click', () => {
-        filtros.forEach(b => { b.classList.remove('active'); b.classList.add('btn-ghost'); });
-        btn.classList.add('active');
-        btn.classList.remove('btn-ghost');
-        tipoAtivo = btn.dataset.tipo;
-        aplicarFiltros();
+        filtros.forEach(b => { b.classList.remove('btn-primary'); b.classList.add('btn-ghost'); });
+        btn.classList.remove('btn-ghost'); btn.classList.add('btn-primary');
+
+        const filter = btn.dataset.filter;
+        eventos.forEach(ev => {
+          ev.style.display = (filter === 'all' || ev.dataset.tipo === filter) ? '' : 'none';
+        });
+        grupos.forEach(g => {
+          const visiveis = Array.from(g.querySelectorAll('.tl-event')).some(e => e.style.display !== 'none');
+          g.style.display = visiveis ? '' : 'none';
+        });
       });
     });
-
-    anoDeEl.addEventListener('input', aplicarFiltros);
-    anoAteEl.addEventListener('input', aplicarFiltros);
   </script>
 </body>
 </html>

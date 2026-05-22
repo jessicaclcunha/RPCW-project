@@ -5,152 +5,83 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Arquivo da Música Portuguesa</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
   <nav class="navbar">
     <a href="/" class="navbar-brand">
-      <span class="dot">♩</span> Música Portuguesa
+      <i class="fa-solid fa-record-vinyl text-gold"></i> Arquivo da Música Portuguesa
     </a>
     <div class="navbar-links">
-      <a href="/"             class="nav-link active">Artistas</a>
-      <a href="/generos"      class="nav-link">Géneros</a>
-      <a href="/timeline"     class="nav-link">Linha do Tempo</a>
-      <a href="/colaboracoes" class="nav-link">Colaborações</a>
-      <a href="/premios"      class="nav-link">Prémios</a>
-      <a href="/concertos"    class="nav-link">Concertos</a>
-      <a href="/estatisticas" class="nav-link">Estatísticas</a>
-      <a href="/pesquisa"     class="nav-link-pill">🔍 Pesquisa</a>
+      <a href="/" class="nav-link active"><i class="fa-solid fa-users"></i> Artistas</a>
+      <a href="/generos" class="nav-link"><i class="fa-solid fa-guitar"></i> Géneros</a>
+      <a href="/timeline" class="nav-link"><i class="fa-solid fa-timeline"></i> Linha do Tempo</a>
+      <a href="/colaboracoes" class="nav-link"><i class="fa-solid fa-circle-nodes"></i> Conexões</a>
     </div>
   </nav>
 
   <main class="page">
-
     <header class="page-hero">
       <h1>Arquivo da <em>Música Portuguesa</em></h1>
-      <p>Explora o catálogo de artistas, bandas, álbuns, músicas, prémios e concertos do nosso património musical.</p>
+      <p>Património e Conhecimento Web Semântico sobre os maiores vultos da nossa história musical.</p>
       <hr class="hero-rule">
     </header>
 
-    {% if stats %}
-    <div class="stats-row" style="grid-template-columns: repeat(6,1fr)">
-      <div class="stat-card">
-        <div class="stat-num">{{ stats.solos }}</div>
-        <div class="stat-label">Artistas Solo</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-num">{{ stats.bandas }}</div>
-        <div class="stat-label">Bandas</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-num">{{ stats.albuns }}</div>
-        <div class="stat-label">Álbuns</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-num">{{ stats.musicas }}</div>
-        <div class="stat-label">Músicas</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-num">{{ stats.premios }}</div>
-        <div class="stat-label">Prémios</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-num">{{ stats.concertos }}</div>
-        <div class="stat-label">Concertos</div>
-      </div>
-    </div>
-    {% endif %}
-
-    <!-- Formulário de adição -->
-    <div class="form-container">
-      <h2>➕ Adicionar Novo Artista / Banda</h2>
-      <form action="/artista/adicionar" method="POST">
-        <div class="form-grid">
-          <input type="text" name="nome" placeholder="Nome do artista ou banda" required>
-          <select name="tipo">
-            <option value="ArtistaSolo">Artista Solo</option>
-            <option value="Banda">Banda</option>
-          </select>
-          <input type="number" name="ano" placeholder="Ano nasc. / formação" min="1800" max="2030">
-          <select name="genero">
-            <option value="">Género (opcional)</option>
-            {% for g in generos %}
-              <option value="{{ g.id }}">{{ g.nome }}</option>
-            {% endfor %}
-          </select>
-          <select name="editora">
-            <option value="">Editora (opcional)</option>
-            {% for e in editoras %}
-              <option value="{{ e.id }}">{{ e.nome }}</option>
-            {% endfor %}
-          </select>
-          <button type="submit" class="btn">Gravar</button>
-        </div>
-      </form>
+    <div class="stats-grid">
+      <div class="stat-card"><div class="stat-num">{{ stats.solos }}</div><div class="stat-label">Artistas Solo</div></div>
+      <div class="stat-card"><div class="stat-num">{{ stats.bandas }}</div><div class="stat-label">Bandas</div></div>
+      <div class="stat-card"><div class="stat-num">{{ stats.albuns }}</div><div class="stat-label">Álbuns</div></div>
+      <div class="stat-card"><div class="stat-num">{{ stats.musicas }}</div><div class="stat-label">Músicas</div></div>
+      <div class="stat-card"><div class="stat-num">{{ stats.premios }}</div><div class="stat-label">Prémios</div></div>
+      <div class="stat-card"><div class="stat-num">{{ stats.concertos }}</div><div class="stat-label">Concertos</div></div>
     </div>
 
-    <!-- Pesquisa e filtros avançados -->
-    <form action="/" method="GET">
-      <div class="filter-bar">
-        <input type="text" name="q" placeholder="🔍  Pesquisar por nome…" value="{{ busca }}" class="search-input">
-        <select name="genero" class="filter-select">
-          <option value="">Todos os géneros</option>
-          {% for g in generos %}
-            <option value="{{ g.id }}" {% if filtro_genero == g.id %}selected{% endif %}>{{ g.nome }}</option>
-          {% endfor %}
-        </select>
-        <select name="tipo" class="filter-select">
-          <option value=""    {% if filtro_tipo == '' %}selected{% endif %}>Solo + Banda</option>
-          <option value="Solo"  {% if filtro_tipo == 'Solo' %}selected{% endif %}>Artista Solo</option>
-          <option value="Banda" {% if filtro_tipo == 'Banda' %}selected{% endif %}>Banda</option>
-        </select>
-        <select name="editora" class="filter-select">
-          <option value="">Todas as editoras</option>
-          {% for e in editoras %}
-            <option value="{{ e.id }}" {% if filtro_editora == e.id %}selected{% endif %}>{{ e.nome }}</option>
-          {% endfor %}
-        </select>
-        <input type="number" name="ano_de"  placeholder="Ano desde" value="{{ filtro_ano_de }}"  class="filter-select" style="max-width:110px">
-        <input type="number" name="ano_ate" placeholder="Ano até"   value="{{ filtro_ano_ate }}" class="filter-select" style="max-width:110px">
-        <button type="submit" class="btn">Filtrar</button>
-        {% if busca or filtro_genero or filtro_tipo or filtro_editora or filtro_ano_de or filtro_ano_ate %}
-          <a href="/" class="btn btn-ghost">Limpar</a>
-        {% endif %}
-      </div>
+    <div class="section-divider"><span>Filtrar Catálogo</span></div>
+    <form method="GET" action="/" class="filter-box">
+      <input type="text" name="q" value="{{ busca }}" placeholder="Pesquise por artista..." class="search-input" style="flex: 2;">
+      
+      <select name="genero" class="form-control" style="flex:1;">
+        <option value="">Todos os Géneros</option>
+        {% for g in generos %}
+          <option value="{{ g.id }}" {% if filtro_genero == g.id %}selected{% endif %}>{{ g.nome }}</option>
+        {% endfor %}
+      </select>
+
+      <select name="tipo" class="form-control" style="flex:1;">
+        <option value="">Todos os Tipos</option>
+        <option value="Solo" {% if filtro_tipo == 'Solo' %}selected{% endif %}>Solo</option>
+        <option value="Banda" {% if filtro_tipo == 'Banda' %}selected{% endif %}>Banda</option>
+      </select>
+
+      <button type="submit" class="btn btn-primary"><i class="fa-solid fa-filter"></i> Filtrar</button>
+      {% if busca or filtro_genero or filtro_tipo %}
+        <a href="/" class="btn btn-ghost">Limpar</a>
+      {% endif %}
     </form>
-
-    <div class="section-divider">
-      <span>
-        {{ artistas|length }} resultado{% if artistas|length != 1 %}s{% endif %}
-        {% if busca %} para "{{ busca }}"{% endif %}
-        {% if filtro_genero %} · {{ filtro_genero }}{% endif %}
-        {% if filtro_tipo %} · {{ filtro_tipo }}{% endif %}
-        {% if filtro_editora %} · {{ filtro_editora }}{% endif %}
-      </span>
-    </div>
 
     {% if artistas %}
     <table class="artist-table">
       <thead>
         <tr>
-          <th>Nome</th>
-          <th>Tipo</th>
-          <th>Ações</th>
+          <th>Nome do Artista / Banda</th>
+          <th>Classificação</th>
+          <th style="text-align: right;">Ações</th>
         </tr>
       </thead>
       <tbody>
         {% for a in artistas %}
         <tr>
-          <td class="artist-name">{{ a.nome }}</td>
+          <td style="font-size:1.1rem; font-weight:600; color:var(--cream);">{{ a.nome }}</td>
           <td>
             {% if a.tipo == "Solo" %}
-              <span class="badge badge-solo">Solo</span>
+              <span class="badge badge-solo"><i class="fa-solid fa-user"></i> Solo</span>
             {% else %}
-              <span class="badge badge-banda">Banda</span>
+              <span class="badge badge-banda"><i class="fa-solid fa-users"></i> Banda</span>
             {% endif %}
           </td>
-          <td>
-            <a href="/artista/{{ a.id }}" class="detail-link">Ver perfil →</a>
+          <td style="text-align: right;">
+            <a href="/artista/{{ a.id }}" class="btn btn-ghost" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;">Ver Perfil →</a>
           </td>
         </tr>
         {% endfor %}
@@ -159,10 +90,44 @@
     {% else %}
     <div class="empty-state">
       <div class="icon">🎵</div>
-      <p>Nenhum artista ou banda encontrado.</p>
+      <p>Nenhum artista corresponde aos critérios de filtragem selecionados.</p>
     </div>
     {% endif %}
 
+    <div class="section-divider" style="margin-top:4rem;"><span><i class="fa-solid fa-plus"></i> Expandir Conhecimento (Inserir Artista)</span></div>
+    <div class="filter-box" style="background:var(--surface2); padding:2rem; border-radius:var(--radius);">
+      <form method="POST" action="/artista/adicionar" style="width:100%;">
+        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:1.5rem; margin-bottom:1.5rem;">
+          <div class="form-group">
+            <label>Nome do Artista/Banda</label>
+            <input type="text" name="name" placeholder="Ex: Zeca Afonso" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label>Tipo</label>
+            <select name="tipo" class="form-control">
+              <option value="ArtistaSolo">Artista Solo</option>
+              <option value="Banda">Banda / Coletivo</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Ano (Nascimento / Formação)</label>
+            <input type="number" name="ano" placeholder="Ex: 1929" class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Género Principal</label>
+            <select name="genero" class="form-control">
+              <option value="">Selecione...</option>
+              {% for g in generos %}
+                <option value="{{ g.id }}">{{ g.nome }}</option>
+              {% endfor %}
+            </select>
+          </div>
+        </div>
+        <div style="text-align:right;">
+          <button type="submit" class="btn btn-primary" style="font-weight:bold;"><i class="fa-solid fa-cloud-arrow-up"></i> Submeter</button>
+        </div>
+      </form>
+    </div>
   </main>
 </body>
 </html>

@@ -5,26 +5,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ album.nome }} — Música Portuguesa</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
   <nav class="navbar">
     <a href="/" class="navbar-brand">
-      <span class="dot">♩</span> Música Portuguesa
+      <i class="fa-solid fa-record-vinyl text-gold"></i> Arquivo da Música Portuguesa
     </a>
     <div class="navbar-links">
-      <a href="/"        class="nav-link">Artistas</a>
-      <a href="/generos" class="nav-link">Géneros</a>
+      <a href="/" class="nav-link"><i class="fa-solid fa-users"></i> Artistas</a>
+      <a href="/generos" class="nav-link"><i class="fa-solid fa-guitar"></i> Géneros</a>
+      <a href="/timeline" class="nav-link"><i class="fa-solid fa-timeline"></i> Linha do Tempo</a>
+      <a href="/colaboracoes" class="nav-link"><i class="fa-solid fa-circle-nodes"></i> Conexões</a>
+      <a href="/premios" class="nav-link"><i class="fa-solid fa-trophy"></i> Prémios</a>
+      <a href="/concertos" class="nav-link"><i class="fa-solid fa-microphone-lines"></i> Concertos</a>
+      <a href="/estatisticas" class="nav-link"><i class="fa-solid fa-chart-pie"></i> Estatísticas</a>
+      <a href="/pesquisa" class="nav-link-pill"><i class="fa-solid fa-magnifying-glass"></i> Pesquisa</a>
     </div>
   </nav>
 
   <main class="page">
-
     <div style="text-align:center;padding:2rem 0">
       <div style="width:100px;height:100px;margin:0 auto 1.5rem;background:linear-gradient(135deg,var(--red),var(--gold));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2.5rem;box-shadow:0 6px 30px rgba(155,35,53,0.3)">
-        💿
+        <i class="fa-solid fa-compact-disc" style="color:var(--cream);"></i>
       </div>
-      <h1 style="font-family:'Playfair Display',serif;font-size:2.5rem;color:var(--cream);font-weight:900;font-style:italic">
+      <h1 style="font-family:'Playfair Display',serif;font-size:2.8rem;color:var(--cream);font-weight:900;">
         {{ album.nome }}
       </h1>
     </div>
@@ -32,9 +38,9 @@
     <div class="info-grid">
       {% if album.artista %}
       <div class="info-card">
-        <div class="label">Artista / Banda</div>
-        <div class="value">
-          <a href="/artista/{{ album.artista.id }}" class="link-card">🎤 {{ album.artista.nome }}</a>
+        <div class="label">Autor / Lançado Por</div>
+        <div class="value" style="margin-top:0.4rem;">
+          <a href="/artista/{{ album.artista.id }}" class="btn btn-ghost" style="width:100%; justify-content:center; color:var(--gold-light);"><i class="fa-solid fa-user-music"></i> {{ album.artista.nome }}</a>
         </div>
       </div>
       {% endif %}
@@ -46,10 +52,10 @@
       {% endif %}
       {% if album.generos %}
       <div class="info-card">
-        <div class="label">Géneros</div>
+        <div class="label">Classificação Geográfica / Géneros</div>
         <div class="tags-wrap" style="margin-top:.4rem">
           {% for g in album.generos %}
-            <a href="/?genero={{ g.nome }}" class="genre-tag" style="text-decoration:none">🏷️ {{ g.nome }}</a>
+            <span class="badge badge-solo" style="font-size:0.85rem;"><i class="fa-solid fa-tag"></i> {{ g.nome }}</span>
           {% endfor %}
         </div>
       </div>
@@ -57,23 +63,19 @@
     </div>
 
     {% if album.musicas %}
-    <div class="section-divider"><span>Faixas ({{ album.musicas|length }})</span></div>
+    <div class="section-divider"><span>Faixas Alinhadas Semanticamente ({{ album.musicas|length }})</span></div>
     <div class="musica-list">
-      {% for i, m in album.musicas|enumerate %}
+      {% for m in album.musicas %}
       <div class="musica-item">
-        <span><span style="color:var(--muted);margin-right:.6rem;font-size:.8rem">{{ loop.index }}</span>🎵 {{ m.nome }}</span>
+        <span><span style="color:var(--muted);margin-right:.6rem;font-size:.85rem;font-weight:bold;">{{ loop.index | string }}</span><i class="fa-solid fa-music" style="color:var(--gold); margin-right:0.4rem; font-size:0.85rem;"></i> {{ m.nome }}</span>
       </div>
       {% endfor %}
     </div>
     {% endif %}
 
-    <div style="margin-top:4rem;text-align:center;display:flex;justify-content:center;gap:1rem;flex-wrap:wrap">
-      {% if album.artista %}
-        <a href="/artista/{{ album.artista.id }}" class="btn">Ver Perfil de {{ album.artista.nome }}</a>
-      {% endif %}
-      <a href="/" class="btn btn-ghost">Voltar ao Início</a>
+    <div style="margin-top:4rem;text-align:center;">
+      <a href="/" class="btn btn-ghost"><i class="fa-solid fa-chevron-left"></i> Voltar ao Índice Principal</a>
     </div>
-
   </main>
 </body>
 </html>

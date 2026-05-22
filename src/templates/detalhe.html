@@ -3,196 +3,305 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ artista.nome }} — Música Portuguesa</title>
+  <title>{{ artista.nome }} — Arquivo da Música Portuguesa</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Estilos locais para a estrutura assimétrica de 2 colunas */
+    .profile-layout {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    @media (max-width: 900px) {
+      .profile-layout { grid-template-columns: 1fr; }
+    }
+    .profile-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .profile-main {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    .compact-block {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+    }
+    .compact-block h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      color: var(--gold-light);
+      margin-bottom: 1rem;
+      border-bottom: 1px solid rgba(201,150,58,0.15);
+      padding-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .sidebar-meta-item {
+      margin-bottom: 1rem;
+    }
+    .sidebar-meta-item:last-child { margin-bottom: 0; }
+    .sidebar-meta-item .meta-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+    }
+    .sidebar-meta-item .meta-value {
+      font-size: 1.1rem;
+      color: var(--cream);
+      font-weight: 500;
+      margin-top: 0.2rem;
+    }
+    .bio-text {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: var(--text);
+      text-align: justify;
+    }
+    .grid-two-columns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+    @media (max-width: 650px) {
+      .grid-two-columns { grid-template-columns: 1fr; }
+    }
+    .interactive-list-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 1rem;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      margin-bottom: 0.5rem;
+      transition: border-color 0.2s;
+    }
+    .interactive-list-item:hover { border-color: var(--gold); }
+    .interactive-list-item a {
+      color: var(--cream);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .interactive-list-item a:hover { color: var(--gold-light); }
+  </style>
 </head>
 <body>
 
   <nav class="navbar">
-    <a href="/" class="navbar-brand"><span class="dot">♩</span> Música Portuguesa</a>
+    <a href="/" class="navbar-brand">
+      <i class="fa-solid fa-record-vinyl text-gold"></i> Arquivo da Música Portuguesa
+    </a>
     <div class="navbar-links">
-      <a href="/"             class="nav-link">Artistas</a>
-      <a href="/generos"      class="nav-link">Géneros</a>
-      <a href="/timeline"     class="nav-link">Linha do Tempo</a>
-      <a href="/colaboracoes" class="nav-link">Colaborações</a>
-      <a href="/premios"      class="nav-link">Prémios</a>
-      <a href="/concertos"    class="nav-link">Concertos</a>
-      <a href="/estatisticas" class="nav-link">Estatísticas</a>
+      <a href="/" class="nav-link active"><i class="fa-solid fa-users"></i> Artistas</a>
+      <a href="/generos" class="nav-link"><i class="fa-solid fa-guitar"></i> Géneros</a>
+      <a href="/timeline" class="nav-link"><i class="fa-solid fa-timeline"></i> Linha do Tempo</a>
+      <a href="/colaboracoes" class="nav-link"><i class="fa-solid fa-circle-nodes"></i> Conexões</a>
+      <a href="/premios" class="nav-link"><i class="fa-solid fa-trophy"></i> Prémios</a>
+      <a href="/concertos" class="nav-link"><i class="fa-solid fa-microphone-lines"></i> Concertos</a>
+      <a href="/estatisticas" class="nav-link"><i class="fa-solid fa-chart-pie"></i> Estatísticas</a>
+      <a href="/pesquisa" class="nav-link-pill"><i class="fa-solid fa-magnifying-glass"></i> Pesquisa</a>
     </div>
   </nav>
 
   <main class="page">
-
-    <header class="detail-header">
-      <div class="detail-avatar">{{ artista.nome[0].upper() }}</div>
+    
+    <header class="detail-header" style="background: linear-gradient(135deg, var(--surface2), var(--bg)); border: 1px solid var(--border); padding: 2.5rem; border-radius: var(--radius); display: flex; align-items: center; gap: 2rem; box-shadow: var(--shadow);">
+      <div class="detail-avatar" style="background: linear-gradient(135deg, var(--gold), var(--red)); width: 90px; height: 90px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 900; color: var(--cream); box-shadow: 0 4px 20px rgba(0,0,0,0.4);">
+        {{ artista.nome[0].upper() }}
+      </div>
       <div class="detail-meta">
-        <h1>{{ artista.nome }}</h1>
-        <div class="subtitle">
+        <h1 style="font-family: 'Playfair Display', serif; font-size: 2.8rem; font-weight: 900; color: var(--cream); line-height: 1.2;">{{ artista.nome }}</h1>
+        <div style="margin-top: 0.5rem; display: flex; flex-wrap: wrap; gap: 0.5rem;">
           {% if artista.tipo == "Solo" %}
-            <span class="badge badge-solo">Artista Solo</span>
+            <span class="badge badge-solo"><i class="fa-solid fa-user"></i> Artista Solo</span>
           {% else %}
-            <span class="badge badge-banda">Banda / Grupo</span>
+            <span class="badge badge-banda"><i class="fa-solid fa-users"></i> Banda / Coletivo</span>
           {% endif %}
-          {% if artista.premios %}
-            <span class="badge" style="background:rgba(200,180,50,.18);color:#d4c060;border:1px solid rgba(200,180,50,.3);margin-left:.5rem">
-              🏆 {{ artista.premios|length }} prémio{% if artista.premios|length != 1 %}s{% endif %}
-            </span>
+          
+          {% if artista.editora %}
+            <span class="badge badge-solo" style="background: rgba(255,255,255,0.04); color: var(--gold-light); border: 1px solid var(--border);"><i class="fa-solid fa-compact-disc"></i> {{ artista.editora }}</span>
           {% endif %}
         </div>
       </div>
     </header>
 
-    {% if artista.bio %}
-    <div class="desc-block">{{ artista.bio }}</div>
-    {% endif %}
-
-    <div class="info-grid">
-      {% if artista.anoNasc %}
-      <div class="info-card">
-        <div class="label">Ano de Nascimento</div>
-        <div class="value">📅 {{ artista.anoNasc }}</div>
-      </div>
-      {% endif %}
-      {% if artista.anoForm %}
-      <div class="info-card">
-        <div class="label">Ano de Formação</div>
-        <div class="value">📅 {{ artista.anoForm }}</div>
-      </div>
-      {% endif %}
-      {% if artista.editora %}
-      <div class="info-card">
-        <div class="label">Editora</div>
-        <div class="value">🏷️ {{ artista.editora }}</div>
-      </div>
-      {% endif %}
-      {% if artista.generos %}
-      <div class="info-card">
-        <div class="label">Géneros Musicais</div>
-        <div class="tags-wrap" style="margin-top:.4rem">
-          {% for g in artista.generos %}
-            <a href="/?genero={{ g.nome }}" class="genre-tag" style="text-decoration:none">{{ g.nome }}</a>
-          {% endfor %}
-        </div>
-      </div>
-      {% endif %}
-    </div>
-
-    {% if artista.membros %}
-    <div class="section-divider"><span>Membros da Banda</span></div>
-    <div class="tags-wrap">
-      {% for m in artista.membros %}
-        <a href="/artista/{{ m.id }}" class="artist-chip">👤 {{ m.nome }}</a>
-      {% endfor %}
-    </div>
-    {% endif %}
-
-    {% if artista.bandas %}
-    <div class="section-divider"><span>Projetos &amp; Bandas</span></div>
-    <div class="tags-wrap">
-      {% for b in artista.bandas %}
-        <a href="/artista/{{ b.id }}" class="artist-chip">👥 {{ b.nome }}</a>
-      {% endfor %}
-    </div>
-    {% endif %}
-
-    <!-- Influências -->
-    {% if artista.influencias or artista.influenciou %}
-    <div class="section-divider"><span>Rede de Influências</span></div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
-      {% if artista.influencias %}
-      <div class="info-card">
-        <div class="label" style="margin-bottom:.6rem">Influenciado por</div>
-        <div class="tags-wrap">
-          {% for a in artista.influencias %}
-            <a href="/artista/{{ a.id }}" class="artist-chip" style="font-size:.8rem">⬆ {{ a.nome }}</a>
-          {% endfor %}
-        </div>
-      </div>
-      {% endif %}
-      {% if artista.influenciou %}
-      <div class="info-card">
-        <div class="label" style="margin-bottom:.6rem">Influenciou</div>
-        <div class="tags-wrap">
-          {% for a in artista.influenciou %}
-            <a href="/artista/{{ a.id }}" class="artist-chip" style="font-size:.8rem">⬇ {{ a.nome }}</a>
-          {% endfor %}
-        </div>
-      </div>
-      {% endif %}
-    </div>
-    {% endif %}
-
-    {% if artista.albuns %}
-    <div class="section-divider"><span>Discografia ({{ artista.albuns|length }} álbuns)</span></div>
-    <div class="album-list">
-      {% for a in artista.albuns %}
-        <a href="/album/{{ a.id }}" class="album-item">
-          <span>💿 {{ a.nome }}</span>
-          {% if a.ano %}<span class="album-year">{{ a.ano }}</span>{% endif %}
-        </a>
-      {% endfor %}
-    </div>
-    {% endif %}
-
-    <!-- Adicionar álbum -->
-    <div class="form-container" style="margin-top:2rem">
-      <h2>➕ Adicionar Álbum</h2>
-      <form action="/album/adicionar" method="POST">
-        <input type="hidden" name="artista_id" value="{{ artista.id }}">
-        <div class="form-grid">
-          <input type="text"   name="nome" placeholder="Nome do álbum" required>
-          <input type="number" name="ano"  placeholder="Ano de lançamento" min="1900" max="2030">
-          <button type="submit" class="btn">Gravar Álbum</button>
-        </div>
-      </form>
-    </div>
-
-    {% if artista.musicas %}
-    <div class="section-divider"><span>Músicas ({{ artista.musicas|length }})</span></div>
-    <div class="musica-list">
-      {% for m in artista.musicas %}
-        <div class="musica-item">
-          <span>🎵 {{ m.nome }}</span>
-          {% if m.albumNome %}
-            <a href="/album/{{ m.album }}" class="album-year" style="text-decoration:none">{{ m.albumNome }}</a>
+    <div class="profile-layout">
+      
+      <aside class="profile-sidebar">
+        
+        <div class="compact-block">
+          <h3><i class="fa-solid fa-circle-info"></i> Ficha Técnica</h3>
+          {% if artista.anoNasc %}
+          <div class="sidebar-meta-item">
+            <div class="meta-label">Ano de Nascimento</div>
+            <div class="meta-value"><i class="fa-regular fa-calendar" style="color: var(--gold); margin-right: 0.3rem;"></i> {{ a_nasc if a_nasc else artista.anoNasc }}</div>
+          </div>
+          {% endif %}
+          {% if artista.anoForm %}
+          <div class="sidebar-meta-item">
+            <div class="meta-label">Ano de Formação</div>
+            <div class="meta-value"><i class="fa-regular fa-calendar-star" style="color: var(--gold); margin-right: 0.3rem;"></i> {{ artista.anoForm }}</div>
+          </div>
+          {% endif %}
+          
+          {% if artista.generos %}
+          <div class="sidebar-meta-item" style="margin-top: 1rem;">
+            <div class="meta-label">Géneros Associados</div>
+            <div style="display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.4rem;">
+              {% for g in artista.generos %}
+                <span class="badge badge-solo" style="font-size: 0.75rem; background: var(--surface2); border: 1px solid var(--border);">{{ g.nome }}</span>
+              {% endfor %}
+            </div>
+          </div>
           {% endif %}
         </div>
-      {% endfor %}
-    </div>
-    {% endif %}
 
-    <!-- Prémios -->
-    {% if artista.premios %}
-    <div class="section-divider"><span>🏆 Prémios e Galardões</span></div>
-    {% for p in artista.premios %}
-    <div class="premio-card">
-      <div class="premio-trophy">🏆</div>
-      <div class="premio-info">
-        <div class="premio-nome">{{ p.nome }}</div>
-        <div class="premio-meta">
-          {% if p.org %}{{ p.org }}{% endif %}
-          {% if p.cat %} · {{ p.cat }}{% endif %}
+        {% if artista.membros %}
+        <div class="compact-block">
+          <h3><i class="fa-solid fa-users-line"></i> Membros</h3>
+          {% for m in artista.membros %}
+            <div class="interactive-list-item" style="padding: 0.6rem 0.8rem; margin-bottom: 0.4rem;">
+              <a href="/artista/{{ m.id }}"><i class="fa-solid fa-microphone" style="font-size: 0.8rem; color: var(--gold); margin-right: 0.4rem;"></i> {{ m.nome }}</a>
+            </div>
+          {% endfor %}
         </div>
-      </div>
-      {% if p.ano %}<div class="premio-ano">{{ p.ano }}</div>{% endif %}
-    </div>
-    {% endfor %}
-    {% endif %}
+        {% endif %}
 
-    <!-- Concertos -->
-    {% if artista.concertos %}
-    <div class="section-divider"><span>🎤 Concertos</span></div>
-    {% for c in artista.concertos %}
-    <div class="concerto-card">
-      <div class="concerto-nome">{{ c.nome }}</div>
-      {% if c.local %}<div class="concerto-local">📍 {{ c.local }}</div>{% endif %}
-      {% if c.data  %}<div class="concerto-data">📅 {{ c.data }}</div>{% endif %}
-    </div>
-    {% endfor %}
-    {% endif %}
+        {% if artista.bandas %}
+        <div class="compact-block">
+          <h3><i class="fa-solid fa-people-group"></i> Projetos Coletivos</h3>
+          {% for b in artista.bandas %}
+            <div class="interactive-list-item" style="padding: 0.6rem 0.8rem; margin-bottom: 0.4rem;">
+              <a href="/artista/{{ b.id }}"><i class="fa-solid fa-guitar" style="font-size: 0.8rem; color: var(--gold); margin-right: 0.4rem;"></i> {{ b.nome }}</a>
+            </div>
+          {% endfor %}
+        </div>
+        {% endif %}
 
-    <div style="margin-top:3rem;text-align:center">
-      <a href="/" class="btn btn-ghost">← Voltar à Listagem</a>
+        {% if artista.influencias or artista.influenciou %}
+        <div class="compact-block">
+          <h3><i class="fa-solid fa-timeline"></i> Genealogia Musical</h3>
+          
+          {% if artista.influencias %}
+            <div style="margin-bottom: 1rem;">
+              <div class="meta-label" style="margin-bottom: 0.4rem;">Raízes (Influenciado por):</div>
+              {% for inf in artista.influencias %}
+                <a href="/artista/{{ inf.id }}" class="badge badge-solo" style="display: inline-block; margin: 0.2rem; text-decoration: none; border: 1px solid rgba(201,150,58,0.3);"><i class="fa-solid fa-turn-up" style="transform: rotate(-90deg); font-size: 0.7rem;"></i> {{ inf.nome }}</a>
+              {% endfor %}
+            </div>
+          {% endif %}
+
+          {% if artista.influenciou %}
+            <div>
+              <div class="meta-label" style="margin-bottom: 0.4rem;">Legado (Influenciou):</div>
+              {% for inf in artista.influenciou %}
+                <a href="/artista/{{ inf.id }}" class="badge badge-banda" style="display: inline-block; margin: 0.2rem; text-decoration: none; border: 1px solid rgba(155,35,53,0.3); color: #ff5268;"><i class="fa-solid fa-turn-down" style="transform: rotate(90deg); font-size: 0.7rem;"></i> {{ inf.nome }}</a>
+              {% endfor %}
+            </div>
+          {% endif %}
+        </div>
+        {% endif %}
+
+      </aside>
+
+      <section class="profile-main">
+        
+        {% if artista.bio %}
+        <div class="compact-block">
+          <h3><i class="fa-solid fa-book-open"></i> Enquadramento Histórico</h3>
+          <p class="bio-text">{{ artista.bio }}</p>
+        </div>
+        {% endif %}
+
+        <div class="grid-two-columns">
+          
+          <div class="compact-block">
+            <h3><i class="fa-solid fa-compact-disc"></i> Álbuns Publicados</h3>
+            {% if artista.albuns %}
+              <div style="max-height: 320px; overflow-y: auto; padding-right: 0.3rem;">
+                {% for al in artista.albuns %}
+                <div class="interactive-list-item">
+                  <a href="/album/{{ al.id }}">💿 {{ al.nome }}</a>
+                  {% if al.ano %}<span style="font-size: 0.8rem; color: var(--muted);">{{ al.ano }}</span>{% endif %}
+                </div>
+                {% endfor %}
+              </div>
+            {% else %}
+              <p style="color: var(--muted); font-size: 0.9rem; font-style: italic;">Nenhum álbum registado.</p>
+            {% endif %}
+          </div>
+
+          <div class="compact-block">
+            <h3><i class="fa-solid fa-music"></i> Músicas em Destaque</h3>
+            {% if artista.musicas %}
+              <div style="max-height: 320px; overflow-y: auto; padding-right: 0.3rem;">
+                {% for m in artista.musicas %}
+                <div class="interactive-list-item" style="justify-content: flex-start; gap: 0.5rem;">
+                  <i class="fa-solid fa-sliders" style="font-size: 0.75rem; color: var(--gold); min-width: 15px;"></i>
+                  <span style="color: var(--cream); font-weight: 500; font-size: 0.95rem;">{{ m.nome }}</span>
+                </div>
+                {% endfor %}
+              </div>
+            {% else %}
+              <p style="color: var(--muted); font-size: 0.9rem; font-style: italic;">Nenhuma obra individual registada.</p>
+            {% endif %}
+          </div>
+
+        </div>
+
+        {% if artista.premios %}
+        <div>
+          <div class="section-divider" style="margin: 1rem 0 1.5rem;"><span><i class="fa-solid fa-award"></i> Galardões e Distinções</span></div>
+          {% for p in artista.premios %}
+          <div class="premio-card">
+            <div class="premio-trophy"><i class="fa-solid fa-trophy" style="color: var(--gold);"></i></div>
+            <div class="premio-info">
+              <div class="premio-nome">{{ p.nome }}</div>
+              <div class="premio-meta">
+                {% if p.org %}<span><i class="fa-solid fa-gavel"></i> {{ p.org }}</span>{% endif %}
+                {% if p.cat %}<span><i class="fa-solid fa-bookmark"></i> {{ p.cat }}</span>{% endif %}
+              </div>
+            </div>
+            {% if p.ano %}<div class="premio-ano">{{ p.ano }}</div>{% endif %}
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if artista.concertos %}
+        <div>
+          <div class="section-divider" style="margin: 1rem 0 1.5rem;"><span><i class="fa-solid fa-bolt-lightning"></i> Atuações Históricas</span></div>
+          {% for c in artista.concertos %}
+          <div class="concerto-card">
+            <div class="premio-trophy" style="border-color: rgba(155,35,53,0.3); background: rgba(155,35,53,0.08);"><i class="fa-solid fa-microphone-lines" style="color: var(--red);"></i></div>
+            <div class="premio-info">
+              <div class="premio-nome" style="color: var(--cream);">{{ c.nome }}</div>
+              <div class="premio-meta">
+                {% if c.local %}<span><i class="fa-solid fa-location-dot"></i> {{ c.local }}</span>{% endif %}
+              </div>
+            </div>
+            {% if c.data %}<div class="btn btn-ghost" style="font-size: 0.85rem; padding: 0.4rem 0.8rem; pointer-events: none; border-color: rgba(255,255,255,0.05);">{{ c.data }}</div>{% endif %}
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+      </section>
+
+    </div>
+
+    <div style="margin-top: 4rem; text-align: center; padding-bottom: 3rem;">
+      <a href="/" class="btn btn-ghost"><i class="fa-solid fa-arrow-left"></i> Voltar ao Catálogo Global</a>
     </div>
 
   </main>

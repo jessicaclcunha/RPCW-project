@@ -156,7 +156,7 @@ def detalhe_artista(id_artista):
     q_bandas    = PREFIX + f"SELECT ?id ?nome WHERE {{ ?b :temMembro :{id_artista} . ?b :nome ?nome . BIND(STRAFTER(STR(?b), 'music-ontology/') AS ?id) }}"
     q_albuns    = PREFIX + f"SELECT ?id ?nome ?ano WHERE {{ :{id_artista} :lancouAlbum ?a . ?a :nome ?nome . OPTIONAL {{ ?a :anoLancamento ?ano }} BIND(STRAFTER(STR(?a), 'music-ontology/') AS ?id) }} ORDER BY ?ano"
     q_musicas   = PREFIX + f"SELECT ?id ?nome ?album ?albumNome WHERE {{ ?m :interpretadaPor :{id_artista} ; :nome ?nome . BIND(STRAFTER(STR(?m), 'music-ontology/') AS ?id) OPTIONAL {{ ?m :pertenceAoAlbum ?albumR . ?albumR :nome ?albumNome . BIND(STRAFTER(STR(?albumR), 'music-ontology/') AS ?album) }} }} ORDER BY ?albumNome ?nome"
-    q_premios   = PREFIX + f"SELECT ?id ?nome ?cat ?org ?ano WHERE {{ :{id_artista} :recebeupremio ?p . ?p :nome ?nome . OPTIONAL{{?p :categoria ?cat}} OPTIONAL{{?p :organizacao ?org}} OPTIONAL{{?p :anoPremio ?ano}} BIND(STRAFTER(STR(?p), 'music-ontology/') AS ?id) }} ORDER BY DESC(?ano)"
+    q_premios   = PREFIX + f"SELECT ?id ?nome ?cat ?org ?ano WHERE {{ :{id_artista} :recebeuPremio ?p . ?p :nome ?nome . OPTIONAL{{?p :categoria ?cat}} OPTIONAL{{?p :organizacao ?org}} OPTIONAL{{?p :anoPremio ?ano}} BIND(STRAFTER(STR(?p), 'music-ontology/') AS ?id) }} ORDER BY DESC(?ano)"
     q_concertos = PREFIX + f"SELECT ?id ?nome ?local ?data WHERE {{ :{id_artista} :atuouEm ?c . ?c :nome ?nome . OPTIONAL{{?c :local ?local}} OPTIONAL{{?c :data ?data}} BIND(STRAFTER(STR(?c), 'music-ontology/') AS ?id) }} ORDER BY DESC(?data)"
     q_influencias = PREFIX + f"SELECT ?id ?nome WHERE {{ :{id_artista} :influenciadoPor ?a . ?a :nome ?nome . BIND(STRAFTER(STR(?a), 'music-ontology/') AS ?id) }}"
     q_influenciou = PREFIX + f"SELECT ?id ?nome WHERE {{ ?a :influenciadoPor :{id_artista} . ?a :nome ?nome . BIND(STRAFTER(STR(?a), 'music-ontology/') AS ?id) }}"
@@ -253,6 +253,9 @@ def generos():
 # ────────────────────────────────────────────────────────────────────
 # TIMELINE
 # ────────────────────────────────────────────────────────────────────
+# ────────────────────────────────────────────────────────────────────
+# TIMELINE CORRIGIDA (Agrupamento feito no Python)
+# ────────────────────────────────────────────────────────────────────
 @app.route('/timeline')
 def timeline():
     query = PREFIX + """
@@ -279,12 +282,24 @@ def timeline():
             }
         } ORDER BY ?ano
     """
-    eventos = [
+    
+    eventos_lista = [
         {"id": g(r,"id"), "nome": g(r,"nome"), "tipo": g(r,"tipo"), "ano": g(r,"ano")}
         for r in rows_of(exec_query(query))
         if g(r,"ano") and g(r,"ano").isdigit()
     ]
-    return render_template('timeline.html', eventos=eventos)
+    
+    eventos_por_ano = {}
+    for ev in eventos_lista:
+        ano = ev["ano"]
+        if ano not in eventos_por_ano:
+            eventos_por_ano[ano] = []
+        eventos_por_ano[ano].append(ev)
+        
+    anos_ordenados = sorted(eventos_por_ano.keys())
+    eventos_agrupados = [{"ano": ano, "lista": eventos_por_ano[ano]} for ano in anos_ordenados]
+
+    return render_template('timeline.html', eventos_por_ano=eventos_agrupados, total_eventos=len(eventos_lista))
 
 
 # ────────────────────────────────────────────────────────────────────
@@ -335,7 +350,7 @@ def estatisticas():
     q_top = PREFIX + """
         SELECT ?id ?nome (COUNT(?p) AS ?total) WHERE {
             { ?a a :ArtistaSolo } UNION { ?a a :Banda }
-            ?a :nome ?nome ; :recebeupremio ?p .
+            ?a :nome ?nome ; :recebeuPremio ?p .
             BIND(STRAFTER(STR(?a), "music-ontology/") AS ?id)
         } GROUP BY ?id ?nome ORDER BY DESC(?total) LIMIT 10
     """
@@ -401,7 +416,7 @@ def premios():
             OPTIONAL { ?p :categoria ?cat }
             OPTIONAL { ?p :organizacao ?org }
             OPTIONAL { ?p :anoPremio ?ano }
-            OPTIONAL { ?a :recebeupremio ?p ; :nome ?aNome .
+            OPTIONAL { ?a :recebeuPremio ?p ; :nome ?aNome .
                        BIND(STRAFTER(STR(?a), "music-ontology/") AS ?aId) }
             BIND(STRAFTER(STR(?p), "music-ontology/") AS ?pId)
         } ORDER BY DESC(?ano) ?org

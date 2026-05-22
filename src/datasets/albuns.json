@@ -19,6 +19,15 @@
       ]
     },
     {
+      "id": "amalia_71",
+      "nome": "Amália 71",
+      "anoLancamento": 1971,
+      "lancadoPor": "amalia_rodrigues",
+      "generos": [
+        "Fado"
+      ]
+    },
+    {
       "id": "fado_em_mim",
       "nome": "O Fado",
       "anoLancamento": 2001,
@@ -111,7 +120,7 @@
       ]
     },
     {
-      "id": "café_berlin_alb",
+      "id": "cafe_berlin_alb",
       "nome": "Café Berlim",
       "anoLancamento": 1986,
       "lancadoPor": "antonio_variacoes",
@@ -172,7 +181,8 @@
       "anoLancamento": 1996,
       "lancadoPor": "moonspell",
       "generos": [
-        "Rock"
+        "Rock",
+        "Metal"
       ]
     },
     {
@@ -181,7 +191,18 @@
       "anoLancamento": 1995,
       "lancadoPor": "moonspell",
       "generos": [
-        "Rock"
+        "Rock",
+        "Metal"
+      ]
+    },
+    {
+      "id": "night_eternal_alb",
+      "nome": "Night Eternal",
+      "anoLancamento": 2008,
+      "lancadoPor": "moonspell",
+      "generos": [
+        "Rock",
+        "Metal"
       ]
     },
     {
@@ -190,7 +211,8 @@
       "anoLancamento": 1992,
       "lancadoPor": "ex_votos",
       "generos": [
-        "Rock"
+        "Rock",
+        "Indie"
       ]
     },
     {
@@ -199,7 +221,8 @@
       "anoLancamento": 1992,
       "lancadoPor": "mao_morta",
       "generos": [
-        "Rock"
+        "Rock",
+        "Indie"
       ]
     },
     {
@@ -217,11 +240,12 @@
       "anoLancamento": 1989,
       "lancadoPor": "peste_sida",
       "generos": [
-        "Rock"
+        "Rock",
+        "Indie"
       ]
     },
     {
-      "id": "cançoes_pos_guerra",
+      "id": "cancoes_pos_guerra",
       "nome": "Canções do Pós-Guerra",
       "anoLancamento": 2020,
       "lancadoPor": "jorge_palma",
@@ -230,7 +254,7 @@
       ]
     },
     {
-      "id": "frágil_alb",
+      "id": "fragil_alb",
       "nome": "Frágil",
       "anoLancamento": 1985,
       "lancadoPor": "jorge_palma",
@@ -245,7 +269,8 @@
       "anoLancamento": 1995,
       "lancadoPor": "ornatos_violeta",
       "generos": [
-        "Rock"
+        "Rock",
+        "Indie"
       ]
     },
     {
@@ -254,7 +279,8 @@
       "anoLancamento": 1999,
       "lancadoPor": "ornatos_violeta",
       "generos": [
-        "Rock"
+        "Rock",
+        "Indie"
       ]
     },
     {
@@ -279,10 +305,40 @@
       "id": "herois_vikings",
       "nome": "Os Vikings",
       "anoLancamento": 1983,
-      "lancadoPor": "heróis_do_mar",
+      "lancadoPor": "herois_do_mar",
       "generos": [
         "Pop",
         "Rock"
+      ]
+    },
+    {
+      "id": "madredeus_o_espirito",
+      "nome": "O Espírito da Paz",
+      "anoLancamento": 1994,
+      "lancadoPor": "madredeus",
+      "generos": [
+        "Folk",
+        "Indie"
+      ]
+    },
+    {
+      "id": "madredeus_ainda",
+      "nome": "Ainda",
+      "anoLancamento": 1995,
+      "lancadoPor": "madredeus",
+      "generos": [
+        "Folk",
+        "Indie"
+      ]
+    },
+    {
+      "id": "capitao_fausto_monte",
+      "nome": "Monte Selvatico",
+      "anoLancamento": 2017,
+      "lancadoPor": "capitao_fausto",
+      "generos": [
+        "Rock",
+        "Indie"
       ]
     },
     {
@@ -300,7 +356,8 @@
       "anoLancamento": 2017,
       "lancadoPor": "salvador_sobral",
       "generos": [
-        "Pop"
+        "Pop",
+        "Jazz"
       ]
     },
     {
@@ -309,7 +366,8 @@
       "anoLancamento": 2017,
       "lancadoPor": "the_gift",
       "generos": [
-        "Pop"
+        "Pop",
+        "Indie"
       ]
     },
     {
@@ -328,7 +386,8 @@
       "anoLancamento": 2015,
       "lancadoPor": "deolinda",
       "generos": [
-        "Pop"
+        "Pop",
+        "Folk"
       ]
     },
     {
@@ -337,6 +396,18 @@
       "anoLancamento": 1995,
       "lancadoPor": "kussondulola",
       "generos": [
+        "Pop",
+        "Reggae"
+      ]
+    },
+    {
+      "id": "dino_santiago_mundu",
+      "nome": "Mundu Nôbu",
+      "anoLancamento": 2021,
+      "lancadoPor": "dino_d_santiago",
+      "generos": [
+        "RB",
+        "Kizomba",
         "Pop"
       ]
     },
@@ -347,17 +418,18 @@
       "lancadoPor": "buraka_som_sistema",
       "generos": [
         "HipHop",
-        "Pop"
+        "Electronica"
       ]
     },
     {
-      "id": "sara_balancê",
+      "id": "sara_balance",
       "nome": "Balancê",
       "anoLancamento": 2008,
       "lancadoPor": "sara_tavares",
       "generos": [
         "Pop",
-        "RB"
+        "RB",
+        "Soul"
       ]
     },
     {
@@ -371,7 +443,7 @@
       ]
     },
     {
-      "id": "serviço_público_alb",
+      "id": "servico_publico_alb",
       "nome": "Serviço Público",
       "anoLancamento": 2006,
       "lancadoPor": "valete",
@@ -412,11 +484,12 @@
       "anoLancamento": 1964,
       "lancadoPor": "zeca_afonso",
       "generos": [
-        "Intervencao"
+        "Intervencao",
+        "Folk"
       ]
     },
     {
-      "id": "grândola_alb",
+      "id": "grandola_alb",
       "nome": "Cantigas do Maio",
       "anoLancamento": 1971,
       "lancadoPor": "zeca_afonso",
@@ -428,7 +501,7 @@
       "id": "sergio_caminhante",
       "nome": "Caminhante",
       "anoLancamento": 1974,
-      "lancadoPor": "sérgio_godinho",
+      "lancadoPor": "sergio_godinho",
       "generos": [
         "Intervencao"
       ]
@@ -443,7 +516,7 @@
       ]
     },
     {
-      "id": "és_tao_sensual_alb",
+      "id": "es_tao_sensual_alb",
       "nome": "És Tão Sensual",
       "anoLancamento": 2002,
       "lancadoPor": "toy",

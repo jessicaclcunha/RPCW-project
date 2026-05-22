@@ -9,7 +9,9 @@
       "pertenceAoAlbum": "estranha_forma_vida",
       "generos": [
         "Fado"
-      ]
+      ],
+      "duracao": 213,
+      "curiosidade": "Baseada num poema de Florbela Espanca."
     },
     {
       "id": "uma_casa_portuguesa",
@@ -19,7 +21,9 @@
       ],
       "generos": [
         "Fado"
-      ]
+      ],
+      "duracao": 178,
+      "curiosidade": "Um dos temas mais identificativos de Amália no estrangeiro."
     },
     {
       "id": "lagrima_mus",
@@ -30,7 +34,8 @@
       "pertenceAoAlbum": "com_que_voz",
       "generos": [
         "Fado"
-      ]
+      ],
+      "duracao": 195
     },
     {
       "id": "povo_que_lavas",
@@ -40,7 +45,9 @@
       ],
       "generos": [
         "Fado"
-      ]
+      ],
+      "duracao": 224,
+      "curiosidade": "Letra de Pedro Homem de Melo."
     },
     {
       "id": "barco_negro",
@@ -50,7 +57,22 @@
       ],
       "generos": [
         "Fado"
-      ]
+      ],
+      "duracao": 240,
+      "curiosidade": "Considerada uma das mais belas canções de Amália."
+    },
+    {
+      "id": "com_que_voz_mus",
+      "nome": "Com Que Voz",
+      "interpretadaPor": [
+        "amalia_rodrigues"
+      ],
+      "pertenceAoAlbum": "com_que_voz",
+      "generos": [
+        "Fado"
+      ],
+      "duracao": 208,
+      "curiosidade": "Letra baseada num poema de Luís de Camões."
     },
     {
       "id": "um_homem_cidade",
@@ -61,7 +83,8 @@
       "pertenceAoAlbum": "fado_em_mim",
       "generos": [
         "Fado"
-      ]
+      ],
+      "duracao": 255
     },
     {
       "id": "lisboa_menina_moca",
@@ -71,7 +94,8 @@
       ],
       "generos": [
         "Fado"
-      ]
+      ],
+      "duracao": 230
     },
     {
       "id": "corre_mus",
@@ -82,10 +106,11 @@
       "pertenceAoAlbum": "mariza_fado_em_mim",
       "generos": [
         "Fado"
-      ]
+      ],
+      "duracao": 245
     },
     {
-      "id": "透明_transparente",
+      "id": "transparente_mus",
       "nome": "Transparente",
       "interpretadaPor": [
         "mariza"
@@ -93,7 +118,8 @@
       "pertenceAoAlbum": "transparente_alb",
       "generos": [
         "Fado"
-      ]
+      ],
+      "duracao": 228
     },
     {
       "id": "fado_da_saudade_mus",
@@ -104,7 +130,8 @@
       "pertenceAoAlbum": "fado_mae",
       "generos": [
         "Fado"
-      ]
+      ],
+      "duracao": 217
     },
     {
       "id": "desfado_mus",
@@ -115,7 +142,8 @@
       "pertenceAoAlbum": "ana_moura_desfado",
       "generos": [
         "Fado"
-      ]
+      ],
+      "duracao": 234
     },
     {
       "id": "duende_gisela",
@@ -126,7 +154,8 @@
       "pertenceAoAlbum": "gisela_gisela",
       "generos": [
         "Fado"
-      ]
+      ],
+      "duracao": 198
     },
     {
       "id": "zambujo_alfama_mus",
@@ -138,7 +167,8 @@
       "generos": [
         "Fado",
         "Pop"
-      ]
+      ],
+      "duracao": 262
     },
     {
       "id": "pica_do_sete",
@@ -149,7 +179,8 @@
       "generos": [
         "Fado",
         "Pop"
-      ]
+      ],
+      "duracao": 215
     },
     {
       "id": "grandola_mus",
@@ -157,10 +188,13 @@
       "interpretadaPor": [
         "zeca_afonso"
       ],
-      "pertenceAoAlbum": "grândola_alb",
+      "pertenceAoAlbum": "grandola_alb",
       "generos": [
-        "Intervencao"
-      ]
+        "Intervencao",
+        "Folk"
+      ],
+      "duracao": 276,
+      "curiosidade": "Serviu de sinal para o início da Revolução dos Cravos a 25 de Abril de 1974."
     },
     {
       "id": "vejam_bem_mus",
@@ -170,38 +204,45 @@
       ],
       "generos": [
         "Intervencao"
-      ]
+      ],
+      "duracao": 195
     },
     {
-      "id": "menino_do_bairro_negro",
+      "id": "menino_bairro_negro",
       "nome": "Menino do Bairro Negro",
       "interpretadaPor": [
         "zeca_afonso"
       ],
       "generos": [
-        "Intervencao"
-      ]
+        "Intervencao",
+        "Folk"
+      ],
+      "duracao": 210
+    },
+    {
+      "id": "traz_outro_amigo",
+      "nome": "Traz Outro Amigo Também",
+      "interpretadaPor": [
+        "zeca_afonso"
+      ],
+      "pertenceAoAlbum": "zeca_bancal_alb",
+      "generos": [
+        "Intervencao",
+        "Folk"
+      ],
+      "duracao": 183
     },
     {
       "id": "primeiro_dia_mus",
       "nome": "Primeiro Dia",
       "interpretadaPor": [
-        "sérgio_godinho"
+        "sergio_godinho"
       ],
       "pertenceAoAlbum": "sergio_caminhante",
       "generos": [
         "Intervencao"
-      ]
-    },
-    {
-      "id": "sergio_caminhante_mus",
-      "nome": "Caminhante",
-      "interpretadaPor": [
-        "sérgio_godinho"
       ],
-      "generos": [
-        "Intervencao"
-      ]
+      "duracao": 222
     },
     {
       "id": "carvalhesa_mus",
@@ -211,7 +252,8 @@
       ],
       "generos": [
         "Intervencao"
-      ]
+      ],
+      "duracao": 198
     },
     {
       "id": "pintassilgo_mus",
@@ -220,8 +262,10 @@
         "vitorino"
       ],
       "generos": [
-        "Intervencao"
-      ]
+        "Intervencao",
+        "Folk"
+      ],
+      "duracao": 205
     },
     {
       "id": "cancao_engate",
@@ -232,7 +276,8 @@
       "pertenceAoAlbum": "anjo_da_guarda_alb",
       "generos": [
         "Pop"
-      ]
+      ],
+      "duracao": 188
     },
     {
       "id": "estou_alem_mus",
@@ -240,11 +285,12 @@
       "interpretadaPor": [
         "antonio_variacoes"
       ],
-      "pertenceAoAlbum": "café_berlin_alb",
+      "pertenceAoAlbum": "cafe_berlin_alb",
       "generos": [
         "Pop",
         "Rock"
-      ]
+      ],
+      "duracao": 215
     },
     {
       "id": "povo_que_amas_mus",
@@ -254,7 +300,8 @@
       ],
       "generos": [
         "Pop"
-      ]
+      ],
+      "duracao": 197
     },
     {
       "id": "porto_sentido_mus",
@@ -265,7 +312,9 @@
       "pertenceAoAlbum": "ar_de_rock_alb",
       "generos": [
         "Rock"
-      ]
+      ],
+      "duracao": 298,
+      "curiosidade": "Hino não oficial da cidade do Porto."
     },
     {
       "id": "chico_fininho_mus",
@@ -276,18 +325,20 @@
       "generos": [
         "Rock",
         "Blues"
-      ]
+      ],
+      "duracao": 245
     },
     {
-      "id": "frágil_mus",
+      "id": "fragil_mus",
       "nome": "Frágil",
       "interpretadaPor": [
         "jorge_palma"
       ],
-      "pertenceAoAlbum": "frágil_alb",
+      "pertenceAoAlbum": "fragil_alb",
       "generos": [
         "Rock"
-      ]
+      ],
+      "duracao": 256
     },
     {
       "id": "aprender_voar_mus",
@@ -295,10 +346,11 @@
       "interpretadaPor": [
         "jorge_palma"
       ],
-      "pertenceAoAlbum": "cançoes_pos_guerra",
+      "pertenceAoAlbum": "cancoes_pos_guerra",
       "generos": [
         "Rock"
-      ]
+      ],
+      "duracao": 271
     },
     {
       "id": "depois_adeus_mus",
@@ -308,7 +360,9 @@
       ],
       "generos": [
         "Pop"
-      ]
+      ],
+      "duracao": 183,
+      "curiosidade": "Sinal da Revolução dos Cravos em conjunto com Grândola Vila Morena."
     },
     {
       "id": "playback_mus",
@@ -318,7 +372,8 @@
       ],
       "generos": [
         "Pop"
-      ]
+      ],
+      "duracao": 201
     },
     {
       "id": "cinderela_mus",
@@ -328,7 +383,8 @@
       ],
       "generos": [
         "Pop"
-      ]
+      ],
+      "duracao": 195
     },
     {
       "id": "contentores_mus",
@@ -339,17 +395,19 @@
       "pertenceAoAlbum": "xutos_confidencial",
       "generos": [
         "Rock"
-      ]
+      ],
+      "duracao": 312
     },
     {
-      "id": "não_são_cr_mus",
+      "id": "nao_sao_ceus_mus",
       "nome": "Não São os Céus",
       "interpretadaPor": [
         "xutos_pontapes"
       ],
       "generos": [
         "Rock"
-      ]
+      ],
+      "duracao": 278
     },
     {
       "id": "sol_e_chuva_mus",
@@ -359,7 +417,8 @@
       ],
       "generos": [
         "Rock"
-      ]
+      ],
+      "duracao": 265
     },
     {
       "id": "deus_desconhecido_mus",
@@ -370,7 +429,8 @@
       "pertenceAoAlbum": "a_um_deus_alb",
       "generos": [
         "Pop"
-      ]
+      ],
+      "duracao": 240
     },
     {
       "id": "chama_mus",
@@ -381,7 +441,8 @@
       "generos": [
         "Pop",
         "Rock"
-      ]
+      ],
+      "duracao": 228
     },
     {
       "id": "opium_mus",
@@ -391,8 +452,10 @@
       ],
       "pertenceAoAlbum": "irreligious",
       "generos": [
-        "Rock"
-      ]
+        "Rock",
+        "Metal"
+      ],
+      "duracao": 325
     },
     {
       "id": "wolfheart_mus",
@@ -402,8 +465,23 @@
       ],
       "pertenceAoAlbum": "wolfheart_alb",
       "generos": [
-        "Rock"
-      ]
+        "Rock",
+        "Metal"
+      ],
+      "duracao": 289
+    },
+    {
+      "id": "night_eternal_mus",
+      "nome": "Night Eternal",
+      "interpretadaPor": [
+        "moonspell"
+      ],
+      "pertenceAoAlbum": "night_eternal_alb",
+      "generos": [
+        "Rock",
+        "Metal"
+      ],
+      "duracao": 301
     },
     {
       "id": "mais_alguem_mus",
@@ -413,8 +491,10 @@
       ],
       "pertenceAoAlbum": "ornatos_calmamente",
       "generos": [
-        "Rock"
-      ]
+        "Rock",
+        "Indie"
+      ],
+      "duracao": 295
     },
     {
       "id": "adeus_tristeza_mus",
@@ -424,8 +504,23 @@
       ],
       "pertenceAoAlbum": "ornatos_adeus",
       "generos": [
-        "Rock"
-      ]
+        "Rock",
+        "Indie"
+      ],
+      "duracao": 310
+    },
+    {
+      "id": "o_rio_mus",
+      "nome": "O Rio",
+      "interpretadaPor": [
+        "ornatos_violeta"
+      ],
+      "pertenceAoAlbum": "ornatos_calmamente",
+      "generos": [
+        "Rock",
+        "Indie"
+      ],
+      "duracao": 267
     },
     {
       "id": "chiclete_mus",
@@ -436,7 +531,8 @@
       "pertenceAoAlbum": "taxi_81",
       "generos": [
         "Rock"
-      ]
+      ],
+      "duracao": 223
     },
     {
       "id": "cavalo_corrida_mus",
@@ -447,7 +543,8 @@
       "pertenceAoAlbum": "madrugada_80",
       "generos": [
         "Rock"
-      ]
+      ],
+      "duracao": 248
     },
     {
       "id": "lenda_elrei_mus",
@@ -458,19 +555,48 @@
       "pertenceAoAlbum": "album_1111",
       "generos": [
         "Rock"
-      ]
+      ],
+      "duracao": 275
     },
     {
       "id": "vikings_mus",
       "nome": "Vikings",
       "interpretadaPor": [
-        "heróis_do_mar"
+        "herois_do_mar"
       ],
       "pertenceAoAlbum": "herois_vikings",
       "generos": [
         "Pop",
         "Rock"
-      ]
+      ],
+      "duracao": 215
+    },
+    {
+      "id": "o_pastor_mus",
+      "nome": "O Pastor",
+      "interpretadaPor": [
+        "madredeus"
+      ],
+      "pertenceAoAlbum": "madredeus_ainda",
+      "generos": [
+        "Folk",
+        "Indie"
+      ],
+      "duracao": 280,
+      "curiosidade": "Usada na banda sonora do filme 'Lisboa Story' de Wim Wenders."
+    },
+    {
+      "id": "o_mar_mus",
+      "nome": "O Mar",
+      "interpretadaPor": [
+        "madredeus"
+      ],
+      "pertenceAoAlbum": "madredeus_o_espirito",
+      "generos": [
+        "Folk",
+        "Indie"
+      ],
+      "duracao": 245
     },
     {
       "id": "parva_que_sou_mus",
@@ -482,7 +608,9 @@
       "generos": [
         "Pop",
         "Fado"
-      ]
+      ],
+      "duracao": 233,
+      "curiosidade": "Tornou-se um hino da geração precária portuguesa."
     },
     {
       "id": "a_estranheza_mus",
@@ -493,7 +621,8 @@
       "pertenceAoAlbum": "deolinda_dois",
       "generos": [
         "Pop"
-      ]
+      ],
+      "duracao": 219
     },
     {
       "id": "driving_slow_mus",
@@ -503,8 +632,10 @@
       ],
       "pertenceAoAlbum": "vinyl_album",
       "generos": [
-        "Pop"
-      ]
+        "Pop",
+        "Indie"
+      ],
+      "duracao": 248
     },
     {
       "id": "amar_pelos_dois_mus",
@@ -514,19 +645,27 @@
       ],
       "pertenceAoAlbum": "sobral_amar_pelos_2",
       "generos": [
-        "Pop"
-      ]
+        "Pop",
+        "Jazz"
+      ],
+      "duracao": 185,
+      "compostaPor": [
+        "luisa_sobral"
+      ],
+      "curiosidade": "Venceu o Festival Eurovisão 2017 com a maior margem de pontos da história."
     },
     {
       "id": "como_tu_mus",
       "nome": "Como Tu (feat. Ivandro)",
       "interpretadaPor": [
-        "barbara_bandeira"
+        "barbara_bandeira",
+        "ivandro"
       ],
       "pertenceAoAlbum": "flores_cinema",
       "generos": [
         "Pop"
-      ]
+      ],
+      "duracao": 202
     },
     {
       "id": "nos_os_dois_mus",
@@ -536,19 +675,22 @@
       ],
       "generos": [
         "Pop"
-      ]
+      ],
+      "duracao": 188
     },
     {
-      "id": "balancê_mus",
+      "id": "balance_mus",
       "nome": "Balancê",
       "interpretadaPor": [
         "sara_tavares"
       ],
-      "pertenceAoAlbum": "sara_balancê",
+      "pertenceAoAlbum": "sara_balance",
       "generos": [
         "Pop",
-        "RB"
-      ]
+        "RB",
+        "Soul"
+      ],
+      "duracao": 265
     },
     {
       "id": "where_heart_is_mus",
@@ -558,8 +700,10 @@
       ],
       "pertenceAoAlbum": "afro_fado_album",
       "generos": [
-        "HipHop"
-      ]
+        "HipHop",
+        "Pop"
+      ],
+      "duracao": 238
     },
     {
       "id": "roleta_russa_mus",
@@ -567,13 +711,14 @@
       "interpretadaPor": [
         "valete"
       ],
-      "pertenceAoAlbum": "serviço_público_alb",
+      "pertenceAoAlbum": "servico_publico_alb",
       "generos": [
         "HipHop"
-      ]
+      ],
+      "duracao": 278
     },
     {
-      "id": "sem_acustica_mus",
+      "id": "estado_sitio_mus",
       "nome": "Estado de Sítio",
       "interpretadaPor": [
         "valete"
@@ -581,7 +726,8 @@
       "pertenceAoAlbum": "valete_estado_alb",
       "generos": [
         "HipHop"
-      ]
+      ],
+      "duracao": 264
     },
     {
       "id": "capicua_anelar_mus",
@@ -592,7 +738,8 @@
       "pertenceAoAlbum": "capicua_anelar",
       "generos": [
         "HipHop"
-      ]
+      ],
+      "duracao": 255
     },
     {
       "id": "kalemba_mus",
@@ -603,8 +750,10 @@
       "pertenceAoAlbum": "black_diamond_alb",
       "generos": [
         "HipHop",
-        "Pop"
-      ]
+        "Electronica"
+      ],
+      "duracao": 302,
+      "curiosidade": "Tornou-se viral internacionalmente em 2008."
     },
     {
       "id": "boss_anti_mus",
@@ -615,7 +764,21 @@
       "pertenceAoAlbum": "boss_ac_anti",
       "generos": [
         "HipHop"
-      ]
+      ],
+      "duracao": 245
+    },
+    {
+      "id": "danca_reggae_mus",
+      "nome": "Dança Reggae",
+      "interpretadaPor": [
+        "kussondulola"
+      ],
+      "pertenceAoAlbum": "baza_baza_reggae",
+      "generos": [
+        "Pop",
+        "Reggae"
+      ],
+      "duracao": 239
     },
     {
       "id": "garagem_vizinha_mus",
@@ -626,7 +789,8 @@
       "pertenceAoAlbum": "atento_album",
       "generos": [
         "Pimba"
-      ]
+      ],
+      "duracao": 205
     },
     {
       "id": "mestre_culinario_mus",
@@ -636,7 +800,8 @@
       ],
       "generos": [
         "Pimba"
-      ]
+      ],
+      "duracao": 198
     },
     {
       "id": "coracao_melao_mus",
@@ -644,10 +809,11 @@
       "interpretadaPor": [
         "toy"
       ],
-      "pertenceAoAlbum": "és_tao_sensual_alb",
+      "pertenceAoAlbum": "es_tao_sensual_alb",
       "generos": [
         "Pimba"
-      ]
+      ],
+      "duracao": 212
     },
     {
       "id": "coracao_pau_mus",
@@ -658,7 +824,8 @@
       "pertenceAoAlbum": "coracao_de_pau_alb",
       "generos": [
         "Pimba"
-      ]
+      ],
+      "duracao": 220
     },
     {
       "id": "subtilezas_mus",
@@ -668,8 +835,10 @@
       ],
       "pertenceAoAlbum": "subtilezas_bairro",
       "generos": [
-        "Rock"
-      ]
+        "Rock",
+        "Indie"
+      ],
+      "duracao": 267
     },
     {
       "id": "filhos_tedio_mus",
@@ -680,7 +849,8 @@
       "pertenceAoAlbum": "ganda_banda_alb",
       "generos": [
         "Rock"
-      ]
+      ],
+      "duracao": 243
     },
     {
       "id": "sol_caparica_mus",
@@ -690,19 +860,37 @@
       ],
       "pertenceAoAlbum": "portem_se_bem_alb",
       "generos": [
-        "Rock"
-      ]
+        "Rock",
+        "Indie"
+      ],
+      "duracao": 258
     },
     {
-      "id": "danca_reggae_mus",
-      "nome": "Dança Reggae",
+      "id": "mais_alguem_capfausto",
+      "nome": "Enquanto Houver Estradas",
       "interpretadaPor": [
-        "kussondulola"
+        "capitao_fausto"
       ],
-      "pertenceAoAlbum": "baza_baza_reggae",
+      "pertenceAoAlbum": "capitao_fausto_monte",
       "generos": [
+        "Rock",
+        "Indie"
+      ],
+      "duracao": 271
+    },
+    {
+      "id": "dino_mundu_mus",
+      "nome": "Mundu Nôbu",
+      "interpretadaPor": [
+        "dino_d_santiago"
+      ],
+      "pertenceAoAlbum": "dino_santiago_mundu",
+      "generos": [
+        "RB",
+        "Kizomba",
         "Pop"
-      ]
+      ],
+      "duracao": 249
     }
   ]
 }

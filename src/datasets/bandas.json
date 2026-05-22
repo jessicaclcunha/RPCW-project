@@ -67,7 +67,8 @@
       "temMembro": [
         "rodrigo_leao",
         "pedro_ayres_magalhaes"
-      ]
+      ],
+      "descricao": "Banda emblemática do rock português dos anos 80."
     },
     {
       "id": "xutos_pontapes",
@@ -77,7 +78,9 @@
         "Rock"
       ],
       "pertenceAEditora": "universal_pt",
-      "temMembro": []
+      "temMembro": [],
+      "descricao": "A mais longeva banda de rock português, activa desde 1978.",
+      "curiosidade": "O vocalista Tim faleceu em 2019 após décadas de actividade."
     },
     {
       "id": "rui_veloso_banda",
@@ -93,7 +96,7 @@
       ]
     },
     {
-      "id": "heróis_do_mar",
+      "id": "herois_do_mar",
       "nome": "Heróis do Mar",
       "anoFormacao": 1981,
       "generos": [
@@ -108,7 +111,8 @@
       "nome": "Os Ex-Votos",
       "anoFormacao": 1989,
       "generos": [
-        "Rock"
+        "Rock",
+        "Indie"
       ],
       "pertenceAEditora": "transformadores",
       "temMembro": []
@@ -118,7 +122,8 @@
       "nome": "Mão Morta",
       "anoFormacao": 1984,
       "generos": [
-        "Rock"
+        "Rock",
+        "Indie"
       ],
       "pertenceAEditora": "transformadores",
       "temMembro": []
@@ -138,7 +143,8 @@
       "nome": "Peste & Sida",
       "anoFormacao": 1986,
       "generos": [
-        "Rock"
+        "Rock",
+        "Indie"
       ],
       "pertenceAEditora": "transformadores",
       "temMembro": []
@@ -155,12 +161,12 @@
       "temMembro": []
     },
     {
-      "id": "clã",
+      "id": "cla",
       "nome": "Clã",
       "anoFormacao": 1996,
       "generos": [
         "Rock",
-        "Pop"
+        "Indie"
       ],
       "pertenceAEditora": "universal_pt",
       "temMembro": []
@@ -170,19 +176,23 @@
       "nome": "Ornatos Violeta",
       "anoFormacao": 1991,
       "generos": [
-        "Rock"
+        "Rock",
+        "Indie"
       ],
       "pertenceAEditora": "universal_pt",
       "temMembro": [
         "manel_cruz"
-      ]
+      ],
+      "descricao": "Banda de rock alternativo do Porto, considerada um dos maiores projetos do rock português.",
+      "curiosidade": "Terminaram a carreira em 2002 no auge da popularidade."
     },
     {
       "id": "linda_martini",
       "nome": "Linda Martini",
       "anoFormacao": 2003,
       "generos": [
-        "Rock"
+        "Rock",
+        "Indie"
       ],
       "pertenceAEditora": "universal_pt",
       "temMembro": []
@@ -192,12 +202,15 @@
       "nome": "Moonspell",
       "anoFormacao": 1992,
       "generos": [
-        "Rock"
+        "Rock",
+        "Metal"
       ],
       "pertenceAEditora": "universal_pt",
       "temMembro": [
         "fernando_ribeiro"
-      ]
+      ],
+      "descricao": "A banda de metal português com maior projeção internacional.",
+      "curiosidade": "Foram o primeiro grupo de metal a tocar no Rock in Rio Lisboa."
     },
     {
       "id": "capitao_fausto",
@@ -205,19 +218,21 @@
       "anoFormacao": 2009,
       "generos": [
         "Rock",
-        "Pop"
+        "Indie"
       ],
       "pertenceAEditora": "sony_pt",
       "temMembro": [
         "tomas_wallenstein"
-      ]
+      ],
+      "descricao": "Banda de rock indie de Lisboa com forte influência da cena independente."
     },
     {
       "id": "kussondulola",
       "nome": "Kussondulola",
       "anoFormacao": 1992,
       "generos": [
-        "Pop"
+        "Pop",
+        "Reggae"
       ],
       "pertenceAEditora": "emi_portugal",
       "temMembro": []
@@ -227,7 +242,8 @@
       "nome": "Corvos",
       "anoFormacao": 1998,
       "generos": [
-        "Rock"
+        "Rock",
+        "Metal"
       ],
       "pertenceAEditora": "zona_musica",
       "temMembro": []
@@ -237,10 +253,12 @@
       "nome": "The Gift",
       "anoFormacao": 1994,
       "generos": [
-        "Pop"
+        "Pop",
+        "Indie"
       ],
       "pertenceAEditora": "transformadores",
-      "temMembro": []
+      "temMembro": [],
+      "descricao": "Banda de pop alternativo de Coimbra, uma das mais internacionais do pop português."
     },
     {
       "id": "deolinda",
@@ -248,12 +266,14 @@
       "anoFormacao": 2006,
       "generos": [
         "Pop",
-        "Fado"
+        "Fado",
+        "Folk"
       ],
       "pertenceAEditora": "sony_pt",
       "temMembro": [
         "ana_bacalhau"
-      ]
+      ],
+      "descricao": "Quarteto de Lisboa que mistura fado, folk e pop com letras sociais e poéticas."
     },
     {
       "id": "amor_electro",
@@ -312,16 +332,6 @@
       ]
     },
     {
-      "id": "conjunto_acorda",
-      "nome": "Conjunto Acorda",
-      "anoFormacao": 2015,
-      "generos": [
-        "Pop"
-      ],
-      "pertenceAEditora": "sony_pt",
-      "temMembro": []
-    },
-    {
       "id": "wet_bed_gang",
       "nome": "Wet Bed Gang",
       "anoFormacao": 2014,
@@ -337,10 +347,11 @@
       "anoFormacao": 2006,
       "generos": [
         "HipHop",
-        "Pop"
+        "Electronica"
       ],
       "pertenceAEditora": "sony_pt",
-      "temMembro": []
+      "temMembro": [],
+      "descricao": "Coletivo musical de Lisboa que popularizou o kuduro e a música eletrónica africana."
     },
     {
       "id": "expensive_soul",
@@ -374,6 +385,52 @@
       "temMembro": [
         "dealema"
       ]
+    },
+    {
+      "id": "madredeus",
+      "nome": "Madredeus",
+      "anoFormacao": 1986,
+      "generos": [
+        "Folk",
+        "Indie",
+        "Pop"
+      ],
+      "pertenceAEditora": "universal_pt",
+      "temMembro": [
+        "teresa_salgueiro",
+        "rodrigo_leao"
+      ],
+      "descricao": "Grupo musical português que mistura fado, música medieval e pop, reconhecido internacionalmente.",
+      "curiosidade": "Apareceram no filme 'Lisboa Story' de Wim Wenders em 1994."
+    },
+    {
+      "id": "pedro_abrunhosa_banda",
+      "nome": "Pedro Abrunhosa e Comité Caviar",
+      "anoFormacao": 1993,
+      "generos": [
+        "Pop",
+        "Jazz",
+        "Soul"
+      ],
+      "pertenceAEditora": "sony_pt",
+      "temMembro": [
+        "pedro_abrunhosa"
+      ],
+      "descricao": "Projeto musical do compositor portuense Pedro Abrunhosa."
+    },
+    {
+      "id": "tao_cruz_band",
+      "nome": "Silence 4",
+      "anoFormacao": 1994,
+      "generos": [
+        "Rock",
+        "Indie"
+      ],
+      "pertenceAEditora": "sony_pt",
+      "temMembro": [
+        "david_fonseca"
+      ],
+      "descricao": "Banda de rock alternativo portuense precursora do indie rock português."
     }
   ]
 }

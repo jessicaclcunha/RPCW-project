@@ -7,7 +7,9 @@
       "generos": [
         "Fado"
       ],
-      "pertenceAEditora": "valentim_de_carvalho"
+      "pertenceAEditora": "valentim_de_carvalho",
+      "descricao": "A voz mais emblemática do fado português, conhecida mundialmente como a Rainha do Fado.",
+      "curiosidade": "Representou Portugal no Festival de Cinema de Cannes em 1955."
     },
     {
       "id": "carlos_do_carmo",
@@ -16,7 +18,8 @@
       "generos": [
         "Fado"
       ],
-      "pertenceAEditora": "valentim_de_carvalho"
+      "pertenceAEditora": "valentim_de_carvalho",
+      "descricao": "Um dos maiores nomes do fado moderno, filho da fadista Lucília do Carmo."
     },
     {
       "id": "fernando_mauricio",
@@ -61,7 +64,9 @@
       "generos": [
         "Fado"
       ],
-      "pertenceAEditora": "universal_pt"
+      "pertenceAEditora": "universal_pt",
+      "descricao": "Fadista nascida em Moçambique que se tornou uma das maiores embaixadoras do fado no mundo.",
+      "curiosidade": "Já actuou em mais de 60 países."
     },
     {
       "id": "camane",
@@ -79,7 +84,8 @@
       "generos": [
         "Fado"
       ],
-      "pertenceAEditora": "universal_pt"
+      "pertenceAEditora": "universal_pt",
+      "descricao": "Fadista que colaborou com os Rolling Stones e Prince, levando o fado a novas audiências."
     },
     {
       "id": "carminho",
@@ -97,7 +103,8 @@
       "generos": [
         "Fado"
       ],
-      "pertenceAEditora": "transformadores"
+      "pertenceAEditora": "transformadores",
+      "curiosidade": "Estudou teatro antes de se dedicar ao fado."
     },
     {
       "id": "ricardo_ribeiro",
@@ -116,7 +123,8 @@
         "Fado",
         "Pop"
       ],
-      "pertenceAEditora": "universal_pt"
+      "pertenceAEditora": "universal_pt",
+      "descricao": "Alentejano que mistura fado com cante alentejano e música brasileira."
     },
     {
       "id": "katia_guerreiro",
@@ -137,6 +145,26 @@
       "pertenceAEditora": "emi_portugal"
     },
     {
+      "id": "miguel_povoas",
+      "nome": "Miguel Póvoas",
+      "anoNascimento": 1978,
+      "generos": [
+        "Fado"
+      ],
+      "pertenceAEditora": "valentim_de_carvalho"
+    },
+    {
+      "id": "raul_nery",
+      "nome": "Raúl Nery",
+      "anoNascimento": 1932,
+      "generos": [
+        "Fado",
+        "Tradicional"
+      ],
+      "pertenceAEditora": "valentim_de_carvalho",
+      "descricao": "Guitarrista português que acompanhou Amália Rodrigues durante décadas."
+    },
+    {
       "id": "antonio_variacoes",
       "nome": "António Variações",
       "anoNascimento": 1944,
@@ -144,7 +172,9 @@
         "Pop",
         "Rock"
       ],
-      "pertenceAEditora": "valentim_de_carvalho"
+      "pertenceAEditora": "valentim_de_carvalho",
+      "descricao": "Barbeiro de profissão que se tornou um dos maiores ícones do pop-rock português.",
+      "curiosidade": "Faleceu em 1983 com apenas 39 anos."
     },
     {
       "id": "jorge_palma",
@@ -154,14 +184,16 @@
         "Rock",
         "Pop"
       ],
-      "pertenceAEditora": "emi_portugal"
+      "pertenceAEditora": "emi_portugal",
+      "descricao": "Cantor, compositor e pianista, um dos pilares do rock português."
     },
     {
       "id": "manel_cruz",
       "nome": "Manel Cruz",
       "anoNascimento": 1975,
       "generos": [
-        "Rock"
+        "Rock",
+        "Indie"
       ],
       "pertenceAEditora": "transformadores"
     },
@@ -183,7 +215,8 @@
         "Pop",
         "Fado"
       ],
-      "pertenceAEditora": "emi_portugal"
+      "pertenceAEditora": "emi_portugal",
+      "curiosidade": "Representou Portugal na Eurovisão 1974 com 'E Depois do Adeus', canção que foi sinal para o 25 de Abril."
     },
     {
       "id": "carlos_paiao",
@@ -192,7 +225,8 @@
       "generos": [
         "Pop"
       ],
-      "pertenceAEditora": "valentim_de_carvalho"
+      "pertenceAEditora": "valentim_de_carvalho",
+      "curiosidade": "Faleceu tragicamente num acidente de viação em 1988."
     },
     {
       "id": "rui_veloso",
@@ -202,7 +236,8 @@
         "Rock",
         "Blues"
       ],
-      "pertenceAEditora": "valentim_de_carvalho"
+      "pertenceAEditora": "valentim_de_carvalho",
+      "descricao": "O padrinho do rock em português, autor de Porto Sentido."
     },
     {
       "id": "xana_toc_toc",
@@ -218,8 +253,10 @@
       "nome": "Fernando Ribeiro",
       "anoNascimento": 1974,
       "generos": [
-        "Rock"
-      ]
+        "Rock",
+        "Metal"
+      ],
+      "descricao": "Vocalista dos Moonspell, a banda de metal mais importante de Portugal."
     },
     {
       "id": "tomas_wallenstein",
@@ -227,7 +264,7 @@
       "anoNascimento": 1989,
       "generos": [
         "Pop",
-        "Rock"
+        "Indie"
       ]
     },
     {
@@ -235,9 +272,11 @@
       "nome": "Rodrigo Leão",
       "anoNascimento": 1964,
       "generos": [
-        "Pop"
+        "Pop",
+        "Indie"
       ],
-      "pertenceAEditora": "sony_pt"
+      "pertenceAEditora": "sony_pt",
+      "descricao": "Músico e compositor, ex-membro da Sétima Legião e dos Madredeus."
     },
     {
       "id": "pedro_ayres_magalhaes",
@@ -250,31 +289,59 @@
       "pertenceAEditora": "valentim_de_carvalho"
     },
     {
+      "id": "teresa_salgueiro",
+      "nome": "Teresa Salgueiro",
+      "anoNascimento": 1969,
+      "generos": [
+        "Indie",
+        "Folk"
+      ],
+      "pertenceAEditora": "universal_pt",
+      "descricao": "Voz original dos Madredeus, conhecida pela sua voz inconfundível."
+    },
+    {
+      "id": "pedro_abrunhosa",
+      "nome": "Pedro Abrunhosa",
+      "anoNascimento": 1960,
+      "generos": [
+        "Pop",
+        "Jazz"
+      ],
+      "pertenceAEditora": "sony_pt",
+      "descricao": "Cantor e compositor portuense com forte influência do jazz."
+    },
+    {
       "id": "barbara_bandeira",
       "nome": "Bárbara Bandeira",
       "anoNascimento": 2001,
       "generos": [
         "Pop"
       ],
-      "pertenceAEditora": "universal_pt"
+      "pertenceAEditora": "universal_pt",
+      "descricao": "A artista portuguesa mais ouvida em streaming da sua geração."
     },
     {
       "id": "salvador_sobral",
       "nome": "Salvador Sobral",
       "anoNascimento": 1989,
       "generos": [
-        "Pop"
+        "Pop",
+        "Jazz"
       ],
-      "pertenceAEditora": "valentim_de_carvalho"
+      "pertenceAEditora": "valentim_de_carvalho",
+      "descricao": "Vencedor do Festival Eurovisão 2017 com 'Amar Pelos Dois'.",
+      "curiosidade": "Sobreviveu a um transplante cardíaco em 2017."
     },
     {
       "id": "luisa_sobral",
       "nome": "Luísa Sobral",
       "anoNascimento": 1987,
       "generos": [
-        "Pop"
+        "Pop",
+        "Jazz"
       ],
-      "pertenceAEditora": "valentim_de_carvalho"
+      "pertenceAEditora": "valentim_de_carvalho",
+      "descricao": "Compositora e cantora, irmã de Salvador Sobral, autora de 'Amar Pelos Dois'."
     },
     {
       "id": "mariza_liz",
@@ -291,7 +358,8 @@
       "nome": "Rita Redshoes",
       "anoNascimento": 1981,
       "generos": [
-        "Pop"
+        "Pop",
+        "Indie"
       ],
       "pertenceAEditora": "transformadores"
     },
@@ -318,7 +386,8 @@
       "nome": "Buba Espinho",
       "anoNascimento": 1995,
       "generos": [
-        "Pop"
+        "Pop",
+        "Soul"
       ],
       "pertenceAEditora": "universal_pt"
     },
@@ -338,9 +407,11 @@
       "anoNascimento": 1982,
       "generos": [
         "Pop",
-        "RB"
+        "RB",
+        "Kizomba"
       ],
-      "pertenceAEditora": "sony_pt"
+      "pertenceAEditora": "sony_pt",
+      "descricao": "Músico cabo-verdiano radicado em Portugal, mistura kizomba, soul e pop."
     },
     {
       "id": "ana_bacalhau",
@@ -348,7 +419,8 @@
       "anoNascimento": 1978,
       "generos": [
         "Pop"
-      ]
+      ],
+      "descricao": "Vocalista dos Deolinda, conhecida pela voz característica e letras poéticas."
     },
     {
       "id": "david_fonseca",
@@ -356,7 +428,7 @@
       "anoNascimento": 1976,
       "generos": [
         "Pop",
-        "Rock"
+        "Indie"
       ],
       "pertenceAEditora": "universal_pt"
     },
@@ -374,7 +446,8 @@
       "nome": "Ana Free",
       "anoNascimento": 1987,
       "generos": [
-        "Pop"
+        "Pop",
+        "Soul"
       ],
       "pertenceAEditora": "universal_pt"
     },
@@ -384,9 +457,41 @@
       "anoNascimento": 1978,
       "generos": [
         "Pop",
-        "RB"
+        "RB",
+        "Soul"
+      ],
+      "pertenceAEditora": "universal_pt",
+      "descricao": "Cantora e guitarrista com forte influência africana e soul."
+    },
+    {
+      "id": "seu_jorge_pt",
+      "nome": "Zé Manel Focinho",
+      "anoNascimento": 1972,
+      "generos": [
+        "Pop",
+        "Soul"
       ],
       "pertenceAEditora": "universal_pt"
+    },
+    {
+      "id": "diogo_piçarra",
+      "nome": "Diogo Piçarra",
+      "anoNascimento": 1994,
+      "generos": [
+        "Pop"
+      ],
+      "pertenceAEditora": "universal_pt",
+      "descricao": "Artista pop do Algarve com grande popularidade nas redes sociais."
+    },
+    {
+      "id": "carlao",
+      "nome": "Carlão",
+      "anoNascimento": 1980,
+      "generos": [
+        "Pop",
+        "Soul"
+      ],
+      "pertenceAEditora": "sony_pt"
     },
     {
       "id": "slow_j",
@@ -396,7 +501,8 @@
         "HipHop",
         "Pop"
       ],
-      "pertenceAEditora": "sony_pt"
+      "pertenceAEditora": "sony_pt",
+      "descricao": "João Coelho, produtor e rapper que mistura hip-hop com fado e música africana."
     },
     {
       "id": "valete",
@@ -405,7 +511,8 @@
       "generos": [
         "HipHop"
       ],
-      "pertenceAEditora": "edisco"
+      "pertenceAEditora": "edisco",
+      "descricao": "Um dos rappers mais letrados do hip-hop português, com letras de intervenção social."
     },
     {
       "id": "profjam",
@@ -452,7 +559,8 @@
       "generos": [
         "HipHop"
       ],
-      "pertenceAEditora": "edisco"
+      "pertenceAEditora": "edisco",
+      "descricao": "Pioneiro do hip-hop de intervenção política em Portugal."
     },
     {
       "id": "capicua",
@@ -461,14 +569,16 @@
       "generos": [
         "HipHop"
       ],
-      "pertenceAEditora": "universal_pt"
+      "pertenceAEditora": "universal_pt",
+      "descricao": "Uma das rappers mais aclamadas do hip-hop português, com letras feministas e poéticas."
     },
     {
       "id": "dj_ride",
       "nome": "DJ Ride",
       "anoNascimento": 1976,
       "generos": [
-        "HipHop"
+        "HipHop",
+        "Electronica"
       ],
       "pertenceAEditora": "edisco"
     },
@@ -479,7 +589,8 @@
       "generos": [
         "HipHop"
       ],
-      "pertenceAEditora": "edisco"
+      "pertenceAEditora": "edisco",
+      "descricao": "Um dos pioneiros do hip-hop português, ativo desde os anos 90."
     },
     {
       "id": "dealema",
@@ -500,13 +611,105 @@
       "pertenceAEditora": "universal_pt"
     },
     {
+      "id": "agir",
+      "nome": "Agir",
+      "anoNascimento": 1990,
+      "generos": [
+        "Pop",
+        "RB"
+      ],
+      "pertenceAEditora": "universal_pt",
+      "descricao": "Cantor de reggaeton e pop que dominou os tops portugueses no início dos anos 2010."
+    },
+    {
+      "id": "zeca_afonso",
+      "nome": "Zeca Afonso",
+      "anoNascimento": 1929,
+      "generos": [
+        "Intervencao",
+        "Folk"
+      ],
+      "pertenceAEditora": "edicoes_orfeu",
+      "descricao": "O mais importante cantor de intervenção português, autor de Grândola Vila Morena.",
+      "curiosidade": "Grândola Vila Morena foi o sinal da Revolução dos Cravos a 25 de Abril de 1974."
+    },
+    {
+      "id": "adriano_correia",
+      "nome": "Adriano Correia de Oliveira",
+      "anoNascimento": 1942,
+      "generos": [
+        "Intervencao"
+      ],
+      "pertenceAEditora": "edicoes_orfeu"
+    },
+    {
+      "id": "vitorino",
+      "nome": "Vitorino Salomé",
+      "anoNascimento": 1942,
+      "generos": [
+        "Intervencao",
+        "Folk"
+      ],
+      "pertenceAEditora": "edicoes_orfeu"
+    },
+    {
+      "id": "janita_salome",
+      "nome": "Janita Salomé",
+      "anoNascimento": 1947,
+      "generos": [
+        "Intervencao"
+      ],
+      "pertenceAEditora": "edicoes_orfeu"
+    },
+    {
+      "id": "luisa_basto",
+      "nome": "Luísa Basto",
+      "anoNascimento": 1947,
+      "generos": [
+        "Intervencao"
+      ],
+      "pertenceAEditora": "edicoes_orfeu"
+    },
+    {
+      "id": "sergio_godinho",
+      "nome": "Sérgio Godinho",
+      "anoNascimento": 1945,
+      "generos": [
+        "Intervencao",
+        "Pop"
+      ],
+      "pertenceAEditora": "edicoes_orfeu",
+      "descricao": "Poeta e cantor, um dos mais importantes da geração de Abril."
+    },
+    {
+      "id": "fausto",
+      "nome": "Fausto",
+      "anoNascimento": 1948,
+      "generos": [
+        "Intervencao",
+        "Folk"
+      ],
+      "pertenceAEditora": "edicoes_orfeu"
+    },
+    {
+      "id": "jose_mario_branco",
+      "nome": "José Mário Branco",
+      "anoNascimento": 1942,
+      "generos": [
+        "Intervencao"
+      ],
+      "pertenceAEditora": "edicoes_orfeu",
+      "descricao": "Compositor, produtor e cantor, uma das figuras centrais da música de intervenção."
+    },
+    {
       "id": "quim_barreiros",
       "nome": "Quim Barreiros",
       "anoNascimento": 1951,
       "generos": [
         "Pimba"
       ],
-      "pertenceAEditora": "ovacao"
+      "pertenceAEditora": "ovacao",
+      "descricao": "O rei do pimba, famoso pelas letras picantes e pela Garagem da Vizinha."
     },
     {
       "id": "toy",
@@ -545,15 +748,6 @@
       "pertenceAEditora": "ovacao"
     },
     {
-      "id": "saul_ricardo",
-      "nome": "Saúl Ricardo",
-      "anoNascimento": 1987,
-      "generos": [
-        "Pimba"
-      ],
-      "pertenceAEditora": "ovacao"
-    },
-    {
       "id": "zeca_medeiros",
       "nome": "Zeca Medeiros",
       "anoNascimento": 1948,
@@ -561,70 +755,6 @@
         "Pimba"
       ],
       "pertenceAEditora": "ovacao"
-    },
-    {
-      "id": "zeca_afonso",
-      "nome": "Zeca Afonso",
-      "anoNascimento": 1929,
-      "generos": [
-        "Intervencao"
-      ],
-      "pertenceAEditora": "edicoes_orfeu"
-    },
-    {
-      "id": "adriano_correia",
-      "nome": "Adriano Correia de Oliveira",
-      "anoNascimento": 1942,
-      "generos": [
-        "Intervencao"
-      ],
-      "pertenceAEditora": "edicoes_orfeu"
-    },
-    {
-      "id": "vitorino",
-      "nome": "Vitorino Salomé",
-      "anoNascimento": 1942,
-      "generos": [
-        "Intervencao"
-      ],
-      "pertenceAEditora": "edicoes_orfeu"
-    },
-    {
-      "id": "janita_salome",
-      "nome": "Janita Salomé",
-      "anoNascimento": 1947,
-      "generos": [
-        "Intervencao"
-      ],
-      "pertenceAEditora": "edicoes_orfeu"
-    },
-    {
-      "id": "luisa_basto",
-      "nome": "Luísa Basto",
-      "anoNascimento": 1947,
-      "generos": [
-        "Intervencao"
-      ],
-      "pertenceAEditora": "edicoes_orfeu"
-    },
-    {
-      "id": "sérgio_godinho",
-      "nome": "Sérgio Godinho",
-      "anoNascimento": 1945,
-      "generos": [
-        "Intervencao",
-        "Pop"
-      ],
-      "pertenceAEditora": "edicoes_orfeu"
-    },
-    {
-      "id": "fausto",
-      "nome": "Fausto",
-      "anoNascimento": 1948,
-      "generos": [
-        "Intervencao"
-      ],
-      "pertenceAEditora": "edicoes_orfeu"
     }
   ]
 }
