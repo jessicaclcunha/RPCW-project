@@ -57,6 +57,11 @@
                   rdfs:range :Editora .
 
 
+###  Adicionar esta propriedade inversa para dar suporte completo
+:foiLancadoPor rdf:type owl:ObjectProperty ;
+               owl:inverseOf :lancouAlbum .
+
+
 ###  http://rpcw.di.uminho.pt/2026/music-ontology/pertenceAoAlbum
 :pertenceAoAlbum rdf:type owl:ObjectProperty ;
                  rdfs:domain :Musica ;

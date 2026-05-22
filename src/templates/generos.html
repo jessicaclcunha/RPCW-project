@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Géneros Musicais — Música Portuguesa</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <style>
+    .generos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.2rem;
+      margin-top: 1rem;
+    }
+    .genero-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.3rem 1.5rem;
+      transition: border-color .2s;
+    }
+    .genero-card:hover { border-color: rgba(201,150,58,.4); }
+    .genero-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      color: var(--gold-light);
+      font-weight: 700;
+      margin-bottom: .5rem;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+    .genero-count {
+      background: rgba(201,150,58,.15);
+      border: 1px solid rgba(201,150,58,.3);
+      border-radius: 12px;
+      color: var(--gold-light);
+      font-size: .72rem;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      padding: .15rem .55rem;
+    }
+    .genero-artists-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .4rem;
+      margin-top: .75rem;
+    }
+    .no-artists { color: var(--muted); font-size: .85rem; font-style: italic; }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="/" class="navbar-brand">
+      <span class="dot">♩</span> Música Portuguesa
+    </a>
+    <div class="navbar-links">
+      <a href="/"        class="nav-link">Artistas</a>
+      <a href="/generos" class="nav-link active">Géneros</a>
+    </div>
+  </nav>
+
+  <main class="page">
+
+    <div class="page-hero">
+      <h1>Géneros <em>Musicais</em></h1>
+      <hr class="hero-rule">
+      <p>Artistas e bandas agrupados pela sua vertente musical, ordenados por popularidade no catálogo.</p>
+    </div>
+
+    <div class="section-divider">
+      <span>{{ generos|length }} géneros no catálogo</span>
+    </div>
+
+    {% if generos %}
+    <div class="generos-grid">
+      {% for g in generos %}
+      <div class="genero-card">
+        <div class="genero-name">
+          {{ g.nome }}
+          <span class="genero-count">{{ g.total }}</span>
+        </div>
+        <div class="genero-artists-wrap">
+          {% if g.artistas %}
+            {% for artista in g.artistas %}
+              <a href="/artista/{{ artista.id }}" class="artist-chip"
+                 style="font-size:.78rem;padding:.2rem .65rem">
+                {{ artista.nome }}
+              </a>
+            {% endfor %}
+          {% else %}
+            <span class="no-artists">Nenhum artista associado</span>
+          {% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="empty-state">
+      <div class="icon">🎶</div>
+      <p>Nenhum género encontrado.</p>
+    </div>
+    {% endif %}
+
+  </main>
+</body>
+</html>

@@ -1,0 +1,464 @@
+{
+  "albuns": [
+    {
+      "id": "estranha_forma_vida",
+      "nome": "Estranha Forma de Vida",
+      "anoLancamento": 1962,
+      "lancadoPor": "amalia_rodrigues",
+      "generos": [
+        "Fado"
+      ]
+    },
+    {
+      "id": "com_que_voz",
+      "nome": "Com Que Voz",
+      "anoLancamento": 1970,
+      "lancadoPor": "amalia_rodrigues",
+      "generos": [
+        "Fado"
+      ]
+    },
+    {
+      "id": "fado_em_mim",
+      "nome": "O Fado",
+      "anoLancamento": 2001,
+      "lancadoPor": "carlos_do_carmo",
+      "generos": [
+        "Fado"
+      ]
+    },
+    {
+      "id": "fado_mae",
+      "nome": "Fado Mãe",
+      "anoLancamento": 2008,
+      "lancadoPor": "carminho",
+      "generos": [
+        "Fado"
+      ]
+    },
+    {
+      "id": "mariza_fado_em_mim",
+      "nome": "Fado em Mim",
+      "anoLancamento": 2001,
+      "lancadoPor": "mariza",
+      "generos": [
+        "Fado"
+      ]
+    },
+    {
+      "id": "transparente_alb",
+      "nome": "Transparente",
+      "anoLancamento": 2005,
+      "lancadoPor": "mariza",
+      "generos": [
+        "Fado"
+      ]
+    },
+    {
+      "id": "ana_moura_desfado",
+      "nome": "Desfado",
+      "anoLancamento": 2012,
+      "lancadoPor": "ana_moura",
+      "generos": [
+        "Fado"
+      ]
+    },
+    {
+      "id": "katia_longe",
+      "nome": "Longe",
+      "anoLancamento": 2003,
+      "lancadoPor": "katia_guerreiro",
+      "generos": [
+        "Fado"
+      ]
+    },
+    {
+      "id": "gisela_gisela",
+      "nome": "Gisela João",
+      "anoLancamento": 2013,
+      "lancadoPor": "gisela_joao",
+      "generos": [
+        "Fado"
+      ]
+    },
+    {
+      "id": "zambujo_alfama",
+      "nome": "Alfama",
+      "anoLancamento": 2011,
+      "lancadoPor": "antonio_zambujo",
+      "generos": [
+        "Fado",
+        "Pop"
+      ]
+    },
+    {
+      "id": "ar_de_rock_alb",
+      "nome": "Ar de Rock",
+      "anoLancamento": 1980,
+      "lancadoPor": "rui_veloso",
+      "generos": [
+        "Rock",
+        "Blues"
+      ]
+    },
+    {
+      "id": "anjo_da_guarda_alb",
+      "nome": "Anjo da Guarda",
+      "anoLancamento": 1983,
+      "lancadoPor": "antonio_variacoes",
+      "generos": [
+        "Pop"
+      ]
+    },
+    {
+      "id": "café_berlin_alb",
+      "nome": "Café Berlim",
+      "anoLancamento": 1986,
+      "lancadoPor": "antonio_variacoes",
+      "generos": [
+        "Pop",
+        "Rock"
+      ]
+    },
+    {
+      "id": "album_1111",
+      "nome": "Quarteto 1111",
+      "anoLancamento": 1970,
+      "lancadoPor": "quarteto_1111",
+      "generos": [
+        "Rock"
+      ]
+    },
+    {
+      "id": "taxi_81",
+      "nome": "Táxi",
+      "anoLancamento": 1981,
+      "lancadoPor": "taxi",
+      "generos": [
+        "Rock"
+      ]
+    },
+    {
+      "id": "madrugada_80",
+      "nome": "À Flor da Pele",
+      "anoLancamento": 1981,
+      "lancadoPor": "uhf",
+      "generos": [
+        "Rock"
+      ]
+    },
+    {
+      "id": "a_um_deus_alb",
+      "nome": "A um Deus Desconhecido",
+      "anoLancamento": 1984,
+      "lancadoPor": "setima_legiao",
+      "generos": [
+        "Pop"
+      ]
+    },
+    {
+      "id": "ao_vivo_setima",
+      "nome": "Ao Vivo",
+      "anoLancamento": 1989,
+      "lancadoPor": "setima_legiao",
+      "generos": [
+        "Pop",
+        "Rock"
+      ]
+    },
+    {
+      "id": "irreligious",
+      "nome": "Irreligious",
+      "anoLancamento": 1996,
+      "lancadoPor": "moonspell",
+      "generos": [
+        "Rock"
+      ]
+    },
+    {
+      "id": "wolfheart_alb",
+      "nome": "Wolfheart",
+      "anoLancamento": 1995,
+      "lancadoPor": "moonspell",
+      "generos": [
+        "Rock"
+      ]
+    },
+    {
+      "id": "subtilezas_bairro",
+      "nome": "Subtilezas de um Rapaz de Bairro",
+      "anoLancamento": 1992,
+      "lancadoPor": "ex_votos",
+      "generos": [
+        "Rock"
+      ]
+    },
+    {
+      "id": "mutantes_alb",
+      "nome": "Mutantes S.21",
+      "anoLancamento": 1992,
+      "lancadoPor": "mao_morta",
+      "generos": [
+        "Rock"
+      ]
+    },
+    {
+      "id": "ganda_banda_alb",
+      "nome": "Ganda Banda",
+      "anoLancamento": 1998,
+      "lancadoPor": "quinta_do_bill",
+      "generos": [
+        "Rock"
+      ]
+    },
+    {
+      "id": "portem_se_bem_alb",
+      "nome": "Portem-se Bem",
+      "anoLancamento": 1989,
+      "lancadoPor": "peste_sida",
+      "generos": [
+        "Rock"
+      ]
+    },
+    {
+      "id": "cançoes_pos_guerra",
+      "nome": "Canções do Pós-Guerra",
+      "anoLancamento": 2020,
+      "lancadoPor": "jorge_palma",
+      "generos": [
+        "Rock"
+      ]
+    },
+    {
+      "id": "frágil_alb",
+      "nome": "Frágil",
+      "anoLancamento": 1985,
+      "lancadoPor": "jorge_palma",
+      "generos": [
+        "Rock",
+        "Pop"
+      ]
+    },
+    {
+      "id": "ornatos_adeus",
+      "nome": "Adeus Tristeza",
+      "anoLancamento": 1995,
+      "lancadoPor": "ornatos_violeta",
+      "generos": [
+        "Rock"
+      ]
+    },
+    {
+      "id": "ornatos_calmamente",
+      "nome": "Calmamente",
+      "anoLancamento": 1999,
+      "lancadoPor": "ornatos_violeta",
+      "generos": [
+        "Rock"
+      ]
+    },
+    {
+      "id": "xutos_confidencial",
+      "nome": "Confidencial",
+      "anoLancamento": 1985,
+      "lancadoPor": "xutos_pontapes",
+      "generos": [
+        "Rock"
+      ]
+    },
+    {
+      "id": "xutos_barrotes",
+      "nome": "Barrotes",
+      "anoLancamento": 1982,
+      "lancadoPor": "xutos_pontapes",
+      "generos": [
+        "Rock"
+      ]
+    },
+    {
+      "id": "herois_vikings",
+      "nome": "Os Vikings",
+      "anoLancamento": 1983,
+      "lancadoPor": "heróis_do_mar",
+      "generos": [
+        "Pop",
+        "Rock"
+      ]
+    },
+    {
+      "id": "flores_cinema",
+      "nome": "Flarixa Flaus",
+      "anoLancamento": 2023,
+      "lancadoPor": "barbara_bandeira",
+      "generos": [
+        "Pop"
+      ]
+    },
+    {
+      "id": "sobral_amar_pelos_2",
+      "nome": "Amar Pelos Dois",
+      "anoLancamento": 2017,
+      "lancadoPor": "salvador_sobral",
+      "generos": [
+        "Pop"
+      ]
+    },
+    {
+      "id": "vinyl_album",
+      "nome": "Vinyl",
+      "anoLancamento": 2017,
+      "lancadoPor": "the_gift",
+      "generos": [
+        "Pop"
+      ]
+    },
+    {
+      "id": "cancao_deolinda",
+      "nome": "Canção ao Lado",
+      "anoLancamento": 2008,
+      "lancadoPor": "deolinda",
+      "generos": [
+        "Pop",
+        "Fado"
+      ]
+    },
+    {
+      "id": "deolinda_dois",
+      "nome": "Dois",
+      "anoLancamento": 2015,
+      "lancadoPor": "deolinda",
+      "generos": [
+        "Pop"
+      ]
+    },
+    {
+      "id": "baza_baza_reggae",
+      "nome": "Janela para o Recreio",
+      "anoLancamento": 1995,
+      "lancadoPor": "kussondulola",
+      "generos": [
+        "Pop"
+      ]
+    },
+    {
+      "id": "black_diamond_alb",
+      "nome": "Black Diamond",
+      "anoLancamento": 2008,
+      "lancadoPor": "buraka_som_sistema",
+      "generos": [
+        "HipHop",
+        "Pop"
+      ]
+    },
+    {
+      "id": "sara_balancê",
+      "nome": "Balancê",
+      "anoLancamento": 2008,
+      "lancadoPor": "sara_tavares",
+      "generos": [
+        "Pop",
+        "RB"
+      ]
+    },
+    {
+      "id": "afro_fado_album",
+      "nome": "Afro Fado",
+      "anoLancamento": 2023,
+      "lancadoPor": "slow_j",
+      "generos": [
+        "HipHop",
+        "Pop"
+      ]
+    },
+    {
+      "id": "serviço_público_alb",
+      "nome": "Serviço Público",
+      "anoLancamento": 2006,
+      "lancadoPor": "valete",
+      "generos": [
+        "HipHop"
+      ]
+    },
+    {
+      "id": "valete_estado_alb",
+      "nome": "Estado de Sítio",
+      "anoLancamento": 2012,
+      "lancadoPor": "valete",
+      "generos": [
+        "HipHop"
+      ]
+    },
+    {
+      "id": "capicua_anelar",
+      "nome": "Anelar",
+      "anoLancamento": 2014,
+      "lancadoPor": "capicua",
+      "generos": [
+        "HipHop"
+      ]
+    },
+    {
+      "id": "boss_ac_anti",
+      "nome": "Anti",
+      "anoLancamento": 2003,
+      "lancadoPor": "boss_ac",
+      "generos": [
+        "HipHop"
+      ]
+    },
+    {
+      "id": "zeca_bancal_alb",
+      "nome": "Balada do Outono",
+      "anoLancamento": 1964,
+      "lancadoPor": "zeca_afonso",
+      "generos": [
+        "Intervencao"
+      ]
+    },
+    {
+      "id": "grândola_alb",
+      "nome": "Cantigas do Maio",
+      "anoLancamento": 1971,
+      "lancadoPor": "zeca_afonso",
+      "generos": [
+        "Intervencao"
+      ]
+    },
+    {
+      "id": "sergio_caminhante",
+      "nome": "Caminhante",
+      "anoLancamento": 1974,
+      "lancadoPor": "sérgio_godinho",
+      "generos": [
+        "Intervencao"
+      ]
+    },
+    {
+      "id": "atento_album",
+      "nome": "Atento",
+      "anoLancamento": 2003,
+      "lancadoPor": "quim_barreiros",
+      "generos": [
+        "Pimba"
+      ]
+    },
+    {
+      "id": "és_tao_sensual_alb",
+      "nome": "És Tão Sensual",
+      "anoLancamento": 2002,
+      "lancadoPor": "toy",
+      "generos": [
+        "Pimba"
+      ]
+    },
+    {
+      "id": "coracao_de_pau_alb",
+      "nome": "Coração de Pau",
+      "anoLancamento": 1997,
+      "lancadoPor": "agata",
+      "generos": [
+        "Pimba"
+      ]
+    }
+  ]
+}

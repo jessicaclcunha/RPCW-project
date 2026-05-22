@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ album.nome }} — Música Portuguesa</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="/" class="navbar-brand">
+      <span class="dot">♩</span> Música Portuguesa
+    </a>
+    <div class="navbar-links">
+      <a href="/"        class="nav-link">Artistas</a>
+      <a href="/generos" class="nav-link">Géneros</a>
+    </div>
+  </nav>
+
+  <main class="page">
+
+    <div style="text-align:center;padding:2rem 0">
+      <div style="width:100px;height:100px;margin:0 auto 1.5rem;background:linear-gradient(135deg,var(--red),var(--gold));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2.5rem;box-shadow:0 6px 30px rgba(155,35,53,0.3)">
+        💿
+      </div>
+      <h1 style="font-family:'Playfair Display',serif;font-size:2.5rem;color:var(--cream);font-weight:900;font-style:italic">
+        {{ album.nome }}
+      </h1>
+    </div>
+
+    <div class="info-grid">
+      {% if album.artista %}
+      <div class="info-card">
+        <div class="label">Artista / Banda</div>
+        <div class="value">
+          <a href="/artista/{{ album.artista.id }}" class="link-card">🎤 {{ album.artista.nome }}</a>
+        </div>
+      </div>
+      {% endif %}
+      {% if album.ano %}
+      <div class="info-card">
+        <div class="label">Ano de Lançamento</div>
+        <div class="value">📅 {{ album.ano }}</div>
+      </div>
+      {% endif %}
+      {% if album.generos %}
+      <div class="info-card">
+        <div class="label">Géneros</div>
+        <div class="tags-wrap" style="margin-top:.4rem">
+          {% for g in album.generos %}
+            <a href="/?genero={{ g.nome }}" class="genre-tag" style="text-decoration:none">🏷️ {{ g.nome }}</a>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+    </div>
+
+    {% if album.musicas %}
+    <div class="section-divider"><span>Faixas ({{ album.musicas|length }})</span></div>
+    <div class="musica-list">
+      {% for i, m in album.musicas|enumerate %}
+      <div class="musica-item">
+        <span><span style="color:var(--muted);margin-right:.6rem;font-size:.8rem">{{ loop.index }}</span>🎵 {{ m.nome }}</span>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    <div style="margin-top:4rem;text-align:center;display:flex;justify-content:center;gap:1rem;flex-wrap:wrap">
+      {% if album.artista %}
+        <a href="/artista/{{ album.artista.id }}" class="btn">Ver Perfil de {{ album.artista.nome }}</a>
+      {% endif %}
+      <a href="/" class="btn btn-ghost">Voltar ao Início</a>
+    </div>
+
+  </main>
+</body>
+</html>

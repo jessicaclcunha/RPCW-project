@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ artista.nome }} — Música Portuguesa</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="/" class="navbar-brand"><span class="dot">♩</span> Música Portuguesa</a>
+    <div class="navbar-links">
+      <a href="/"             class="nav-link">Artistas</a>
+      <a href="/generos"      class="nav-link">Géneros</a>
+      <a href="/timeline"     class="nav-link">Linha do Tempo</a>
+      <a href="/colaboracoes" class="nav-link">Colaborações</a>
+      <a href="/premios"      class="nav-link">Prémios</a>
+      <a href="/concertos"    class="nav-link">Concertos</a>
+      <a href="/estatisticas" class="nav-link">Estatísticas</a>
+    </div>
+  </nav>
+
+  <main class="page">
+
+    <header class="detail-header">
+      <div class="detail-avatar">{{ artista.nome[0].upper() }}</div>
+      <div class="detail-meta">
+        <h1>{{ artista.nome }}</h1>
+        <div class="subtitle">
+          {% if artista.tipo == "Solo" %}
+            <span class="badge badge-solo">Artista Solo</span>
+          {% else %}
+            <span class="badge badge-banda">Banda / Grupo</span>
+          {% endif %}
+          {% if artista.premios %}
+            <span class="badge" style="background:rgba(200,180,50,.18);color:#d4c060;border:1px solid rgba(200,180,50,.3);margin-left:.5rem">
+              🏆 {{ artista.premios|length }} prémio{% if artista.premios|length != 1 %}s{% endif %}
+            </span>
+          {% endif %}
+        </div>
+      </div>
+    </header>
+
+    {% if artista.bio %}
+    <div class="desc-block">{{ artista.bio }}</div>
+    {% endif %}
+
+    <div class="info-grid">
+      {% if artista.anoNasc %}
+      <div class="info-card">
+        <div class="label">Ano de Nascimento</div>
+        <div class="value">📅 {{ artista.anoNasc }}</div>
+      </div>
+      {% endif %}
+      {% if artista.anoForm %}
+      <div class="info-card">
+        <div class="label">Ano de Formação</div>
+        <div class="value">📅 {{ artista.anoForm }}</div>
+      </div>
+      {% endif %}
+      {% if artista.editora %}
+      <div class="info-card">
+        <div class="label">Editora</div>
+        <div class="value">🏷️ {{ artista.editora }}</div>
+      </div>
+      {% endif %}
+      {% if artista.generos %}
+      <div class="info-card">
+        <div class="label">Géneros Musicais</div>
+        <div class="tags-wrap" style="margin-top:.4rem">
+          {% for g in artista.generos %}
+            <a href="/?genero={{ g.nome }}" class="genre-tag" style="text-decoration:none">{{ g.nome }}</a>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+    </div>
+
+    {% if artista.membros %}
+    <div class="section-divider"><span>Membros da Banda</span></div>
+    <div class="tags-wrap">
+      {% for m in artista.membros %}
+        <a href="/artista/{{ m.id }}" class="artist-chip">👤 {{ m.nome }}</a>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    {% if artista.bandas %}
+    <div class="section-divider"><span>Projetos &amp; Bandas</span></div>
+    <div class="tags-wrap">
+      {% for b in artista.bandas %}
+        <a href="/artista/{{ b.id }}" class="artist-chip">👥 {{ b.nome }}</a>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    <!-- Influências -->
+    {% if artista.influencias or artista.influenciou %}
+    <div class="section-divider"><span>Rede de Influências</span></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+      {% if artista.influencias %}
+      <div class="info-card">
+        <div class="label" style="margin-bottom:.6rem">Influenciado por</div>
+        <div class="tags-wrap">
+          {% for a in artista.influencias %}
+            <a href="/artista/{{ a.id }}" class="artist-chip" style="font-size:.8rem">⬆ {{ a.nome }}</a>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+      {% if artista.influenciou %}
+      <div class="info-card">
+        <div class="label" style="margin-bottom:.6rem">Influenciou</div>
+        <div class="tags-wrap">
+          {% for a in artista.influenciou %}
+            <a href="/artista/{{ a.id }}" class="artist-chip" style="font-size:.8rem">⬇ {{ a.nome }}</a>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+    </div>
+    {% endif %}
+
+    {% if artista.albuns %}
+    <div class="section-divider"><span>Discografia ({{ artista.albuns|length }} álbuns)</span></div>
+    <div class="album-list">
+      {% for a in artista.albuns %}
+        <a href="/album/{{ a.id }}" class="album-item">
+          <span>💿 {{ a.nome }}</span>
+          {% if a.ano %}<span class="album-year">{{ a.ano }}</span>{% endif %}
+        </a>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    <!-- Adicionar álbum -->
+    <div class="form-container" style="margin-top:2rem">
+      <h2>➕ Adicionar Álbum</h2>
+      <form action="/album/adicionar" method="POST">
+        <input type="hidden" name="artista_id" value="{{ artista.id }}">
+        <div class="form-grid">
+          <input type="text"   name="nome" placeholder="Nome do álbum" required>
+          <input type="number" name="ano"  placeholder="Ano de lançamento" min="1900" max="2030">
+          <button type="submit" class="btn">Gravar Álbum</button>
+        </div>
+      </form>
+    </div>
+
+    {% if artista.musicas %}
+    <div class="section-divider"><span>Músicas ({{ artista.musicas|length }})</span></div>
+    <div class="musica-list">
+      {% for m in artista.musicas %}
+        <div class="musica-item">
+          <span>🎵 {{ m.nome }}</span>
+          {% if m.albumNome %}
+            <a href="/album/{{ m.album }}" class="album-year" style="text-decoration:none">{{ m.albumNome }}</a>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    <!-- Prémios -->
+    {% if artista.premios %}
+    <div class="section-divider"><span>🏆 Prémios e Galardões</span></div>
+    {% for p in artista.premios %}
+    <div class="premio-card">
+      <div class="premio-trophy">🏆</div>
+      <div class="premio-info">
+        <div class="premio-nome">{{ p.nome }}</div>
+        <div class="premio-meta">
+          {% if p.org %}{{ p.org }}{% endif %}
+          {% if p.cat %} · {{ p.cat }}{% endif %}
+        </div>
+      </div>
+      {% if p.ano %}<div class="premio-ano">{{ p.ano }}</div>{% endif %}
+    </div>
+    {% endfor %}
+    {% endif %}
+
+    <!-- Concertos -->
+    {% if artista.concertos %}
+    <div class="section-divider"><span>🎤 Concertos</span></div>
+    {% for c in artista.concertos %}
+    <div class="concerto-card">
+      <div class="concerto-nome">{{ c.nome }}</div>
+      {% if c.local %}<div class="concerto-local">📍 {{ c.local }}</div>{% endif %}
+      {% if c.data  %}<div class="concerto-data">📅 {{ c.data }}</div>{% endif %}
+    </div>
+    {% endfor %}
+    {% endif %}
+
+    <div style="margin-top:3rem;text-align:center">
+      <a href="/" class="btn btn-ghost">← Voltar à Listagem</a>
+    </div>
+
+  </main>
+</body>
+</html>

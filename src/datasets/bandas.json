@@ -1,0 +1,379 @@
+{
+  "bandas": [
+    {
+      "id": "quarteto_1111",
+      "nome": "Quarteto 1111",
+      "anoFormacao": 1967,
+      "generos": [
+        "Rock",
+        "Pop"
+      ],
+      "pertenceAEditora": "valentim_de_carvalho",
+      "temMembro": []
+    },
+    {
+      "id": "sheiks",
+      "nome": "Os Sheiks",
+      "anoFormacao": 1963,
+      "generos": [
+        "Pop",
+        "Rock"
+      ],
+      "pertenceAEditora": "valentim_de_carvalho",
+      "temMembro": [
+        "paulo_de_carvalho"
+      ]
+    },
+    {
+      "id": "taxi",
+      "nome": "Táxi",
+      "anoFormacao": 1979,
+      "generos": [
+        "Rock"
+      ],
+      "pertenceAEditora": "universal_pt",
+      "temMembro": []
+    },
+    {
+      "id": "uhf",
+      "nome": "UHF",
+      "anoFormacao": 1978,
+      "generos": [
+        "Rock"
+      ],
+      "pertenceAEditora": "edisco",
+      "temMembro": []
+    },
+    {
+      "id": "radio_macau",
+      "nome": "Rádio Macau",
+      "anoFormacao": 1983,
+      "generos": [
+        "Pop",
+        "Rock"
+      ],
+      "pertenceAEditora": "emi_portugal",
+      "temMembro": []
+    },
+    {
+      "id": "setima_legiao",
+      "nome": "Sétima Legião",
+      "anoFormacao": 1982,
+      "generos": [
+        "Pop",
+        "Rock"
+      ],
+      "pertenceAEditora": "valentim_de_carvalho",
+      "temMembro": [
+        "rodrigo_leao",
+        "pedro_ayres_magalhaes"
+      ]
+    },
+    {
+      "id": "xutos_pontapes",
+      "nome": "Xutos & Pontapés",
+      "anoFormacao": 1978,
+      "generos": [
+        "Rock"
+      ],
+      "pertenceAEditora": "universal_pt",
+      "temMembro": []
+    },
+    {
+      "id": "rui_veloso_banda",
+      "nome": "Rui Veloso e Banda",
+      "anoFormacao": 1980,
+      "generos": [
+        "Rock",
+        "Blues"
+      ],
+      "pertenceAEditora": "valentim_de_carvalho",
+      "temMembro": [
+        "rui_veloso"
+      ]
+    },
+    {
+      "id": "heróis_do_mar",
+      "nome": "Heróis do Mar",
+      "anoFormacao": 1981,
+      "generos": [
+        "Pop",
+        "Rock"
+      ],
+      "pertenceAEditora": "valentim_de_carvalho",
+      "temMembro": []
+    },
+    {
+      "id": "ex_votos",
+      "nome": "Os Ex-Votos",
+      "anoFormacao": 1989,
+      "generos": [
+        "Rock"
+      ],
+      "pertenceAEditora": "transformadores",
+      "temMembro": []
+    },
+    {
+      "id": "mao_morta",
+      "nome": "Mão Morta",
+      "anoFormacao": 1984,
+      "generos": [
+        "Rock"
+      ],
+      "pertenceAEditora": "transformadores",
+      "temMembro": []
+    },
+    {
+      "id": "quinta_do_bill",
+      "nome": "Quinta do Bill",
+      "anoFormacao": 1987,
+      "generos": [
+        "Rock"
+      ],
+      "pertenceAEditora": "universal_pt",
+      "temMembro": []
+    },
+    {
+      "id": "peste_sida",
+      "nome": "Peste & Sida",
+      "anoFormacao": 1986,
+      "generos": [
+        "Rock"
+      ],
+      "pertenceAEditora": "transformadores",
+      "temMembro": []
+    },
+    {
+      "id": "trabalhadores_mar",
+      "nome": "Trabalhadores do Mar",
+      "anoFormacao": 1987,
+      "generos": [
+        "Pop",
+        "Rock"
+      ],
+      "pertenceAEditora": "polygram",
+      "temMembro": []
+    },
+    {
+      "id": "clã",
+      "nome": "Clã",
+      "anoFormacao": 1996,
+      "generos": [
+        "Rock",
+        "Pop"
+      ],
+      "pertenceAEditora": "universal_pt",
+      "temMembro": []
+    },
+    {
+      "id": "ornatos_violeta",
+      "nome": "Ornatos Violeta",
+      "anoFormacao": 1991,
+      "generos": [
+        "Rock"
+      ],
+      "pertenceAEditora": "universal_pt",
+      "temMembro": [
+        "manel_cruz"
+      ]
+    },
+    {
+      "id": "linda_martini",
+      "nome": "Linda Martini",
+      "anoFormacao": 2003,
+      "generos": [
+        "Rock"
+      ],
+      "pertenceAEditora": "universal_pt",
+      "temMembro": []
+    },
+    {
+      "id": "moonspell",
+      "nome": "Moonspell",
+      "anoFormacao": 1992,
+      "generos": [
+        "Rock"
+      ],
+      "pertenceAEditora": "universal_pt",
+      "temMembro": [
+        "fernando_ribeiro"
+      ]
+    },
+    {
+      "id": "capitao_fausto",
+      "nome": "Capitão Fausto",
+      "anoFormacao": 2009,
+      "generos": [
+        "Rock",
+        "Pop"
+      ],
+      "pertenceAEditora": "sony_pt",
+      "temMembro": [
+        "tomas_wallenstein"
+      ]
+    },
+    {
+      "id": "kussondulola",
+      "nome": "Kussondulola",
+      "anoFormacao": 1992,
+      "generos": [
+        "Pop"
+      ],
+      "pertenceAEditora": "emi_portugal",
+      "temMembro": []
+    },
+    {
+      "id": "corvos",
+      "nome": "Corvos",
+      "anoFormacao": 1998,
+      "generos": [
+        "Rock"
+      ],
+      "pertenceAEditora": "zona_musica",
+      "temMembro": []
+    },
+    {
+      "id": "the_gift",
+      "nome": "The Gift",
+      "anoFormacao": 1994,
+      "generos": [
+        "Pop"
+      ],
+      "pertenceAEditora": "transformadores",
+      "temMembro": []
+    },
+    {
+      "id": "deolinda",
+      "nome": "Deolinda",
+      "anoFormacao": 2006,
+      "generos": [
+        "Pop",
+        "Fado"
+      ],
+      "pertenceAEditora": "sony_pt",
+      "temMembro": [
+        "ana_bacalhau"
+      ]
+    },
+    {
+      "id": "amor_electro",
+      "nome": "Amor Electro",
+      "anoFormacao": 2010,
+      "generos": [
+        "Pop",
+        "Rock"
+      ],
+      "pertenceAEditora": "sony_pt",
+      "temMembro": [
+        "mariza_liz"
+      ]
+    },
+    {
+      "id": "os_quatro_e_meia",
+      "nome": "Os Quatro e Meia",
+      "anoFormacao": 2013,
+      "generos": [
+        "Pop"
+      ],
+      "pertenceAEditora": "universal_pt",
+      "temMembro": []
+    },
+    {
+      "id": "dzrt",
+      "nome": "D'ZRT",
+      "anoFormacao": 2004,
+      "generos": [
+        "Pop"
+      ],
+      "pertenceAEditora": "universal_pt",
+      "temMembro": []
+    },
+    {
+      "id": "santamaria",
+      "nome": "Santamaria",
+      "anoFormacao": 1998,
+      "generos": [
+        "Pop"
+      ],
+      "pertenceAEditora": "ovacao",
+      "temMembro": []
+    },
+    {
+      "id": "davidinho_e_banda",
+      "nome": "David Fonseca e Banda",
+      "anoFormacao": 2000,
+      "generos": [
+        "Pop",
+        "Rock"
+      ],
+      "pertenceAEditora": "universal_pt",
+      "temMembro": [
+        "david_fonseca"
+      ]
+    },
+    {
+      "id": "conjunto_acorda",
+      "nome": "Conjunto Acorda",
+      "anoFormacao": 2015,
+      "generos": [
+        "Pop"
+      ],
+      "pertenceAEditora": "sony_pt",
+      "temMembro": []
+    },
+    {
+      "id": "wet_bed_gang",
+      "nome": "Wet Bed Gang",
+      "anoFormacao": 2014,
+      "generos": [
+        "HipHop"
+      ],
+      "pertenceAEditora": "sony_pt",
+      "temMembro": []
+    },
+    {
+      "id": "buraka_som_sistema",
+      "nome": "Buraka Som Sistema",
+      "anoFormacao": 2006,
+      "generos": [
+        "HipHop",
+        "Pop"
+      ],
+      "pertenceAEditora": "sony_pt",
+      "temMembro": []
+    },
+    {
+      "id": "expensive_soul",
+      "nome": "Expensive Soul",
+      "anoFormacao": 1999,
+      "generos": [
+        "HipHop",
+        "RB"
+      ],
+      "pertenceAEditora": "sony_pt",
+      "temMembro": []
+    },
+    {
+      "id": "black_company",
+      "nome": "Black Company",
+      "anoFormacao": 1993,
+      "generos": [
+        "HipHop"
+      ],
+      "pertenceAEditora": "edisco",
+      "temMembro": []
+    },
+    {
+      "id": "dealema_banda",
+      "nome": "Dealema",
+      "anoFormacao": 1999,
+      "generos": [
+        "HipHop"
+      ],
+      "pertenceAEditora": "sony_pt",
+      "temMembro": [
+        "dealema"
+      ]
+    }
+  ]
+}

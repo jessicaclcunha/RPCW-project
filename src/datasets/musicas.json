@@ -1,0 +1,708 @@
+{
+  "musicas": [
+    {
+      "id": "estranha_forma_mus",
+      "nome": "Estranha Forma de Vida",
+      "interpretadaPor": [
+        "amalia_rodrigues"
+      ],
+      "pertenceAoAlbum": "estranha_forma_vida",
+      "generos": [
+        "Fado"
+      ]
+    },
+    {
+      "id": "uma_casa_portuguesa",
+      "nome": "Uma Casa Portuguesa",
+      "interpretadaPor": [
+        "amalia_rodrigues"
+      ],
+      "generos": [
+        "Fado"
+      ]
+    },
+    {
+      "id": "lagrima_mus",
+      "nome": "Lágrima",
+      "interpretadaPor": [
+        "amalia_rodrigues"
+      ],
+      "pertenceAoAlbum": "com_que_voz",
+      "generos": [
+        "Fado"
+      ]
+    },
+    {
+      "id": "povo_que_lavas",
+      "nome": "Povo Que Lavas no Rio",
+      "interpretadaPor": [
+        "amalia_rodrigues"
+      ],
+      "generos": [
+        "Fado"
+      ]
+    },
+    {
+      "id": "barco_negro",
+      "nome": "Barco Negro",
+      "interpretadaPor": [
+        "amalia_rodrigues"
+      ],
+      "generos": [
+        "Fado"
+      ]
+    },
+    {
+      "id": "um_homem_cidade",
+      "nome": "Um Homem na Cidade",
+      "interpretadaPor": [
+        "carlos_do_carmo"
+      ],
+      "pertenceAoAlbum": "fado_em_mim",
+      "generos": [
+        "Fado"
+      ]
+    },
+    {
+      "id": "lisboa_menina_moca",
+      "nome": "Lisboa, Menina e Moça",
+      "interpretadaPor": [
+        "carlos_do_carmo"
+      ],
+      "generos": [
+        "Fado"
+      ]
+    },
+    {
+      "id": "corre_mus",
+      "nome": "Corre",
+      "interpretadaPor": [
+        "mariza"
+      ],
+      "pertenceAoAlbum": "mariza_fado_em_mim",
+      "generos": [
+        "Fado"
+      ]
+    },
+    {
+      "id": "透明_transparente",
+      "nome": "Transparente",
+      "interpretadaPor": [
+        "mariza"
+      ],
+      "pertenceAoAlbum": "transparente_alb",
+      "generos": [
+        "Fado"
+      ]
+    },
+    {
+      "id": "fado_da_saudade_mus",
+      "nome": "Fado da Saudade",
+      "interpretadaPor": [
+        "carminho"
+      ],
+      "pertenceAoAlbum": "fado_mae",
+      "generos": [
+        "Fado"
+      ]
+    },
+    {
+      "id": "desfado_mus",
+      "nome": "Desfado",
+      "interpretadaPor": [
+        "ana_moura"
+      ],
+      "pertenceAoAlbum": "ana_moura_desfado",
+      "generos": [
+        "Fado"
+      ]
+    },
+    {
+      "id": "duende_gisela",
+      "nome": "Duende",
+      "interpretadaPor": [
+        "gisela_joao"
+      ],
+      "pertenceAoAlbum": "gisela_gisela",
+      "generos": [
+        "Fado"
+      ]
+    },
+    {
+      "id": "zambujo_alfama_mus",
+      "nome": "Alfama",
+      "interpretadaPor": [
+        "antonio_zambujo"
+      ],
+      "pertenceAoAlbum": "zambujo_alfama",
+      "generos": [
+        "Fado",
+        "Pop"
+      ]
+    },
+    {
+      "id": "pica_do_sete",
+      "nome": "O Pica do Sete",
+      "interpretadaPor": [
+        "antonio_zambujo"
+      ],
+      "generos": [
+        "Fado",
+        "Pop"
+      ]
+    },
+    {
+      "id": "grandola_mus",
+      "nome": "Grândola, Vila Morena",
+      "interpretadaPor": [
+        "zeca_afonso"
+      ],
+      "pertenceAoAlbum": "grândola_alb",
+      "generos": [
+        "Intervencao"
+      ]
+    },
+    {
+      "id": "vejam_bem_mus",
+      "nome": "Vejam Bem",
+      "interpretadaPor": [
+        "zeca_afonso"
+      ],
+      "generos": [
+        "Intervencao"
+      ]
+    },
+    {
+      "id": "menino_do_bairro_negro",
+      "nome": "Menino do Bairro Negro",
+      "interpretadaPor": [
+        "zeca_afonso"
+      ],
+      "generos": [
+        "Intervencao"
+      ]
+    },
+    {
+      "id": "primeiro_dia_mus",
+      "nome": "Primeiro Dia",
+      "interpretadaPor": [
+        "sérgio_godinho"
+      ],
+      "pertenceAoAlbum": "sergio_caminhante",
+      "generos": [
+        "Intervencao"
+      ]
+    },
+    {
+      "id": "sergio_caminhante_mus",
+      "nome": "Caminhante",
+      "interpretadaPor": [
+        "sérgio_godinho"
+      ],
+      "generos": [
+        "Intervencao"
+      ]
+    },
+    {
+      "id": "carvalhesa_mus",
+      "nome": "A Carvalhesa",
+      "interpretadaPor": [
+        "adriano_correia"
+      ],
+      "generos": [
+        "Intervencao"
+      ]
+    },
+    {
+      "id": "pintassilgo_mus",
+      "nome": "Como um Pintassilgo",
+      "interpretadaPor": [
+        "vitorino"
+      ],
+      "generos": [
+        "Intervencao"
+      ]
+    },
+    {
+      "id": "cancao_engate",
+      "nome": "Canção de Engate",
+      "interpretadaPor": [
+        "antonio_variacoes"
+      ],
+      "pertenceAoAlbum": "anjo_da_guarda_alb",
+      "generos": [
+        "Pop"
+      ]
+    },
+    {
+      "id": "estou_alem_mus",
+      "nome": "Estou Além",
+      "interpretadaPor": [
+        "antonio_variacoes"
+      ],
+      "pertenceAoAlbum": "café_berlin_alb",
+      "generos": [
+        "Pop",
+        "Rock"
+      ]
+    },
+    {
+      "id": "povo_que_amas_mus",
+      "nome": "O Povo Que Amas em Demasia",
+      "interpretadaPor": [
+        "antonio_variacoes"
+      ],
+      "generos": [
+        "Pop"
+      ]
+    },
+    {
+      "id": "porto_sentido_mus",
+      "nome": "Porto Sentido",
+      "interpretadaPor": [
+        "rui_veloso"
+      ],
+      "pertenceAoAlbum": "ar_de_rock_alb",
+      "generos": [
+        "Rock"
+      ]
+    },
+    {
+      "id": "chico_fininho_mus",
+      "nome": "Chico Fininho",
+      "interpretadaPor": [
+        "rui_veloso"
+      ],
+      "generos": [
+        "Rock",
+        "Blues"
+      ]
+    },
+    {
+      "id": "frágil_mus",
+      "nome": "Frágil",
+      "interpretadaPor": [
+        "jorge_palma"
+      ],
+      "pertenceAoAlbum": "frágil_alb",
+      "generos": [
+        "Rock"
+      ]
+    },
+    {
+      "id": "aprender_voar_mus",
+      "nome": "Aprender a Voar",
+      "interpretadaPor": [
+        "jorge_palma"
+      ],
+      "pertenceAoAlbum": "cançoes_pos_guerra",
+      "generos": [
+        "Rock"
+      ]
+    },
+    {
+      "id": "depois_adeus_mus",
+      "nome": "E Depois do Adeus",
+      "interpretadaPor": [
+        "paulo_de_carvalho"
+      ],
+      "generos": [
+        "Pop"
+      ]
+    },
+    {
+      "id": "playback_mus",
+      "nome": "Playback",
+      "interpretadaPor": [
+        "carlos_paiao"
+      ],
+      "generos": [
+        "Pop"
+      ]
+    },
+    {
+      "id": "cinderela_mus",
+      "nome": "Cinderela",
+      "interpretadaPor": [
+        "carlos_paiao"
+      ],
+      "generos": [
+        "Pop"
+      ]
+    },
+    {
+      "id": "contentores_mus",
+      "nome": "Contentores",
+      "interpretadaPor": [
+        "xutos_pontapes"
+      ],
+      "pertenceAoAlbum": "xutos_confidencial",
+      "generos": [
+        "Rock"
+      ]
+    },
+    {
+      "id": "não_são_cr_mus",
+      "nome": "Não São os Céus",
+      "interpretadaPor": [
+        "xutos_pontapes"
+      ],
+      "generos": [
+        "Rock"
+      ]
+    },
+    {
+      "id": "sol_e_chuva_mus",
+      "nome": "Sol e Chuva",
+      "interpretadaPor": [
+        "xutos_pontapes"
+      ],
+      "generos": [
+        "Rock"
+      ]
+    },
+    {
+      "id": "deus_desconhecido_mus",
+      "nome": "A um Deus Desconhecido",
+      "interpretadaPor": [
+        "setima_legiao"
+      ],
+      "pertenceAoAlbum": "a_um_deus_alb",
+      "generos": [
+        "Pop"
+      ]
+    },
+    {
+      "id": "chama_mus",
+      "nome": "Chama",
+      "interpretadaPor": [
+        "setima_legiao"
+      ],
+      "generos": [
+        "Pop",
+        "Rock"
+      ]
+    },
+    {
+      "id": "opium_mus",
+      "nome": "Opium",
+      "interpretadaPor": [
+        "moonspell"
+      ],
+      "pertenceAoAlbum": "irreligious",
+      "generos": [
+        "Rock"
+      ]
+    },
+    {
+      "id": "wolfheart_mus",
+      "nome": "Wolfheart",
+      "interpretadaPor": [
+        "moonspell"
+      ],
+      "pertenceAoAlbum": "wolfheart_alb",
+      "generos": [
+        "Rock"
+      ]
+    },
+    {
+      "id": "mais_alguem_mus",
+      "nome": "Mais Alguém",
+      "interpretadaPor": [
+        "ornatos_violeta"
+      ],
+      "pertenceAoAlbum": "ornatos_calmamente",
+      "generos": [
+        "Rock"
+      ]
+    },
+    {
+      "id": "adeus_tristeza_mus",
+      "nome": "Adeus Tristeza",
+      "interpretadaPor": [
+        "ornatos_violeta"
+      ],
+      "pertenceAoAlbum": "ornatos_adeus",
+      "generos": [
+        "Rock"
+      ]
+    },
+    {
+      "id": "chiclete_mus",
+      "nome": "Chiclete",
+      "interpretadaPor": [
+        "taxi"
+      ],
+      "pertenceAoAlbum": "taxi_81",
+      "generos": [
+        "Rock"
+      ]
+    },
+    {
+      "id": "cavalo_corrida_mus",
+      "nome": "Cavalo de Corrida",
+      "interpretadaPor": [
+        "uhf"
+      ],
+      "pertenceAoAlbum": "madrugada_80",
+      "generos": [
+        "Rock"
+      ]
+    },
+    {
+      "id": "lenda_elrei_mus",
+      "nome": "Lenda de El-Rei D. Sebastião",
+      "interpretadaPor": [
+        "quarteto_1111"
+      ],
+      "pertenceAoAlbum": "album_1111",
+      "generos": [
+        "Rock"
+      ]
+    },
+    {
+      "id": "vikings_mus",
+      "nome": "Vikings",
+      "interpretadaPor": [
+        "heróis_do_mar"
+      ],
+      "pertenceAoAlbum": "herois_vikings",
+      "generos": [
+        "Pop",
+        "Rock"
+      ]
+    },
+    {
+      "id": "parva_que_sou_mus",
+      "nome": "Parva que Sou",
+      "interpretadaPor": [
+        "deolinda"
+      ],
+      "pertenceAoAlbum": "cancao_deolinda",
+      "generos": [
+        "Pop",
+        "Fado"
+      ]
+    },
+    {
+      "id": "a_estranheza_mus",
+      "nome": "A Estranheza",
+      "interpretadaPor": [
+        "deolinda"
+      ],
+      "pertenceAoAlbum": "deolinda_dois",
+      "generos": [
+        "Pop"
+      ]
+    },
+    {
+      "id": "driving_slow_mus",
+      "nome": "Driving You Slow",
+      "interpretadaPor": [
+        "the_gift"
+      ],
+      "pertenceAoAlbum": "vinyl_album",
+      "generos": [
+        "Pop"
+      ]
+    },
+    {
+      "id": "amar_pelos_dois_mus",
+      "nome": "Amar Pelos Dois",
+      "interpretadaPor": [
+        "salvador_sobral"
+      ],
+      "pertenceAoAlbum": "sobral_amar_pelos_2",
+      "generos": [
+        "Pop"
+      ]
+    },
+    {
+      "id": "como_tu_mus",
+      "nome": "Como Tu (feat. Ivandro)",
+      "interpretadaPor": [
+        "barbara_bandeira"
+      ],
+      "pertenceAoAlbum": "flores_cinema",
+      "generos": [
+        "Pop"
+      ]
+    },
+    {
+      "id": "nos_os_dois_mus",
+      "nome": "Nós os Dois",
+      "interpretadaPor": [
+        "barbara_bandeira"
+      ],
+      "generos": [
+        "Pop"
+      ]
+    },
+    {
+      "id": "balancê_mus",
+      "nome": "Balancê",
+      "interpretadaPor": [
+        "sara_tavares"
+      ],
+      "pertenceAoAlbum": "sara_balancê",
+      "generos": [
+        "Pop",
+        "RB"
+      ]
+    },
+    {
+      "id": "where_heart_is_mus",
+      "nome": "Where x Heart Is",
+      "interpretadaPor": [
+        "slow_j"
+      ],
+      "pertenceAoAlbum": "afro_fado_album",
+      "generos": [
+        "HipHop"
+      ]
+    },
+    {
+      "id": "roleta_russa_mus",
+      "nome": "Roleta Russa",
+      "interpretadaPor": [
+        "valete"
+      ],
+      "pertenceAoAlbum": "serviço_público_alb",
+      "generos": [
+        "HipHop"
+      ]
+    },
+    {
+      "id": "sem_acustica_mus",
+      "nome": "Estado de Sítio",
+      "interpretadaPor": [
+        "valete"
+      ],
+      "pertenceAoAlbum": "valete_estado_alb",
+      "generos": [
+        "HipHop"
+      ]
+    },
+    {
+      "id": "capicua_anelar_mus",
+      "nome": "Anelar",
+      "interpretadaPor": [
+        "capicua"
+      ],
+      "pertenceAoAlbum": "capicua_anelar",
+      "generos": [
+        "HipHop"
+      ]
+    },
+    {
+      "id": "kalemba_mus",
+      "nome": "Kalemba (Wegue Wegue)",
+      "interpretadaPor": [
+        "buraka_som_sistema"
+      ],
+      "pertenceAoAlbum": "black_diamond_alb",
+      "generos": [
+        "HipHop",
+        "Pop"
+      ]
+    },
+    {
+      "id": "boss_anti_mus",
+      "nome": "Anti",
+      "interpretadaPor": [
+        "boss_ac"
+      ],
+      "pertenceAoAlbum": "boss_ac_anti",
+      "generos": [
+        "HipHop"
+      ]
+    },
+    {
+      "id": "garagem_vizinha_mus",
+      "nome": "A Garagem da Vizinha",
+      "interpretadaPor": [
+        "quim_barreiros"
+      ],
+      "pertenceAoAlbum": "atento_album",
+      "generos": [
+        "Pimba"
+      ]
+    },
+    {
+      "id": "mestre_culinario_mus",
+      "nome": "O Mestre de Culinária",
+      "interpretadaPor": [
+        "quim_barreiros"
+      ],
+      "generos": [
+        "Pimba"
+      ]
+    },
+    {
+      "id": "coracao_melao_mus",
+      "nome": "Coração de Melão",
+      "interpretadaPor": [
+        "toy"
+      ],
+      "pertenceAoAlbum": "és_tao_sensual_alb",
+      "generos": [
+        "Pimba"
+      ]
+    },
+    {
+      "id": "coracao_pau_mus",
+      "nome": "Coração de Pau",
+      "interpretadaPor": [
+        "agata"
+      ],
+      "pertenceAoAlbum": "coracao_de_pau_alb",
+      "generos": [
+        "Pimba"
+      ]
+    },
+    {
+      "id": "subtilezas_mus",
+      "nome": "Subtilezas de um Rapaz de Bairro",
+      "interpretadaPor": [
+        "ex_votos"
+      ],
+      "pertenceAoAlbum": "subtilezas_bairro",
+      "generos": [
+        "Rock"
+      ]
+    },
+    {
+      "id": "filhos_tedio_mus",
+      "nome": "Filhos do Tédio",
+      "interpretadaPor": [
+        "quinta_do_bill"
+      ],
+      "pertenceAoAlbum": "ganda_banda_alb",
+      "generos": [
+        "Rock"
+      ]
+    },
+    {
+      "id": "sol_caparica_mus",
+      "nome": "Sol da Caparica",
+      "interpretadaPor": [
+        "peste_sida"
+      ],
+      "pertenceAoAlbum": "portem_se_bem_alb",
+      "generos": [
+        "Rock"
+      ]
+    },
+    {
+      "id": "danca_reggae_mus",
+      "nome": "Dança Reggae",
+      "interpretadaPor": [
+        "kussondulola"
+      ],
+      "pertenceAoAlbum": "baza_baza_reggae",
+      "generos": [
+        "Pop"
+      ]
+    }
+  ]
+}

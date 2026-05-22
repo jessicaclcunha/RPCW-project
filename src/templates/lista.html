@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arquivo da Música Portuguesa</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="/" class="navbar-brand">
+      <span class="dot">♩</span> Música Portuguesa
+    </a>
+    <div class="navbar-links">
+      <a href="/"             class="nav-link active">Artistas</a>
+      <a href="/generos"      class="nav-link">Géneros</a>
+      <a href="/timeline"     class="nav-link">Linha do Tempo</a>
+      <a href="/colaboracoes" class="nav-link">Colaborações</a>
+      <a href="/premios"      class="nav-link">Prémios</a>
+      <a href="/concertos"    class="nav-link">Concertos</a>
+      <a href="/estatisticas" class="nav-link">Estatísticas</a>
+      <a href="/pesquisa"     class="nav-link-pill">🔍 Pesquisa</a>
+    </div>
+  </nav>
+
+  <main class="page">
+
+    <header class="page-hero">
+      <h1>Arquivo da <em>Música Portuguesa</em></h1>
+      <p>Explora o catálogo de artistas, bandas, álbuns, músicas, prémios e concertos do nosso património musical.</p>
+      <hr class="hero-rule">
+    </header>
+
+    {% if stats %}
+    <div class="stats-row" style="grid-template-columns: repeat(6,1fr)">
+      <div class="stat-card">
+        <div class="stat-num">{{ stats.solos }}</div>
+        <div class="stat-label">Artistas Solo</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">{{ stats.bandas }}</div>
+        <div class="stat-label">Bandas</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">{{ stats.albuns }}</div>
+        <div class="stat-label">Álbuns</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">{{ stats.musicas }}</div>
+        <div class="stat-label">Músicas</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">{{ stats.premios }}</div>
+        <div class="stat-label">Prémios</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">{{ stats.concertos }}</div>
+        <div class="stat-label">Concertos</div>
+      </div>
+    </div>
+    {% endif %}
+
+    <!-- Formulário de adição -->
+    <div class="form-container">
+      <h2>➕ Adicionar Novo Artista / Banda</h2>
+      <form action="/artista/adicionar" method="POST">
+        <div class="form-grid">
+          <input type="text" name="nome" placeholder="Nome do artista ou banda" required>
+          <select name="tipo">
+            <option value="ArtistaSolo">Artista Solo</option>
+            <option value="Banda">Banda</option>
+          </select>
+          <input type="number" name="ano" placeholder="Ano nasc. / formação" min="1800" max="2030">
+          <select name="genero">
+            <option value="">Género (opcional)</option>
+            {% for g in generos %}
+              <option value="{{ g.id }}">{{ g.nome }}</option>
+            {% endfor %}
+          </select>
+          <select name="editora">
+            <option value="">Editora (opcional)</option>
+            {% for e in editoras %}
+              <option value="{{ e.id }}">{{ e.nome }}</option>
+            {% endfor %}
+          </select>
+          <button type="submit" class="btn">Gravar</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Pesquisa e filtros avançados -->
+    <form action="/" method="GET">
+      <div class="filter-bar">
+        <input type="text" name="q" placeholder="🔍  Pesquisar por nome…" value="{{ busca }}" class="search-input">
+        <select name="genero" class="filter-select">
+          <option value="">Todos os géneros</option>
+          {% for g in generos %}
+            <option value="{{ g.id }}" {% if filtro_genero == g.id %}selected{% endif %}>{{ g.nome }}</option>
+          {% endfor %}
+        </select>
+        <select name="tipo" class="filter-select">
+          <option value=""    {% if filtro_tipo == '' %}selected{% endif %}>Solo + Banda</option>
+          <option value="Solo"  {% if filtro_tipo == 'Solo' %}selected{% endif %}>Artista Solo</option>
+          <option value="Banda" {% if filtro_tipo == 'Banda' %}selected{% endif %}>Banda</option>
+        </select>
+        <select name="editora" class="filter-select">
+          <option value="">Todas as editoras</option>
+          {% for e in editoras %}
+            <option value="{{ e.id }}" {% if filtro_editora == e.id %}selected{% endif %}>{{ e.nome }}</option>
+          {% endfor %}
+        </select>
+        <input type="number" name="ano_de"  placeholder="Ano desde" value="{{ filtro_ano_de }}"  class="filter-select" style="max-width:110px">
+        <input type="number" name="ano_ate" placeholder="Ano até"   value="{{ filtro_ano_ate }}" class="filter-select" style="max-width:110px">
+        <button type="submit" class="btn">Filtrar</button>
+        {% if busca or filtro_genero or filtro_tipo or filtro_editora or filtro_ano_de or filtro_ano_ate %}
+          <a href="/" class="btn btn-ghost">Limpar</a>
+        {% endif %}
+      </div>
+    </form>
+
+    <div class="section-divider">
+      <span>
+        {{ artistas|length }} resultado{% if artistas|length != 1 %}s{% endif %}
+        {% if busca %} para "{{ busca }}"{% endif %}
+        {% if filtro_genero %} · {{ filtro_genero }}{% endif %}
+        {% if filtro_tipo %} · {{ filtro_tipo }}{% endif %}
+        {% if filtro_editora %} · {{ filtro_editora }}{% endif %}
+      </span>
+    </div>
+
+    {% if artistas %}
+    <table class="artist-table">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Tipo</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for a in artistas %}
+        <tr>
+          <td class="artist-name">{{ a.nome }}</td>
+          <td>
+            {% if a.tipo == "Solo" %}
+              <span class="badge badge-solo">Solo</span>
+            {% else %}
+              <span class="badge badge-banda">Banda</span>
+            {% endif %}
+          </td>
+          <td>
+            <a href="/artista/{{ a.id }}" class="detail-link">Ver perfil →</a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+    <div class="empty-state">
+      <div class="icon">🎵</div>
+      <p>Nenhum artista ou banda encontrado.</p>
+    </div>
+    {% endif %}
+
+  </main>
+</body>
+</html>

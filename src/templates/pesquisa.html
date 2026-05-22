@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pesquisa: {{ busca }} — Música Portuguesa</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="/" class="navbar-brand">
+      <span class="dot">♩</span> Música Portuguesa
+    </a>
+    <div class="navbar-links">
+      <a href="/"        class="nav-link">Artistas</a>
+      <a href="/generos" class="nav-link">Géneros</a>
+    </div>
+  </nav>
+
+  <main class="page">
+
+    <div class="page-hero">
+      <h1>Resultados <em>para "{{ busca }}"</em></h1>
+      <hr class="hero-rule">
+    </div>
+
+    <div class="section-divider">
+      <span>{{ resultados|length }} resultado{% if resultados|length != 1 %}s{% endif %} encontrado{% if resultados|length != 1 %}s{% endif %}</span>
+    </div>
+
+    {% if resultados %}
+    <table class="artist-table">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Tipo</th>
+          <th>Link</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for r in resultados %}
+        <tr>
+          <td class="artist-name">{{ r.nome }}</td>
+          <td><span class="badge {% if r.tipo == 'Artista' %}badge-solo{% elif r.tipo == 'Banda' %}badge-banda{% else %}badge-solo{% endif %}">{{ r.tipo }}</span></td>
+          <td>
+            {% if r.id %}
+              <a href="{{ r.id }}" class="detail-link">Ver →</a>
+            {% else %}
+              <span style="color:var(--muted);font-size:.85rem">—</span>
+            {% endif %}
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+    <div class="empty-state">
+      <div class="icon">🔍</div>
+      <p>Nenhum resultado encontrado para "{{ busca }}".</p>
+    </div>
+    {% endif %}
+
+    <div style="margin-top:3rem;text-align:center">
+      <a href="/" class="btn btn-ghost">← Voltar</a>
+    </div>
+
+  </main>
+</body>
+</html>

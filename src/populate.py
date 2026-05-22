@@ -27,7 +27,7 @@ Sobre os géneros:
 import json
 
 ONTOLOGIA = 'music.ttl'
-DATASETS  = '../datasets/'
+DATASETS  = 'datasets/'
 OUTPUT    = 'musica_portuguesa.ttl'
 
 

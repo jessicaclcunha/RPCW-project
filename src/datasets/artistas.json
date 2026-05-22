@@ -1,0 +1,630 @@
+{
+  "artistasSolo": [
+    {
+      "id": "amalia_rodrigues",
+      "nome": "Amália Rodrigues",
+      "anoNascimento": 1920,
+      "generos": [
+        "Fado"
+      ],
+      "pertenceAEditora": "valentim_de_carvalho"
+    },
+    {
+      "id": "carlos_do_carmo",
+      "nome": "Carlos do Carmo",
+      "anoNascimento": 1939,
+      "generos": [
+        "Fado"
+      ],
+      "pertenceAEditora": "valentim_de_carvalho"
+    },
+    {
+      "id": "fernando_mauricio",
+      "nome": "Fernando Maurício",
+      "anoNascimento": 1933,
+      "generos": [
+        "Fado"
+      ],
+      "pertenceAEditora": "valentim_de_carvalho"
+    },
+    {
+      "id": "alfredo_marceneiro",
+      "nome": "Alfredo Marceneiro",
+      "anoNascimento": 1891,
+      "generos": [
+        "Fado"
+      ],
+      "pertenceAEditora": "valentim_de_carvalho"
+    },
+    {
+      "id": "lucilia_do_carmo",
+      "nome": "Lucília do Carmo",
+      "anoNascimento": 1903,
+      "generos": [
+        "Fado"
+      ],
+      "pertenceAEditora": "valentim_de_carvalho"
+    },
+    {
+      "id": "luiz_goes",
+      "nome": "Luiz Goes",
+      "anoNascimento": 1933,
+      "generos": [
+        "Fado"
+      ],
+      "pertenceAEditora": "valentim_de_carvalho"
+    },
+    {
+      "id": "mariza",
+      "nome": "Mariza",
+      "anoNascimento": 1973,
+      "generos": [
+        "Fado"
+      ],
+      "pertenceAEditora": "universal_pt"
+    },
+    {
+      "id": "camane",
+      "nome": "Camané",
+      "anoNascimento": 1967,
+      "generos": [
+        "Fado"
+      ],
+      "pertenceAEditora": "universal_pt"
+    },
+    {
+      "id": "ana_moura",
+      "nome": "Ana Moura",
+      "anoNascimento": 1979,
+      "generos": [
+        "Fado"
+      ],
+      "pertenceAEditora": "universal_pt"
+    },
+    {
+      "id": "carminho",
+      "nome": "Carminho",
+      "anoNascimento": 1984,
+      "generos": [
+        "Fado"
+      ],
+      "pertenceAEditora": "emi_portugal"
+    },
+    {
+      "id": "gisela_joao",
+      "nome": "Gisela João",
+      "anoNascimento": 1983,
+      "generos": [
+        "Fado"
+      ],
+      "pertenceAEditora": "transformadores"
+    },
+    {
+      "id": "ricardo_ribeiro",
+      "nome": "Ricardo Ribeiro",
+      "anoNascimento": 1981,
+      "generos": [
+        "Fado"
+      ],
+      "pertenceAEditora": "valentim_de_carvalho"
+    },
+    {
+      "id": "antonio_zambujo",
+      "nome": "António Zambujo",
+      "anoNascimento": 1975,
+      "generos": [
+        "Fado",
+        "Pop"
+      ],
+      "pertenceAEditora": "universal_pt"
+    },
+    {
+      "id": "katia_guerreiro",
+      "nome": "Kátia Guerreiro",
+      "anoNascimento": 1974,
+      "generos": [
+        "Fado"
+      ],
+      "pertenceAEditora": "emi_portugal"
+    },
+    {
+      "id": "mafalda_arnauth",
+      "nome": "Mafalda Arnauth",
+      "anoNascimento": 1974,
+      "generos": [
+        "Fado"
+      ],
+      "pertenceAEditora": "emi_portugal"
+    },
+    {
+      "id": "antonio_variacoes",
+      "nome": "António Variações",
+      "anoNascimento": 1944,
+      "generos": [
+        "Pop",
+        "Rock"
+      ],
+      "pertenceAEditora": "valentim_de_carvalho"
+    },
+    {
+      "id": "jorge_palma",
+      "nome": "Jorge Palma",
+      "anoNascimento": 1950,
+      "generos": [
+        "Rock",
+        "Pop"
+      ],
+      "pertenceAEditora": "emi_portugal"
+    },
+    {
+      "id": "manel_cruz",
+      "nome": "Manel Cruz",
+      "anoNascimento": 1975,
+      "generos": [
+        "Rock"
+      ],
+      "pertenceAEditora": "transformadores"
+    },
+    {
+      "id": "lena_d_agua",
+      "nome": "Lena d'Água",
+      "anoNascimento": 1956,
+      "generos": [
+        "Pop",
+        "Rock"
+      ],
+      "pertenceAEditora": "valentim_de_carvalho"
+    },
+    {
+      "id": "paulo_de_carvalho",
+      "nome": "Paulo de Carvalho",
+      "anoNascimento": 1947,
+      "generos": [
+        "Pop",
+        "Fado"
+      ],
+      "pertenceAEditora": "emi_portugal"
+    },
+    {
+      "id": "carlos_paiao",
+      "nome": "Carlos Paião",
+      "anoNascimento": 1957,
+      "generos": [
+        "Pop"
+      ],
+      "pertenceAEditora": "valentim_de_carvalho"
+    },
+    {
+      "id": "rui_veloso",
+      "nome": "Rui Veloso",
+      "anoNascimento": 1956,
+      "generos": [
+        "Rock",
+        "Blues"
+      ],
+      "pertenceAEditora": "valentim_de_carvalho"
+    },
+    {
+      "id": "xana_toc_toc",
+      "nome": "Xana",
+      "anoNascimento": 1963,
+      "generos": [
+        "Pop"
+      ],
+      "pertenceAEditora": "valentim_de_carvalho"
+    },
+    {
+      "id": "fernando_ribeiro",
+      "nome": "Fernando Ribeiro",
+      "anoNascimento": 1974,
+      "generos": [
+        "Rock"
+      ]
+    },
+    {
+      "id": "tomas_wallenstein",
+      "nome": "Tomás Wallenstein",
+      "anoNascimento": 1989,
+      "generos": [
+        "Pop",
+        "Rock"
+      ]
+    },
+    {
+      "id": "rodrigo_leao",
+      "nome": "Rodrigo Leão",
+      "anoNascimento": 1964,
+      "generos": [
+        "Pop"
+      ],
+      "pertenceAEditora": "sony_pt"
+    },
+    {
+      "id": "pedro_ayres_magalhaes",
+      "nome": "Pedro Ayres Magalhães",
+      "anoNascimento": 1956,
+      "generos": [
+        "Pop",
+        "Rock"
+      ],
+      "pertenceAEditora": "valentim_de_carvalho"
+    },
+    {
+      "id": "barbara_bandeira",
+      "nome": "Bárbara Bandeira",
+      "anoNascimento": 2001,
+      "generos": [
+        "Pop"
+      ],
+      "pertenceAEditora": "universal_pt"
+    },
+    {
+      "id": "salvador_sobral",
+      "nome": "Salvador Sobral",
+      "anoNascimento": 1989,
+      "generos": [
+        "Pop"
+      ],
+      "pertenceAEditora": "valentim_de_carvalho"
+    },
+    {
+      "id": "luisa_sobral",
+      "nome": "Luísa Sobral",
+      "anoNascimento": 1987,
+      "generos": [
+        "Pop"
+      ],
+      "pertenceAEditora": "valentim_de_carvalho"
+    },
+    {
+      "id": "mariza_liz",
+      "nome": "Marisa Liz",
+      "anoNascimento": 1982,
+      "generos": [
+        "Pop",
+        "Rock"
+      ],
+      "pertenceAEditora": "sony_pt"
+    },
+    {
+      "id": "rita_redshoes",
+      "nome": "Rita Redshoes",
+      "anoNascimento": 1981,
+      "generos": [
+        "Pop"
+      ],
+      "pertenceAEditora": "transformadores"
+    },
+    {
+      "id": "carolina_deslandes",
+      "nome": "Carolina Deslandes",
+      "anoNascimento": 1991,
+      "generos": [
+        "Pop"
+      ],
+      "pertenceAEditora": "universal_pt"
+    },
+    {
+      "id": "barbara_tinoco",
+      "nome": "Bárbara Tinoco",
+      "anoNascimento": 1998,
+      "generos": [
+        "Pop"
+      ],
+      "pertenceAEditora": "universal_pt"
+    },
+    {
+      "id": "buba_espinho",
+      "nome": "Buba Espinho",
+      "anoNascimento": 1995,
+      "generos": [
+        "Pop"
+      ],
+      "pertenceAEditora": "universal_pt"
+    },
+    {
+      "id": "ivandro",
+      "nome": "Ivandro",
+      "anoNascimento": 1998,
+      "generos": [
+        "Pop",
+        "RB"
+      ],
+      "pertenceAEditora": "universal_pt"
+    },
+    {
+      "id": "dino_d_santiago",
+      "nome": "Dino D'Santiago",
+      "anoNascimento": 1982,
+      "generos": [
+        "Pop",
+        "RB"
+      ],
+      "pertenceAEditora": "sony_pt"
+    },
+    {
+      "id": "ana_bacalhau",
+      "nome": "Ana Bacalhau",
+      "anoNascimento": 1978,
+      "generos": [
+        "Pop"
+      ]
+    },
+    {
+      "id": "david_fonseca",
+      "nome": "David Fonseca",
+      "anoNascimento": 1976,
+      "generos": [
+        "Pop",
+        "Rock"
+      ],
+      "pertenceAEditora": "universal_pt"
+    },
+    {
+      "id": "m_fontes",
+      "nome": "M. Fontes",
+      "anoNascimento": 1987,
+      "generos": [
+        "Pop"
+      ],
+      "pertenceAEditora": "sony_pt"
+    },
+    {
+      "id": "ana_free",
+      "nome": "Ana Free",
+      "anoNascimento": 1987,
+      "generos": [
+        "Pop"
+      ],
+      "pertenceAEditora": "universal_pt"
+    },
+    {
+      "id": "sara_tavares",
+      "nome": "Sara Tavares",
+      "anoNascimento": 1978,
+      "generos": [
+        "Pop",
+        "RB"
+      ],
+      "pertenceAEditora": "universal_pt"
+    },
+    {
+      "id": "slow_j",
+      "nome": "Slow J",
+      "anoNascimento": 1992,
+      "generos": [
+        "HipHop",
+        "Pop"
+      ],
+      "pertenceAEditora": "sony_pt"
+    },
+    {
+      "id": "valete",
+      "nome": "Valete",
+      "anoNascimento": 1981,
+      "generos": [
+        "HipHop"
+      ],
+      "pertenceAEditora": "edisco"
+    },
+    {
+      "id": "profjam",
+      "nome": "ProfJam",
+      "anoNascimento": 1991,
+      "generos": [
+        "HipHop"
+      ],
+      "pertenceAEditora": "sony_pt"
+    },
+    {
+      "id": "bispo",
+      "nome": "Bispo",
+      "anoNascimento": 1992,
+      "generos": [
+        "HipHop"
+      ],
+      "pertenceAEditora": "sony_pt"
+    },
+    {
+      "id": "t_rex_pt",
+      "nome": "T-Rex",
+      "anoNascimento": 1997,
+      "generos": [
+        "HipHop",
+        "RB"
+      ],
+      "pertenceAEditora": "universal_pt"
+    },
+    {
+      "id": "plutonio",
+      "nome": "Plutónio",
+      "anoNascimento": 1985,
+      "generos": [
+        "HipHop",
+        "RB"
+      ],
+      "pertenceAEditora": "sony_pt"
+    },
+    {
+      "id": "chullage",
+      "nome": "Chullage",
+      "anoNascimento": 1977,
+      "generos": [
+        "HipHop"
+      ],
+      "pertenceAEditora": "edisco"
+    },
+    {
+      "id": "capicua",
+      "nome": "Capicua",
+      "anoNascimento": 1982,
+      "generos": [
+        "HipHop"
+      ],
+      "pertenceAEditora": "universal_pt"
+    },
+    {
+      "id": "dj_ride",
+      "nome": "DJ Ride",
+      "anoNascimento": 1976,
+      "generos": [
+        "HipHop"
+      ],
+      "pertenceAEditora": "edisco"
+    },
+    {
+      "id": "boss_ac",
+      "nome": "Boss AC",
+      "anoNascimento": 1975,
+      "generos": [
+        "HipHop"
+      ],
+      "pertenceAEditora": "edisco"
+    },
+    {
+      "id": "dealema",
+      "nome": "Dealema",
+      "anoNascimento": 1987,
+      "generos": [
+        "HipHop"
+      ],
+      "pertenceAEditora": "sony_pt"
+    },
+    {
+      "id": "dillaz",
+      "nome": "Dillaz",
+      "anoNascimento": 1988,
+      "generos": [
+        "HipHop"
+      ],
+      "pertenceAEditora": "universal_pt"
+    },
+    {
+      "id": "quim_barreiros",
+      "nome": "Quim Barreiros",
+      "anoNascimento": 1951,
+      "generos": [
+        "Pimba"
+      ],
+      "pertenceAEditora": "ovacao"
+    },
+    {
+      "id": "toy",
+      "nome": "Toy",
+      "anoNascimento": 1963,
+      "generos": [
+        "Pimba"
+      ],
+      "pertenceAEditora": "ovacao"
+    },
+    {
+      "id": "agata",
+      "nome": "Ágata",
+      "anoNascimento": 1959,
+      "generos": [
+        "Pimba"
+      ],
+      "pertenceAEditora": "ovacao"
+    },
+    {
+      "id": "marante",
+      "nome": "Marante",
+      "anoNascimento": 1956,
+      "generos": [
+        "Pimba"
+      ],
+      "pertenceAEditora": "ovacao"
+    },
+    {
+      "id": "ruth_marlene",
+      "nome": "Ruth Marlene",
+      "anoNascimento": 1978,
+      "generos": [
+        "Pimba"
+      ],
+      "pertenceAEditora": "ovacao"
+    },
+    {
+      "id": "saul_ricardo",
+      "nome": "Saúl Ricardo",
+      "anoNascimento": 1987,
+      "generos": [
+        "Pimba"
+      ],
+      "pertenceAEditora": "ovacao"
+    },
+    {
+      "id": "zeca_medeiros",
+      "nome": "Zeca Medeiros",
+      "anoNascimento": 1948,
+      "generos": [
+        "Pimba"
+      ],
+      "pertenceAEditora": "ovacao"
+    },
+    {
+      "id": "zeca_afonso",
+      "nome": "Zeca Afonso",
+      "anoNascimento": 1929,
+      "generos": [
+        "Intervencao"
+      ],
+      "pertenceAEditora": "edicoes_orfeu"
+    },
+    {
+      "id": "adriano_correia",
+      "nome": "Adriano Correia de Oliveira",
+      "anoNascimento": 1942,
+      "generos": [
+        "Intervencao"
+      ],
+      "pertenceAEditora": "edicoes_orfeu"
+    },
+    {
+      "id": "vitorino",
+      "nome": "Vitorino Salomé",
+      "anoNascimento": 1942,
+      "generos": [
+        "Intervencao"
+      ],
+      "pertenceAEditora": "edicoes_orfeu"
+    },
+    {
+      "id": "janita_salome",
+      "nome": "Janita Salomé",
+      "anoNascimento": 1947,
+      "generos": [
+        "Intervencao"
+      ],
+      "pertenceAEditora": "edicoes_orfeu"
+    },
+    {
+      "id": "luisa_basto",
+      "nome": "Luísa Basto",
+      "anoNascimento": 1947,
+      "generos": [
+        "Intervencao"
+      ],
+      "pertenceAEditora": "edicoes_orfeu"
+    },
+    {
+      "id": "sérgio_godinho",
+      "nome": "Sérgio Godinho",
+      "anoNascimento": 1945,
+      "generos": [
+        "Intervencao",
+        "Pop"
+      ],
+      "pertenceAEditora": "edicoes_orfeu"
+    },
+    {
+      "id": "fausto",
+      "nome": "Fausto",
+      "anoNascimento": 1948,
+      "generos": [
+        "Intervencao"
+      ],
+      "pertenceAEditora": "edicoes_orfeu"
+    }
+  ]
+}

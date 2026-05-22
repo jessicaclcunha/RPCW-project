@@ -1,0 +1,533 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+:root {
+  --bg:         #0e0b08;
+  --surface:    #1a1410;
+  --surface2:   #241c15;
+  --gold:       #c9963a;
+  --gold-light: #e8b95a;
+  --cream:      #f5ead8;
+  --muted:      #7a6a55;
+  --red:        #9b2335;
+  --text:       #f0e6d3;
+  --border:     rgba(201,150,58,0.18);
+  --radius:     10px;
+  --shadow:     0 8px 40px rgba(0,0,0,0.5);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  background-image:
+    radial-gradient(ellipse 80% 50% at 20% -10%, rgba(155,35,53,0.15) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 80% 110%, rgba(201,150,58,0.12) 0%, transparent 55%);
+}
+
+/* ── NAVBAR ── */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(14,11,8,0.88);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+.navbar-brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--gold-light);
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.navbar-brand .dot { color: var(--red); font-size: 1.5rem; line-height: 1; }
+.navbar-links { display: flex; gap: 0.5rem; }
+.nav-link {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 0.4rem 0.9rem;
+  border-radius: 6px;
+  transition: color 0.2s, background 0.2s;
+}
+.nav-link:hover, .nav-link.active {
+  color: var(--cream);
+  background: rgba(201,150,58,0.12);
+}
+
+/* ── PAGE WRAPPER ── */
+.page {
+  max-width: 1050px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 5rem;
+}
+
+/* ── HERO HEADING ── */
+.page-hero {
+  margin-bottom: 3rem;
+}
+.page-hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  font-weight: 900;
+  line-height: 1.1;
+  color: var(--cream);
+}
+.page-hero h1 em {
+  font-style: italic;
+  color: var(--gold-light);
+}
+.page-hero p {
+  margin-top: 0.75rem;
+  color: var(--muted);
+  font-size: 1rem;
+  max-width: 500px;
+}
+.hero-rule {
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold), transparent);
+  border: none;
+  margin: 1rem 0;
+  border-radius: 2px;
+}
+
+/* ── FORMULÁRIO DE ADIÇÃO (Otimizado para form-container e form-grid) ── */
+.form-container, .add-form-panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem 2rem;
+  margin-bottom: 2.5rem;
+}
+.form-container h2, .add-form-panel h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  color: var(--gold);
+  margin-bottom: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.form-grid, .form-row {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.form-grid input, .form-grid select,
+.form-row input, .form-row select {
+  flex: 1 1 180px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 0.6rem 0.85rem;
+  border-radius: 7px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.form-grid input::placeholder, .form-row input::placeholder { color: var(--muted); }
+.form-grid input:focus, .form-grid select:focus,
+.form-row input:focus, .form-row select:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(201,150,58,0.15);
+}
+.form-grid select option, .form-row select option { background: #1a1410; }
+
+/* ── BOTÕES ── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  background: var(--gold);
+  color: #0e0b08;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  font-size: 0.88rem;
+  padding: 0.6rem 1.5rem;
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.15s;
+  white-space: nowrap;
+}
+.btn:hover { background: var(--gold-light); transform: translateY(-1px); }
+.btn-ghost {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--muted);
+}
+.btn-ghost:hover { background: var(--surface2); color: var(--cream); transform: none; }
+
+/* ── PESQUISA BARRA ── */
+.search-bar {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+.search-bar input {
+  flex: 1;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 0.7rem 1rem;
+  border-radius: 7px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  outline: none;
+}
+.search-bar input:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(201,150,58,0.15);
+}
+
+/* ── TABELA DE ARTISTAS ── */
+.artist-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+.artist-table thead th {
+  text-align: left;
+  padding: 0.7rem 1rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-bottom: 1px solid var(--border);
+}
+.artist-table tbody tr {
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  transition: background 0.15s;
+}
+.artist-table tbody tr:hover { background: var(--surface); }
+.artist-table td {
+  padding: 0.9rem 1rem;
+  font-size: 0.93rem;
+}
+.artist-name {
+  font-weight: 600;
+  color: var(--cream);
+}
+
+/* ── BADGES & TAGS ── */
+.badge {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border-radius: 20px;
+  font-size: 0.73rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+.badge-solo {
+  background: rgba(201,150,58,0.15);
+  color: var(--gold-light);
+  border: 1px solid rgba(201,150,58,0.3);
+}
+.badge-banda {
+  background: rgba(155,35,53,0.18);
+  color: #e06070;
+  border: 1px solid rgba(155,35,53,0.35);
+}
+.badge-inline {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 0.5rem;
+}
+.genre-tag {
+  background: rgba(201,150,58,0.12);
+  border: 1px solid rgba(201,150,58,0.28);
+  color: var(--gold-light);
+  padding: 0.3rem 0.85rem;
+  border-radius: 20px;
+  font-size: 0.82rem;
+  font-weight: 500;
+}
+.tags-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+/* ── LINKS DE DETALHE ── */
+.detail-link, .link-card, .local-link {
+  color: var(--gold);
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.detail-link:hover, .link-card:hover, .local-link:hover {
+  color: var(--gold-light);
+  text-decoration: underline;
+}
+
+/* ── PERFIL / DETALHE DO ARTISTA ── */
+.detail-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+.detail-avatar {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--red), var(--gold));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  color: var(--cream);
+  flex-shrink: 0;
+  box-shadow: 0 4px 20px rgba(155,35,53,0.4);
+}
+.detail-meta h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.4rem;
+  font-weight: 900;
+  color: var(--cream);
+  line-height: 1.1;
+}
+.detail-meta .subtitle {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-top: 0.4rem;
+}
+
+/* GRIDS DE INFORMAÇÃO */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+.info-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.1rem 1.3rem;
+}
+.info-card .label {
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.3rem;
+}
+.info-card .value {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--cream);
+}
+
+.desc-block {
+  background: var(--surface);
+  border-left: 3px solid var(--gold);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: 1rem 1.4rem;
+  margin: 1.5rem 0;
+  color: #c8b89a;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  font-style: italic;
+}
+
+/* CHIPS DE ELEMENTOS/LINKS (Membros, Bandas) */
+a.artist-chip, .artist-chip {
+  display: inline-block;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  color: #c8b89a;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  text-decoration: none;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+a.artist-chip:hover {
+  border-color: rgba(201,150,58,0.5);
+  color: var(--gold-light);
+  background: rgba(201,150,58,0.08);
+}
+
+/* ── DISCING / LISTAGEM DE ÁLBUNS ── */
+.album-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 0.75rem;
+  margin-top: 0.8rem;
+}
+.album-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.8rem 1.1rem;
+  color: var(--cream);
+  text-decoration: none;
+  font-size: 0.92rem;
+  transition: border-color 0.2s, background 0.2s, transform 0.1s;
+}
+.album-item:hover {
+  border-color: rgba(201,150,58,0.5);
+  background: var(--surface2);
+  transform: translateY(-1px);
+}
+.album-year {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  color: var(--gold);
+  font-size: 0.85rem;
+}
+
+/* LISTAGEM DE MÚSICAS */
+.musica-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-top: 0.5rem;
+}
+.musica-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.6rem 1rem;
+  background: var(--surface);
+  border-radius: 6px;
+  border-left: 2px solid var(--gold);
+  font-size: 0.9rem;
+}
+
+/* ── SECÇÃO DIVISORA ── */
+.section-divider {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 2.5rem 0 1.2rem;
+}
+.section-divider span {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem;
+  color: var(--gold);
+  white-space: nowrap;
+}
+.section-divider::before,
+.section-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* ── ESTADO VAZIO ── */
+.empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: var(--muted);
+}
+.empty-state .icon { font-size: 3rem; margin-bottom: 1rem; opacity: 0.4; }
+
+/* ── RESPONSIVIDADE ── */
+@media (max-width: 640px) {
+  .form-grid, .form-row { flex-direction: column; align-items: stretch; }
+  .detail-header { flex-direction: column; gap: 1rem; align-items: center; text-align: center; }
+  .album-list { grid-template-columns: 1fr; }
+}
+/* ── STATS ROW ── */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: .75rem;
+  margin-bottom: 2rem;
+}
+.stat-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem 1.2rem;
+  text-align: center;
+}
+.stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--gold-light);
+  line-height: 1;
+}
+.stat-label {
+  font-size: .72rem;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: var(--muted);
+  margin-top: .35rem;
+}
+
+/* ── FILTER BAR ── */
+.filter-bar {
+  display: flex;
+  gap: .5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+  align-items: center;
+}
+.search-input {
+  flex: 2 1 220px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: .7rem 1rem;
+  border-radius: 7px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: .95rem;
+  outline: none;
+}
+.search-input:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(201,150,58,.15);
+}
+.filter-select {
+  flex: 1 1 150px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: .65rem .85rem;
+  border-radius: 7px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: .9rem;
+  outline: none;
+  cursor: pointer;
+}
+.filter-select:focus { border-color: var(--gold); }
+.filter-select option { background: #1a1410; }
+
+/* ── RESPONSIVIDADE EXTRA ── */
+@media (max-width: 640px) {
+  .stats-row { grid-template-columns: repeat(2, 1fr); }
+  .filter-bar { flex-direction: column; align-items: stretch; }
+}
