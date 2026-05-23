@@ -57,7 +57,7 @@
                   rdfs:range :Editora .
 
 
-###  Adicionar esta propriedade inversa para dar suporte completo
+###  http://rpcw.di.uminho.pt/2026/music-ontology/foiLancadoPor
 :foiLancadoPor rdf:type owl:ObjectProperty ;
                owl:inverseOf :lancouAlbum .
 
@@ -69,13 +69,9 @@
 
 
 ###  http://rpcw.di.uminho.pt/2026/music-ontology/pertenceAoGenero
+###  Propriedade genérica — usada por Musica, Album e Artista.
+###  Por isso NÃO declaramos rdfs:domain (qualquer indivíduo pode ter género).
 :pertenceAoGenero rdf:type owl:ObjectProperty ;
-                  rdfs:domain [ rdf:type owl:Class ;
-                                owl:unionOf ( :Album
-                                              :Artista
-                                              :Musica
-                                            )
-                              ] ;
                   rdfs:range :Genero .
 
 
@@ -215,15 +211,20 @@
 :Concerto rdf:type owl:Class .
 
 
-# Subclasses de Género (Vocabulário Controlado básico)
-:Fado rdf:type owl:Class ; rdfs:subClassOf :Genero .
-:HipHop rdf:type owl:Class ; rdfs:subClassOf :Genero .
+# Subclasses de Género (Vocabulário Controlado)
+:Fado        rdf:type owl:Class ; rdfs:subClassOf :Genero .
+:HipHop      rdf:type owl:Class ; rdfs:subClassOf :Genero .
 :Intervencao rdf:type owl:Class ; rdfs:subClassOf :Genero .
-:Kizomba rdf:type owl:Class ; rdfs:subClassOf :Genero .
-:Pimba rdf:type owl:Class ; rdfs:subClassOf :Genero .
-:Pop rdf:type owl:Class ; rdfs:subClassOf :Genero .
-:RB rdf:type owl:Class ; rdfs:subClassOf :Genero .
-:Rock rdf:type owl:Class ; rdfs:subClassOf :Genero .
+:Kizomba     rdf:type owl:Class ; rdfs:subClassOf :Genero .
+:Pimba       rdf:type owl:Class ; rdfs:subClassOf :Genero .
+:Pop         rdf:type owl:Class ; rdfs:subClassOf :Genero .
+:RB          rdf:type owl:Class ; rdfs:subClassOf :Genero .
+:Rock        rdf:type owl:Class ; rdfs:subClassOf :Genero .
+:Folk        rdf:type owl:Class ; rdfs:subClassOf :Genero .
+:Indie       rdf:type owl:Class ; rdfs:subClassOf :Genero .
+:Jazz        rdf:type owl:Class ; rdfs:subClassOf :Genero .
+:Soul        rdf:type owl:Class ; rdfs:subClassOf :Genero .
+:Blues       rdf:type owl:Class ; rdfs:subClassOf :Genero .
 
 #################################################################
 #    INDIVÍDUOS INTEGRADOS E MAPEADOS
