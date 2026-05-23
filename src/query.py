@@ -13,7 +13,7 @@ def exec_query(query):
         return None
 
 def exec_update(query):
-    sparql = SPARQLWrapper(GRAPHDB_ENDPOINT)
+    sparql = SPARQLWrapper(GRAPHDB_ENDPOINT + "/statements") 
     sparql.setQuery(query)
     sparql.setMethod('POST')
     try:

@@ -7,91 +7,22 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    /* Estilos locais para a estrutura assimétrica de 2 colunas */
-    .profile-layout {
-      display: grid;
-      grid-template-columns: 320px 1fr;
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-    @media (max-width: 900px) {
-      .profile-layout { grid-template-columns: 1fr; }
-    }
-    .profile-sidebar {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-    }
-    .profile-main {
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-    }
-    .compact-block {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 1.5rem;
-      box-shadow: var(--shadow);
-    }
-    .compact-block h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.15rem;
-      color: var(--gold-light);
-      margin-bottom: 1rem;
-      border-bottom: 1px solid rgba(201,150,58,0.15);
-      padding-bottom: 0.5rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    .sidebar-meta-item {
-      margin-bottom: 1rem;
-    }
+    .profile-layout { display: grid; grid-template-columns: 320px 1fr; gap: 2rem; margin-top: 2rem; }
+    @media (max-width: 900px) { .profile-layout { grid-template-columns: 1fr; } }
+    .profile-sidebar { display: flex; flex-direction: column; gap: 1.5rem; }
+    .profile-main { display: flex; flex-direction: column; gap: 2rem; }
+    .compact-block { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; box-shadow: var(--shadow); }
+    .compact-block h3 { font-family: 'Playfair Display', serif; font-size: 1.15rem; color: var(--gold-light); margin-bottom: 1rem; border-bottom: 1px solid rgba(201,150,58,0.15); padding-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
+    .sidebar-meta-item { margin-bottom: 1rem; }
     .sidebar-meta-item:last-child { margin-bottom: 0; }
-    .sidebar-meta-item .meta-label {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      color: var(--muted);
-      letter-spacing: 0.05em;
-    }
-    .sidebar-meta-item .meta-value {
-      font-size: 1.1rem;
-      color: var(--cream);
-      font-weight: 500;
-      margin-top: 0.2rem;
-    }
-    .bio-text {
-      font-size: 1.05rem;
-      line-height: 1.7;
-      color: var(--text);
-      text-align: justify;
-    }
-    .grid-two-columns {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
-    }
-    @media (max-width: 650px) {
-      .grid-two-columns { grid-template-columns: 1fr; }
-    }
-    .interactive-list-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0.75rem 1rem;
-      background: var(--surface2);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      margin-bottom: 0.5rem;
-      transition: border-color 0.2s;
-    }
+    .sidebar-meta-item .meta-label { font-size: 0.75rem; text-transform: uppercase; color: var(--muted); letter-spacing: 0.05em; }
+    .sidebar-meta-item .meta-value { font-size: 1.1rem; color: var(--cream); font-weight: 500; margin-top: 0.2rem; }
+    .bio-text { font-size: 1.05rem; line-height: 1.7; color: var(--text); text-align: justify; }
+    .grid-two-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    @media (max-width: 650px) { .grid-two-columns { grid-template-columns: 1fr; } }
+    .interactive-list-item { display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 1rem; background: var(--surface2); border: 1px solid var(--border); border-radius: 6px; margin-bottom: 0.5rem; transition: border-color 0.2s; }
     .interactive-list-item:hover { border-color: var(--gold); }
-    .interactive-list-item a {
-      color: var(--cream);
-      text-decoration: none;
-      font-weight: 500;
-    }
+    .interactive-list-item a { color: var(--cream); text-decoration: none; font-weight: 500; }
     .interactive-list-item a:hover { color: var(--gold-light); }
   </style>
 </head>
@@ -114,7 +45,6 @@
   </nav>
 
   <main class="page">
-    
     <header class="detail-header" style="background: linear-gradient(135deg, var(--surface2), var(--bg)); border: 1px solid var(--border); padding: 2.5rem; border-radius: var(--radius); display: flex; align-items: center; gap: 2rem; box-shadow: var(--shadow);">
       <div class="detail-avatar" style="background: linear-gradient(135deg, var(--gold), var(--red)); width: 90px; height: 90px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 900; color: var(--cream); box-shadow: 0 4px 20px rgba(0,0,0,0.4);">
         {{ artista.nome[0].upper() }}
@@ -127,7 +57,6 @@
           {% else %}
             <span class="badge badge-banda"><i class="fa-solid fa-users"></i> Banda / Coletivo</span>
           {% endif %}
-          
           {% if artista.editora %}
             <span class="badge badge-solo" style="background: rgba(255,255,255,0.04); color: var(--gold-light); border: 1px solid var(--border);"><i class="fa-solid fa-compact-disc"></i> {{ artista.editora }}</span>
           {% endif %}
@@ -136,15 +65,13 @@
     </header>
 
     <div class="profile-layout">
-      
       <aside class="profile-sidebar">
-        
         <div class="compact-block">
           <h3><i class="fa-solid fa-circle-info"></i> Ficha Técnica</h3>
           {% if artista.anoNasc %}
           <div class="sidebar-meta-item">
             <div class="meta-label">Ano de Nascimento</div>
-            <div class="meta-value"><i class="fa-regular fa-calendar" style="color: var(--gold); margin-right: 0.3rem;"></i> {{ a_nasc if a_nasc else artista.anoNasc }}</div>
+            <div class="meta-value"><i class="fa-regular fa-calendar" style="color: var(--gold); margin-right: 0.3rem;"></i> {{ artista.anoNasc }}</div>
           </div>
           {% endif %}
           {% if artista.anoForm %}
@@ -153,7 +80,6 @@
             <div class="meta-value"><i class="fa-regular fa-calendar-star" style="color: var(--gold); margin-right: 0.3rem;"></i> {{ artista.anoForm }}</div>
           </div>
           {% endif %}
-          
           {% if artista.generos %}
           <div class="sidebar-meta-item" style="margin-top: 1rem;">
             <div class="meta-label">Géneros Associados</div>
@@ -191,7 +117,6 @@
         {% if artista.influencias or artista.influenciou %}
         <div class="compact-block">
           <h3><i class="fa-solid fa-timeline"></i> Genealogia Musical</h3>
-          
           {% if artista.influencias %}
             <div style="margin-bottom: 1rem;">
               <div class="meta-label" style="margin-bottom: 0.4rem;">Raízes (Influenciado por):</div>
@@ -200,7 +125,6 @@
               {% endfor %}
             </div>
           {% endif %}
-
           {% if artista.influenciou %}
             <div>
               <div class="meta-label" style="margin-bottom: 0.4rem;">Legado (Influenciou):</div>
@@ -211,11 +135,9 @@
           {% endif %}
         </div>
         {% endif %}
-
       </aside>
 
       <section class="profile-main">
-        
         {% if artista.bio %}
         <div class="compact-block">
           <h3><i class="fa-solid fa-book-open"></i> Enquadramento Histórico</h3>
@@ -239,6 +161,29 @@
             {% else %}
               <p style="color: var(--muted); font-size: 0.9rem; font-style: italic;">Nenhum álbum registado.</p>
             {% endif %}
+
+            <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--border);">
+              <h4 style="font-size:0.9rem; color:var(--gold-light); margin-bottom:0.6rem;"><i class="fa-solid fa-plus"></i> Adicionar Álbum</h4>
+              <form method="POST" action="/album/adicionar">
+                <input type="hidden" name="artista_id" value="{{ artista.id }}">
+                <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                  <input type="text" name="nome" placeholder="Nome do Álbum" class="form-control" style="font-size:0.85rem; padding:0.4rem;" required>
+                  <div style="display: flex; gap: 0.5rem;">
+                    <input type="number" name="ano" placeholder="Ano" class="form-control" style="font-size:0.85rem; padding:0.4rem; flex:1;">
+                    <div style="flex: 1.5; max-height: 90px; overflow-y: auto; border: 1px solid var(--border); border-radius: 4px; padding: 0.5rem; background: var(--bg);">
+                      <div style="font-size: 0.75rem; color: var(--muted); margin-bottom: 0.4rem;">Selecione os Géneros:</div>
+                      {% for g in generos_globais %}
+                        <label style="display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.3rem; font-size: 0.85rem; color: var(--text); cursor: pointer;">
+                          <input type="checkbox" name="genero" value="{{ g.id }}" style="accent-color: var(--gold);">
+                          {{ g.nome }}
+                        </label>
+                      {% endfor %}
+                    </div>
+                  </div>
+                  <button type="submit" class="btn btn-primary" style="font-size:0.85rem; padding:0.4rem 0.8rem;"><i class="fa-solid fa-save"></i> Submeter Álbum</button>
+                </div>
+              </form>
+            </div>
           </div>
 
           <div class="compact-block">
@@ -256,7 +201,6 @@
               <p style="color: var(--muted); font-size: 0.9rem; font-style: italic;">Nenhuma obra individual registada.</p>
             {% endif %}
           </div>
-
         </div>
 
         {% if artista.premios %}
@@ -297,13 +241,11 @@
         {% endif %}
 
       </section>
-
     </div>
 
     <div style="margin-top: 4rem; text-align: center; padding-bottom: 3rem;">
       <a href="/" class="btn btn-ghost"><i class="fa-solid fa-arrow-left"></i> Voltar ao Catálogo Global</a>
     </div>
-
   </main>
 </body>
 </html>

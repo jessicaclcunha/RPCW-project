@@ -71,7 +71,40 @@
       </div>
       {% endfor %}
     </div>
+    {% else %}
+    <div class="section-divider"><span>Faixas do Álbum</span></div>
+    <div class="empty-state" style="padding: 2rem;">
+      <p style="color: var(--muted); font-style: italic;">Nenhuma música registada neste álbum ainda.</p>
+    </div>
     {% endif %}
+
+    <div style="margin-top: 3rem; background: var(--surface); padding: 1.5rem; border-radius: var(--radius); border: 1px solid var(--border);">
+      <h4 style="font-size:1.1rem; color:var(--gold-light); margin-bottom:1rem;"><i class="fa-solid fa-plus"></i> Adicionar Nova Faixa</h4>
+      <form method="POST" action="/musica/adicionar">
+        <input type="hidden" name="album_id" value="{{ album.id }}">
+        <input type="hidden" name="artista_id" value="{{ album.artista.id if album.artista else '' }}">
+        
+        <div style="display: grid; grid-template-columns: 2fr 1.5fr auto; gap: 1rem; align-items: start;">
+          <div class="form-group">
+            <input type="text" name="nome" placeholder="Nome da Faixa" class="form-control" style="height: 42px;" required>
+          </div>
+          
+          <div class="form-group" style="max-height: 100px; overflow-y: auto; border: 1px solid var(--border); border-radius: 4px; padding: 0.5rem; background: var(--bg);">
+            <div style="font-size: 0.75rem; color: var(--muted); margin-bottom: 0.4rem; border-bottom: 1px solid var(--border); padding-bottom: 0.2rem;">Selecionar Géneros:</div>
+            <div style="display: grid; grid-template-columns: 1fr; gap: 0.3rem;">
+              {% for g in generos_globais %}
+                <label style="display: flex; align-items: center; gap: 0.4rem; font-size: 0.8rem; color: var(--text); cursor: pointer;">
+                  <input type="checkbox" name="genero" value="{{ g.id }}" style="accent-color: var(--gold);">
+                  {{ g.nome }}
+                </label>
+              {% endfor %}
+            </div>
+          </div>
+          
+          <button type="submit" class="btn btn-primary" style="height: 42px; font-weight: bold;"><i class="fa-solid fa-save"></i> Guardar Faixa</button>
+        </div>
+      </form>
+    </div>
 
     <div style="margin-top:4rem;text-align:center;">
       <a href="/" class="btn btn-ghost"><i class="fa-solid fa-chevron-left"></i> Voltar ao Índice Principal</a>

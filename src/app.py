@@ -82,7 +82,6 @@ def index():
         for r in rows_of(exec_query(query))
     ]
 
-    # Estatísticas de topo
     q_stats = PREFIX + """
         SELECT
           (COUNT(DISTINCT ?solo)   AS ?nSolo)
@@ -180,7 +179,7 @@ def detalhe_artista(id_artista):
         "influenciou": [{"id": g(r,"id"), "nome": g(r,"nome")} for r in rows_of(exec_query(q_influenciou))],
     }
 
-    return render_template('detalhe.html', artista=artista)
+    return render_template('detalhe.html', artista=artista, generos_globais=generos_list())
 
 
 # ────────────────────────────────────────────────────────────────────
@@ -217,12 +216,10 @@ def detalhe_album(id_album):
         "musicas": [{"id": g(r,"id"), "nome": g(r,"nome")} for r in rows_of(exec_query(q_musicas))],
     }
 
-    return render_template('album.html', album=album)
+    return render_template('album.html', album=album, generos_globais=generos_list())
 
 
-# ────────────────────────────────────────────────────────────────────
-# GÉNEROS
-# ────────────────────────────────────────────────────────────────────
+
 @app.route('/generos')
 def generos():
     query_g = PREFIX + """
@@ -249,46 +246,20 @@ def generos():
     gen_list.sort(key=lambda x: -x["total"])
     return render_template('generos.html', generos=gen_list)
 
-
-# ────────────────────────────────────────────────────────────────────
-# TIMELINE
-# ────────────────────────────────────────────────────────────────────
-# ────────────────────────────────────────────────────────────────────
-# TIMELINE CORRIGIDA (Agrupamento feito no Python)
-# ────────────────────────────────────────────────────────────────────
 @app.route('/timeline')
 def timeline():
     query = PREFIX + """
         SELECT DISTINCT ?id ?nome ?tipo ?ano WHERE {
-            {
-                ?a a :ArtistaSolo ; :nome ?nome ; :anoNascimento ?ano .
-                BIND("Nascimento" AS ?tipo)
-                BIND(STRAFTER(STR(?a), "music-ontology/") AS ?id)
-            }
-            UNION {
-                ?a a :Banda ; :nome ?nome ; :anoFormacao ?ano .
-                BIND("Formação" AS ?tipo)
-                BIND(STRAFTER(STR(?a), "music-ontology/") AS ?id)
-            }
-            UNION {
-                ?a a :Album ; :nome ?nome ; :anoLancamento ?ano .
-                BIND("Álbum" AS ?tipo)
-                BIND(STRAFTER(STR(?a), "music-ontology/") AS ?id)
-            }
-            UNION {
-                ?a a :Premio ; :nome ?nome ; :anoPremio ?ano .
-                BIND("Prémio" AS ?tipo)
-                BIND(STRAFTER(STR(?a), "music-ontology/") AS ?id)
-            }
+            { ?a a :ArtistaSolo ; :nome ?nome ; :anoNascimento ?ano . BIND("Nascimento" AS ?tipo) BIND(STRAFTER(STR(?a), "music-ontology/") AS ?id) }
+            UNION { ?a a :Banda ; :nome ?nome ; :anoFormacao ?ano . BIND("Formação" AS ?tipo) BIND(STRAFTER(STR(?a), "music-ontology/") AS ?id) }
+            UNION { ?a a :Album ; :nome ?nome ; :anoLancamento ?ano . BIND("Álbum" AS ?tipo) BIND(STRAFTER(STR(?a), "music-ontology/") AS ?id) }
+            UNION { ?a a :Premio ; :nome ?nome ; :anoPremio ?ano . BIND("Prémio" AS ?tipo) BIND(STRAFTER(STR(?a), "music-ontology/") AS ?id) }
         } ORDER BY ?ano
     """
-    
     eventos_lista = [
         {"id": g(r,"id"), "nome": g(r,"nome"), "tipo": g(r,"tipo"), "ano": g(r,"ano")}
-        for r in rows_of(exec_query(query))
-        if g(r,"ano") and g(r,"ano").isdigit()
+        for r in rows_of(exec_query(query)) if g(r,"ano") and g(r,"ano").isdigit()
     ]
-    
     eventos_por_ano = {}
     for ev in eventos_lista:
         ano = ev["ano"]
@@ -301,169 +272,52 @@ def timeline():
 
     return render_template('timeline.html', eventos_por_ano=eventos_agrupados, total_eventos=len(eventos_lista))
 
-
-# ────────────────────────────────────────────────────────────────────
-# ESTATÍSTICAS
-# ────────────────────────────────────────────────────────────────────
 @app.route('/estatisticas')
 def estatisticas():
-    # Artistas por género
-    q_gen = PREFIX + """
-        SELECT ?genero (COUNT(DISTINCT ?a) AS ?total) WHERE {
-            { ?a a :ArtistaSolo } UNION { ?a a :Banda }
-            ?a :pertenceAoGenero ?g .
-            BIND(STRAFTER(STR(?g), "music-ontology/") AS ?genero)
-        } GROUP BY ?genero ORDER BY DESC(?total)
-    """
-    por_genero = [{"genero": g(r,"genero"), "total": int(g(r,"total","0"))}
-                  for r in rows_of(exec_query(q_gen))]
+    q_gen = PREFIX + "SELECT ?genero (COUNT(DISTINCT ?a) AS ?total) WHERE { { ?a a :ArtistaSolo } UNION { ?a a :Banda } ?a :pertenceAoGenero ?g . BIND(STRAFTER(STR(?g), 'music-ontology/') AS ?genero) } GROUP BY ?genero ORDER BY DESC(?total)"
+    por_genero = [{"genero": g(r,"genero"), "total": int(g(r,"total","0"))} for r in rows_of(exec_query(q_gen))]
 
-    # Artistas por editora
-    q_edit = PREFIX + """
-        SELECT ?editora (COUNT(DISTINCT ?a) AS ?total) WHERE {
-            { ?a a :ArtistaSolo } UNION { ?a a :Banda }
-            ?a :pertenceAEditora ?e . ?e :nome ?editora .
-        } GROUP BY ?editora ORDER BY DESC(?total)
-    """
-    por_editora = [{"editora": g(r,"editora"), "total": int(g(r,"total","0"))}
-                   for r in rows_of(exec_query(q_edit))]
+    q_edit = PREFIX + "SELECT ?editora (COUNT(DISTINCT ?a) AS ?total) WHERE { { ?a a :ArtistaSolo } UNION { ?a a :Banda } ?a :pertenceAEditora ?e . ?e :nome ?editora . } GROUP BY ?editora ORDER BY DESC(?total)"
+    por_editora = [{"editora": g(r,"editora"), "total": int(g(r,"total","0"))} for r in rows_of(exec_query(q_edit))]
 
-    # Albuns por década
-    q_dec = PREFIX + """
-        SELECT (FLOOR(?ano / 10) * 10 AS ?decada) (COUNT(?a) AS ?total) WHERE {
-            ?a a :Album ; :anoLancamento ?ano .
-        } GROUP BY (FLOOR(?ano / 10) * 10) ORDER BY ?decada
-    """
-    por_decada = [{"decada": str(int(float(g(r,"decada","0"))))+"s", "total": int(g(r,"total","0"))}
-                  for r in rows_of(exec_query(q_dec)) if g(r,"decada")]
+    q_dec = PREFIX + "SELECT (FLOOR(?ano / 10) * 10 AS ?decada) (COUNT(?a) AS ?total) WHERE { ?a a :Album ; :anoLancamento ?ano . } GROUP BY (FLOOR(?ano / 10) * 10) ORDER BY ?decada"
+    por_decada = [{"decada": str(int(float(g(r,"decada","0"))))+"s", "total": int(g(r,"total","0"))} for r in rows_of(exec_query(q_dec)) if g(r,"decada")]
 
-    # Top prémios por organização
-    q_prem = PREFIX + """
-        SELECT ?org (COUNT(?p) AS ?total) WHERE {
-            ?p a :Premio ; :organizacao ?org .
-        } GROUP BY ?org ORDER BY DESC(?total)
-    """
-    por_org = [{"org": g(r,"org"), "total": int(g(r,"total","0"))}
-               for r in rows_of(exec_query(q_prem))]
+    q_prem = PREFIX + "SELECT ?org (COUNT(?p) AS ?total) WHERE { ?p a :Premio ; :organizacao ?org . } GROUP BY ?org ORDER BY DESC(?total)"
+    por_org = [{"org": g(r,"org"), "total": int(g(r,"total","0"))} for r in rows_of(exec_query(q_prem))]
 
-    # Artistas mais premiados
-    q_top = PREFIX + """
-        SELECT ?id ?nome (COUNT(?p) AS ?total) WHERE {
-            { ?a a :ArtistaSolo } UNION { ?a a :Banda }
-            ?a :nome ?nome ; :recebeuPremio ?p .
-            BIND(STRAFTER(STR(?a), "music-ontology/") AS ?id)
-        } GROUP BY ?id ?nome ORDER BY DESC(?total) LIMIT 10
-    """
-    mais_premiados = [{"id": g(r,"id"), "nome": g(r,"nome"), "total": int(g(r,"total","0"))}
-                      for r in rows_of(exec_query(q_top))]
+    q_top = PREFIX + "SELECT ?id ?nome (COUNT(?p) AS ?total) WHERE { { ?a a :ArtistaSolo } UNION { ?a a :Banda } ?a :nome ?nome ; :recebeuPremio ?p . BIND(STRAFTER(STR(?a), 'music-ontology/') AS ?id) } GROUP BY ?id ?nome ORDER BY DESC(?total) LIMIT 10"
+    mais_premiados = [{"id": g(r,"id"), "nome": g(r,"nome"), "total": int(g(r,"total","0"))} for r in rows_of(exec_query(q_top))]
 
-    return render_template('estatisticas.html',
-                           por_genero=por_genero,
-                           por_editora=por_editora,
-                           por_decada=por_decada,
-                           por_org=por_org,
-                           mais_premiados=mais_premiados)
+    return render_template('estatisticas.html', por_genero=por_genero, por_editora=por_editora, por_decada=por_decada, por_org=por_org, mais_premiados=mais_premiados)
 
-
-# ────────────────────────────────────────────────────────────────────
-# COLABORAÇÕES / GRAFO DE INFLUÊNCIAS
-# ────────────────────────────────────────────────────────────────────
 @app.route('/colaboracoes')
 def colaboracoes():
-    q_inf = PREFIX + """
-        SELECT ?aId ?aNome ?bId ?bNome WHERE {
-            ?a :influenciadoPor ?b .
-            ?a :nome ?aNome .
-            ?b :nome ?bNome .
-            BIND(STRAFTER(STR(?a), "music-ontology/") AS ?aId)
-            BIND(STRAFTER(STR(?b), "music-ontology/") AS ?bId)
-        }
-    """
-    influencias = [
-        {"source": g(r,"bId"), "sourceNome": g(r,"bNome"),
-         "target": g(r,"aId"), "targetNome": g(r,"aNome")}
-        for r in rows_of(exec_query(q_inf))
-    ]
+    q_inf = PREFIX + "SELECT ?aId ?aNome ?bId ?bNome WHERE { ?a :influenciadoPor ?b . ?a :nome ?aNome . ?b :nome ?bNome . BIND(STRAFTER(STR(?a), 'music-ontology/') AS ?aId) BIND(STRAFTER(STR(?b), 'music-ontology/') AS ?bId) }"
+    influencias = [{"source": g(r,"bId"), "sourceNome": g(r,"bNome"), "target": g(r,"aId"), "targetNome": g(r,"aNome")} for r in rows_of(exec_query(q_inf))]
 
-    q_feat = PREFIX + """
-        SELECT ?mId ?mNome ?aId ?aNome ?bId ?bNome WHERE {
-            ?m a :Musica ; :nome ?mNome ; :interpretadaPor ?a ; :temColaboracao ?b .
-            ?a :nome ?aNome .
-            ?b :nome ?bNome .
-            BIND(STRAFTER(STR(?m), "music-ontology/") AS ?mId)
-            BIND(STRAFTER(STR(?a), "music-ontology/") AS ?aId)
-            BIND(STRAFTER(STR(?b), "music-ontology/") AS ?bId)
-        }
-    """
-    feats = [
-        {"musica": g(r,"mNome"),
-         "artista": g(r,"aNome"), "artistaId": g(r,"aId"),
-         "feat": g(r,"bNome"), "featId": g(r,"bId")}
-        for r in rows_of(exec_query(q_feat))
-    ]
+    q_feat = PREFIX + "SELECT ?mId ?mNome ?aId ?aNome ?bId ?bNome WHERE { ?m a :Musica ; :nome ?mNome ; :interpretadaPor ?a ; :temColaboracao ?b . ?a :nome ?aNome . ?b :nome ?bNome . BIND(STRAFTER(STR(?m), 'music-ontology/') AS ?mId) BIND(STRAFTER(STR(?a), 'music-ontology/') AS ?aId) BIND(STRAFTER(STR(?b), 'music-ontology/') AS ?bId) }"
+    feats = [{"musica": g(r,"mNome"), "artista": g(r,"aNome"), "artistaId": g(r,"aId"), "feat": g(r,"bNome"), "featId": g(r,"bId")} for r in rows_of(exec_query(q_feat))]
 
     return render_template('colaboracoes.html', influencias=influencias, feats=feats)
 
-
-# ────────────────────────────────────────────────────────────────────
-# PRÉMIOS
-# ────────────────────────────────────────────────────────────────────
 @app.route('/premios')
 def premios():
-    q = PREFIX + """
-        SELECT ?pId ?pNome ?cat ?org ?ano ?aId ?aNome WHERE {
-            ?p a :Premio ; :nome ?pNome .
-            OPTIONAL { ?p :categoria ?cat }
-            OPTIONAL { ?p :organizacao ?org }
-            OPTIONAL { ?p :anoPremio ?ano }
-            OPTIONAL { ?a :recebeuPremio ?p ; :nome ?aNome .
-                       BIND(STRAFTER(STR(?a), "music-ontology/") AS ?aId) }
-            BIND(STRAFTER(STR(?p), "music-ontology/") AS ?pId)
-        } ORDER BY DESC(?ano) ?org
-    """
-    lista = [
-        {"id": g(r,"pId"), "nome": g(r,"pNome"), "cat": g(r,"cat"),
-         "org": g(r,"org"), "ano": g(r,"ano"),
-         "artistaId": g(r,"aId"), "artistaNome": g(r,"aNome")}
-        for r in rows_of(exec_query(q))
-    ]
+    q = PREFIX + "SELECT ?pId ?pNome ?cat ?org ?ano ?aId ?aNome WHERE { ?p a :Premio ; :nome ?pNome . OPTIONAL { ?p :categoria ?cat } OPTIONAL { ?p :organizacao ?org } OPTIONAL { ?p :anoPremio ?ano } OPTIONAL { ?a :recebeuPremio ?p ; :nome ?aNome . BIND(STRAFTER(STR(?a), 'music-ontology/') AS ?aId) } BIND(STRAFTER(STR(?p), 'music-ontology/') AS ?pId) } ORDER BY DESC(?ano) ?org"
+    lista = [{"id": g(r,"pId"), "nome": g(r,"pNome"), "cat": g(r,"cat"), "org": g(r,"org"), "ano": g(r,"ano"), "artistaId": g(r,"aId"), "artistaNome": g(r,"aNome")} for r in rows_of(exec_query(q))]
     return render_template('premios.html', premios=lista)
 
-
-# ────────────────────────────────────────────────────────────────────
-# CONCERTOS
-# ────────────────────────────────────────────────────────────────────
 @app.route('/concertos')
 def concertos():
-    q = PREFIX + """
-        SELECT ?cId ?cNome ?local ?data WHERE {
-            ?c a :Concerto ; :nome ?cNome .
-            OPTIONAL { ?c :local ?local }
-            OPTIONAL { ?c :data ?data }
-            BIND(STRAFTER(STR(?c), "music-ontology/") AS ?cId)
-        } ORDER BY DESC(?data)
-    """
+    q = PREFIX + "SELECT ?cId ?cNome ?local ?data WHERE { ?c a :Concerto ; :nome ?cNome . OPTIONAL { ?c :local ?local } OPTIONAL { ?c :data ?data } BIND(STRAFTER(STR(?c), 'music-ontology/') AS ?cId) } ORDER BY DESC(?data)"
     concertos_list = []
     for r in rows_of(exec_query(q)):
         cid = g(r, "cId")
-        q_art = PREFIX + f"""
-            SELECT ?id ?nome WHERE {{
-                ?a :atuouEm :{cid} ; :nome ?nome .
-                BIND(STRAFTER(STR(?a), "music-ontology/") AS ?id)
-            }}
-        """
+        q_art = PREFIX + f"SELECT ?id ?nome WHERE {{ ?a :atuouEm :{cid} ; :nome ?nome . BIND(STRAFTER(STR(?a), 'music-ontology/') AS ?id) }}"
         artistas = [{"id": g(ra,"id"), "nome": g(ra,"nome")} for ra in rows_of(exec_query(q_art))]
-        concertos_list.append({
-            "id": cid, "nome": g(r,"cNome"),
-            "local": g(r,"local"), "data": g(r,"data"),
-            "artistas": artistas
-        })
+        concertos_list.append({"id": cid, "nome": g(r,"cNome"), "local": g(r,"local"), "data": g(r,"data"), "artistas": artistas})
     return render_template('concertos.html', concertos=concertos_list)
 
-
-# ────────────────────────────────────────────────────────────────────
-# PESQUISA GLOBAL
-# ────────────────────────────────────────────────────────────────────
 @app.route('/pesquisa')
 def pesquisa():
     q = request.args.get('q', '').strip()
@@ -473,76 +327,32 @@ def pesquisa():
     editora = request.args.get('editora', '').strip()
 
     filtros_art = []
-    if genero:
-        filtros_art.append(f'?e :pertenceAoGenero :{genero} .')
-    if editora:
-        filtros_art.append(f'?e :pertenceAEditora :{editora} .')
+    if genero: filtros_art.append(f'?e :pertenceAoGenero :{genero} .')
+    if editora: filtros_art.append(f'?e :pertenceAEditora :{editora} .')
 
     resultados = []
     if q or genero or editora or ano_de or ano_ate:
         filtro_nome = f'FILTER(CONTAINS(LCASE(?nome), LCASE("{q}")))' if q else ''
         query = PREFIX + f"""
             SELECT DISTINCT ?id ?nome ?tipo WHERE {{
-                {{
-                    {{ ?e a :ArtistaSolo . BIND("Artista" AS ?tipo) }}
-                    UNION {{ ?e a :Banda . BIND("Banda" AS ?tipo) }}
-                    ?e :nome ?nome .
-                    {filtro_nome}
-                    {''.join(filtros_art)}
-                    BIND(CONCAT("/artista/", STRAFTER(STR(?e), "music-ontology/")) AS ?id)
-                }}
-                UNION {{
-                    ?e a :Album ; :nome ?nome .
-                    {filtro_nome}
-                    BIND("Álbum" AS ?tipo)
-                    BIND(CONCAT("/album/", STRAFTER(STR(?e), "music-ontology/")) AS ?id)
-                }}
-                UNION {{
-                    ?e a :Musica ; :nome ?nome .
-                    {filtro_nome}
-                    BIND("Música" AS ?tipo)
-                    BIND("" AS ?id)
-                }}
+                {{ {{ ?e a :ArtistaSolo . BIND("Artista" AS ?tipo) }} UNION {{ ?e a :Banda . BIND("Banda" AS ?tipo) }} ?e :nome ?nome . {filtro_nome} {''.join(filtros_art)} BIND(CONCAT("/artista/", STRAFTER(STR(?e), "music-ontology/")) AS ?id) }}
+                UNION {{ ?e a :Album ; :nome ?nome . {filtro_nome} BIND("Álbum" AS ?tipo) BIND(CONCAT("/album/", STRAFTER(STR(?e), "music-ontology/")) AS ?id) }}
+                UNION {{ ?e a :Musica ; :nome ?nome . {filtro_nome} BIND("Música" AS ?tipo) BIND("" AS ?id) }}
             }} ORDER BY ?tipo ?nome LIMIT 80
         """
-        resultados = [
-            {"id": g(r,"id"), "nome": g(r,"nome"), "tipo": g(r,"tipo")}
-            for r in rows_of(exec_query(query))
-        ]
+        resultados = [{"id": g(r,"id"), "nome": g(r,"nome"), "tipo": g(r,"tipo")} for r in rows_of(exec_query(query))]
 
-    return render_template('pesquisa.html',
-                           resultados=resultados, busca=q,
-                           generos=generos_list(),
-                           editoras=editoras_list(),
-                           filtro_genero=genero,
-                           filtro_editora=editora,
-                           ano_de=ano_de, ano_ate=ano_ate)
+    return render_template('pesquisa.html', resultados=resultados, busca=q, generos=generos_list(), editoras=editoras_list(), filtro_genero=genero, filtro_editora=editora, ano_de=ano_de, ano_ate=ano_ate)
 
-
-# ────────────────────────────────────────────────────────────────────
-# API JSON para gráficos (usado por estatisticas.html via fetch)
-# ────────────────────────────────────────────────────────────────────
 @app.route('/api/stats/generos')
 def api_stats_generos():
-    q = PREFIX + """
-        SELECT ?genero (COUNT(DISTINCT ?a) AS ?total) WHERE {
-            { ?a a :ArtistaSolo } UNION { ?a a :Banda }
-            ?a :pertenceAoGenero ?g .
-            BIND(STRAFTER(STR(?g), "music-ontology/") AS ?genero)
-        } GROUP BY ?genero ORDER BY DESC(?total)
-    """
-    return jsonify([{"genero": g(r,"genero"), "total": int(g(r,"total","0"))}
-                    for r in rows_of(exec_query(q))])
+    q = PREFIX + "SELECT ?genero (COUNT(DISTINCT ?a) AS ?total) WHERE { { ?a a :ArtistaSolo } UNION { ?a a :Banda } ?a :pertenceAoGenero ?g . BIND(STRAFTER(STR(?g), 'music-ontology/') AS ?genero) } GROUP BY ?genero ORDER BY DESC(?total)"
+    return jsonify([{"genero": g(r,"genero"), "total": int(g(r,"total","0"))} for r in rows_of(exec_query(q))])
 
 @app.route('/api/stats/decadas')
 def api_stats_decadas():
-    q = PREFIX + """
-        SELECT (FLOOR(?ano / 10) * 10 AS ?decada) (COUNT(?a) AS ?total) WHERE {
-            ?a a :Album ; :anoLancamento ?ano .
-        } GROUP BY (FLOOR(?ano / 10) * 10) ORDER BY ?decada
-    """
-    return jsonify([{"decada": str(int(float(g(r,"decada","0"))))+"s", "total": int(g(r,"total","0"))}
-                    for r in rows_of(exec_query(q)) if g(r,"decada")])
+    q = PREFIX + "SELECT (FLOOR(?ano / 10) * 10 AS ?decada) (COUNT(?a) AS ?total) WHERE { ?a a :Album ; :anoLancamento ?ano . } GROUP BY (FLOOR(?ano / 10) * 10) ORDER BY ?decada"
+    return jsonify([{"decada": str(int(float(g(r,"decada","0"))))+"s", "total": int(g(r,"total","0"))} for r in rows_of(exec_query(q)) if g(r,"decada")])
 
 
 # ────────────────────────────────────────────────────────────────────
@@ -553,7 +363,7 @@ def adicionar_artista():
     nome      = request.form.get('nome', '').strip()
     tipo      = request.form.get('tipo', 'ArtistaSolo')
     ano       = request.form.get('ano', '').strip()
-    genero_id = request.form.get('genero', '').strip()
+    generos   = request.form.getlist('genero')
     editora   = request.form.get('editora', '').strip()
 
     if not nome:
@@ -568,14 +378,14 @@ def adicionar_artista():
     ]
     if ano and ano.isdigit():
         triplos.append(f':{new_id} {prop_ano} "{int(ano)}"^^xsd:integer .')
-    if genero_id:
-        triplos.append(f':{new_id} :pertenceAoGenero :{genero_id} .')
+    for g in generos:
+        if g.strip():
+            triplos.append(f':{new_id} :pertenceAoGenero :{g.strip()} .')
     if editora:
         triplos.append(f':{new_id} :pertenceAEditora :{editora} .')
 
     exec_update(PREFIX + "INSERT DATA {\n  " + "\n  ".join(triplos) + "\n}")
     return redirect(url_for('detalhe_artista', id_artista=new_id))
-
 
 # ────────────────────────────────────────────────────────────────────
 # ADICIONAR ÁLBUM (POST)
@@ -585,7 +395,7 @@ def adicionar_album():
     nome       = request.form.get('nome', '').strip()
     ano        = request.form.get('ano', '').strip()
     artista_id = request.form.get('artista_id', '').strip()
-    genero_id  = request.form.get('genero', '').strip()
+    generos    = request.form.getlist('genero')
 
     if not nome or not artista_id:
         return redirect(url_for('detalhe_artista', id_artista=artista_id or ''))
@@ -597,12 +407,45 @@ def adicionar_album():
     ]
     if ano and ano.isdigit():
         triplos.append(f':{new_id} :anoLancamento "{int(ano)}"^^xsd:integer .')
-    if genero_id:
-        triplos.append(f':{new_id} :pertenceAoGenero :{genero_id} .')
+    for g in generos:
+        if g.strip():
+            triplos.append(f':{new_id} :pertenceAoGenero :{g.strip()} .')
     triplos.append(f':{artista_id} :lancouAlbum :{new_id} .')
 
     exec_update(PREFIX + "INSERT DATA {\n  " + "\n  ".join(triplos) + "\n}")
     return redirect(url_for('detalhe_album', id_album=new_id))
+
+# ────────────────────────────────────────────────────────────────────
+# ADICIONAR MÚSICA (POST)
+# ────────────────────────────────────────────────────────────────────
+@app.route('/musica/adicionar', methods=['POST'])
+def adicionar_musica():
+    nome       = request.form.get('nome', '').strip()
+    artista_id = request.form.get('artista_id', '').strip()
+    album_id   = request.form.get('album_id', '').strip()
+    generos    = request.form.getlist('genero')
+
+    if not nome or not artista_id:
+        if album_id:
+            return redirect(url_for('detalhe_album', id_album=album_id))
+        return redirect(url_for('detalhe_artista', id_artista=artista_id or ''))
+
+    new_id = re.sub(r'[^\w]', '_', nome).strip('_') + '_mus'
+    triplos = [
+        f':{new_id} a :Musica .',
+        f':{new_id} :nome "{nome}"^^xsd:string .',
+        f':{new_id} :interpretadaPor :{artista_id} .'
+    ]
+    if album_id:
+        triplos.append(f':{new_id} :pertenceAoAlbum :{album_id} .')
+    for g in generos:
+        if g.strip():
+            triplos.append(f':{new_id} :pertenceAoGenero :{g.strip()} .')
+
+    exec_update(PREFIX + "INSERT DATA {\n  " + "\n  ".join(triplos) + "\n}")
+    if album_id:
+        return redirect(url_for('detalhe_album', id_album=album_id))
+    return redirect(url_for('detalhe_artista', id_artista=artista_id))
 
 
 if __name__ == '__main__':
