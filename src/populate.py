@@ -53,7 +53,7 @@ def gerar_artista_solo(a, mapa_premios, mapa_concertos, mapa_influencias):
     
     # Cruzamento de Prémios (Usa o termo exato procurado pelo teu app.py)
     for pr_id in mapa_premios.get(a['id'], []):
-        bloco += f":{a['id']} :recebeupremio :{pr_id} .\n"
+        bloco += f":{a['id']} :recebeuPremio :{pr_id} .\n"
         
     # Cruzamento de Concertos
     for cc_id in mapa_concertos.get(a['id'], []):
@@ -89,7 +89,7 @@ def gerar_banda(b, mapa_premios, mapa_concertos, mapa_influencias):
     
     # Cruzamento de Prémios
     for pr_id in mapa_premios.get(b['id'], []):
-        bloco += f":{b['id']} :recebeupremio :{pr_id} .\n"
+        bloco += f":{b['id']} :recebeuPremio :{pr_id} .\n"
         
     # Cruzamento de Concertos
     for cc_id in mapa_concertos.get(b['id'], []):

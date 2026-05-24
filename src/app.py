@@ -446,7 +446,11 @@ def colaboracoes():
 def premios():
     q = PREFIX + "SELECT ?pId ?pNome ?cat ?org ?ano ?aId ?aNome WHERE { ?p a :Premio ; :nome ?pNome . OPTIONAL { ?p :categoria ?cat } OPTIONAL { ?p :organizacao ?org } OPTIONAL { ?p :anoPremio ?ano } OPTIONAL { ?a :recebeuPremio ?p ; :nome ?aNome . BIND(STRAFTER(STR(?a), 'music-ontology/') AS ?aId) } BIND(STRAFTER(STR(?p), 'music-ontology/') AS ?pId) } ORDER BY DESC(?ano) ?org"
     lista = [{"id": g(r,"pId"), "nome": g(r,"pNome"), "cat": g(r,"cat"), "org": g(r,"org"), "ano": g(r,"ano"), "artistaId": g(r,"aId"), "artistaNome": g(r,"aNome")} for r in rows_of(exec_query(q))]
-    return render_template('premios.html', premios=lista)
+    
+    q_artistas = PREFIX + "SELECT DISTINCT ?id ?nome WHERE { { ?a a :ArtistaSolo } UNION { ?a a :Banda } ?a :nome ?nome . BIND(STRAFTER(STR(?a), 'music-ontology/') AS ?id) } ORDER BY ?nome"
+    lista_artistas = [{"id": g(r,"id"), "nome": g(r,"nome")} for r in rows_of(exec_query(q_artistas))]
+
+    return render_template('premios.html', premios=lista, artistas=lista_artistas)
 
 
 # ════════════════════════════════════════════════════════════════════
@@ -460,9 +464,13 @@ def concertos():
     for r in rows_of(exec_query(q)):
         cid = g(r, "cId")
         q_art = PREFIX + f"SELECT ?id ?nome WHERE {{ ?a :atuouEm :{cid} ; :nome ?nome . BIND(STRAFTER(STR(?a), 'music-ontology/') AS ?id) }}"
-        artistas = [{"id": g(ra,"id"), "nome": g(ra,"nome")} for ra in rows_of(exec_query(q_art))]
-        concertos_list.append({"id": cid, "nome": g(r,"cNome"), "local": g(r,"local"), "data": g(r,"data"), "artistas": artistas})
-    return render_template('concertos.html', concertos=concertos_list)
+        artistas_concerto = [{"id": g(ra,"id"), "nome": g(ra,"nome")} for ra in rows_of(exec_query(q_art))]
+        concertos_list.append({"id": cid, "nome": g(r,"cNome"), "local": g(r,"local"), "data": g(r,"data"), "artistas": artistas_concerto})
+        
+    q_todos_artistas = PREFIX + "SELECT DISTINCT ?id ?nome WHERE { { ?a a :ArtistaSolo } UNION { ?a a :Banda } ?a :nome ?nome . BIND(STRAFTER(STR(?a), 'music-ontology/') AS ?id) } ORDER BY ?nome"
+    lista_artistas = [{"id": g(r,"id"), "nome": g(r,"nome")} for r in rows_of(exec_query(q_todos_artistas))]
+
+    return render_template('concertos.html', concertos=concertos_list, artistas=lista_artistas)
 
 
 # ════════════════════════════════════════════════════════════════════

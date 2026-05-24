@@ -423,7 +423,7 @@
     :pertenceAEditora :valentim_de_carvalho ;
     :biografia "A voz mais emblemática do fado português, conhecida mundialmente como a Rainha do Fado." ;
     :pertenceAoGenero :Fado .
-:amalia_rodrigues :recebeupremio :order_merit_amalia .
+:amalia_rodrigues :recebeuPremio :order_merit_amalia .
 :amalia_rodrigues :atuouEm :amalia_carnegie_1952 .
 
 :carlos_do_carmo a :ArtistaSolo, owl:NamedIndividual ;
@@ -463,8 +463,8 @@
     :pertenceAEditora :universal_pt ;
     :biografia "Fadista nascida em Moçambique que se tornou uma das maiores embaixadoras do fado no mundo." ;
     :pertenceAoGenero :Fado .
-:mariza :recebeupremio :globo_ouro_amalia .
-:mariza :recebeupremio :world_music_mariza .
+:mariza :recebeuPremio :globo_ouro_amalia .
+:mariza :recebeuPremio :world_music_mariza .
 :mariza :atuouEm :mariza_coliseu_2004 .
 :mariza :influenciadoPor :amalia_rodrigues .
 
@@ -480,7 +480,7 @@
     :pertenceAEditora :universal_pt ;
     :biografia "Fadista que colaborou com os Rolling Stones e Prince, levando o fado a novas audiências." ;
     :pertenceAoGenero :Fado .
-:ana_moura :recebeupremio :wma_ana_moura .
+:ana_moura :recebeuPremio :wma_ana_moura .
 :ana_moura :atuouEm :ana_moura_royal_albert .
 :ana_moura :influenciadoPor :amalia_rodrigues .
 
@@ -489,7 +489,7 @@
     :anoNascimento 1984 ;
     :pertenceAEditora :emi_portugal ;
     :pertenceAoGenero :Fado .
-:carminho :recebeupremio :prémio_carlos_paredes .
+:carminho :recebeuPremio :prémio_carlos_paredes .
 :carminho :influenciadoPor :amalia_rodrigues .
 
 :gisela_joao a :ArtistaSolo, owl:NamedIndividual ;
@@ -657,7 +657,7 @@
     :biografia "Vencedor do Festival Eurovisão 2017 com 'Amar Pelos Dois'." ;
     :pertenceAoGenero :Pop ;
     :pertenceAoGenero :Jazz .
-:salvador_sobral :recebeupremio :eurovisao_2017 .
+:salvador_sobral :recebeuPremio :eurovisao_2017 .
 :salvador_sobral :atuouEm :sobral_eurovisao_2017 .
 
 :luisa_sobral a :ArtistaSolo, owl:NamedIndividual ;
@@ -829,7 +829,7 @@
     :pertenceAEditora :universal_pt ;
     :biografia "Uma das rappers mais aclamadas do hip-hop português, com letras feministas e poéticas." ;
     :pertenceAoGenero :HipHop .
-:capicua :recebeupremio :premio_mpa_capicua .
+:capicua :recebeuPremio :premio_mpa_capicua .
 :capicua :atuouEm :capicua_porto_2015 .
 :capicua :influenciadoPor :boss_ac .
 
@@ -1083,7 +1083,7 @@
     :pertenceAoGenero :Rock ;
     :pertenceAoGenero :Indie ;
     :temMembro :manel_cruz .
-:ornatos_violeta :recebeupremio :premio_zdb_ornatos .
+:ornatos_violeta :recebeuPremio :premio_zdb_ornatos .
 :ornatos_violeta :atuouEm :ornatos_coliseu_2002 .
 :ornatos_violeta :influenciadoPor :rui_veloso .
 
@@ -1103,7 +1103,7 @@
     :pertenceAoGenero :Rock ;
     :pertenceAoGenero :Metal ;
     :temMembro :fernando_ribeiro .
-:moonspell :recebeupremio :antena3_moonspell .
+:moonspell :recebeuPremio :antena3_moonspell .
 :moonspell :atuouEm :moonspell_rock_in_rio .
 
 :capitao_fausto a :Banda, owl:NamedIndividual ;
@@ -1147,7 +1147,7 @@
     :pertenceAoGenero :Fado ;
     :pertenceAoGenero :Folk ;
     :temMembro :ana_bacalhau .
-:deolinda :recebeupremio :globo_ouro_banda_deolinda .
+:deolinda :recebeuPremio :globo_ouro_banda_deolinda .
 :deolinda :atuouEm :deolinda_novas_doc .
 :deolinda :influenciadoPor :madredeus .
 

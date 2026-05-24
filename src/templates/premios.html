@@ -53,6 +53,25 @@
       min-width: 70px;
       text-align: right;
     }
+    /* Flash messages */
+    .flash-success {
+      background: rgba(74, 222, 128, 0.1);
+      border: 1px solid rgba(74, 222, 128, 0.3);
+      color: #4ade80;
+      padding: 0.8rem 1.2rem;
+      border-radius: var(--radius);
+      margin-bottom: 1rem;
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .flash-error {
+      background: rgba(155, 35, 53, 0.1);
+      border: 1px solid rgba(155, 35, 53, 0.3);
+      color: #ff5268;
+      padding: 0.8rem 1.2rem;
+      border-radius: var(--radius);
+      margin-bottom: 1rem;
+      display: flex; align-items: center; gap: 0.5rem;
+    }
   </style>
 </head>
 <body>
@@ -80,6 +99,61 @@
       <p>Reconhecimentos atribuídos aos artistas da música portuguesa ao longo dos anos.</p>
     </div>
 
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% for category, message in messages %}
+        <div class="flash-{{ category }}">
+          <i class="fa-solid fa-{% if category == 'success' %}check-circle{% else %}triangle-exclamation{% endif %}"></i>
+          {{ message }}
+        </div>
+      {% endfor %}
+    {% endwith %}
+
+    <!-- ══ FORMULÁRIO ADICIONAR PRÉMIO ══ -->
+    <div class="section-divider"><span><i class="fa-solid fa-plus"></i> Registar Novo Prémio</span></div>
+    <div class="filter-box" style="background: var(--surface2); padding: 2rem; border-radius: var(--radius); margin-bottom: 2rem;">
+      <form method="POST" action="/premio/adicionar" style="width: 100%;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 1.5rem;">
+
+          <div class="form-group">
+            <label>Nome do Prémio *</label>
+            <input type="text" name="nome" placeholder="Ex: Globos de Ouro" class="form-control" required>
+          </div>
+
+          <div class="form-group">
+            <label>Categoria</label>
+            <input type="text" name="categoria" placeholder="Ex: Melhor Álbum" class="form-control">
+          </div>
+
+          <div class="form-group">
+            <label>Organização</label>
+            <input type="text" name="organizacao" placeholder="Ex: SIC / Globos de Ouro" class="form-control">
+          </div>
+
+          <div class="form-group">
+            <label>Ano</label>
+            <input type="number" name="ano" placeholder="Ex: 2023" class="form-control" min="1900" max="2100">
+          </div>
+
+          <div class="form-group">
+            <label>Artista / Banda Premiado(a)</label>
+            <select name="artista_id" class="form-control">
+              <option value="">— Sem artista associado —</option>
+              {% for a in artistas %}
+                <option value="{{ a.id }}">{{ a.nome }}</option>
+              {% endfor %}
+            </select>
+          </div>
+
+        </div>
+        <div style="text-align: right;">
+          <button type="submit" class="btn btn-primary" style="font-weight: bold;">
+            <i class="fa-solid fa-cloud-arrow-up"></i> Registar Prémio
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- ══ LISTAGEM ══ -->
     <div class="section-divider">
       <span>{{ premios|length }} prémio{% if premios|length != 1 %}s{% endif %} registado{% if premios|length != 1 %}s{% endif %}</span>
     </div>
