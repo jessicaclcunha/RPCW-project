@@ -291,8 +291,19 @@
       </section>
     </div>
 
-    <div style="margin-top: 4rem; text-align: center; padding-bottom: 3rem;">
+    <div style="margin-top: 4rem; text-align: center; padding-bottom: 3rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
       <a href="/" class="btn btn-ghost"><i class="fa-solid fa-arrow-left"></i> Voltar ao Catálogo Global</a>
+      <a href="/artista/{{ artista.id }}/editar" class="btn btn-ghost"
+         style="border-color: rgba(201,150,58,0.4); color: var(--gold-light);">
+        <i class="fa-solid fa-pen-to-square"></i> Editar Artista
+      </a>
+      <form method="POST" action="/artista/{{ artista.id }}/remover" style="display:inline;"
+            onsubmit="return confirm('Tens a certeza que queres remover este artista? Esta acção remove permanentemente o registo e todas as suas relacoes. Nao pode ser desfeita.');">
+        <button type="submit" class="btn btn-ghost"
+                style="border-color: rgba(155,35,53,0.4); color: #ff5268;">
+          <i class="fa-solid fa-trash"></i> Remover Artista
+        </button>
+      </form>
     </div>
   </main>
 </body>
