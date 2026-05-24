@@ -151,6 +151,17 @@ exec_update(PREFIX + "INSERT DATA {\n  " + "\n  ".join(triplos) + "\n}")
 
 Antes de inserir, o código verifica se o ID gerado já existe no triplestore (função `id_unico`) e sanitiza todos os inputs para evitar injeção em queries SPARQL (funções `esc_lit` e `esc_id`).
 
+**Remoção de dados** uma vez que ma aplicação disponibiliza funcionalidades de remoção para todas as entidades: artistas, álbuns e músicas. Dada a natureza de um grafo,implementámos uma função, `remover_individuo`, que assegura a integridade:
+
+```python
+def remover_individuo(id_individuo):
+    if not re.match(r'^\w+$', id_individuo):
+        return False
+    q1 = PREFIX + f"DELETE WHERE {{ :{id_individuo} ?p ?o }}"
+    q2 = PREFIX + f"DELETE WHERE {{ ?s ?p :{id_individuo} }}"
+    return exec_update(q1) and exec_update(q2)
+```
+
 ### Um exemplo de query da aplicação
 
 Quando se carrega a página de um artista, a aplicação faz várias queries em paralelo para agregar toda a informação. Uma delas busca as influências:

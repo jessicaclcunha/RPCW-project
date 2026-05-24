@@ -67,7 +67,15 @@
     <div class="musica-list">
       {% for m in album.musicas %}
       <div class="musica-item">
-        <span><span style="color:var(--muted);margin-right:.6rem;font-size:.85rem;font-weight:bold;">{{ loop.index | string }}</span><i class="fa-solid fa-music" style="color:var(--gold); margin-right:0.4rem; font-size:0.85rem;"></i> {{ m.nome }}</span>
+        <span>
+          <span style="color:var(--muted);margin-right:.6rem;font-size:.85rem;font-weight:bold;">{{ loop.index | string }}</span>
+          <i class="fa-solid fa-music" style="color:var(--gold); margin-right:0.4rem; font-size:0.85rem;"></i> 
+          
+          <a href="{{ url_for('detalhe_musica', id_musica=m.id) }}" style="color: var(--cream); text-decoration: none;">
+            {{ m.nome }}
+          </a>
+          
+        </span>
       </div>
       {% endfor %}
     </div>

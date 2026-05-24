@@ -350,11 +350,8 @@ def generos():
             SELECT DISTINCT ?id ?nome ?tipo WHERE {{
                 {{ ?a a :ArtistaSolo . BIND("Solo" AS ?tipo) }}
                 UNION {{ ?a a :Banda . BIND("Banda" AS ?tipo) }}
-                {{ ?a :pertenceAoGenero :{gid} }}
-                UNION 
-                {{ ?m :interpretadaPor ?a ; 
-                        :temGenero :{gid} }}
-                ?a :nome ?nome .
+                ?a :pertenceAoGenero :{{gid}} ;
+                :nome ?nome .
                 BIND(STRAFTER(STR(?a), "music-ontology/") AS ?id)
             }} ORDER BY ?nome
         """
@@ -666,19 +663,14 @@ def adicionar_musica():
     triplos = [
         f':{new_id} a :Musica .',
         f':{new_id} :nome "{esc_lit(nome)}"^^xsd:string .',
-        f':{artista_id} :temMusica :{new_id} .',
         f':{new_id} :interpretadaPor :{artista_id} .'
     ]
-    
     if feat_id:
         triplos.append(f':{new_id} :temColaboracao :{feat_id} .')
-        
     if album_id:
-        triplos.append(f':{album_id} :temFaixa :{new_id} .')
-        
+        triplos.append(f':{new_id} :pertenceAoAlbum :{album_id} .')
     for g_id in generos_ids:
-        triplos.append(f':{new_id} :temGenero :{g_id} .')
-        triplos.append(f':{artista_id} :temGenero :{g_id} .')
+        triplos.append(f':{new_id} :pertenceAoGenero :{g_id} .')
 
     ok = exec_update(PREFIX + "INSERT DATA {\n  " + "\n  ".join(triplos) + "\n}")
     if not ok:

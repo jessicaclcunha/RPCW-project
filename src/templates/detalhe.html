@@ -180,34 +180,12 @@
             {% endif %}
 
             <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--border);">
-              <h4 style="font-size:0.9rem; color:var(--gold-light); margin-bottom:0.6rem;"><i class="fa-solid fa-plus"></i> Adicionar Álbum</h4>
-              <form method="POST" action="/musica/adicionar">
+              <h4 style="font-size:0.9rem; color:var(--gold-light); margin-bottom:0.6rem;"><i class="fa-solid fa-plus"></i>Adicionar Álbum</h4>
+              <form method="POST" action="/album/adicionar">
                 <input type="hidden" name="artista_id" value="{{ artista.id }}">
-                
-                <div style="display: flex; flex-direction: column; gap: 0.8rem;">
-                  <input type="text" name="nome" placeholder="Nome da Música" class="form-control" required style="padding:0.4rem;">
-                  
-                  <select name="album_id" class="form-control" style="padding:0.4rem;">
-                    <option value="">-- Sem álbum associado --</option>
-                    {% for al in artista.albuns %}
-                      <option value="{{ al.id }}">{{ al.nome }}</option>
-                    {% endfor %}
-                  </select>
-              
-                  <div class="form-group" style="margin:0;">
-                    <label style="font-weight: 600; color: var(--cream);">Géneros Musicais</label>
-                    <div class="genero-selector">
-                      {% for g in generos_globais %}
-                        <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
-                          <input type="checkbox" name="genero" value="{{ g.id }}" style="accent-color: var(--gold);">
-                          {{ g.nome }}
-                        </label>
-                      {% endfor %}
-                    </div>
-                  </div>
-              
-                  <button type="submit" class="btn btn-primary">Guardar Música</button>
-                </div>
+                <input type="text" name="nome" placeholder="Nome do Álbum" class="form-control" required style="padding:0.4rem;">
+                <input type="number" name="ano" placeholder="Ano (ex: 2024)" class="form-control" style="padding:0.4rem;">
+                <button type="submit" class="btn btn-primary" style="padding:0.4rem; margin-top: 1.5rem;">Guardar Álbum</button>
               </form>
             </div>
           </div>
