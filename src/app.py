@@ -521,11 +521,11 @@ def adicionar_artista():
     prop_ano = ":anoNascimento" if tipo == 'ArtistaSolo' else ":anoFormacao"
 
     triplos = [
-        f':{new_id} a :{tipo} , owl:NamedIndividual .',
+        f':{new_id} a :{tipo} .',
         f':{new_id} :nome "{esc_lit(nome)}"^^xsd:string .',
     ]
     if ano and ano.isdigit():
-        triplos.append(f':{new_id} {prop_ano} "{int(ano)}"^^xsd:integer .')
+        triplos.append(f':{new_id} {prop_ano} {int(ano)} .')
     for gen in generos:
         triplos.append(f':{new_id} :pertenceAoGenero :{gen} .')
     if editora:
@@ -563,11 +563,11 @@ def adicionar_album():
     new_id = id_unico(base_id)
 
     triplos = [
-        f':{new_id} a :Album , owl:NamedIndividual .',
+        f':{new_id} a :Album .',
         f':{new_id} :nome "{esc_lit(nome)}"^^xsd:string .',
     ]
     if ano and ano.isdigit():
-        triplos.append(f':{new_id} :anoLancamento "{int(ano)}"^^xsd:integer .')
+        triplos.append(f':{new_id} :anoLancamento {int(ano)} .')
     for gen in generos:
         triplos.append(f':{new_id} :pertenceAoGenero :{gen} .')
     triplos.append(f':{artista_id} :lancouAlbum :{new_id} .')
@@ -608,7 +608,7 @@ def adicionar_musica():
     new_id = id_unico(base_id)
 
     triplos = [
-        f':{new_id} a :Musica , owl:NamedIndividual .',
+        f':{new_id} a :Musica .',
         f':{new_id} :nome "{esc_lit(nome)}"^^xsd:string .',
         f':{new_id} :interpretadaPor :{artista_id} .'
     ]
@@ -677,7 +677,7 @@ def adicionar_premio():
     new_id = id_unico(base_id)
 
     triplos = [
-        f':{new_id} a :Premio , owl:NamedIndividual .',
+        f':{new_id} a :Premio .',
         f':{new_id} :nome "{esc_lit(nome)}"^^xsd:string .',
     ]
     if categoria:
@@ -685,9 +685,8 @@ def adicionar_premio():
     if organizacao:
         triplos.append(f':{new_id} :organizacao "{esc_lit(organizacao)}"^^xsd:string .')
     if ano and ano.isdigit():
-        triplos.append(f':{new_id} :anoPremio "{int(ano)}"^^xsd:integer .')
+        triplos.append(f':{new_id} :anoPremio {int(ano)} .')
 
-    # Ligar o prémio ao artista, se fornecido
     if artista_id and re.match(r'^\w+$', artista_id):
         triplos.append(f':{artista_id} :recebeuPremio :{new_id} .')
 
@@ -716,16 +715,14 @@ def adicionar_concerto():
     new_id = id_unico(base_id)
 
     triplos = [
-        f':{new_id} a :Concerto , owl:NamedIndividual .',
+        f':{new_id} a :Concerto .',
         f':{new_id} :nome "{esc_lit(nome)}"^^xsd:string .',
     ]
     if local:
         triplos.append(f':{new_id} :local "{esc_lit(local)}"^^xsd:string .')
     if data:
-        # Aceitar tanto o formato AAAA-MM-DD do input type=date como texto livre
         triplos.append(f':{new_id} :data "{esc_lit(data)}"^^xsd:string .')
 
-    # Ligar o concerto ao artista, se fornecido
     if artista_id and re.match(r'^\w+$', artista_id):
         triplos.append(f':{artista_id} :atuouEm :{new_id} .')
 

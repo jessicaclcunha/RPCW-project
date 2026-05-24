@@ -123,6 +123,7 @@
 
 ###  http://rpcw.di.uminho.pt/2026/music-ontology/anoLancamento
 :anoLancamento rdf:type owl:DatatypeProperty ;
+               rdfs:domain :Album ;
                rdfs:range xsd:integer .
 
 
