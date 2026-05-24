@@ -15,6 +15,24 @@ O sistema tem três partes que trabalham juntas: uma **ontologia OWL** que defin
 
 ---
 
+## O que é e para que serve o nosso Arquivo
+Este projeto consiste num Arquivo da Música Portuguesa, uma plataforma que funciona como uma enciclopédia digital sobre a nossa  história musical.
+
+### Para que vamos usá-lo?
+O principal objetivo é reunir e organizar, num só lugar, toda a informação que hoje está espalhada. Em vez de termos dados soltos, criamos uma rede onde tudo está ligado: um artista está ligado aos seus álbuns, que por sua vez ligam às músicas, aos concertos e aos prémios que ganhou.
+
+### A que perguntas responde?
+Queremos que qualquer pessoa possa fazer perguntas ao sistema e obter respostas rápidas, como por exemplo:
+- "Quais são os artistas que influenciaram o Zeca Afonso?"
+- "Que prémios é que uma banda ganhou e em que anos?"
+- "Quem participou (como convidado) numa determinada música?"
+- "Que artistas pertencem a um género musical específico?"
+
+### Quem vai usar e cuidar disto?
+A sustentabilidade e curadoria do arquivo estariam a cargo de uma entidade cultural de referência (ex: Museu da Música ou Ministério da Cultura), assegurando a validação científica dos dados e a sua preservação ao longo do tempo.
+
+---
+
 ## A Ontologia
 
 ### O que modelámos
