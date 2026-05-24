@@ -1,12 +1,3 @@
-"""
-Helper para comunicação com o GraphDB via SPARQL.
-
-Melhorias face à versão original:
-- Timeout configurado (evita que a app fique pendurada se o GraphDB não responder)
-- Mensagens de erro mais informativas
-- Detecção do tipo de erro (conexão vs sintaxe)
-"""
-
 from SPARQLWrapper import SPARQLWrapper, JSON
 from SPARQLWrapper.SPARQLExceptions import EndPointInternalError, QueryBadFormed
 import socket
@@ -16,12 +7,6 @@ TIMEOUT_SEGUNDOS = 30
 
 
 def exec_query(query):
-    """Executa uma query SELECT/ASK/CONSTRUCT no GraphDB.
-
-    Retorna o resultado em JSON ou None em caso de erro.
-    Mensagens de erro descritivas são impressas para a consola para
-    facilitar o debug.
-    """
     sparql = SPARQLWrapper(GRAPHDB_ENDPOINT)
     sparql.setQuery(query)
     sparql.setReturnFormat(JSON)
@@ -44,8 +29,7 @@ def exec_query(query):
         print(f"[SPARQL] Verifica se o GraphDB está a correr na porta 7200.")
         return None
     except Exception as e:
-        # Detectar erros de ligação por mensagem (urllib/requests podem
-        # levantar exceptions diferentes consoante a versão)
+        # Detectar erros de ligação por mensagem (urllib/requests podem levantar exceptions diferentes consoante a versão)
         msg = str(e).lower()
         if 'connection' in msg or 'refused' in msg or 'resolve' in msg:
             print(f"[SPARQL] Falha de ligação ao GraphDB: {e}")
@@ -56,10 +40,6 @@ def exec_query(query):
 
 
 def exec_update(query):
-    """Executa uma query UPDATE (INSERT, DELETE) no GraphDB.
-
-    Retorna True em sucesso, False em erro.
-    """
     sparql = SPARQLWrapper(GRAPHDB_ENDPOINT + "/statements")
     sparql.setQuery(query)
     sparql.setMethod('POST')

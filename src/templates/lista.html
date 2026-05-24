@@ -146,11 +146,11 @@
               {% endfor %}
             </select>
           </div>
-          <div class="form-group" style="grid-column: 1 / -1;">
+          <div class="form-group">
             <label>Géneros Musicais</label>
-            <div style="max-height: 120px; overflow-y: auto; border: 1px solid var(--border); border-radius: 4px; padding: 0.6rem; background: var(--bg); display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 0.3rem;">
-              {% for g in generos %}
-                <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; color: var(--text); cursor: pointer;">
+            <div class="genero-selector">
+              {% for g in generos_globais %}
+                <label>
                   <input type="checkbox" name="genero" value="{{ g.id }}" style="accent-color: var(--gold);">
                   {{ g.nome }}
                 </label>

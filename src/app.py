@@ -36,20 +36,17 @@ def esc_id(s):
     return re.sub(r'[^\w]', '_', s).strip('_')
 
 def id_unico(base_id):
-    """Verifica se o ID já existe no triplestore. Se sim, acrescenta _2, _3..."""
-    if not base_id:
-        return base_id
-    q = PREFIX + f"ASK {{ :{base_id} ?p ?o }}"
+    if not base_id: return base_id
+    # SELECT em vez de ASK
+    q = PREFIX + f"SELECT ?s WHERE {{ :{base_id} ?p ?o }} LIMIT 1"
     res = exec_query(q)
-    if not res or not res.get('boolean', False):
-        return base_id
+    if not rows_of(res): return base_id
     i = 2
     while i < 100:
         candidate = f"{base_id}_{i}"
-        q = PREFIX + f"ASK {{ :{candidate} ?p ?o }}"
+        q = PREFIX + f"SELECT ?s WHERE {{ :{candidate} ?p ?o }} LIMIT 1"
         res = exec_query(q)
-        if not res or not res.get('boolean', False):
-            return candidate
+        if not rows_of(res): return candidate
         i += 1
     return f"{base_id}_{i}"
 
@@ -233,7 +230,10 @@ def detalhe_artista(id_artista):
         "influenciou": [{"id": g(r,"id"), "nome": g(r,"nome")} for r in rows_of(exec_query(q_influenciou))],
     }
 
-    return render_template('detalhe.html', artista=artista, generos_globais=generos_list())
+    query_artistas = PREFIX + "SELECT ?id ?nome WHERE { ?id a :Artista ; :nome ?nome . }"
+    artistas = [ {'id': g(r, 'id').split('/')[-1], 'nome': g(r, 'nome')} for r in rows_of(exec_query(query_artistas)) ]
+        # Executa a função generos_list() com os parênteses ()
+    return render_template('detalhe.html', artista=artista, generos_globais=generos_list(), todos_artistas=artistas)
 
 
 
@@ -331,7 +331,11 @@ def generos():
             SELECT DISTINCT ?id ?nome ?tipo WHERE {{
                 {{ ?a a :ArtistaSolo . BIND("Solo" AS ?tipo) }}
                 UNION {{ ?a a :Banda . BIND("Banda" AS ?tipo) }}
-                ?a :pertenceAoGenero :{gid} ; :nome ?nome .
+                {{ ?a :pertenceAoGenero :{gid} }}
+                UNION 
+                {{ ?m :interpretadaPor ?a ; 
+                        :temGenero :{gid} }}
+                ?a :nome ?nome .
                 BIND(STRAFTER(STR(?a), "music-ontology/") AS ?id)
             }} ORDER BY ?nome
         """
@@ -582,47 +586,42 @@ def adicionar_album():
 
 @app.route('/musica/adicionar', methods=['POST'])
 def adicionar_musica():
-    nome       = request.form.get('nome', '').strip()
+    nome = request.form.get('nome', '').strip()
     artista_id = request.form.get('artista_id', '').strip()
-    album_id   = request.form.get('album_id', '').strip()
-    generos    = request.form.getlist('genero')
-
+    album_id = request.form.get('album_id', '').strip()
+    feat_id = request.form.get('feat_id', '').strip()
+    generos_ids = request.form.getlist('genero')
+    
     if not nome or not artista_id:
-        flash("Nome da música e artista são obrigatórios.", "error")
-        if album_id and re.match(r'^\w+$', album_id):
-            return redirect(url_for('detalhe_album', id_album=album_id))
-        if artista_id and re.match(r'^\w+$', artista_id):
-            return redirect(url_for('detalhe_artista', id_artista=artista_id))
-        return redirect(url_for('index'))
+        flash("Erro: Nome da música e artista são obrigatórios.", "error")
+        return redirect(url_for('detalhe_artista', id=artista_id))
 
-    if not re.match(r'^\w+$', artista_id):
-        flash("ID de artista inválido.", "error")
-        return redirect(url_for('index'))
-    if album_id and not re.match(r'^\w+$', album_id):
-        album_id = ''
-
-    ids_generos_validos = {g_['id'] for g_ in generos_list()}
-    generos = [g_ for g_ in generos if g_.strip() and g_.strip() in ids_generos_validos]
-
-    base_id = esc_id(nome) + '_mus'
+    base_id = esc_id(nome) + '_musica'
     new_id = id_unico(base_id)
 
     triplos = [
         f':{new_id} a :Musica .',
-        f':{new_id} :nome "{esc_lit(nome)}"^^xsd:string .',
+        f':{new_id} :nome \"{esc_lit(nome)}\"^^xsd:string .',
+        f':{artista_id} :temMusica :{new_id} .'
         f':{new_id} :interpretadaPor :{artista_id} .'
     ]
+    
+    if feat_id:
+        triplos.append(f':{new_id} :temParticipacao :{feat_id} .')
+        
     if album_id:
-        triplos.append(f':{new_id} :pertenceAoAlbum :{album_id} .')
-    for gen in generos:
-        triplos.append(f':{new_id} :pertenceAoGenero :{gen} .')
+        triplos.append(f':{album_id} :temFaixa :{new_id} .')
+        
+    for g_id in generos_ids:
+        triplos.append(f':{new_id} :temGenero :{g_id} .')
+        triplos.append(f':{artista_id} :temGenero :{g_id} .')
 
     ok = exec_update(PREFIX + "INSERT DATA {\n  " + "\n  ".join(triplos) + "\n}")
     if not ok:
-        flash("Erro a inserir no triplestore.", "error")
+        flash("Erro a inserir a música.", "error")
+    else:
+        flash(f"Música '{nome}' registada com sucesso!", "success")
 
-    if album_id:
-        return redirect(url_for('detalhe_album', id_album=album_id))
     return redirect(url_for('detalhe_artista', id_artista=artista_id))
 
 
@@ -639,10 +638,10 @@ def adicionar_genero():
     if not base_id:
         flash("Nome de género inválido.", "error")
         return redirect(url_for('generos'))
-
-    q_existe = PREFIX + f"ASK {{ :{base_id} rdfs:subClassOf :Genero }}"
+    q_existe = PREFIX + f"SELECT ?s WHERE {{ :{base_id} rdfs:subClassOf :Genero }} LIMIT 1"
     res = exec_query(q_existe)
-    if res and res.get('boolean', False):
+    
+    if len(rows_of(res)) > 0:
         flash(f"O género '{nome}' já existe.", "error")
         return redirect(url_for('generos'))
 

@@ -385,7 +385,27 @@ body {
   margin-top: .35rem;
 }
 
-/* ─── OUTROS DETALHES VISUAIS ─── */
+.genero-selector {
+  max-height: 120px;
+  overflow-y: auto;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--gold); 
+  border-radius: 4px;
+  padding: 0.8rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 0.5rem;
+}
+
+.genero-selector label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
 .badge {
   display: inline-block;
   padding: .25rem .6rem;

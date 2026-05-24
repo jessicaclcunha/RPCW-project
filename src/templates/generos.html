@@ -59,15 +59,6 @@
       <p>Artistas e bandas agrupados pela sua vertente musical no triplestore.</p>
     </div>
 
-    {% with messages = get_flashed_messages(with_categories=true) %}
-      {% for category, message in messages %}
-        <div class="flash-{{ category }}">
-          <i class="fa-solid fa-{% if category == 'success' %}check-circle{% else %}triangle-exclamation{% endif %}"></i>
-          {{ message }}
-        </div>
-      {% endfor %}
-    {% endwith %}
-
     <!-- ══ FORMULÁRIO ADICIONAR GÉNERO ══ -->
     <div class="section-divider"><span><i class="fa-solid fa-plus"></i> Adicionar Novo Género</span></div>
     <div class="filter-box" style="background: var(--surface2); padding: 1.5rem 2rem; border-radius: var(--radius); margin-bottom: 2rem;">

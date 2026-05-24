@@ -181,23 +181,32 @@
 
             <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--border);">
               <h4 style="font-size:0.9rem; color:var(--gold-light); margin-bottom:0.6rem;"><i class="fa-solid fa-plus"></i> Adicionar Álbum</h4>
-              <form method="POST" action="/album/adicionar">
+              <form method="POST" action="/musica/adicionar">
                 <input type="hidden" name="artista_id" value="{{ artista.id }}">
-                <div style="display: flex; flex-direction: column; gap: 0.5rem;">
-                  <input type="text" name="nome" placeholder="Nome do Álbum" class="form-control" style="font-size:0.85rem; padding:0.4rem;" required>
-                  <div style="display: flex; gap: 0.5rem;">
-                    <input type="number" name="ano" placeholder="Ano" class="form-control" style="font-size:0.85rem; padding:0.4rem; flex:1;">
-                    <div style="flex: 1.5; max-height: 90px; overflow-y: auto; border: 1px solid var(--border); border-radius: 4px; padding: 0.5rem; background: var(--bg);">
-                      <div style="font-size: 0.75rem; color: var(--muted); margin-bottom: 0.4rem;">Selecione os Géneros:</div>
+                
+                <div style="display: flex; flex-direction: column; gap: 0.8rem;">
+                  <input type="text" name="nome" placeholder="Nome da Música" class="form-control" required style="padding:0.4rem;">
+                  
+                  <select name="album_id" class="form-control" style="padding:0.4rem;">
+                    <option value="">-- Sem álbum associado --</option>
+                    {% for al in artista.albuns %}
+                      <option value="{{ al.id }}">{{ al.nome }}</option>
+                    {% endfor %}
+                  </select>
+              
+                  <div class="form-group" style="margin:0;">
+                    <label style="font-weight: 600; color: var(--cream);">Géneros Musicais</label>
+                    <div class="genero-selector">
                       {% for g in generos_globais %}
-                        <label style="display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.3rem; font-size: 0.85rem; color: var(--text); cursor: pointer;">
+                        <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
                           <input type="checkbox" name="genero" value="{{ g.id }}" style="accent-color: var(--gold);">
                           {{ g.nome }}
                         </label>
                       {% endfor %}
                     </div>
                   </div>
-                  <button type="submit" class="btn btn-primary" style="font-size:0.85rem; padding:0.4rem 0.8rem;"><i class="fa-solid fa-save"></i> Submeter Álbum</button>
+              
+                  <button type="submit" class="btn btn-primary">Guardar Música</button>
                 </div>
               </form>
             </div>
@@ -206,19 +215,60 @@
           <div class="compact-block">
             <h3><i class="fa-solid fa-music"></i> Músicas em Destaque</h3>
             {% if artista.musicas %}
-              <div style="max-height: 320px; overflow-y: auto; padding-right: 0.3rem;">
+              <div style="max-height: 250px; overflow-y: auto; margin-bottom: 1rem;">
                 {% for m in artista.musicas %}
-                <div class="interactive-list-item" style="justify-content: flex-start; gap: 0.5rem;">
-                  <i class="fa-solid fa-sliders" style="font-size: 0.75rem; color: var(--gold); min-width: 15px;"></i>
-                  <span style="color: var(--cream); font-weight: 500; font-size: 0.95rem;">{{ m.nome }}</span>
+                <div class="interactive-list-item">
+                  <span>{{ m.nome }}</span>
                 </div>
                 {% endfor %}
               </div>
-            {% else %}
-              <p style="color: var(--muted); font-size: 0.9rem; font-style: italic;">Nenhuma obra individual registada.</p>
-            {% endif %}
+              {% else %}
+                <p style="color: var(--muted); font-size: 0.9rem; font-style: italic;">Nenhum música registada.</p>
+              {% endif %}
+
+            <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--border);">
+              <h4 style="font-size:0.9rem; color:var(--gold-light); margin-bottom:0.6rem;">+ Adicionar Música</h4>
+              <form method="POST" action="/musica/adicionar">
+                <input type="hidden" name="artista_id" value="{{ artista.id }}">
+                <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                  <input type="text" name="nome" placeholder="Nome da Música" class="form-control" required style="padding:0.4rem;">
+                  
+                  <select name="album_id" class="form-control" style="padding:0.4rem;">
+                    <option value="">-- Sem álbum associado --</option>
+                    {% for al in artista.albuns %}
+                      <option value="{{ al.id }}">{{ al.nome }}</option>
+                    {% endfor %}
+                  </select>
+
+                  <select name="feat_id" class="form-control" style="padding:0.4rem;">
+                    <option value="">-- Sem participação/feat --</option>
+                    {% for a in todos_artistas %}
+                      {% if a.id != artista.id %}
+                        <option value="{{ a.id }}">{{ a.nome }}</option>
+                      {% endif %}
+                    {% endfor %}
+                  </select>
+
+              
+                  <div class="form-group">
+                    <label>Géneros Musicais</label>
+                    <div class="genero-selector">
+                      {% for g in generos_globais %}
+                        <label>
+                          <input type="checkbox" name="genero" value="{{ g.id }}" style="accent-color: var(--gold);">
+                          {{ g.nome }}
+                        </label>
+                      {% endfor %}
+                    </div>
+                  </div>
+              
+                  <button type="submit" class="btn btn-primary" style="padding:0.4rem;">
+                    <i class="fa-solid fa-save"></i> Guardar Música
+                  </button>
+                </div>
+              </form>
+            </div>
           </div>
-        </div>
 
         {% if artista.concertos %}
         <div>
