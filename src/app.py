@@ -656,20 +656,20 @@ def adicionar_musica():
     
     if not nome or not artista_id:
         flash("Erro: Nome da música e artista são obrigatórios.", "error")
-        return redirect(url_for('detalhe_artista', id=artista_id))
+        return redirect(url_for('detalhe_artista', id_artista=artista_id))
 
     base_id = esc_id(nome) + '_musica'
     new_id = id_unico(base_id)
 
     triplos = [
         f':{new_id} a :Musica .',
-        f':{new_id} :nome \"{esc_lit(nome)}\"^^xsd:string .',
-        f':{artista_id} :temMusica :{new_id} .'
+        f':{new_id} :nome "{esc_lit(nome)}"^^xsd:string .',
+        f':{artista_id} :temMusica :{new_id} .',
         f':{new_id} :interpretadaPor :{artista_id} .'
     ]
     
     if feat_id:
-        triplos.append(f':{new_id} :temParticipacao :{feat_id} .')
+        triplos.append(f':{new_id} :temColaboracao :{feat_id} .')
         
     if album_id:
         triplos.append(f':{album_id} :temFaixa :{new_id} .')
@@ -798,8 +798,6 @@ def adicionar_concerto():
 
 
 def remover_individuo(id_individuo):
-    """Apaga todas as triplas onde :id aparece (como sujeito OU objeto).
-    Faz duas queries DELETE WHERE separadas para garantir compatibilidade."""
     if not re.match(r'^\w+$', id_individuo):
         return False
     q1 = PREFIX + f"DELETE WHERE {{ :{id_individuo} ?p ?o }}"
