@@ -123,6 +123,7 @@
 
 ###  http://rpcw.di.uminho.pt/2026/music-ontology/anoLancamento
 :anoLancamento rdf:type owl:DatatypeProperty ;
+               rdfs:domain :Album ;
                rdfs:range xsd:integer .
 
 
@@ -326,7 +327,7 @@
     :organizacao "BBC Radio 3" ;
     :anoPremio 2014 .
 
-:prémio_carlos_paredes a :Premio ;
+:premio_carlos_paredes a :Premio ;
     :nome "Prémio Carlos Paredes" ;
     :categoria "Música" ;
     :organizacao "Câmara Municipal de Lisboa" ;
@@ -493,7 +494,7 @@
     :anoNascimento 1984 ;
     :pertenceAEditora :emi_portugal ;
     :pertenceAoGenero :Fado .
-:carminho :recebeuPremio :prémio_carlos_paredes .
+:carminho :recebeuPremio :premio_carlos_paredes .
 :carminho :influenciadoPor :amalia_rodrigues .
 
 :gisela_joao a :ArtistaSolo ;

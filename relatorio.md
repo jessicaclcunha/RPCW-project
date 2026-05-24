@@ -7,7 +7,7 @@
 
 O projeto consiste numa aplicação web para explorar e aumentar uma base de conhecimento sobre música portuguesa. A escolha do tema não foi arbitrária, pesquisámos e não encontrámos nenhum recurso público estruturado neste domínio: não existe nenhuma ontologia OWL sobre música portuguesa, nenhum dataset RDF com artistas, álbuns e relações entre eles, nem nenhuma aplicação semântica do género disponível online. Isso tornava o tema simultaneamente desafiante e mais interessante porque tivemos de construir tudo de raiz.
 
-Para além da ontologia, tivemos de criar os dados manualmente. Todos os ficheiros de dataset (artistas, bandas, álbuns, músicas, prémios, concertos, influências) foram escritos totalmento do zero, pelo que não estão completos.
+Para além da ontologia, tivemos de criar os dados manualmente. Todos os ficheiros de dataset (artistas, bandas, álbuns, músicas, prémios, concertos, influências) foram escritos totalmente do zero, pelo que não estão completos.
 
 O domínio escolhido é também rico em relações interessantes do ponto de vista semântico: um artista pode ter sido influenciado por outro, uma música pode ter sido composta por uma pessoa e interpretada por outra diferente, uma banda tem membros que também têm carreiras a solo. Este tipo de relações complexas é exatamente onde as tecnologias de Web Semântica brilham face a uma base de dados relacional comum.
 
@@ -151,7 +151,7 @@ exec_update(PREFIX + "INSERT DATA {\n  " + "\n  ".join(triplos) + "\n}")
 
 Antes de inserir, o código verifica se o ID gerado já existe no triplestore (função `id_unico`) e sanitiza todos os inputs para evitar injeção em queries SPARQL (funções `esc_lit` e `esc_id`).
 
-**Remoção de dados** uma vez que ma aplicação disponibiliza funcionalidades de remoção para todas as entidades: artistas, álbuns e músicas. Dada a natureza de um grafo,implementámos uma função, `remover_individuo`, que assegura a integridade:
+**Remoção de dados** uma vez que a aplicação disponibiliza funcionalidades de remoção para as entidades: artistas, álbuns e músicas. Dada a natureza de um grafo,implementámos uma função, `remover_individuo`, que assegura a integridade:
 
 ```python
 def remover_individuo(id_individuo):

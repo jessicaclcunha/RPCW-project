@@ -172,6 +172,7 @@ def index():
         'lista.html',
         artistas=artistas,
         generos=generos_list(),
+        generos_globais=generos_list(), 
         editoras=editoras_list(),
         busca=busca,
         filtro_genero=filtro_genero,
@@ -305,7 +306,7 @@ def detalhe_musica(id_musica):
             OPTIONAL {{ 
                 {{ :{id_musica} :pertenceAoAlbum ?album . }} 
                 UNION 
-                {{ ?album :temFaixa :{id_musica} . }}
+                {{ ?album :contemMusica :{id_musica} . }}
                 ?album :nome ?albumNome .
                 OPTIONAL {{ ?album :anoLancamento ?ano }}
                 BIND(STRAFTER(STR(?album), "music-ontology/") AS ?albumId) 
@@ -350,8 +351,15 @@ def generos():
             SELECT DISTINCT ?id ?nome ?tipo WHERE {{
                 {{ ?a a :ArtistaSolo . BIND("Solo" AS ?tipo) }}
                 UNION {{ ?a a :Banda . BIND("Banda" AS ?tipo) }}
-                ?a :pertenceAoGenero :{{gid}} ;
-                :nome ?nome .
+                {{ 
+                    ?a :pertenceAoGenero :{gid} . 
+                }}
+                UNION 
+                {{ 
+                    ?m :interpretadaPor ?a ; 
+                       :pertenceAoGenero :{gid} . 
+                }}
+                ?a :nome ?nome .
                 BIND(STRAFTER(STR(?a), "music-ontology/") AS ?id)
             }} ORDER BY ?nome
         """
