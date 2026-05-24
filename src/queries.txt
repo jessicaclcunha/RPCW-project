@@ -7,7 +7,12 @@ OBJETIVO
 Obter todos os artistas solo que cantam Fado, ordenados alfabeticamente.
  
 QUERY
- 
+
+PREFIX :     <http://rpcw.di.uminho.pt/2026/music-ontology/>
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
 SELECT ?nome WHERE {
   ?a a :ArtistaSolo ;
      :pertenceAoGenero :Fado ;
@@ -30,7 +35,12 @@ Listar todos os álbuns juntamente com o seu ano de lançamento, do mais
 antigo para o mais recente.
  
 QUERY
- 
+
+PREFIX :     <http://rpcw.di.uminho.pt/2026/music-ontology/>
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
 SELECT ?album ?ano WHERE {
   ?a a :Album ;
      :nome ?album ;
@@ -52,7 +62,12 @@ OBJETIVO
 Quantos prémios estão registados na base de conhecimento?
  
 QUERY
- 
+
+PREFIX :     <http://rpcw.di.uminho.pt/2026/music-ontology/>
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
 SELECT (COUNT(?p) AS ?total_premios) WHERE {
   ?p a :Premio .
 }
@@ -77,7 +92,12 @@ Contar quantas músicas existem em cada género, ordenadas pelo género
 mais representado.
  
 QUERY
- 
+
+PREFIX :     <http://rpcw.di.uminho.pt/2026/music-ontology/>
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
 SELECT ?genero (COUNT(?m) AS ?n_musicas) WHERE {
   ?m a :Musica ;
      :pertenceAoGenero ?g .
@@ -103,7 +123,12 @@ listar as suas músicas — mas mostrar também os álbuns para os quais
 não há músicas registadas no dataset.
  
 QUERY
- 
+
+PREFIX :     <http://rpcw.di.uminho.pt/2026/music-ontology/>
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
 SELECT ?album ?ano ?musica WHERE {
   :madredeus :lancouAlbum ?a .
   ?a :nome ?album ;
@@ -132,7 +157,12 @@ importante: nos dados afirmamos sempre que "música pertenceAoAlbum
 álbum", nunca o inverso.
  
 QUERY
- 
+
+PREFIX :     <http://rpcw.di.uminho.pt/2026/music-ontology/>
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
 SELECT ?album ?musica WHERE {
   ?a a :Album ;
      :nome ?album ;
@@ -160,7 +190,12 @@ Encontrar músicas onde quem compôs a música NÃO foi quem escreveu a
 letra — é um indicador de colaboração compositor/letrista.
  
 QUERY
- 
+
+PREFIX :     <http://rpcw.di.uminho.pt/2026/music-ontology/>
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
 SELECT ?musica ?compositor ?letrista WHERE {
   ?m a :Musica ;
      :nome ?musica ;
@@ -190,7 +225,12 @@ Encontrar artistas solo que não se restringem a um só género, mas que
 têm afinidade com vários.
  
 QUERY
- 
+
+PREFIX :     <http://rpcw.di.uminho.pt/2026/music-ontology/>
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
 SELECT ?artista (COUNT(?g) AS ?n_generos) WHERE {
   ?a a :ArtistaSolo ;
      :nome ?artista ;
@@ -215,7 +255,12 @@ Identificar todos os artistas que foram influenciados por Amália
 Rodrigues, direta ou indiretamente.
  
 QUERY
- 
+
+PREFIX :     <http://rpcw.di.uminho.pt/2026/music-ontology/>
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
 SELECT ?artista WHERE {
   ?a :influenciadoPor :amalia_rodrigues ;
      :nome ?artista .
@@ -247,7 +292,12 @@ Encontrar pessoas que escreveram letras de canções mas NUNCA
 interpretaram nenhuma música — i.e. são exclusivamente letristas.
  
 QUERY
- 
+
+PREFIX :     <http://rpcw.di.uminho.pt/2026/music-ontology/>
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
 SELECT DISTINCT ?nome WHERE {
   ?a :nome ?nome .
   ?m :escritaPor ?a .
@@ -274,7 +324,12 @@ Para cada banda, calcular a idade média dos seus membros (com base no
 ano de nascimento).
  
 QUERY
- 
+
+PREFIX :     <http://rpcw.di.uminho.pt/2026/music-ontology/>
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
 SELECT ?banda (ROUND(AVG(2025 - ?ano)) AS ?idade_media) WHERE {
   ?b a :Banda ;
      :nome ?banda ;
@@ -298,7 +353,12 @@ Listar as editoras ordenadas pelo número de artistas (solo e bandas)
 que têm contratados.
  
 QUERY
- 
+
+PREFIX :     <http://rpcw.di.uminho.pt/2026/music-ontology/>
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
 SELECT ?editora (COUNT(?a) AS ?n_artistas) WHERE {
   ?a :pertenceAEditora ?e .
   ?e :nome ?editora .
@@ -321,7 +381,12 @@ Ordenar os artistas pelo número de prémios recebidos, do mais
 premiado para o menos premiado.
  
 QUERY
- 
+
+PREFIX :     <http://rpcw.di.uminho.pt/2026/music-ontology/>
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
 SELECT ?artista (COUNT(?p) AS ?n_premios) WHERE {
   ?a :recebeuPremio ?p ;
      :nome ?artista .
@@ -343,7 +408,12 @@ OBJETIVO
 Agrupar os concertos por década (1990s, 2000s, 2010s, ...).
  
 QUERY
- 
+
+PREFIX :     <http://rpcw.di.uminho.pt/2026/music-ontology/>
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
 SELECT ?decada (COUNT(?c) AS ?n_concertos) WHERE {
   ?c a :Concerto ;
      :data ?data .
@@ -368,7 +438,12 @@ Listar pares de artistas que partilham a mesma editora — útil para
 descobrir "famílias" de artistas e potenciais colaborações futuras.
  
 QUERY
- 
+
+PREFIX :     <http://rpcw.di.uminho.pt/2026/music-ontology/>
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
 SELECT ?editora ?artista1 ?artista2 WHERE {
   ?x1 :pertenceAEditora ?e ;
       :nome ?artista1 .
@@ -397,7 +472,12 @@ nascimentos de artistas, formação de bandas, lançamento de álbuns e
 atribuição de prémios — tudo ordenado cronologicamente.
  
 QUERY
- 
+
+PREFIX :     <http://rpcw.di.uminho.pt/2026/music-ontology/>
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
 SELECT ?ano ?tipo ?nome WHERE {
   { ?a a :ArtistaSolo ; :nome ?nome ; :anoNascimento ?ano .
     BIND("Nascimento" AS ?tipo) }
@@ -429,7 +509,12 @@ Para cada artista, calcular quantos álbuns lançou E quantas músicas
 interpretou. Síntese da carreira em duas métricas.
  
 QUERY
- 
+
+PREFIX :     <http://rpcw.di.uminho.pt/2026/music-ontology/>
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
 SELECT ?artista ?albuns ?musicas WHERE {
   { ?a a :ArtistaSolo } UNION { ?a a :Banda }
   ?a :nome ?artista .
@@ -474,7 +559,12 @@ Listar as músicas com participações especiais (feats), distinguindo
 o intérprete principal do artista convidado.
  
 QUERY
- 
+
+PREFIX :     <http://rpcw.di.uminho.pt/2026/music-ontology/>
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
 SELECT ?musica ?principal ?feat WHERE {
   ?m a :Musica ;
      :nome ?musica ;

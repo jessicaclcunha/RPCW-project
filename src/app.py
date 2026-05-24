@@ -1,8 +1,9 @@
-from flask import Flask, render_template, request, redirect, url_for, jsonify
+from flask import Flask, render_template, request, redirect, url_for, jsonify, flash
 from query import exec_query, exec_update
 import re
 
 app = Flask(__name__)
+app.secret_key = 'rpcw2026-musica-portuguesa'  # para flash messages
 
 PREFIX = """
 PREFIX : <http://rpcw.di.uminho.pt/2026/music-ontology/>
@@ -11,13 +12,50 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
 """
 
+# ════════════════════════════════════════════════════════════════════
+#   HELPERS
+# ════════════════════════════════════════════════════════════════════
+
 def rows_of(result):
+    """Extrai os bindings de um resultado SPARQL com defesa contra None."""
     if not result or "results" not in result:
         return []
     return result["results"].get("bindings", [])
 
 def g(row, key, default=None):
+    """Acesso seguro a valores de bindings."""
     return row[key]["value"] if key in row else default
+
+def esc_lit(s):
+    """Escapa uma string para ser usada num literal TTL (entre aspas).
+    Sem isto, nomes com aspas ou backslashes partem a query SPARQL."""
+    if s is None:
+        return ""
+    return s.replace('\\', '\\\\').replace('"', '\\"').replace('\n', ' ').replace('\r', ' ')
+
+def esc_id(s):
+    """Converte uma string num ID válido para URI (apenas letras, dígitos e _)."""
+    if not s:
+        return ""
+    return re.sub(r'[^\w]', '_', s).strip('_')
+
+def id_unico(base_id):
+    """Verifica se o ID já existe no triplestore. Se sim, acrescenta _2, _3..."""
+    if not base_id:
+        return base_id
+    q = PREFIX + f"ASK {{ :{base_id} ?p ?o }}"
+    res = exec_query(q)
+    if not res or not res.get('boolean', False):
+        return base_id
+    i = 2
+    while i < 100:  # limite de segurança
+        candidate = f"{base_id}_{i}"
+        q = PREFIX + f"ASK {{ :{candidate} ?p ?o }}"
+        res = exec_query(q)
+        if not res or not res.get('boolean', False):
+            return candidate
+        i += 1
+    return f"{base_id}_{i}"
 
 def generos_list():
     q = PREFIX + """
@@ -36,9 +74,10 @@ def editoras_list():
     return [{"id": g(r,"id"), "nome": g(r,"nome")} for r in rows_of(exec_query(q))]
 
 
-# ────────────────────────────────────────────────────────────────────
-# LISTAGEM PRINCIPAL
-# ────────────────────────────────────────────────────────────────────
+# ════════════════════════════════════════════════════════════════════
+#   PÁGINA PRINCIPAL — LISTAGEM DE ARTISTAS
+# ════════════════════════════════════════════════════════════════════
+
 @app.route('/')
 def index():
     busca         = request.args.get('q', '').strip()
@@ -48,17 +87,41 @@ def index():
     filtro_ano_de = request.args.get('ano_de', '').strip()
     filtro_ano_ate= request.args.get('ano_ate', '').strip()
 
+    # Validar IDs vindos do form (têm de ser identifiers válidos)
+    id_re = re.compile(r'^\w+$')
+    if filtro_genero and not id_re.match(filtro_genero):
+        filtro_genero = ''
+    if filtro_editora and not id_re.match(filtro_editora):
+        filtro_editora = ''
+
     filtros = []
     if busca:
-        filtros.append(f'FILTER(CONTAINS(LCASE(?nome), LCASE("{busca}")))')
+        filtros.append(f'FILTER(CONTAINS(LCASE(?nome), LCASE("{esc_lit(busca)}")))')
     if filtro_genero:
         filtros.append(f'?artista :pertenceAoGenero :{filtro_genero} .')
     if filtro_editora:
         filtros.append(f'?artista :pertenceAEditora :{filtro_editora} .')
-    if filtro_ano_de:
-        filtros.append(f'OPTIONAL {{ ?artista :anoNascimento ?an1 . ?artista :anoFormacao ?an1 }} FILTER(!BOUND(?an1) || ?an1 >= {filtro_ano_de})')
-    if filtro_ano_ate:
-        filtros.append(f'OPTIONAL {{ ?artista :anoNascimento ?an2 . ?artista :anoFormacao ?an2 }} FILTER(!BOUND(?an2) || ?an2 <= {filtro_ano_ate})')
+
+    # BUG 1 CORRIGIDO: filtro de ano agora funciona para ArtistaSolo
+    # (anoNascimento) E para Banda (anoFormacao) sem exigir ambos
+    if filtro_ano_de and filtro_ano_de.isdigit():
+        filtros.append(
+            f'OPTIONAL {{ ?artista :anoNascimento ?an_de_n }} '
+            f'OPTIONAL {{ ?artista :anoFormacao   ?an_de_f }} '
+            f'FILTER('
+              f'(BOUND(?an_de_n) && ?an_de_n >= {filtro_ano_de}) || '
+              f'(BOUND(?an_de_f) && ?an_de_f >= {filtro_ano_de})'
+            f')'
+        )
+    if filtro_ano_ate and filtro_ano_ate.isdigit():
+        filtros.append(
+            f'OPTIONAL {{ ?artista :anoNascimento ?an_ate_n }} '
+            f'OPTIONAL {{ ?artista :anoFormacao   ?an_ate_f }} '
+            f'FILTER('
+              f'(BOUND(?an_ate_n) && ?an_ate_n <= {filtro_ano_ate}) || '
+              f'(BOUND(?an_ate_f) && ?an_ate_f <= {filtro_ano_ate})'
+            f')'
+        )
 
     if filtro_tipo == 'Solo':
         tipo_filter = '{ ?artista a :ArtistaSolo . BIND("Solo" AS ?tipo) }'
@@ -127,11 +190,16 @@ def index():
     )
 
 
-# ────────────────────────────────────────────────────────────────────
-# DETALHE DE ARTISTA
-# ────────────────────────────────────────────────────────────────────
+# ════════════════════════════════════════════════════════════════════
+#   DETALHE DE ARTISTA
+# ════════════════════════════════════════════════════════════════════
+
 @app.route('/artista/<id_artista>')
 def detalhe_artista(id_artista):
+    # Validar que id é seguro (só letras, dígitos, _)
+    if not re.match(r'^\w+$', id_artista):
+        return "ID de artista inválido", 400
+
     query_info = PREFIX + f"""
         SELECT ?nome ?tipo ?anoNasc ?anoForm ?editora ?editoraNome ?bio WHERE {{
             :{id_artista} :nome ?nome .
@@ -182,11 +250,15 @@ def detalhe_artista(id_artista):
     return render_template('detalhe.html', artista=artista, generos_globais=generos_list())
 
 
-# ────────────────────────────────────────────────────────────────────
-# DETALHE DE ÁLBUM
-# ────────────────────────────────────────────────────────────────────
+# ════════════════════════════════════════════════════════════════════
+#   DETALHE DE ÁLBUM
+# ════════════════════════════════════════════════════════════════════
+
 @app.route('/album/<id_album>')
 def detalhe_album(id_album):
+    if not re.match(r'^\w+$', id_album):
+        return "ID de álbum inválido", 400
+
     query_album = PREFIX + f"""
         SELECT ?nome ?ano ?artistaId ?artistaNome WHERE {{
             :{id_album} a :Album ; :nome ?nome .
@@ -219,6 +291,55 @@ def detalhe_album(id_album):
     return render_template('album.html', album=album, generos_globais=generos_list())
 
 
+# ════════════════════════════════════════════════════════════════════
+#   DETALHE DE MÚSICA (NOVA — corrige Bug 2)
+# ════════════════════════════════════════════════════════════════════
+
+@app.route('/musica/<id_musica>')
+def detalhe_musica(id_musica):
+    """Página de detalhe de uma música — necessária porque /pesquisa
+    devolvia URLs vazios para músicas e clicar dava 404."""
+    if not re.match(r'^\w+$', id_musica):
+        return "ID de música inválido", 400
+
+    query_info = PREFIX + f"""
+        SELECT ?nome ?albumId ?albumNome ?ano WHERE {{
+            :{id_musica} a :Musica ; :nome ?nome .
+            OPTIONAL {{ :{id_musica} :pertenceAoAlbum ?album .
+                        ?album :nome ?albumNome .
+                        OPTIONAL {{ ?album :anoLancamento ?ano }}
+                        BIND(STRAFTER(STR(?album), "music-ontology/") AS ?albumId) }}
+        }} LIMIT 1
+    """
+    res = rows_of(exec_query(query_info))
+    if not res:
+        return "Música não encontrada", 404
+
+    row = res[0]
+
+    q_int = PREFIX + f"SELECT ?id ?nome WHERE {{ :{id_musica} :interpretadaPor ?a . ?a :nome ?nome . BIND(STRAFTER(STR(?a), 'music-ontology/') AS ?id) }}"
+    q_comp = PREFIX + f"SELECT ?id ?nome WHERE {{ :{id_musica} :compostaPor ?a . ?a :nome ?nome . BIND(STRAFTER(STR(?a), 'music-ontology/') AS ?id) }}"
+    q_esc = PREFIX + f"SELECT ?id ?nome WHERE {{ :{id_musica} :escritaPor ?a . ?a :nome ?nome . BIND(STRAFTER(STR(?a), 'music-ontology/') AS ?id) }}"
+    q_gen = PREFIX + f"SELECT ?nome WHERE {{ :{id_musica} :pertenceAoGenero ?g . BIND(STRAFTER(STR(?g), 'music-ontology/') AS ?nome) }}"
+    q_feat = PREFIX + f"SELECT ?id ?nome WHERE {{ :{id_musica} :temColaboracao ?a . ?a :nome ?nome . BIND(STRAFTER(STR(?a), 'music-ontology/') AS ?id) }}"
+
+    musica = {
+        "id":            id_musica,
+        "nome":          g(row, "nome"),
+        "album":         {"id": g(row,"albumId"), "nome": g(row,"albumNome"), "ano": g(row,"ano")} if g(row,"albumId") else None,
+        "interpretes":   [{"id": g(r,"id"), "nome": g(r,"nome")} for r in rows_of(exec_query(q_int))],
+        "compositores":  [{"id": g(r,"id"), "nome": g(r,"nome")} for r in rows_of(exec_query(q_comp))],
+        "letristas":     [{"id": g(r,"id"), "nome": g(r,"nome")} for r in rows_of(exec_query(q_esc))],
+        "generos":       [{"nome": g(r,"nome")} for r in rows_of(exec_query(q_gen))],
+        "colaboracoes":  [{"id": g(r,"id"), "nome": g(r,"nome")} for r in rows_of(exec_query(q_feat))],
+    }
+
+    return render_template('musica.html', musica=musica)
+
+
+# ════════════════════════════════════════════════════════════════════
+#   GÉNEROS
+# ════════════════════════════════════════════════════════════════════
 
 @app.route('/generos')
 def generos():
@@ -246,6 +367,11 @@ def generos():
     gen_list.sort(key=lambda x: -x["total"])
     return render_template('generos.html', generos=gen_list)
 
+
+# ════════════════════════════════════════════════════════════════════
+#   TIMELINE
+# ════════════════════════════════════════════════════════════════════
+
 @app.route('/timeline')
 def timeline():
     query = PREFIX + """
@@ -266,11 +392,16 @@ def timeline():
         if ano not in eventos_por_ano:
             eventos_por_ano[ano] = []
         eventos_por_ano[ano].append(ev)
-        
+
     anos_ordenados = sorted(eventos_por_ano.keys())
     eventos_agrupados = [{"ano": ano, "lista": eventos_por_ano[ano]} for ano in anos_ordenados]
 
     return render_template('timeline.html', eventos_por_ano=eventos_agrupados, total_eventos=len(eventos_lista))
+
+
+# ════════════════════════════════════════════════════════════════════
+#   ESTATÍSTICAS
+# ════════════════════════════════════════════════════════════════════
 
 @app.route('/estatisticas')
 def estatisticas():
@@ -291,21 +422,36 @@ def estatisticas():
 
     return render_template('estatisticas.html', por_genero=por_genero, por_editora=por_editora, por_decada=por_decada, por_org=por_org, mais_premiados=mais_premiados)
 
+
+# ════════════════════════════════════════════════════════════════════
+#   COLABORAÇÕES / INFLUÊNCIAS
+# ════════════════════════════════════════════════════════════════════
+
 @app.route('/colaboracoes')
 def colaboracoes():
     q_inf = PREFIX + "SELECT ?aId ?aNome ?bId ?bNome WHERE { ?a :influenciadoPor ?b . ?a :nome ?aNome . ?b :nome ?bNome . BIND(STRAFTER(STR(?a), 'music-ontology/') AS ?aId) BIND(STRAFTER(STR(?b), 'music-ontology/') AS ?bId) }"
     influencias = [{"source": g(r,"bId"), "sourceNome": g(r,"bNome"), "target": g(r,"aId"), "targetNome": g(r,"aNome")} for r in rows_of(exec_query(q_inf))]
 
     q_feat = PREFIX + "SELECT ?mId ?mNome ?aId ?aNome ?bId ?bNome WHERE { ?m a :Musica ; :nome ?mNome ; :interpretadaPor ?a ; :temColaboracao ?b . ?a :nome ?aNome . ?b :nome ?bNome . BIND(STRAFTER(STR(?m), 'music-ontology/') AS ?mId) BIND(STRAFTER(STR(?a), 'music-ontology/') AS ?aId) BIND(STRAFTER(STR(?b), 'music-ontology/') AS ?bId) }"
-    feats = [{"musica": g(r,"mNome"), "artista": g(r,"aNome"), "artistaId": g(r,"aId"), "feat": g(r,"bNome"), "featId": g(r,"bId")} for r in rows_of(exec_query(q_feat))]
+    feats = [{"musica": g(r,"mNome"), "musicaId": g(r,"mId"), "artista": g(r,"aNome"), "artistaId": g(r,"aId"), "feat": g(r,"bNome"), "featId": g(r,"bId")} for r in rows_of(exec_query(q_feat))]
 
     return render_template('colaboracoes.html', influencias=influencias, feats=feats)
+
+
+# ════════════════════════════════════════════════════════════════════
+#   PRÉMIOS
+# ════════════════════════════════════════════════════════════════════
 
 @app.route('/premios')
 def premios():
     q = PREFIX + "SELECT ?pId ?pNome ?cat ?org ?ano ?aId ?aNome WHERE { ?p a :Premio ; :nome ?pNome . OPTIONAL { ?p :categoria ?cat } OPTIONAL { ?p :organizacao ?org } OPTIONAL { ?p :anoPremio ?ano } OPTIONAL { ?a :recebeuPremio ?p ; :nome ?aNome . BIND(STRAFTER(STR(?a), 'music-ontology/') AS ?aId) } BIND(STRAFTER(STR(?p), 'music-ontology/') AS ?pId) } ORDER BY DESC(?ano) ?org"
     lista = [{"id": g(r,"pId"), "nome": g(r,"pNome"), "cat": g(r,"cat"), "org": g(r,"org"), "ano": g(r,"ano"), "artistaId": g(r,"aId"), "artistaNome": g(r,"aNome")} for r in rows_of(exec_query(q))]
     return render_template('premios.html', premios=lista)
+
+
+# ════════════════════════════════════════════════════════════════════
+#   CONCERTOS
+# ════════════════════════════════════════════════════════════════════
 
 @app.route('/concertos')
 def concertos():
@@ -318,31 +464,60 @@ def concertos():
         concertos_list.append({"id": cid, "nome": g(r,"cNome"), "local": g(r,"local"), "data": g(r,"data"), "artistas": artistas})
     return render_template('concertos.html', concertos=concertos_list)
 
+
+# ════════════════════════════════════════════════════════════════════
+#   PESQUISA GLOBAL
+# ════════════════════════════════════════════════════════════════════
+
 @app.route('/pesquisa')
 def pesquisa():
-    q = request.args.get('q', '').strip()
-    genero = request.args.get('genero', '').strip()
-    ano_de = request.args.get('ano_de', '').strip()
+    q       = request.args.get('q', '').strip()
+    genero  = request.args.get('genero', '').strip()
+    ano_de  = request.args.get('ano_de', '').strip()
     ano_ate = request.args.get('ano_ate', '').strip()
     editora = request.args.get('editora', '').strip()
 
+    # Validar IDs
+    id_re = re.compile(r'^\w+$')
+    if genero and not id_re.match(genero):
+        genero = ''
+    if editora and not id_re.match(editora):
+        editora = ''
+
     filtros_art = []
-    if genero: filtros_art.append(f'?e :pertenceAoGenero :{genero} .')
-    if editora: filtros_art.append(f'?e :pertenceAEditora :{editora} .')
+    if genero:
+        filtros_art.append(f'?e :pertenceAoGenero :{genero} .')
+    if editora:
+        filtros_art.append(f'?e :pertenceAEditora :{editora} .')
 
     resultados = []
     if q or genero or editora or ano_de or ano_ate:
-        filtro_nome = f'FILTER(CONTAINS(LCASE(?nome), LCASE("{q}")))' if q else ''
+        # BUG 11 CORRIGIDO: escapar a string da pesquisa (prevenir SPARQL injection)
+        filtro_nome = f'FILTER(CONTAINS(LCASE(?nome), LCASE("{esc_lit(q)}")))' if q else ''
+
+        # BUG 2 CORRIGIDO: agora as músicas têm URL real (/musica/<id>)
         query = PREFIX + f"""
             SELECT DISTINCT ?id ?nome ?tipo WHERE {{
-                {{ {{ ?e a :ArtistaSolo . BIND("Artista" AS ?tipo) }} UNION {{ ?e a :Banda . BIND("Banda" AS ?tipo) }} ?e :nome ?nome . {filtro_nome} {''.join(filtros_art)} BIND(CONCAT("/artista/", STRAFTER(STR(?e), "music-ontology/")) AS ?id) }}
-                UNION {{ ?e a :Album ; :nome ?nome . {filtro_nome} BIND("Álbum" AS ?tipo) BIND(CONCAT("/album/", STRAFTER(STR(?e), "music-ontology/")) AS ?id) }}
-                UNION {{ ?e a :Musica ; :nome ?nome . {filtro_nome} BIND("Música" AS ?tipo) BIND("" AS ?id) }}
+                {{ {{ ?e a :ArtistaSolo . BIND("Artista" AS ?tipo) }}
+                  UNION {{ ?e a :Banda . BIND("Banda" AS ?tipo) }}
+                  ?e :nome ?nome . {filtro_nome} {''.join(filtros_art)}
+                  BIND(CONCAT("/artista/", STRAFTER(STR(?e), "music-ontology/")) AS ?id) }}
+                UNION {{ ?e a :Album ; :nome ?nome . {filtro_nome}
+                        BIND("Álbum" AS ?tipo)
+                        BIND(CONCAT("/album/", STRAFTER(STR(?e), "music-ontology/")) AS ?id) }}
+                UNION {{ ?e a :Musica ; :nome ?nome . {filtro_nome}
+                        BIND("Música" AS ?tipo)
+                        BIND(CONCAT("/musica/", STRAFTER(STR(?e), "music-ontology/")) AS ?id) }}
             }} ORDER BY ?tipo ?nome LIMIT 80
         """
         resultados = [{"id": g(r,"id"), "nome": g(r,"nome"), "tipo": g(r,"tipo")} for r in rows_of(exec_query(query))]
 
     return render_template('pesquisa.html', resultados=resultados, busca=q, generos=generos_list(), editoras=editoras_list(), filtro_genero=genero, filtro_editora=editora, ano_de=ano_de, ano_ate=ano_ate)
+
+
+# ════════════════════════════════════════════════════════════════════
+#   APIs JSON (para gráficos)
+# ════════════════════════════════════════════════════════════════════
 
 @app.route('/api/stats/generos')
 def api_stats_generos():
@@ -355,41 +530,71 @@ def api_stats_decadas():
     return jsonify([{"decada": str(int(float(g(r,"decada","0"))))+"s", "total": int(g(r,"total","0"))} for r in rows_of(exec_query(q)) if g(r,"decada")])
 
 
-# ────────────────────────────────────────────────────────────────────
-# ADICIONAR ARTISTA (POST)
-# ────────────────────────────────────────────────────────────────────
+# ════════════════════════════════════════════════════════════════════
+#   POST — ADICIONAR ARTISTA
+# ════════════════════════════════════════════════════════════════════
+
+TIPOS_ARTISTA_VALIDOS = {'ArtistaSolo', 'Banda'}
+
 @app.route('/artista/adicionar', methods=['POST'])
 def adicionar_artista():
-    nome      = request.form.get('nome', '').strip()
-    tipo      = request.form.get('tipo', 'ArtistaSolo')
-    ano       = request.form.get('ano', '').strip()
-    generos   = request.form.getlist('genero')
-    editora   = request.form.get('editora', '').strip()
+    nome    = request.form.get('nome', '').strip()
+    tipo    = request.form.get('tipo', 'ArtistaSolo')
+    ano     = request.form.get('ano', '').strip()
+    generos = request.form.getlist('genero')
+    editora = request.form.get('editora', '').strip()
 
     if not nome:
+        flash("Nome obrigatório.", "error")
         return redirect(url_for('index'))
 
-    new_id   = re.sub(r'[^\w]', '_', nome).strip('_')
+    # BUG 7 CORRIGIDO: validar tipo
+    if tipo not in TIPOS_ARTISTA_VALIDOS:
+        tipo = 'ArtistaSolo'
+
+    # BUG 7 CORRIGIDO: validar géneros contra a lista conhecida
+    ids_generos_validos = {g_['id'] for g_ in generos_list()}
+    generos = [g_ for g_ in generos if g_.strip() and g_.strip() in ids_generos_validos]
+
+    # BUG 7 CORRIGIDO: validar editora
+    if editora:
+        ids_editoras_validas = {e['id'] for e in editoras_list()}
+        if editora not in ids_editoras_validas:
+            editora = ''
+
+    # BUG 5 CORRIGIDO: garantir ID único
+    base_id = esc_id(nome)
+    if not base_id:
+        flash("Nome inválido.", "error")
+        return redirect(url_for('index'))
+    new_id = id_unico(base_id)
+
     prop_ano = ":anoNascimento" if tipo == 'ArtistaSolo' else ":anoFormacao"
 
+    # BUG 6 CORRIGIDO: escapar literal
     triplos = [
-        f':{new_id} a :{tipo} .',
-        f':{new_id} :nome "{nome}"^^xsd:string .',
+        f':{new_id} a :{tipo} , owl:NamedIndividual .',
+        f':{new_id} :nome "{esc_lit(nome)}"^^xsd:string .',
     ]
     if ano and ano.isdigit():
         triplos.append(f':{new_id} {prop_ano} "{int(ano)}"^^xsd:integer .')
-    for g in generos:
-        if g.strip():
-            triplos.append(f':{new_id} :pertenceAoGenero :{g.strip()} .')
+    for gen in generos:
+        triplos.append(f':{new_id} :pertenceAoGenero :{gen} .')
     if editora:
         triplos.append(f':{new_id} :pertenceAEditora :{editora} .')
 
-    exec_update(PREFIX + "INSERT DATA {\n  " + "\n  ".join(triplos) + "\n}")
+    ok = exec_update(PREFIX + "INSERT DATA {\n  " + "\n  ".join(triplos) + "\n}")
+    if not ok:
+        flash("Erro a inserir no triplestore. Verifica se o GraphDB está a correr.", "error")
+        return redirect(url_for('index'))
+
     return redirect(url_for('detalhe_artista', id_artista=new_id))
 
-# ────────────────────────────────────────────────────────────────────
-# ADICIONAR ÁLBUM (POST)
-# ────────────────────────────────────────────────────────────────────
+
+# ════════════════════════════════════════════════════════════════════
+#   POST — ADICIONAR ÁLBUM
+# ════════════════════════════════════════════════════════════════════
+
 @app.route('/album/adicionar', methods=['POST'])
 def adicionar_album():
     nome       = request.form.get('nome', '').strip()
@@ -397,27 +602,49 @@ def adicionar_album():
     artista_id = request.form.get('artista_id', '').strip()
     generos    = request.form.getlist('genero')
 
+    # BUG 4 CORRIGIDO: redirecionar para sítio válido se faltar info
     if not nome or not artista_id:
-        return redirect(url_for('detalhe_artista', id_artista=artista_id or ''))
+        flash("Nome do álbum e artista são obrigatórios.", "error")
+        if artista_id and re.match(r'^\w+$', artista_id):
+            return redirect(url_for('detalhe_artista', id_artista=artista_id))
+        return redirect(url_for('index'))
 
-    new_id = re.sub(r'[^\w]', '_', nome).strip('_') + '_alb'
+    # Validar artista_id
+    if not re.match(r'^\w+$', artista_id):
+        flash("ID de artista inválido.", "error")
+        return redirect(url_for('index'))
+
+    # BUG 7 CORRIGIDO: validar géneros
+    ids_generos_validos = {g_['id'] for g_ in generos_list()}
+    generos = [g_ for g_ in generos if g_.strip() and g_.strip() in ids_generos_validos]
+
+    # BUG 5 CORRIGIDO: garantir ID único
+    base_id = esc_id(nome) + '_alb'
+    new_id = id_unico(base_id)
+
+    # BUG 6 CORRIGIDO: escapar literal
     triplos = [
-        f':{new_id} a :Album .',
-        f':{new_id} :nome "{nome}"^^xsd:string .',
+        f':{new_id} a :Album , owl:NamedIndividual .',
+        f':{new_id} :nome "{esc_lit(nome)}"^^xsd:string .',
     ]
     if ano and ano.isdigit():
         triplos.append(f':{new_id} :anoLancamento "{int(ano)}"^^xsd:integer .')
-    for g in generos:
-        if g.strip():
-            triplos.append(f':{new_id} :pertenceAoGenero :{g.strip()} .')
+    for gen in generos:
+        triplos.append(f':{new_id} :pertenceAoGenero :{gen} .')
     triplos.append(f':{artista_id} :lancouAlbum :{new_id} .')
 
-    exec_update(PREFIX + "INSERT DATA {\n  " + "\n  ".join(triplos) + "\n}")
+    ok = exec_update(PREFIX + "INSERT DATA {\n  " + "\n  ".join(triplos) + "\n}")
+    if not ok:
+        flash("Erro a inserir no triplestore.", "error")
+        return redirect(url_for('detalhe_artista', id_artista=artista_id))
+
     return redirect(url_for('detalhe_album', id_album=new_id))
 
-# ────────────────────────────────────────────────────────────────────
-# ADICIONAR MÚSICA (POST)
-# ────────────────────────────────────────────────────────────────────
+
+# ════════════════════════════════════════════════════════════════════
+#   POST — ADICIONAR MÚSICA
+# ════════════════════════════════════════════════════════════════════
+
 @app.route('/musica/adicionar', methods=['POST'])
 def adicionar_musica():
     nome       = request.form.get('nome', '').strip()
@@ -426,26 +653,58 @@ def adicionar_musica():
     generos    = request.form.getlist('genero')
 
     if not nome or not artista_id:
-        if album_id:
+        flash("Nome da música e artista são obrigatórios.", "error")
+        if album_id and re.match(r'^\w+$', album_id):
             return redirect(url_for('detalhe_album', id_album=album_id))
-        return redirect(url_for('detalhe_artista', id_artista=artista_id or ''))
+        if artista_id and re.match(r'^\w+$', artista_id):
+            return redirect(url_for('detalhe_artista', id_artista=artista_id))
+        return redirect(url_for('index'))
 
-    new_id = re.sub(r'[^\w]', '_', nome).strip('_') + '_mus'
+    # Validar IDs
+    if not re.match(r'^\w+$', artista_id):
+        flash("ID de artista inválido.", "error")
+        return redirect(url_for('index'))
+    if album_id and not re.match(r'^\w+$', album_id):
+        album_id = ''
+
+    # Validar géneros
+    ids_generos_validos = {g_['id'] for g_ in generos_list()}
+    generos = [g_ for g_ in generos if g_.strip() and g_.strip() in ids_generos_validos]
+
+    # ID único
+    base_id = esc_id(nome) + '_mus'
+    new_id = id_unico(base_id)
+
     triplos = [
-        f':{new_id} a :Musica .',
-        f':{new_id} :nome "{nome}"^^xsd:string .',
+        f':{new_id} a :Musica , owl:NamedIndividual .',
+        f':{new_id} :nome "{esc_lit(nome)}"^^xsd:string .',
         f':{new_id} :interpretadaPor :{artista_id} .'
     ]
     if album_id:
         triplos.append(f':{new_id} :pertenceAoAlbum :{album_id} .')
-    for g in generos:
-        if g.strip():
-            triplos.append(f':{new_id} :pertenceAoGenero :{g.strip()} .')
+    for gen in generos:
+        triplos.append(f':{new_id} :pertenceAoGenero :{gen} .')
 
-    exec_update(PREFIX + "INSERT DATA {\n  " + "\n  ".join(triplos) + "\n}")
+    ok = exec_update(PREFIX + "INSERT DATA {\n  " + "\n  ".join(triplos) + "\n}")
+    if not ok:
+        flash("Erro a inserir no triplestore.", "error")
+
     if album_id:
         return redirect(url_for('detalhe_album', id_album=album_id))
     return redirect(url_for('detalhe_artista', id_artista=artista_id))
+
+
+# ════════════════════════════════════════════════════════════════════
+#   HANDLER DE ERROS
+# ════════════════════════════════════════════════════════════════════
+
+@app.errorhandler(404)
+def not_found(e):
+    return render_template('error.html', codigo=404, mensagem="Página não encontrada"), 404
+
+@app.errorhandler(500)
+def server_error(e):
+    return render_template('error.html', codigo=500, mensagem="Erro interno do servidor. Verifica se o GraphDB está a correr."), 500
 
 
 if __name__ == '__main__':

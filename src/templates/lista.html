@@ -42,21 +42,44 @@
     </div>
 
     <div class="section-divider"><span>Filtrar Catálogo</span></div>
-    <form method="GET" action="/" class="filter-box">
-      <input type="text" name="q" value="{{ busca }}" placeholder="Pesquise por artista..." class="search-input" style="flex: 2;">
-      <select name="genero" class="form-control" style="flex:1;">
+    <form method="GET" action="/" class="filter-box" style="flex-wrap: wrap;">
+
+      <input type="text" name="q" value="{{ busca }}"
+             placeholder="Pesquise por nome..."
+             class="search-input" style="flex: 2; min-width: 200px;">
+
+      <select name="genero" class="form-control" style="flex:1; min-width: 130px;">
         <option value="">Todos os Géneros</option>
         {% for g in generos %}
           <option value="{{ g.id }}" {% if filtro_genero == g.id %}selected{% endif %}>{{ g.nome }}</option>
         {% endfor %}
       </select>
-      <select name="tipo" class="form-control" style="flex:1;">
-        <option value="">Todos os Tipos</option>
+
+      <select name="tipo" class="form-control" style="flex:1; min-width: 110px;">
+        <option value="">Solo + Banda</option>
         <option value="Solo" {% if filtro_tipo == 'Solo' %}selected{% endif %}>Solo</option>
         <option value="Banda" {% if filtro_tipo == 'Banda' %}selected{% endif %}>Banda</option>
       </select>
-      <button type="submit" class="btn btn-primary"><i class="fa-solid fa-filter"></i> Filtrar</button>
-      {% if busca or filtro_genero or filtro_tipo %}
+
+      <select name="editora" class="form-control" style="flex:1; min-width: 150px;">
+        <option value="">Todas as Editoras</option>
+        {% for e in editoras %}
+          <option value="{{ e.id }}" {% if filtro_editora == e.id %}selected{% endif %}>{{ e.nome }}</option>
+        {% endfor %}
+      </select>
+
+      <input type="number" name="ano_de" value="{{ filtro_ano_de }}"
+             placeholder="De (ano)" class="form-control"
+             style="flex:0 0 110px; min-width: 100px;">
+
+      <input type="number" name="ano_ate" value="{{ filtro_ano_ate }}"
+             placeholder="Até (ano)" class="form-control"
+             style="flex:0 0 110px; min-width: 100px;">
+
+      <button type="submit" class="btn btn-primary">
+        <i class="fa-solid fa-filter"></i> Filtrar
+      </button>
+      {% if busca or filtro_genero or filtro_tipo or filtro_editora or filtro_ano_de or filtro_ano_ate %}
         <a href="/" class="btn btn-ghost">Limpar</a>
       {% endif %}
     </form>
@@ -115,10 +138,19 @@
             <input type="number" name="ano" placeholder="Ex: 1929" class="form-control">
           </div>
           <div class="form-group">
+            <label>Editora</label>
+            <select name="editora" class="form-control">
+              <option value="">— Nenhuma —</option>
+              {% for e in editoras %}
+                <option value="{{ e.id }}">{{ e.nome }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="form-group" style="grid-column: 1 / -1;">
             <label>Géneros Musicais</label>
-            <div style="max-height: 120px; overflow-y: auto; border: 1px solid var(--border); border-radius: 4px; padding: 0.6rem; background: var(--bg);">
+            <div style="max-height: 120px; overflow-y: auto; border: 1px solid var(--border); border-radius: 4px; padding: 0.6rem; background: var(--bg); display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 0.3rem;">
               {% for g in generos %}
-                <label style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.4rem; font-size: 0.85rem; color: var(--text); cursor: pointer;">
+                <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; color: var(--text); cursor: pointer;">
                   <input type="checkbox" name="genero" value="{{ g.id }}" style="accent-color: var(--gold);">
                   {{ g.nome }}
                 </label>
