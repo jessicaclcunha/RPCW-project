@@ -37,7 +37,6 @@ def esc_id(s):
 
 def id_unico(base_id):
     if not base_id: return base_id
-    # SELECT em vez de ASK
     q = PREFIX + f"SELECT ?s WHERE {{ :{base_id} ?p ?o }} LIMIT 1"
     res = exec_query(q)
     if not rows_of(res): return base_id
@@ -63,7 +62,14 @@ def generos_list():
     ], key=lambda x: x["nome"])
 
 def editoras_list():
-    q = PREFIX + "SELECT ?id ?nome WHERE { ?e a :Editora ; :nome ?nome . BIND(STRAFTER(STR(?e), 'music-ontology/') AS ?id) } ORDER BY ?nome"
+    q = PREFIX + """
+        SELECT ?id ?nome 
+        WHERE { 
+            ?e a :Editora ; 
+                :nome ?nome . 
+            BIND(STRAFTER(STR(?e), 'music-ontology/') AS ?id) 
+        } 
+        ORDER BY ?nome"""
     return [{"id": g(r,"id"), "nome": g(r,"nome")} for r in rows_of(exec_query(q))]
 
 
@@ -232,7 +238,6 @@ def detalhe_artista(id_artista):
 
     query_artistas = PREFIX + "SELECT ?id ?nome WHERE { ?id a :Artista ; :nome ?nome . }"
     artistas = [ {'id': g(r, 'id').split('/')[-1], 'nome': g(r, 'nome')} for r in rows_of(exec_query(query_artistas)) ]
-        # Executa a função generos_list() com os parênteses ()
     return render_template('detalhe.html', artista=artista, generos_globais=generos_list(), todos_artistas=artistas)
 
 
@@ -409,7 +414,23 @@ def colaboracoes():
 
 @app.route('/premios')
 def premios():
-    q = PREFIX + "SELECT ?pId ?pNome ?cat ?org ?ano ?aId ?aNome WHERE { ?p a :Premio ; :nome ?pNome . OPTIONAL { ?p :categoria ?cat } OPTIONAL { ?p :organizacao ?org } OPTIONAL { ?p :anoPremio ?ano } OPTIONAL { ?a :recebeuPremio ?p ; :nome ?aNome . BIND(STRAFTER(STR(?a), 'music-ontology/') AS ?aId) } BIND(STRAFTER(STR(?p), 'music-ontology/') AS ?pId) } ORDER BY DESC(?ano) ?org"
+    q = PREFIX + """
+    SELECT ?pId ?pNome ?cat ?org ?ano ?aId ?aNome 
+    WHERE { 
+        ?p a :Premio ; 
+                :nome ?pNome . 
+        OPTIONAL { ?p :categoria ?cat } 
+        OPTIONAL { ?p :organizacao ?org } 
+        OPTIONAL { ?p :anoPremio ?ano } 
+        OPTIONAL { 
+            ?a :recebeuPremio ?p ; 
+                :nome ?aNome . 
+            BIND(STRAFTER(STR(?a), 'music-ontology/') AS ?aId) 
+        } 
+        BIND(STRAFTER(STR(?p), 'music-ontology/') AS ?pId) 
+    } 
+    ORDER BY DESC(?ano) ?org
+    """
     lista = [{"id": g(r,"pId"), "nome": g(r,"pNome"), "cat": g(r,"cat"), "org": g(r,"org"), "ano": g(r,"ano"), "artistaId": g(r,"aId"), "artistaNome": g(r,"aNome")} for r in rows_of(exec_query(q))]
 
     q_artistas = PREFIX + "SELECT DISTINCT ?id ?nome WHERE { { ?a a :ArtistaSolo } UNION { ?a a :Banda } ?a :nome ?nome . BIND(STRAFTER(STR(?a), 'music-ontology/') AS ?id) } ORDER BY ?nome"
@@ -421,7 +442,17 @@ def premios():
 
 @app.route('/concertos')
 def concertos():
-    q = PREFIX + "SELECT ?cId ?cNome ?local ?data WHERE { ?c a :Concerto ; :nome ?cNome . OPTIONAL { ?c :local ?local } OPTIONAL { ?c :data ?data } BIND(STRAFTER(STR(?c), 'music-ontology/') AS ?cId) } ORDER BY DESC(?data)"
+    q = PREFIX + """
+    SELECT ?cId ?cNome ?local ?data 
+    WHERE { 
+        ?c a :Concerto ; 
+            :nome ?cNome . 
+        OPTIONAL { ?c :local ?local } 
+        OPTIONAL { ?c :data ?data } 
+        BIND(STRAFTER(STR(?c), 'music-ontology/') AS ?cId) 
+    } 
+    ORDER BY DESC(?data)
+    """
     concertos_list = []
     for r in rows_of(exec_query(q)):
         cid = g(r, "cId")
@@ -481,12 +512,31 @@ def pesquisa():
 
 @app.route('/api/stats/generos')
 def api_stats_generos():
-    q = PREFIX + "SELECT ?genero (COUNT(DISTINCT ?a) AS ?total) WHERE { { ?a a :ArtistaSolo } UNION { ?a a :Banda } ?a :pertenceAoGenero ?g . BIND(STRAFTER(STR(?g), 'music-ontology/') AS ?genero) } GROUP BY ?genero ORDER BY DESC(?total)"
+    q = PREFIX + """
+    SELECT ?genero (COUNT(DISTINCT ?a) AS ?total) 
+    WHERE { 
+        { ?a a :ArtistaSolo } 
+        UNION 
+        { ?a a :Banda } 
+        ?a :pertenceAoGenero ?g . 
+        BIND(STRAFTER(STR(?g), 'music-ontology/') AS ?genero) 
+    } 
+    GROUP BY ?genero 
+    ORDER BY DESC(?total)
+    """
     return jsonify([{"genero": g(r,"genero"), "total": int(g(r,"total","0"))} for r in rows_of(exec_query(q))])
 
 @app.route('/api/stats/decadas')
 def api_stats_decadas():
-    q = PREFIX + "SELECT (FLOOR(?ano / 10) * 10 AS ?decada) (COUNT(?a) AS ?total) WHERE { ?a a :Album ; :anoLancamento ?ano . } GROUP BY (FLOOR(?ano / 10) * 10) ORDER BY ?decada"
+    q = PREFIX + """
+    SELECT (FLOOR(?ano / 10) * 10 AS ?decada) (COUNT(?a) AS ?total) 
+    WHERE { 
+        ?a a :Album ; 
+            :anoLancamento ?ano . 
+    } 
+    GROUP BY (FLOOR(?ano / 10) * 10) 
+    ORDER BY ?decada
+    """
     return jsonify([{"decada": str(int(float(g(r,"decada","0"))))+"s", "total": int(g(r,"total","0"))} for r in rows_of(exec_query(q)) if g(r,"decada")])
 
 
