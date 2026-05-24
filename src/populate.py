@@ -27,12 +27,12 @@ def secao(titulo):
 # ─── Geradores por tipo de entidade ──────────────────────────────────
 
 def gerar_editora(e):
-    linhas = [f":{e['id']} a :Editora, owl:NamedIndividual"]
+    linhas = [f":{e['id']} a :Editora"]
     linhas.append(f':nome "{esc(e["nome"])}"')
     return ' ;\n    '.join(linhas) + ' .\n\n'
 
 def gerar_artista_solo(a, mapa_premios, mapa_concertos, mapa_influencias):
-    linhas = [f":{a['id']} a :ArtistaSolo, owl:NamedIndividual"]
+    linhas = [f":{a['id']} a :ArtistaSolo"]
     linhas.append(f':nome "{esc(a["nome"])}"')
     if 'anoNascimento' in a:
         linhas.append(f':anoNascimento {a["anoNascimento"]}')
@@ -66,7 +66,7 @@ def gerar_artista_solo(a, mapa_premios, mapa_concertos, mapa_influencias):
     return bloco + '\n'
 
 def gerar_banda(b, mapa_premios, mapa_concertos, mapa_influencias):
-    linhas = [f":{b['id']} a :Banda, owl:NamedIndividual"]
+    linhas = [f":{b['id']} a :Banda"]
     linhas.append(f':nome "{esc(b["nome"])}"')
     if 'anoFormacao' in b:
         linhas.append(f':anoFormacao {b["anoFormacao"]}')
@@ -102,7 +102,7 @@ def gerar_banda(b, mapa_premios, mapa_concertos, mapa_influencias):
     return bloco + '\n'
 
 def gerar_album(a):
-    linhas = [f":{a['id']} a :Album, owl:NamedIndividual"]
+    linhas = [f":{a['id']} a :Album"]
     linhas.append(f':nome "{esc(a["nome"])}"')
     if 'anoLancamento' in a:
         linhas.append(f':anoLancamento {a["anoLancamento"]}')
@@ -117,7 +117,7 @@ def gerar_album(a):
     return bloco + '\n'
 
 def gerar_musica(m, mapa_colaboracoes):
-    linhas = [f":{m['id']} a :Musica, owl:NamedIndividual"]
+    linhas = [f":{m['id']} a :Musica"]
     linhas.append(f':nome "{esc(m["nome"])}"')
     
     for ip in m.get('interpretadaPor', []):
@@ -188,7 +188,7 @@ def main():
                 mapa_premios[art_id] = []
             mapa_premios[art_id].append(pr_id)
         
-        linhas_pr = [f":{pr_id} a :Premio, owl:NamedIndividual"]
+        linhas_pr = [f":{pr_id} a :Premio"]
         linhas_pr.append(f'    :nome "{esc(pr.get("nome", "Prémio"))}"')
         if 'categoriaPremio' in pr: linhas_pr.append(f'    :categoria "{esc(pr["categoriaPremio"])}"')
         if 'entidadePremio' in pr:  linhas_pr.append(f'    :organizacao "{esc(pr["entidadePremio"])}"')
@@ -208,7 +208,7 @@ def main():
                 mapa_concertos[art_id] = []
             mapa_concertos[art_id].append(cc_id)
             
-        linhas_cc = [f":{cc_id} a :Concerto, owl:NamedIndividual"]
+        linhas_cc = [f":{cc_id} a :Concerto"]
         linhas_cc.append(f'    :nome "{esc(cc.get("nome", "Concerto"))}"')
         if 'localConcerto' in cc: linhas_cc.append(f'    :local "{esc(cc["localConcerto"])}"')
         if 'dataConcerto' in cc:  linhas_cc.append(f'    :data "{esc(cc["dataConcerto"])}"')
@@ -218,7 +218,7 @@ def main():
     abox += secao("Tours")
     for t in tours_json:
         t_id = t['id']
-        linhas_t = [f":{t_id} a :Tour, owl:NamedIndividual"]
+        linhas_t = [f":{t_id} a :Tour"]
         linhas_t.append(f'    :nome "{esc(t.get("nome", "Tour"))}"')
         if 'ano' in t: 
             linhas_t.append(f'    :ano {t["ano"]}')

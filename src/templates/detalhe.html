@@ -135,6 +135,23 @@
           {% endif %}
         </div>
         {% endif %}
+
+        {% if artista.premios %}
+        <div class="compact-block">
+          <h3><i class="fa-solid fa-award"></i> Galardões e Distinções</h3>
+          {% for p in artista.premios %}
+            <div class="interactive-list-item" style="flex-direction: column; align-items: flex-start; gap: 0.3rem; padding: 0.8rem;">
+              <strong style="color: var(--gold-light); font-size: 0.95rem;">{{ p.nome }}</strong>
+              <div style="font-size: 0.8rem; color: var(--muted); display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 0.2rem;">
+                {% if p.org %}<span><i class="fa-solid fa-gavel"></i> {{ p.org }}</span>{% endif %}
+                {% if p.cat %}<span><i class="fa-solid fa-bookmark"></i> {{ p.cat }}</span>{% endif %}
+                {% if p.ano %}<span><i class="fa-regular fa-calendar"></i> {{ p.ano }}</span>{% endif %}
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+
       </aside>
 
       <section class="profile-main">
@@ -202,25 +219,6 @@
             {% endif %}
           </div>
         </div>
-
-        {% if artista.premios %}
-        <div>
-          <div class="section-divider" style="margin: 1rem 0 1.5rem;"><span><i class="fa-solid fa-award"></i> Galardões e Distinções</span></div>
-          {% for p in artista.premios %}
-          <div class="premio-card">
-            <div class="premio-trophy"><i class="fa-solid fa-trophy" style="color: var(--gold);"></i></div>
-            <div class="premio-info">
-              <div class="premio-nome">{{ p.nome }}</div>
-              <div class="premio-meta">
-                {% if p.org %}<span><i class="fa-solid fa-gavel"></i> {{ p.org }}</span>{% endif %}
-                {% if p.cat %}<span><i class="fa-solid fa-bookmark"></i> {{ p.cat }}</span>{% endif %}
-              </div>
-            </div>
-            {% if p.ano %}<div class="premio-ano">{{ p.ano }}</div>{% endif %}
-          </div>
-          {% endfor %}
-        </div>
-        {% endif %}
 
         {% if artista.concertos %}
         <div>
