@@ -211,7 +211,21 @@ def detalhe_artista(id_artista):
     q_membros   = PREFIX + f"SELECT ?id ?nome WHERE {{ :{id_artista} :temMembro ?m . ?m :nome ?nome . BIND(STRAFTER(STR(?m), 'music-ontology/') AS ?id) }}"
     q_bandas    = PREFIX + f"SELECT ?id ?nome WHERE {{ ?b :temMembro :{id_artista} . ?b :nome ?nome . BIND(STRAFTER(STR(?b), 'music-ontology/') AS ?id) }}"
     q_albuns    = PREFIX + f"SELECT ?id ?nome ?ano WHERE {{ :{id_artista} :lancouAlbum ?a . ?a :nome ?nome . OPTIONAL {{ ?a :anoLancamento ?ano }} BIND(STRAFTER(STR(?a), 'music-ontology/') AS ?id) }} ORDER BY ?ano"
-    q_musicas   = PREFIX + f"SELECT ?id ?nome ?album ?albumNome WHERE {{ ?m :interpretadaPor :{id_artista} ; :nome ?nome . BIND(STRAFTER(STR(?m), 'music-ontology/') AS ?id) OPTIONAL {{ ?m :pertenceAoAlbum ?albumR . ?albumR :nome ?albumNome . BIND(STRAFTER(STR(?albumR), 'music-ontology/') AS ?album) }} }} ORDER BY ?albumNome ?nome"
+    q_musicas = PREFIX + f"""
+        SELECT DISTINCT ?id ?nome ?album ?albumNome WHERE {{
+            {{ 
+                ?m :interpretadaPor :{id_artista} ; :nome ?nome . 
+            }} UNION {{ 
+                ?m :temColaboracao :{id_artista} ; :nome ?nome . 
+            }}
+            BIND(STRAFTER(STR(?m), "music-ontology/") AS ?id)
+            OPTIONAL {{ 
+                ?m :pertenceAoAlbum ?albumR . 
+                ?albumR :nome ?albumNome . 
+                BIND(STRAFTER(STR(?albumR), "music-ontology/") AS ?album) 
+            }}
+        }} ORDER BY ?albumNome ?nome
+    """
     q_premios   = PREFIX + f"SELECT ?id ?nome ?cat ?org ?ano WHERE {{ :{id_artista} :recebeuPremio ?p . ?p :nome ?nome . OPTIONAL{{?p :categoria ?cat}} OPTIONAL{{?p :organizacao ?org}} OPTIONAL{{?p :anoPremio ?ano}} BIND(STRAFTER(STR(?p), 'music-ontology/') AS ?id) }} ORDER BY DESC(?ano)"
     q_concertos = PREFIX + f"SELECT ?id ?nome ?local ?data WHERE {{ :{id_artista} :atuouEm ?c . ?c :nome ?nome . OPTIONAL{{?c :local ?local}} OPTIONAL{{?c :data ?data}} BIND(STRAFTER(STR(?c), 'music-ontology/') AS ?id) }} ORDER BY DESC(?data)"
     q_influencias = PREFIX + f"SELECT ?id ?nome WHERE {{ :{id_artista} :influenciadoPor ?a . ?a :nome ?nome . BIND(STRAFTER(STR(?a), 'music-ontology/') AS ?id) }}"
@@ -304,15 +318,13 @@ def detalhe_musica(id_musica):
     q_comp = PREFIX + f"SELECT ?id ?nome WHERE {{ :{id_musica} :compostaPor ?a . ?a :nome ?nome . BIND(STRAFTER(STR(?a), 'music-ontology/') AS ?id) }}"
     q_esc  = PREFIX + f"SELECT ?id ?nome WHERE {{ :{id_musica} :escritaPor ?a . ?a :nome ?nome . BIND(STRAFTER(STR(?a), 'music-ontology/') AS ?id) }}"
     q_gen  = PREFIX + f"SELECT ?nome WHERE {{ :{id_musica} :pertenceAoGenero ?g . BIND(STRAFTER(STR(?g), 'music-ontology/') AS ?nome) }}"
-    q_feat = PREFIX + f"SELECT ?id ?nome WHERE {{ :{id_musica} :temColaboracao ?a . ?a :nome ?nome . BIND(STRAFTER(STR(?a), 'music-ontology/') AS ?id) }}"
+    q_feat = PREFIX + f"SELECT ?id ?nome WHERE {{:{id_musica} :temColaboracao ?a . ?a :nome ?nome . BIND(STRAFTER(STR(?a), 'music-ontology/') AS ?id) }}"
 
     musica = {
         "id":            id_musica,
         "nome":          g(row, "nome"),
         "album":         {"id": g(row,"albumId"), "nome": g(row,"albumNome"), "ano": g(row,"ano")} if g(row,"albumId") else None,
         "interpretes":   [{"id": g(r,"id"), "nome": g(r,"nome")} for r in rows_of(exec_query(q_int))],
-        "compositores":  [{"id": g(r,"id"), "nome": g(r,"nome")} for r in rows_of(exec_query(q_comp))],
-        "letristas":     [{"id": g(r,"id"), "nome": g(r,"nome")} for r in rows_of(exec_query(q_esc))],
         "generos":       [{"nome": g(r,"nome")} for r in rows_of(exec_query(q_gen))],
         "colaboracoes":  [{"id": g(r,"id"), "nome": g(r,"nome")} for r in rows_of(exec_query(q_feat))],
     }
@@ -784,11 +796,8 @@ def adicionar_concerto():
     return redirect(url_for('concertos'))
 
 
-# ════════════════════════════════════════════════════════════════════
-#   POST — REMOVER (DELETE) INDIVÍDUOS
-# ════════════════════════════════════════════════════════════════════
 
-def _remover_individuo(id_individuo):
+def remover_individuo(id_individuo):
     """Apaga todas as triplas onde :id aparece (como sujeito OU objeto).
     Faz duas queries DELETE WHERE separadas para garantir compatibilidade."""
     if not re.match(r'^\w+$', id_individuo):
@@ -806,7 +815,7 @@ def remover_artista(id_artista):
     q_nome = PREFIX + f"SELECT ?n WHERE {{ :{id_artista} :nome ?n }} LIMIT 1"
     rs = rows_of(exec_query(q_nome))
     nome = g(rs[0], "n") if rs else id_artista
-    if _remover_individuo(id_artista):
+    if remover_individuo(id_artista):
         flash(f'Artista "{nome}" removido com sucesso.', "success")
     else:
         flash("Erro ao remover o artista. Verifica se o GraphDB está a correr.", "error")
@@ -828,7 +837,7 @@ def remover_album(id_album):
     rs = rows_of(exec_query(q))
     nome = g(rs[0], "nome") if rs else id_album
     artista_id = g(rs[0], "artistaId") if rs else None
-    if _remover_individuo(id_album):
+    if remover_individuo(id_album):
         flash(f'Álbum "{nome}" removido com sucesso.', "success")
     else:
         flash("Erro ao remover o álbum.", "error")
@@ -855,7 +864,7 @@ def remover_musica(id_musica):
     nome = g(rs[0], "nome") if rs else id_musica
     album_id = g(rs[0], "albumId") if rs else None
     artista_id = g(rs[0], "artistaId") if rs else None
-    if _remover_individuo(id_musica):
+    if remover_individuo(id_musica):
         flash(f'Música "{nome}" removida com sucesso.', "success")
     else:
         flash("Erro ao remover a música.", "error")
@@ -864,289 +873,6 @@ def remover_musica(id_musica):
     if artista_id and re.match(r'^\w+$', artista_id):
         return redirect(url_for('detalhe_artista', id_artista=artista_id))
     return redirect(url_for('index'))
-
-
-# ════════════════════════════════════════════════════════════════════
-#   GET/POST — EDITAR INDIVÍDUOS
-# ════════════════════════════════════════════════════════════════════
-#
-# Estratégia: cada rota responde a dois métodos.
-#   - GET  → mostra o formulário com os valores actuais pré-preenchidos
-#   - POST → apaga as triplas das propriedades editáveis e insere as novas
-#
-# Importante: o ID (URI) NÃO muda quando editamos. Só apagamos as
-# propriedades editáveis (nome, ano, género, etc.) — relacionamentos
-# importantes (lancouAlbum, recebeuPremio, atuouEm) são preservados.
-
-def _apagar_propriedades(id_individuo, propriedades):
-    """Apaga todas as triplas onde :id tem uma das propriedades indicadas."""
-    for prop in propriedades:
-        exec_update(PREFIX + f"DELETE WHERE {{ :{id_individuo} {prop} ?o }}")
-
-
-@app.route('/artista/<id_artista>/editar', methods=['GET', 'POST'])
-def editar_artista(id_artista):
-    if not re.match(r'^\w+$', id_artista):
-        return "ID de artista inválido", 400
-
-    # Descobrir se é Solo ou Banda (para saber se é anoNascimento ou anoFormacao)
-    q_solo = exec_query(PREFIX + f"ASK {{ :{id_artista} a :ArtistaSolo }}")
-    tipo = 'Solo' if q_solo and q_solo.get('boolean', False) else 'Banda'
-    prop_ano = ':anoNascimento' if tipo == 'Solo' else ':anoFormacao'
-
-    if request.method == 'POST':
-        nome    = request.form.get('nome', '').strip()
-        ano     = request.form.get('ano', '').strip()
-        editora = request.form.get('editora', '').strip()
-        bio     = request.form.get('bio', '').strip()
-        generos = request.form.getlist('genero')
-
-        if not nome:
-            flash("O nome é obrigatório.", "error")
-            return redirect(url_for('editar_artista', id_artista=id_artista))
-
-        # Validar IDs
-        ids_generos_validos = {g_['id'] for g_ in generos_list()}
-        generos = [g_ for g_ in generos if g_.strip() in ids_generos_validos]
-        if editora:
-            ids_editoras_validas = {e['id'] for e in editoras_list()}
-            if editora not in ids_editoras_validas:
-                editora = ''
-
-        # 1) Apagar valores antigos das propriedades editáveis
-        _apagar_propriedades(id_artista, [
-            ':nome', ':anoNascimento', ':anoFormacao',
-            ':pertenceAEditora', ':biografia', ':pertenceAoGenero'
-        ])
-
-        # 2) Inserir os novos valores
-        triplos = [f':{id_artista} :nome "{esc_lit(nome)}"^^xsd:string .']
-        if ano and ano.isdigit():
-            triplos.append(f':{id_artista} {prop_ano} "{int(ano)}"^^xsd:integer .')
-        if editora:
-            triplos.append(f':{id_artista} :pertenceAEditora :{editora} .')
-        if bio:
-            triplos.append(f':{id_artista} :biografia "{esc_lit(bio)}"^^xsd:string .')
-        for gen in generos:
-            triplos.append(f':{id_artista} :pertenceAoGenero :{gen} .')
-
-        ok = exec_update(PREFIX + "INSERT DATA {\n  " + "\n  ".join(triplos) + "\n}")
-        if ok:
-            flash(f'Artista "{nome}" atualizado com sucesso.', "success")
-        else:
-            flash("Erro ao atualizar o artista.", "error")
-        return redirect(url_for('detalhe_artista', id_artista=id_artista))
-
-    # GET — buscar dados actuais para pré-preencher o formulário
-    q = PREFIX + f"""
-        SELECT ?nome ?ano ?editoraId ?bio WHERE {{
-            :{id_artista} :nome ?nome .
-            OPTIONAL {{ :{id_artista} {prop_ano} ?ano }}
-            OPTIONAL {{ :{id_artista} :pertenceAEditora ?e .
-                        BIND(STRAFTER(STR(?e), "music-ontology/") AS ?editoraId) }}
-            OPTIONAL {{ :{id_artista} :biografia ?bio }}
-        }} LIMIT 1
-    """
-    rs = rows_of(exec_query(q))
-    if not rs:
-        return "Artista não encontrado", 404
-    row = rs[0]
-
-    # Géneros actuais (para marcar checkboxes)
-    q_gen = PREFIX + f"SELECT ?id WHERE {{ :{id_artista} :pertenceAoGenero ?g . BIND(STRAFTER(STR(?g), 'music-ontology/') AS ?id) }}"
-    generos_actuais = [g(r, "id") for r in rows_of(exec_query(q_gen))]
-
-    artista = {
-        "id":              id_artista,
-        "nome":            g(row, "nome", ""),
-        "tipo":            tipo,
-        "ano":             g(row, "ano", ""),
-        "editora":         g(row, "editoraId", ""),
-        "bio":             g(row, "bio", ""),
-        "generos_actuais": generos_actuais,
-    }
-
-    return render_template('editar_artista.html',
-                           artista=artista,
-                           generos=generos_list(),
-                           editoras=editoras_list())
-
-
-@app.route('/album/<id_album>/editar', methods=['GET', 'POST'])
-def editar_album(id_album):
-    if not re.match(r'^\w+$', id_album):
-        return "ID de álbum inválido", 400
-
-    if request.method == 'POST':
-        nome       = request.form.get('nome', '').strip()
-        ano        = request.form.get('ano', '').strip()
-        artista_id = request.form.get('artista_id', '').strip()
-        generos    = request.form.getlist('genero')
-
-        if not nome:
-            flash("O nome do álbum é obrigatório.", "error")
-            return redirect(url_for('editar_album', id_album=id_album))
-
-        ids_generos_validos = {g_['id'] for g_ in generos_list()}
-        generos = [g_ for g_ in generos if g_.strip() in ids_generos_validos]
-        if artista_id and not re.match(r'^\w+$', artista_id):
-            artista_id = ''
-
-        # 1) Apagar propriedades editáveis do álbum
-        _apagar_propriedades(id_album, [
-            ':nome', ':anoLancamento', ':pertenceAoGenero'
-        ])
-        # Apagar relação inversa antiga (?artista :lancouAlbum :id_album)
-        exec_update(PREFIX + f"DELETE WHERE {{ ?a :lancouAlbum :{id_album} }}")
-
-        # 2) Inserir novos
-        triplos = [f':{id_album} :nome "{esc_lit(nome)}"^^xsd:string .']
-        if ano and ano.isdigit():
-            triplos.append(f':{id_album} :anoLancamento "{int(ano)}"^^xsd:integer .')
-        for gen in generos:
-            triplos.append(f':{id_album} :pertenceAoGenero :{gen} .')
-        if artista_id:
-            triplos.append(f':{artista_id} :lancouAlbum :{id_album} .')
-
-        ok = exec_update(PREFIX + "INSERT DATA {\n  " + "\n  ".join(triplos) + "\n}")
-        if ok:
-            flash(f'Álbum "{nome}" atualizado com sucesso.', "success")
-        else:
-            flash("Erro ao atualizar o álbum.", "error")
-        return redirect(url_for('detalhe_album', id_album=id_album))
-
-    # GET — buscar dados actuais
-    q = PREFIX + f"""
-        SELECT ?nome ?ano ?artistaId WHERE {{
-            :{id_album} :nome ?nome .
-            OPTIONAL {{ :{id_album} :anoLancamento ?ano }}
-            OPTIONAL {{ ?a :lancouAlbum :{id_album} .
-                        BIND(STRAFTER(STR(?a), "music-ontology/") AS ?artistaId) }}
-        }} LIMIT 1
-    """
-    rs = rows_of(exec_query(q))
-    if not rs:
-        return "Álbum não encontrado", 404
-    row = rs[0]
-
-    q_gen = PREFIX + f"SELECT ?id WHERE {{ :{id_album} :pertenceAoGenero ?g . BIND(STRAFTER(STR(?g), 'music-ontology/') AS ?id) }}"
-    generos_actuais = [g(r, "id") for r in rows_of(exec_query(q_gen))]
-
-    # Lista de todos os artistas (para o select)
-    q_artistas = PREFIX + """
-        SELECT ?id ?nome WHERE {
-            { ?a a :ArtistaSolo } UNION { ?a a :Banda }
-            ?a :nome ?nome .
-            BIND(STRAFTER(STR(?a), "music-ontology/") AS ?id)
-        } ORDER BY ?nome
-    """
-    artistas_todos = [{"id": g(r,"id"), "nome": g(r,"nome")} for r in rows_of(exec_query(q_artistas))]
-
-    album = {
-        "id":              id_album,
-        "nome":            g(row, "nome", ""),
-        "ano":             g(row, "ano", ""),
-        "artista_id":      g(row, "artistaId", ""),
-        "generos_actuais": generos_actuais,
-    }
-
-    return render_template('editar_album.html',
-                           album=album,
-                           generos=generos_list(),
-                           artistas=artistas_todos)
-
-
-@app.route('/musica/<id_musica>/editar', methods=['GET', 'POST'])
-def editar_musica(id_musica):
-    if not re.match(r'^\w+$', id_musica):
-        return "ID de música inválido", 400
-
-    if request.method == 'POST':
-        nome       = request.form.get('nome', '').strip()
-        artista_id = request.form.get('artista_id', '').strip()
-        album_id   = request.form.get('album_id', '').strip()
-        generos    = request.form.getlist('genero')
-
-        if not nome:
-            flash("O nome da música é obrigatório.", "error")
-            return redirect(url_for('editar_musica', id_musica=id_musica))
-
-        ids_generos_validos = {g_['id'] for g_ in generos_list()}
-        generos = [g_ for g_ in generos if g_.strip() in ids_generos_validos]
-        if artista_id and not re.match(r'^\w+$', artista_id):
-            artista_id = ''
-        if album_id and not re.match(r'^\w+$', album_id):
-            album_id = ''
-
-        # 1) Apagar propriedades editáveis
-        _apagar_propriedades(id_musica, [
-            ':nome', ':interpretadaPor', ':pertenceAoAlbum', ':pertenceAoGenero'
-        ])
-
-        # 2) Inserir novos
-        triplos = [f':{id_musica} :nome "{esc_lit(nome)}"^^xsd:string .']
-        if artista_id:
-            triplos.append(f':{id_musica} :interpretadaPor :{artista_id} .')
-        if album_id:
-            triplos.append(f':{id_musica} :pertenceAoAlbum :{album_id} .')
-        for gen in generos:
-            triplos.append(f':{id_musica} :pertenceAoGenero :{gen} .')
-
-        ok = exec_update(PREFIX + "INSERT DATA {\n  " + "\n  ".join(triplos) + "\n}")
-        if ok:
-            flash(f'Música "{nome}" atualizada com sucesso.', "success")
-        else:
-            flash("Erro ao atualizar a música.", "error")
-        return redirect(url_for('detalhe_musica', id_musica=id_musica))
-
-    # GET — buscar dados actuais
-    q = PREFIX + f"""
-        SELECT ?nome ?artistaId ?albumId WHERE {{
-            :{id_musica} :nome ?nome .
-            OPTIONAL {{ :{id_musica} :interpretadaPor ?a .
-                        BIND(STRAFTER(STR(?a), "music-ontology/") AS ?artistaId) }}
-            OPTIONAL {{ :{id_musica} :pertenceAoAlbum ?al .
-                        BIND(STRAFTER(STR(?al), "music-ontology/") AS ?albumId) }}
-        }} LIMIT 1
-    """
-    rs = rows_of(exec_query(q))
-    if not rs:
-        return "Música não encontrada", 404
-    row = rs[0]
-
-    q_gen = PREFIX + f"SELECT ?id WHERE {{ :{id_musica} :pertenceAoGenero ?g . BIND(STRAFTER(STR(?g), 'music-ontology/') AS ?id) }}"
-    generos_actuais = [g(r, "id") for r in rows_of(exec_query(q_gen))]
-
-    q_artistas = PREFIX + """
-        SELECT ?id ?nome WHERE {
-            { ?a a :ArtistaSolo } UNION { ?a a :Banda }
-            ?a :nome ?nome .
-            BIND(STRAFTER(STR(?a), "music-ontology/") AS ?id)
-        } ORDER BY ?nome
-    """
-    artistas_todos = [{"id": g(r,"id"), "nome": g(r,"nome")} for r in rows_of(exec_query(q_artistas))]
-
-    q_albuns = PREFIX + """
-        SELECT ?id ?nome WHERE {
-            ?a a :Album ; :nome ?nome .
-            BIND(STRAFTER(STR(?a), "music-ontology/") AS ?id)
-        } ORDER BY ?nome
-    """
-    albuns_todos = [{"id": g(r,"id"), "nome": g(r,"nome")} for r in rows_of(exec_query(q_albuns))]
-
-    musica = {
-        "id":              id_musica,
-        "nome":            g(row, "nome", ""),
-        "artista_id":      g(row, "artistaId", ""),
-        "album_id":        g(row, "albumId", ""),
-        "generos_actuais": generos_actuais,
-    }
-
-    return render_template('editar_musica.html',
-                           musica=musica,
-                           generos=generos_list(),
-                           artistas=artistas_todos,
-                           albuns=albuns_todos)
 
 
 @app.errorhandler(404)

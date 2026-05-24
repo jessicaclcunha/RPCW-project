@@ -120,15 +120,6 @@
       <p>Concertos e atuações memoráveis dos artistas portugueses.</p>
     </div>
 
-    {% with messages = get_flashed_messages(with_categories=true) %}
-      {% for category, message in messages %}
-        <div class="flash-{{ category }}">
-          <i class="fa-solid fa-{% if category == 'success' %}check-circle{% else %}triangle-exclamation{% endif %}"></i>
-          {{ message }}
-        </div>
-      {% endfor %}
-    {% endwith %}
-
     <!-- ══ FORMULÁRIO ADICIONAR CONCERTO ══ -->
     <div class="section-divider"><span><i class="fa-solid fa-plus"></i> Registar Nova Atuação</span></div>
     <div class="filter-box" style="background: var(--surface2); padding: 2rem; border-radius: var(--radius); margin-bottom: 2rem;">

@@ -119,28 +119,6 @@
       </div>
 
       <div class="info-block">
-        <h3><i class="fa-solid fa-music"></i> Compositores</h3>
-        {% if musica.compositores %}
-          {% for p in musica.compositores %}
-            <a href="/artista/{{ p.id }}" class="pessoa-link">{{ p.nome }}</a>
-          {% endfor %}
-        {% else %}
-          <p style="color:var(--muted); font-size:0.9rem; font-style:italic;">Não registado.</p>
-        {% endif %}
-      </div>
-
-      <div class="info-block">
-        <h3><i class="fa-solid fa-pen-nib"></i> Letristas</h3>
-        {% if musica.letristas %}
-          {% for p in musica.letristas %}
-            <a href="/artista/{{ p.id }}" class="pessoa-link">{{ p.nome }}</a>
-          {% endfor %}
-        {% else %}
-          <p style="color:var(--muted); font-size:0.9rem; font-style:italic;">Não registado.</p>
-        {% endif %}
-      </div>
-
-      <div class="info-block">
         <h3><i class="fa-solid fa-users"></i> Colaborações (feats)</h3>
         {% if musica.colaboracoes %}
           {% for p in musica.colaboracoes %}
@@ -159,10 +137,6 @@
       {% else %}
         <a href="/" class="btn btn-ghost"><i class="fa-solid fa-chevron-left"></i> Voltar ao Índice Principal</a>
       {% endif %}
-      <a href="/musica/{{ musica.id }}/editar" class="btn btn-ghost"
-         style="border-color: rgba(201,150,58,0.4); color: var(--gold-light);">
-        <i class="fa-solid fa-pen-to-square"></i> Editar Música
-      </a>
       <form method="POST" action="/musica/{{ musica.id }}/remover" style="display:inline;"
             onsubmit="return confirm('Tens a certeza que queres remover esta musica? Esta accao remove permanentemente o registo. Nao pode ser desfeita.');">
         <button type="submit" class="btn btn-ghost"

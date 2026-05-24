@@ -99,15 +99,6 @@
       <p>Reconhecimentos atribuídos aos artistas da música portuguesa ao longo dos anos.</p>
     </div>
 
-    {% with messages = get_flashed_messages(with_categories=true) %}
-      {% for category, message in messages %}
-        <div class="flash-{{ category }}">
-          <i class="fa-solid fa-{% if category == 'success' %}check-circle{% else %}triangle-exclamation{% endif %}"></i>
-          {{ message }}
-        </div>
-      {% endfor %}
-    {% endwith %}
-
     <!-- ══ FORMULÁRIO ADICIONAR PRÉMIO ══ -->
     <div class="section-divider"><span><i class="fa-solid fa-plus"></i> Registar Novo Prémio</span></div>
     <div class="filter-box" style="background: var(--surface2); padding: 2rem; border-radius: var(--radius); margin-bottom: 2rem;">
