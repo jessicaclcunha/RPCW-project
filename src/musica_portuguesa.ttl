@@ -105,6 +105,12 @@
                 rdfs:range :Artista .
 
 
+###  http://rpcw.di.uminho.pt/2026/music-ontology/realizouTour
+:realizouTour rdf:type owl:ObjectProperty ;
+              rdfs:domain :Artista ;
+              rdfs:range :Tour .
+
+
 #################################################################
 #    Data properties
 #################################################################
@@ -211,20 +217,28 @@
 :Concerto rdf:type owl:Class .
 
 
+###  http://rpcw.di.uminho.pt/2026/music-ontology/Tour
+:Tour rdf:type owl:Class .
+
+
 # Subclasses de Género (Vocabulário Controlado)
-:Fado        rdf:type owl:Class ; rdfs:subClassOf :Genero .
-:HipHop      rdf:type owl:Class ; rdfs:subClassOf :Genero .
-:Intervencao rdf:type owl:Class ; rdfs:subClassOf :Genero .
-:Kizomba     rdf:type owl:Class ; rdfs:subClassOf :Genero .
-:Pimba       rdf:type owl:Class ; rdfs:subClassOf :Genero .
-:Pop         rdf:type owl:Class ; rdfs:subClassOf :Genero .
-:RB          rdf:type owl:Class ; rdfs:subClassOf :Genero .
-:Rock        rdf:type owl:Class ; rdfs:subClassOf :Genero .
-:Folk        rdf:type owl:Class ; rdfs:subClassOf :Genero .
-:Indie       rdf:type owl:Class ; rdfs:subClassOf :Genero .
-:Jazz        rdf:type owl:Class ; rdfs:subClassOf :Genero .
-:Soul        rdf:type owl:Class ; rdfs:subClassOf :Genero .
-:Blues       rdf:type owl:Class ; rdfs:subClassOf :Genero .
+:Blues        rdf:type owl:Class ; rdfs:subClassOf :Genero .
+:Electronica  rdf:type owl:Class ; rdfs:subClassOf :Genero .
+:Fado         rdf:type owl:Class ; rdfs:subClassOf :Genero .
+:Folk         rdf:type owl:Class ; rdfs:subClassOf :Genero .
+:HipHop       rdf:type owl:Class ; rdfs:subClassOf :Genero .
+:Indie        rdf:type owl:Class ; rdfs:subClassOf :Genero .
+:Intervencao  rdf:type owl:Class ; rdfs:subClassOf :Genero .
+:Jazz         rdf:type owl:Class ; rdfs:subClassOf :Genero .
+:Kizomba      rdf:type owl:Class ; rdfs:subClassOf :Genero .
+:Metal        rdf:type owl:Class ; rdfs:subClassOf :Genero .
+:Pimba        rdf:type owl:Class ; rdfs:subClassOf :Genero .
+:Pop          rdf:type owl:Class ; rdfs:subClassOf :Genero .
+:RB           rdf:type owl:Class ; rdfs:subClassOf :Genero .
+:Reggae       rdf:type owl:Class ; rdfs:subClassOf :Genero .
+:Rock         rdf:type owl:Class ; rdfs:subClassOf :Genero .
+:Soul         rdf:type owl:Class ; rdfs:subClassOf :Genero .
+:Tradicional  rdf:type owl:Class ; rdfs:subClassOf :Genero .
 
 #################################################################
 #    INDIVÍDUOS INTEGRADOS E MAPEADOS
@@ -274,71 +288,61 @@
     :nome "Eurovision Song Contest 2017" ;
     :categoria "Primeiro Lugar" ;
     :organizacao "European Broadcasting Union" ;
-    :anoPremio 2017 ;
-    :ano 2017 .
+    :anoPremio 2017 .
 
 :globo_ouro_amalia a :Premio ;
     :nome "Globo de Ouro Carreira" ;
     :categoria "Carreira" ;
     :organizacao "Globos de Ouro (SIC)" ;
-    :anoPremio 2019 ;
-    :ano 2019 .
+    :anoPremio 2019 .
 
 :order_merit_amalia a :Premio ;
     :nome "Ordem do Mérito (Grã-Cruz)" ;
     :categoria "Mérito Civil" ;
     :organizacao "Estado Português" ;
-    :anoPremio 1990 ;
-    :ano 1990 .
+    :anoPremio 1990 .
 
 :premio_mpa_capicua a :Premio ;
     :nome "Prémio Música Portuguesa" ;
     :categoria "Hip-Hop" ;
     :organizacao "Associação Portuguesa de Editoras" ;
-    :anoPremio 2015 ;
-    :ano 2015 .
+    :anoPremio 2015 .
 
 :premio_zdb_ornatos a :Premio ;
     :nome "Prémio ZDB" ;
     :categoria "Álbum do Ano" ;
     :organizacao "Zinc Discos" ;
-    :anoPremio 2000 ;
-    :ano 2000 .
+    :anoPremio 2000 .
 
 :world_music_mariza a :Premio ;
     :nome "BBC Radio 3 World Music Award" ;
     :categoria "Europe Award" ;
     :organizacao "BBC Radio 3" ;
-    :anoPremio 2006 ;
-    :ano 2006 .
+    :anoPremio 2006 .
 
 :wma_ana_moura a :Premio ;
     :nome "BBC Radio 3 World Music Award" ;
     :categoria "Europe Award" ;
     :organizacao "BBC Radio 3" ;
-    :anoPremio 2014 ;
-    :ano 2014 .
+    :anoPremio 2014 .
 
 :prémio_carlos_paredes a :Premio ;
     :nome "Prémio Carlos Paredes" ;
     :categoria "Música" ;
     :organizacao "Câmara Municipal de Lisboa" ;
-    :anoPremio 2005 ;
-    :ano 2005 .
+    :anoPremio 2005 .
 
 :globo_ouro_banda_deolinda a :Premio ;
     :nome "Globo de Ouro Melhor Banda" ;
     :categoria "Melhor Banda" ;
     :organizacao "Globos de Ouro (SIC)" ;
-    :anoPremio 2010 ;
-    :ano 2010 .
+    :anoPremio 2010 .
 
 :antena3_moonspell a :Premio ;
     :nome "Antena 3 Music Awards" ;
     :categoria "Melhor Banda Rock" ;
     :organizacao "Antena 3 / RTP" ;
-    :anoPremio 2012 ;
-    :ano 2012 .
+    :anoPremio 2012 .
 
 
 #################################################################

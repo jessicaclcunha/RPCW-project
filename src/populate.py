@@ -24,7 +24,6 @@ def secao(titulo):
     )
 
 
-# ─── Geradores por tipo de entidade ──────────────────────────────────
 
 def gerar_editora(e):
     linhas = [f":{e['id']} a :Editora"]
@@ -51,15 +50,12 @@ def gerar_artista_solo(a, mapa_premios, mapa_concertos, mapa_influencias):
         
     bloco = ' ;\n    '.join(linhas) + ' .\n'
     
-    # Cruzamento de Prémios (Usa o termo exato procurado pelo teu app.py)
     for pr_id in mapa_premios.get(a['id'], []):
         bloco += f":{a['id']} :recebeuPremio :{pr_id} .\n"
         
-    # Cruzamento de Concertos
     for cc_id in mapa_concertos.get(a['id'], []):
         bloco += f":{a['id']} :atuouEm :{cc_id} .\n"
 
-    # Cruzamento de Influências
     for inf_id in mapa_influencias.get(a['id'], []):
         bloco += f":{a['id']} :influenciadoPor :{inf_id} .\n"
         
@@ -87,15 +83,12 @@ def gerar_banda(b, mapa_premios, mapa_concertos, mapa_influencias):
         
     bloco = ' ;\n    '.join(linhas) + ' .\n'
     
-    # Cruzamento de Prémios
     for pr_id in mapa_premios.get(b['id'], []):
         bloco += f":{b['id']} :recebeuPremio :{pr_id} .\n"
         
-    # Cruzamento de Concertos
     for cc_id in mapa_concertos.get(b['id'], []):
         bloco += f":{b['id']} :atuouEm :{cc_id} .\n"
 
-    # Cruzamento de Influências
     for inf_id in mapa_influencias.get(b['id'], []):
         bloco += f":{b['id']} :influenciadoPor :{inf_id} .\n"
         
@@ -140,14 +133,23 @@ def gerar_musica(m, mapa_colaboracoes):
         
     bloco = ' ;\n    '.join(linhas) + ' .\n'
     
-    # Cruzamento das participações especiais vindas do mapa
     for colab_artista in mapa_colaboracoes.get(m['id'], []):
         bloco += f":{m['id']} :temColaboracao :{colab_artista} .\n"
         
     return bloco + '\n'
 
+def gerar_tour(t):
+    t_id = t['id']
+    linhas = [f":{t_id} a :Tour"]
+    linhas.append(f':nome "{esc(t.get("nome", "Tour"))}"')
+    bloco = ' ;\n    '.join(linhas) + ' .\n'
 
-# ─── Orquestração Principal ──────────────────────────────────────────
+    art_id = t.get('artista')
+    if art_id:
+        bloco += f":{art_id} :realizouTour :{t_id} .\n"
+
+    return bloco + '\n'
+
 
 def main():
     print(f"A ler a ontologia base ({ONTOLOGIA})...")
@@ -177,7 +179,6 @@ def main():
     for e in editoras:
         abox += gerar_editora(e)
 
-    # 1. Processar Prémios (Alinhado com as chaves reais)
     abox += secao("Prémios")
     mapa_premios = {}
     for pr in premios_json:
@@ -190,14 +191,14 @@ def main():
         
         linhas_pr = [f":{pr_id} a :Premio"]
         linhas_pr.append(f'    :nome "{esc(pr.get("nome", "Prémio"))}"')
-        if 'categoriaPremio' in pr: linhas_pr.append(f'    :categoria "{esc(pr["categoriaPremio"])}"')
-        if 'entidadePremio' in pr:  linhas_pr.append(f'    :organizacao "{esc(pr["entidadePremio"])}"')
-        if 'anoPremio' in pr: 
+        if 'categoriaPremio' in pr:
+            linhas_pr.append(f'    :categoria "{esc(pr["categoriaPremio"])}"')
+        if 'entidadePremio' in pr:
+            linhas_pr.append(f'    :organizacao "{esc(pr["entidadePremio"])}"')
+        if 'anoPremio' in pr:
             linhas_pr.append(f'    :anoPremio {pr["anoPremio"]}')
-            linhas_pr.append(f'    :ano {pr["anoPremio"]}')
         abox += ' ;\n'.join(linhas_pr) + ' .\n\n'
 
-    # 2. Processar Concertos (Alinhado com as chaves reais)
     abox += secao("Concertos")
     mapa_concertos = {}
     for cc in concertos_json:
@@ -210,26 +211,16 @@ def main():
             
         linhas_cc = [f":{cc_id} a :Concerto"]
         linhas_cc.append(f'    :nome "{esc(cc.get("nome", "Concerto"))}"')
-        if 'localConcerto' in cc: linhas_cc.append(f'    :local "{esc(cc["localConcerto"])}"')
-        if 'dataConcerto' in cc:  linhas_cc.append(f'    :data "{esc(cc["dataConcerto"])}"')
+        if 'localConcerto' in cc:
+            linhas_cc.append(f'    :local "{esc(cc["localConcerto"])}"')
+        if 'dataConcerto' in cc:
+            linhas_cc.append(f'    :data "{esc(cc["dataConcerto"])}"')
         abox += ' ;\n'.join(linhas_cc) + ' .\n\n'
 
-    # 3. Processar Tours
     abox += secao("Tours")
     for t in tours_json:
-        t_id = t['id']
-        linhas_t = [f":{t_id} a :Tour"]
-        linhas_t.append(f'    :nome "{esc(t.get("nome", "Tour"))}"')
-        if 'ano' in t: 
-            linhas_t.append(f'    :ano {t["ano"]}')
-        abox += ' ;\n'.join(linhas_t) + ' .\n'
-        
-        art_id = t.get('artista')
-        if art_id:
-            abox += f":{art_id} :realizouTour :{t_id} .\n"
-        abox += '\n'
+        abox += gerar_tour(t)
 
-    # 4. Mapear Influências históricas
     mapa_influencias = {}
     for inf in influencias_json:
         origo = inf['influenciado']
