@@ -302,10 +302,14 @@ def detalhe_musica(id_musica):
     query_info = PREFIX + f"""
         SELECT ?nome ?albumId ?albumNome ?ano WHERE {{
             :{id_musica} a :Musica ; :nome ?nome .
-            OPTIONAL {{ :{id_musica} :pertenceAoAlbum ?album .
-                        ?album :nome ?albumNome .
-                        OPTIONAL {{ ?album :anoLancamento ?ano }}
-                        BIND(STRAFTER(STR(?album), "music-ontology/") AS ?albumId) }}
+            OPTIONAL {{ 
+                {{ :{id_musica} :pertenceAoAlbum ?album . }} 
+                UNION 
+                {{ ?album :temFaixa :{id_musica} . }}
+                ?album :nome ?albumNome .
+                OPTIONAL {{ ?album :anoLancamento ?ano }}
+                BIND(STRAFTER(STR(?album), "music-ontology/") AS ?albumId) 
+            }}
         }} LIMIT 1
     """
     res = rows_of(exec_query(query_info))
@@ -315,8 +319,6 @@ def detalhe_musica(id_musica):
     row = res[0]
 
     q_int  = PREFIX + f"SELECT ?id ?nome WHERE {{ :{id_musica} :interpretadaPor ?a . ?a :nome ?nome . BIND(STRAFTER(STR(?a), 'music-ontology/') AS ?id) }}"
-    q_comp = PREFIX + f"SELECT ?id ?nome WHERE {{ :{id_musica} :compostaPor ?a . ?a :nome ?nome . BIND(STRAFTER(STR(?a), 'music-ontology/') AS ?id) }}"
-    q_esc  = PREFIX + f"SELECT ?id ?nome WHERE {{ :{id_musica} :escritaPor ?a . ?a :nome ?nome . BIND(STRAFTER(STR(?a), 'music-ontology/') AS ?id) }}"
     q_gen  = PREFIX + f"SELECT ?nome WHERE {{ :{id_musica} :pertenceAoGenero ?g . BIND(STRAFTER(STR(?g), 'music-ontology/') AS ?nome) }}"
     q_feat = PREFIX + f"SELECT ?id ?nome WHERE {{:{id_musica} :temColaboracao ?a . ?a :nome ?nome . BIND(STRAFTER(STR(?a), 'music-ontology/') AS ?id) }}"
 
